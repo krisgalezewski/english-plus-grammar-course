@@ -1,0 +1,2393 @@
+{
+  "vocab": [
+    {
+      "slug": "expectation",
+      "text": "expectation",
+      "lessons": [
+        "lesson-01-present-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/expectation.mp3"
+    },
+    {
+      "slug": "self-fulfilling",
+      "text": "self-fulfilling",
+      "lessons": [
+        "lesson-01-present-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/self-fulfilling.mp3"
+    },
+    {
+      "slug": "unwittingly",
+      "text": "unwittingly",
+      "lessons": [
+        "lesson-01-present-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/unwittingly.mp3"
+    },
+    {
+      "slug": "undermine",
+      "text": "undermine",
+      "lessons": [
+        "lesson-01-present-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/undermine.mp3"
+    },
+    {
+      "slug": "subtle",
+      "text": "subtle",
+      "lessons": [
+        "lesson-01-present-simple-vs-continuous",
+        "lesson-11-passive-voice"
+      ],
+      "outputPath": "audio/vocab/subtle.mp3"
+    },
+    {
+      "slug": "cue",
+      "text": "cue",
+      "lessons": [
+        "lesson-01-present-simple-vs-continuous",
+        "lesson-09-modals-deduction-speculation"
+      ],
+      "outputPath": "audio/vocab/cue.mp3"
+    },
+    {
+      "slug": "amplify",
+      "text": "amplify",
+      "lessons": [
+        "lesson-01-present-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/amplify.mp3"
+    },
+    {
+      "slug": "underlying",
+      "text": "underlying",
+      "lessons": [
+        "lesson-01-present-simple-vs-continuous",
+        "lesson-04-present-perfect-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/underlying.mp3"
+    },
+    {
+      "slug": "flourish",
+      "text": "flourish",
+      "lessons": [
+        "lesson-01-present-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/flourish.mp3"
+    },
+    {
+      "slug": "astonishment",
+      "text": "astonishment",
+      "lessons": [
+        "lesson-02-past-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/astonishment.mp3"
+    },
+    {
+      "slug": "phenomenon",
+      "text": "phenomenon",
+      "lessons": [
+        "lesson-02-past-simple-vs-continuous",
+        "lesson-18-reported-speech"
+      ],
+      "outputPath": "audio/vocab/phenomenon.mp3"
+    },
+    {
+      "slug": "unsettled",
+      "text": "unsettled",
+      "lessons": [
+        "lesson-02-past-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/unsettled.mp3"
+    },
+    {
+      "slug": "eased",
+      "text": "eased",
+      "lessons": [
+        "lesson-02-past-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/eased.mp3"
+    },
+    {
+      "slug": "witnessed",
+      "text": "witnessed",
+      "lessons": [
+        "lesson-02-past-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/witnessed.mp3"
+    },
+    {
+      "slug": "investigating",
+      "text": "investigating",
+      "lessons": [
+        "lesson-02-past-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/investigating.mp3"
+    },
+    {
+      "slug": "account-for",
+      "text": "account for",
+      "lessons": [
+        "lesson-02-past-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/account-for.mp3"
+    },
+    {
+      "slug": "redesigning",
+      "text": "redesigning",
+      "lessons": [
+        "lesson-02-past-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/redesigning.mp3"
+    },
+    {
+      "slug": "gold-standard",
+      "text": "gold standard",
+      "lessons": [
+        "lesson-02-past-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/gold-standard.mp3"
+    },
+    {
+      "slug": "coined",
+      "text": "coined",
+      "lessons": [
+        "lesson-03-present-perfect-vs-past-simple"
+      ],
+      "outputPath": "audio/vocab/coined.mp3"
+    },
+    {
+      "slug": "striking",
+      "text": "striking",
+      "lessons": [
+        "lesson-03-present-perfect-vs-past-simple"
+      ],
+      "outputPath": "audio/vocab/striking.mp3"
+    },
+    {
+      "slug": "competence",
+      "text": "competence",
+      "lessons": [
+        "lesson-03-present-perfect-vs-past-simple"
+      ],
+      "outputPath": "audio/vocab/competence.mp3"
+    },
+    {
+      "slug": "fraud",
+      "text": "fraud",
+      "lessons": [
+        "lesson-03-present-perfect-vs-past-simple"
+      ],
+      "outputPath": "audio/vocab/fraud.mp3"
+    },
+    {
+      "slug": "considerably",
+      "text": "considerably",
+      "lessons": [
+        "lesson-03-present-perfect-vs-past-simple"
+      ],
+      "outputPath": "audio/vocab/considerably.mp3"
+    },
+    {
+      "slug": "classified",
+      "text": "classified",
+      "lessons": [
+        "lesson-03-present-perfect-vs-past-simple"
+      ],
+      "outputPath": "audio/vocab/classified.mp3"
+    },
+    {
+      "slug": "persistent",
+      "text": "persistent",
+      "lessons": [
+        "lesson-03-present-perfect-vs-past-simple",
+        "lesson-18-reported-speech"
+      ],
+      "outputPath": "audio/vocab/persistent.mp3"
+    },
+    {
+      "slug": "tenfold",
+      "text": "tenfold",
+      "lessons": [
+        "lesson-03-present-perfect-vs-past-simple"
+      ],
+      "outputPath": "audio/vocab/tenfold.mp3"
+    },
+    {
+      "slug": "self-doubt",
+      "text": "self-doubt",
+      "lessons": [
+        "lesson-03-present-perfect-vs-past-simple"
+      ],
+      "outputPath": "audio/vocab/self-doubt.mp3"
+    },
+    {
+      "slug": "exert",
+      "text": "exert",
+      "lessons": [
+        "lesson-04-present-perfect-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/exert.mp3"
+    },
+    {
+      "slug": "tug-of-war",
+      "text": "tug of war",
+      "lessons": [
+        "lesson-04-present-perfect-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/tug-of-war.mp3"
+    },
+    {
+      "slug": "diminished",
+      "text": "diminished",
+      "lessons": [
+        "lesson-04-present-perfect-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/diminished.mp3"
+    },
+    {
+      "slug": "accountability",
+      "text": "accountability",
+      "lessons": [
+        "lesson-04-present-perfect-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/accountability.mp3"
+    },
+    {
+      "slug": "collective",
+      "text": "collective",
+      "lessons": [
+        "lesson-04-present-perfect-simple-vs-continuous",
+        "lesson-18-reported-speech"
+      ],
+      "outputPath": "audio/vocab/collective.mp3"
+    },
+    {
+      "slug": "diffused",
+      "text": "diffused",
+      "lessons": [
+        "lesson-04-present-perfect-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/diffused.mp3"
+    },
+    {
+      "slug": "counteract",
+      "text": "counteract",
+      "lessons": [
+        "lesson-04-present-perfect-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/counteract.mp3"
+    },
+    {
+      "slug": "cohesive",
+      "text": "cohesive",
+      "lessons": [
+        "lesson-04-present-perfect-simple-vs-continuous",
+        "lesson-22-discourse-emphasis-capstone"
+      ],
+      "outputPath": "audio/vocab/cohesive.mp3"
+    },
+    {
+      "slug": "reasoned",
+      "text": "reasoned",
+      "lessons": [
+        "lesson-05-past-perfect-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/reasoned.mp3"
+    },
+    {
+      "slug": "baffled",
+      "text": "baffled",
+      "lessons": [
+        "lesson-05-past-perfect-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/baffled.mp3"
+    },
+    {
+      "slug": "blatant",
+      "text": "blatant",
+      "lessons": [
+        "lesson-05-past-perfect-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/blatant.mp3"
+    },
+    {
+      "slug": "deluded",
+      "text": "deluded",
+      "lessons": [
+        "lesson-05-past-perfect-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/deluded.mp3"
+    },
+    {
+      "slug": "groundbreaking",
+      "text": "groundbreaking",
+      "lessons": [
+        "lesson-05-past-perfect-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/groundbreaking.mp3"
+    },
+    {
+      "slug": "inflated",
+      "text": "inflated",
+      "lessons": [
+        "lesson-05-past-perfect-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/inflated.mp3"
+    },
+    {
+      "slug": "paradox",
+      "text": "paradox",
+      "lessons": [
+        "lesson-05-past-perfect-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/paradox.mp3"
+    },
+    {
+      "slug": "incompetent",
+      "text": "incompetent",
+      "lessons": [
+        "lesson-05-past-perfect-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/incompetent.mp3"
+    },
+    {
+      "slug": "peers",
+      "text": "peers",
+      "lessons": [
+        "lesson-05-past-perfect-simple-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/peers.mp3"
+    },
+    {
+      "slug": "redundant",
+      "text": "redundant",
+      "lessons": [
+        "lesson-06-future-forms"
+      ],
+      "outputPath": "audio/vocab/redundant.mp3"
+    },
+    {
+      "slug": "workforce",
+      "text": "workforce",
+      "lessons": [
+        "lesson-06-future-forms"
+      ],
+      "outputPath": "audio/vocab/workforce.mp3"
+    },
+    {
+      "slug": "unprecedented",
+      "text": "unprecedented",
+      "lessons": [
+        "lesson-06-future-forms"
+      ],
+      "outputPath": "audio/vocab/unprecedented.mp3"
+    },
+    {
+      "slug": "streamline",
+      "text": "streamline",
+      "lessons": [
+        "lesson-06-future-forms"
+      ],
+      "outputPath": "audio/vocab/streamline.mp3"
+    },
+    {
+      "slug": "anticipate",
+      "text": "anticipate",
+      "lessons": [
+        "lesson-06-future-forms"
+      ],
+      "outputPath": "audio/vocab/anticipate.mp3"
+    },
+    {
+      "slug": "displace",
+      "text": "displace",
+      "lessons": [
+        "lesson-06-future-forms"
+      ],
+      "outputPath": "audio/vocab/displace.mp3"
+    },
+    {
+      "slug": "upskill",
+      "text": "upskill",
+      "lessons": [
+        "lesson-06-future-forms"
+      ],
+      "outputPath": "audio/vocab/upskill.mp3"
+    },
+    {
+      "slug": "obsolete",
+      "text": "obsolete",
+      "lessons": [
+        "lesson-06-future-forms"
+      ],
+      "outputPath": "audio/vocab/obsolete.mp3"
+    },
+    {
+      "slug": "adaptable",
+      "text": "adaptable",
+      "lessons": [
+        "lesson-06-future-forms"
+      ],
+      "outputPath": "audio/vocab/adaptable.mp3"
+    },
+    {
+      "slug": "chronic",
+      "text": "chronic",
+      "lessons": [
+        "lesson-07-future-perfect-vs-continuous",
+        "lesson-20-gerunds-vs-infinitives"
+      ],
+      "outputPath": "audio/vocab/chronic.mp3"
+    },
+    {
+      "slug": "underestimate",
+      "text": "underestimate",
+      "lessons": [
+        "lesson-07-future-perfect-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/underestimate.mp3"
+    },
+    {
+      "slug": "meticulous",
+      "text": "meticulous",
+      "lessons": [
+        "lesson-07-future-perfect-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/meticulous.mp3"
+    },
+    {
+      "slug": "overrun",
+      "text": "overrun",
+      "lessons": [
+        "lesson-07-future-perfect-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/overrun.mp3"
+    },
+    {
+      "slug": "hindsight",
+      "text": "hindsight",
+      "lessons": [
+        "lesson-07-future-perfect-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/hindsight.mp3"
+    },
+    {
+      "slug": "unforeseen",
+      "text": "unforeseen",
+      "lessons": [
+        "lesson-07-future-perfect-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/unforeseen.mp3"
+    },
+    {
+      "slug": "buffer",
+      "text": "buffer",
+      "lessons": [
+        "lesson-07-future-perfect-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/buffer.mp3"
+    },
+    {
+      "slug": "contingency",
+      "text": "contingency",
+      "lessons": [
+        "lesson-07-future-perfect-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/contingency.mp3"
+    },
+    {
+      "slug": "rationale",
+      "text": "rationale",
+      "lessons": [
+        "lesson-07-future-perfect-vs-continuous"
+      ],
+      "outputPath": "audio/vocab/rationale.mp3"
+    },
+    {
+      "slug": "hierarchy",
+      "text": "hierarchy",
+      "lessons": [
+        "lesson-08-modals-ability-permission-obligation"
+      ],
+      "outputPath": "audio/vocab/hierarchy.mp3"
+    },
+    {
+      "slug": "deference",
+      "text": "deference",
+      "lessons": [
+        "lesson-08-modals-ability-permission-obligation"
+      ],
+      "outputPath": "audio/vocab/deference.mp3"
+    },
+    {
+      "slug": "subordinate",
+      "text": "subordinate",
+      "lessons": [
+        "lesson-08-modals-ability-permission-obligation"
+      ],
+      "outputPath": "audio/vocab/subordinate.mp3"
+    },
+    {
+      "slug": "egalitarian",
+      "text": "egalitarian",
+      "lessons": [
+        "lesson-08-modals-ability-permission-obligation"
+      ],
+      "outputPath": "audio/vocab/egalitarian.mp3"
+    },
+    {
+      "slug": "autonomy",
+      "text": "autonomy",
+      "lessons": [
+        "lesson-08-modals-ability-permission-obligation",
+        "lesson-21-articles-determiners"
+      ],
+      "outputPath": "audio/vocab/autonomy.mp3"
+    },
+    {
+      "slug": "discretion",
+      "text": "discretion",
+      "lessons": [
+        "lesson-08-modals-ability-permission-obligation"
+      ],
+      "outputPath": "audio/vocab/discretion.mp3"
+    },
+    {
+      "slug": "ambiguous",
+      "text": "ambiguous",
+      "lessons": [
+        "lesson-08-modals-ability-permission-obligation",
+        "lesson-19-relative-clauses"
+      ],
+      "outputPath": "audio/vocab/ambiguous.mp3"
+    },
+    {
+      "slug": "consensus",
+      "text": "consensus",
+      "lessons": [
+        "lesson-08-modals-ability-permission-obligation",
+        "lesson-22-discourse-emphasis-capstone"
+      ],
+      "outputPath": "audio/vocab/consensus.mp3"
+    },
+    {
+      "slug": "informal",
+      "text": "informal",
+      "lessons": [
+        "lesson-08-modals-ability-permission-obligation"
+      ],
+      "outputPath": "audio/vocab/informal.mp3"
+    },
+    {
+      "slug": "myth",
+      "text": "myth",
+      "lessons": [
+        "lesson-09-modals-deduction-speculation"
+      ],
+      "outputPath": "audio/vocab/myth.mp3"
+    },
+    {
+      "slug": "assumption",
+      "text": "assumption",
+      "lessons": [
+        "lesson-09-modals-deduction-speculation"
+      ],
+      "outputPath": "audio/vocab/assumption.mp3"
+    },
+    {
+      "slug": "unreliable",
+      "text": "unreliable",
+      "lessons": [
+        "lesson-09-modals-deduction-speculation"
+      ],
+      "outputPath": "audio/vocab/unreliable.mp3"
+    },
+    {
+      "slug": "gesture",
+      "text": "gesture",
+      "lessons": [
+        "lesson-09-modals-deduction-speculation"
+      ],
+      "outputPath": "audio/vocab/gesture.mp3"
+    },
+    {
+      "slug": "fidget",
+      "text": "fidget",
+      "lessons": [
+        "lesson-09-modals-deduction-speculation"
+      ],
+      "outputPath": "audio/vocab/fidget.mp3"
+    },
+    {
+      "slug": "deceptive",
+      "text": "deceptive",
+      "lessons": [
+        "lesson-09-modals-deduction-speculation"
+      ],
+      "outputPath": "audio/vocab/deceptive.mp3"
+    },
+    {
+      "slug": "credible",
+      "text": "credible",
+      "lessons": [
+        "lesson-09-modals-deduction-speculation"
+      ],
+      "outputPath": "audio/vocab/credible.mp3"
+    },
+    {
+      "slug": "scrutinize",
+      "text": "scrutinize",
+      "lessons": [
+        "lesson-09-modals-deduction-speculation"
+      ],
+      "outputPath": "audio/vocab/scrutinize.mp3"
+    },
+    {
+      "slug": "inevitable",
+      "text": "inevitable",
+      "lessons": [
+        "lesson-10-modal-perfect"
+      ],
+      "outputPath": "audio/vocab/inevitable.mp3"
+    },
+    {
+      "slug": "retrospect",
+      "text": "retrospect",
+      "lessons": [
+        "lesson-10-modal-perfect"
+      ],
+      "outputPath": "audio/vocab/retrospect.mp3"
+    },
+    {
+      "slug": "distort",
+      "text": "distort",
+      "lessons": [
+        "lesson-10-modal-perfect",
+        "lesson-18-reported-speech"
+      ],
+      "outputPath": "audio/vocab/distort.mp3"
+    },
+    {
+      "slug": "overconfidence",
+      "text": "overconfidence",
+      "lessons": [
+        "lesson-10-modal-perfect"
+      ],
+      "outputPath": "audio/vocab/overconfidence.mp3"
+    },
+    {
+      "slug": "foresight",
+      "text": "foresight",
+      "lessons": [
+        "lesson-10-modal-perfect"
+      ],
+      "outputPath": "audio/vocab/foresight.mp3"
+    },
+    {
+      "slug": "plausible",
+      "text": "plausible",
+      "lessons": [
+        "lesson-10-modal-perfect",
+        "lesson-18-reported-speech"
+      ],
+      "outputPath": "audio/vocab/plausible.mp3"
+    },
+    {
+      "slug": "deem",
+      "text": "deem",
+      "lessons": [
+        "lesson-10-modal-perfect"
+      ],
+      "outputPath": "audio/vocab/deem.mp3"
+    },
+    {
+      "slug": "skew",
+      "text": "skew",
+      "lessons": [
+        "lesson-10-modal-perfect"
+      ],
+      "outputPath": "audio/vocab/skew.mp3"
+    },
+    {
+      "slug": "warrant",
+      "text": "warrant",
+      "lessons": [
+        "lesson-10-modal-perfect"
+      ],
+      "outputPath": "audio/vocab/warrant.mp3"
+    },
+    {
+      "slug": "deliberate",
+      "text": "deliberate",
+      "lessons": [
+        "lesson-11-passive-voice",
+        "lesson-21-articles-determiners"
+      ],
+      "outputPath": "audio/vocab/deliberate.mp3"
+    },
+    {
+      "slug": "default",
+      "text": "default",
+      "lessons": [
+        "lesson-11-passive-voice"
+      ],
+      "outputPath": "audio/vocab/default.mp3"
+    },
+    {
+      "slug": "incentive",
+      "text": "incentive",
+      "lessons": [
+        "lesson-11-passive-voice"
+      ],
+      "outputPath": "audio/vocab/incentive.mp3"
+    },
+    {
+      "slug": "framing",
+      "text": "framing",
+      "lessons": [
+        "lesson-11-passive-voice"
+      ],
+      "outputPath": "audio/vocab/framing.mp3"
+    },
+    {
+      "slug": "voluntary",
+      "text": "voluntary",
+      "lessons": [
+        "lesson-11-passive-voice"
+      ],
+      "outputPath": "audio/vocab/voluntary.mp3"
+    },
+    {
+      "slug": "prevalent",
+      "text": "prevalent",
+      "lessons": [
+        "lesson-11-passive-voice"
+      ],
+      "outputPath": "audio/vocab/prevalent.mp3"
+    },
+    {
+      "slug": "intervention",
+      "text": "intervention",
+      "lessons": [
+        "lesson-11-passive-voice"
+      ],
+      "outputPath": "audio/vocab/intervention.mp3"
+    },
+    {
+      "slug": "endorse",
+      "text": "endorse",
+      "lessons": [
+        "lesson-11-passive-voice"
+      ],
+      "outputPath": "audio/vocab/endorse.mp3"
+    },
+    {
+      "slug": "comply",
+      "text": "comply",
+      "lessons": [
+        "lesson-12-passive-extensions"
+      ],
+      "outputPath": "audio/vocab/comply.mp3"
+    },
+    {
+      "slug": "authority",
+      "text": "authority",
+      "lessons": [
+        "lesson-12-passive-extensions"
+      ],
+      "outputPath": "audio/vocab/authority.mp3"
+    },
+    {
+      "slug": "deception",
+      "text": "deception",
+      "lessons": [
+        "lesson-12-passive-extensions"
+      ],
+      "outputPath": "audio/vocab/deception.mp3"
+    },
+    {
+      "slug": "legitimate",
+      "text": "legitimate",
+      "lessons": [
+        "lesson-12-passive-extensions"
+      ],
+      "outputPath": "audio/vocab/legitimate.mp3"
+    },
+    {
+      "slug": "distress",
+      "text": "distress",
+      "lessons": [
+        "lesson-12-passive-extensions"
+      ],
+      "outputPath": "audio/vocab/distress.mp3"
+    },
+    {
+      "slug": "withdraw",
+      "text": "withdraw",
+      "lessons": [
+        "lesson-12-passive-extensions"
+      ],
+      "outputPath": "audio/vocab/withdraw.mp3"
+    },
+    {
+      "slug": "outrage",
+      "text": "outrage",
+      "lessons": [
+        "lesson-12-passive-extensions"
+      ],
+      "outputPath": "audio/vocab/outrage.mp3"
+    },
+    {
+      "slug": "debrief",
+      "text": "debrief",
+      "lessons": [
+        "lesson-12-passive-extensions"
+      ],
+      "outputPath": "audio/vocab/debrief.mp3"
+    },
+    {
+      "slug": "coerce",
+      "text": "coerce",
+      "lessons": [
+        "lesson-12-passive-extensions"
+      ],
+      "outputPath": "audio/vocab/coerce.mp3"
+    },
+    {
+      "slug": "asymmetry",
+      "text": "asymmetry",
+      "lessons": [
+        "lesson-13-conditionals-zero-first"
+      ],
+      "outputPath": "audio/vocab/asymmetry.mp3"
+    },
+    {
+      "slug": "guarantee",
+      "text": "guarantee",
+      "lessons": [
+        "lesson-13-conditionals-zero-first"
+      ],
+      "outputPath": "audio/vocab/guarantee.mp3"
+    },
+    {
+      "slug": "perception",
+      "text": "perception",
+      "lessons": [
+        "lesson-13-conditionals-zero-first"
+      ],
+      "outputPath": "audio/vocab/perception.mp3"
+    },
+    {
+      "slug": "irrational",
+      "text": "irrational",
+      "lessons": [
+        "lesson-13-conditionals-zero-first"
+      ],
+      "outputPath": "audio/vocab/irrational.mp3"
+    },
+    {
+      "slug": "reluctant",
+      "text": "reluctant",
+      "lessons": [
+        "lesson-13-conditionals-zero-first"
+      ],
+      "outputPath": "audio/vocab/reluctant.mp3"
+    },
+    {
+      "slug": "magnitude",
+      "text": "magnitude",
+      "lessons": [
+        "lesson-13-conditionals-zero-first"
+      ],
+      "outputPath": "audio/vocab/magnitude.mp3"
+    },
+    {
+      "slug": "overestimate",
+      "text": "overestimate",
+      "lessons": [
+        "lesson-13-conditionals-zero-first"
+      ],
+      "outputPath": "audio/vocab/overestimate.mp3"
+    },
+    {
+      "slug": "rational",
+      "text": "rational",
+      "lessons": [
+        "lesson-13-conditionals-zero-first"
+      ],
+      "outputPath": "audio/vocab/rational.mp3"
+    },
+    {
+      "slug": "illusion",
+      "text": "illusion",
+      "lessons": [
+        "lesson-13-conditionals-zero-first",
+        "lesson-22-discourse-emphasis-capstone"
+      ],
+      "outputPath": "audio/vocab/illusion.mp3"
+    },
+    {
+      "slug": "vivid",
+      "text": "vivid",
+      "lessons": [
+        "lesson-14-second-conditional"
+      ],
+      "outputPath": "audio/vocab/vivid.mp3"
+    },
+    {
+      "slug": "aspiration",
+      "text": "aspiration",
+      "lessons": [
+        "lesson-14-second-conditional"
+      ],
+      "outputPath": "audio/vocab/aspiration.mp3"
+    },
+    {
+      "slug": "envision",
+      "text": "envision",
+      "lessons": [
+        "lesson-14-second-conditional"
+      ],
+      "outputPath": "audio/vocab/envision.mp3"
+    },
+    {
+      "slug": "elaborate",
+      "text": "elaborate",
+      "lessons": [
+        "lesson-14-second-conditional"
+      ],
+      "outputPath": "audio/vocab/elaborate.mp3"
+    },
+    {
+      "slug": "deter",
+      "text": "deter",
+      "lessons": [
+        "lesson-14-second-conditional"
+      ],
+      "outputPath": "audio/vocab/deter.mp3"
+    },
+    {
+      "slug": "cognitive",
+      "text": "cognitive",
+      "lessons": [
+        "lesson-14-second-conditional"
+      ],
+      "outputPath": "audio/vocab/cognitive.mp3"
+    },
+    {
+      "slug": "fulfil",
+      "text": "fulfil",
+      "lessons": [
+        "lesson-14-second-conditional"
+      ],
+      "outputPath": "audio/vocab/fulfil.mp3"
+    },
+    {
+      "slug": "vague",
+      "text": "vague",
+      "lessons": [
+        "lesson-14-second-conditional"
+      ],
+      "outputPath": "audio/vocab/vague.mp3"
+    },
+    {
+      "slug": "tangible",
+      "text": "tangible",
+      "lessons": [
+        "lesson-14-second-conditional"
+      ],
+      "outputPath": "audio/vocab/tangible.mp3"
+    },
+    {
+      "slug": "irrecoverable",
+      "text": "irrecoverable",
+      "lessons": [
+        "lesson-15-third-conditional"
+      ],
+      "outputPath": "audio/vocab/irrecoverable.mp3"
+    },
+    {
+      "slug": "commitment",
+      "text": "commitment",
+      "lessons": [
+        "lesson-15-third-conditional"
+      ],
+      "outputPath": "audio/vocab/commitment.mp3"
+    },
+    {
+      "slug": "justify",
+      "text": "justify",
+      "lessons": [
+        "lesson-15-third-conditional"
+      ],
+      "outputPath": "audio/vocab/justify.mp3"
+    },
+    {
+      "slug": "persist",
+      "text": "persist",
+      "lessons": [
+        "lesson-15-third-conditional"
+      ],
+      "outputPath": "audio/vocab/persist.mp3"
+    },
+    {
+      "slug": "abandon",
+      "text": "abandon",
+      "lessons": [
+        "lesson-15-third-conditional"
+      ],
+      "outputPath": "audio/vocab/abandon.mp3"
+    },
+    {
+      "slug": "invest",
+      "text": "invest",
+      "lessons": [
+        "lesson-15-third-conditional"
+      ],
+      "outputPath": "audio/vocab/invest.mp3"
+    },
+    {
+      "slug": "worthwhile",
+      "text": "worthwhile",
+      "lessons": [
+        "lesson-15-third-conditional"
+      ],
+      "outputPath": "audio/vocab/worthwhile.mp3"
+    },
+    {
+      "slug": "stubborn",
+      "text": "stubborn",
+      "lessons": [
+        "lesson-15-third-conditional"
+      ],
+      "outputPath": "audio/vocab/stubborn.mp3"
+    },
+    {
+      "slug": "rationalise",
+      "text": "rationalise",
+      "lessons": [
+        "lesson-15-third-conditional",
+        "lesson-17-wish-if-only"
+      ],
+      "outputPath": "audio/vocab/rationalise.mp3"
+    },
+    {
+      "slug": "counterfactual",
+      "text": "counterfactual",
+      "lessons": [
+        "lesson-16-mixed-conditionals"
+      ],
+      "outputPath": "audio/vocab/counterfactual.mp3"
+    },
+    {
+      "slug": "narrowly",
+      "text": "narrowly",
+      "lessons": [
+        "lesson-16-mixed-conditionals"
+      ],
+      "outputPath": "audio/vocab/narrowly.mp3"
+    },
+    {
+      "slug": "salient",
+      "text": "salient",
+      "lessons": [
+        "lesson-16-mixed-conditionals"
+      ],
+      "outputPath": "audio/vocab/salient.mp3"
+    },
+    {
+      "slug": "objectively",
+      "text": "objectively",
+      "lessons": [
+        "lesson-16-mixed-conditionals"
+      ],
+      "outputPath": "audio/vocab/objectively.mp3"
+    },
+    {
+      "slug": "elite",
+      "text": "elite",
+      "lessons": [
+        "lesson-16-mixed-conditionals"
+      ],
+      "outputPath": "audio/vocab/elite.mp3"
+    },
+    {
+      "slug": "distinction",
+      "text": "distinction",
+      "lessons": [
+        "lesson-16-mixed-conditionals"
+      ],
+      "outputPath": "audio/vocab/distinction.mp3"
+    },
+    {
+      "slug": "comparison",
+      "text": "comparison",
+      "lessons": [
+        "lesson-16-mixed-conditionals"
+      ],
+      "outputPath": "audio/vocab/comparison.mp3"
+    },
+    {
+      "slug": "ranking",
+      "text": "ranking",
+      "lessons": [
+        "lesson-16-mixed-conditionals"
+      ],
+      "outputPath": "audio/vocab/ranking.mp3"
+    },
+    {
+      "slug": "contentment",
+      "text": "contentment",
+      "lessons": [
+        "lesson-16-mixed-conditionals"
+      ],
+      "outputPath": "audio/vocab/contentment.mp3"
+    },
+    {
+      "slug": "regret",
+      "text": "regret",
+      "lessons": [
+        "lesson-17-wish-if-only",
+        "lesson-21-articles-determiners"
+      ],
+      "outputPath": "audio/vocab/regret.mp3"
+    },
+    {
+      "slug": "inaction",
+      "text": "inaction",
+      "lessons": [
+        "lesson-17-wish-if-only"
+      ],
+      "outputPath": "audio/vocab/inaction.mp3"
+    },
+    {
+      "slug": "foregone",
+      "text": "foregone",
+      "lessons": [
+        "lesson-17-wish-if-only"
+      ],
+      "outputPath": "audio/vocab/foregone.mp3"
+    },
+    {
+      "slug": "wistful",
+      "text": "wistful",
+      "lessons": [
+        "lesson-17-wish-if-only"
+      ],
+      "outputPath": "audio/vocab/wistful.mp3"
+    },
+    {
+      "slug": "opportunity",
+      "text": "opportunity",
+      "lessons": [
+        "lesson-17-wish-if-only"
+      ],
+      "outputPath": "audio/vocab/opportunity.mp3"
+    },
+    {
+      "slug": "lingering",
+      "text": "lingering",
+      "lessons": [
+        "lesson-17-wish-if-only"
+      ],
+      "outputPath": "audio/vocab/lingering.mp3"
+    },
+    {
+      "slug": "remorse",
+      "text": "remorse",
+      "lessons": [
+        "lesson-17-wish-if-only"
+      ],
+      "outputPath": "audio/vocab/remorse.mp3"
+    },
+    {
+      "slug": "intensity",
+      "text": "intensity",
+      "lessons": [
+        "lesson-17-wish-if-only"
+      ],
+      "outputPath": "audio/vocab/intensity.mp3"
+    },
+    {
+      "slug": "misattribute",
+      "text": "misattribute",
+      "lessons": [
+        "lesson-18-reported-speech"
+      ],
+      "outputPath": "audio/vocab/misattribute.mp3"
+    },
+    {
+      "slug": "embed",
+      "text": "embed",
+      "lessons": [
+        "lesson-18-reported-speech"
+      ],
+      "outputPath": "audio/vocab/embed.mp3"
+    },
+    {
+      "slug": "verbatim",
+      "text": "verbatim",
+      "lessons": [
+        "lesson-18-reported-speech"
+      ],
+      "outputPath": "audio/vocab/verbatim.mp3"
+    },
+    {
+      "slug": "widespread",
+      "text": "widespread",
+      "lessons": [
+        "lesson-18-reported-speech"
+      ],
+      "outputPath": "audio/vocab/widespread.mp3"
+    },
+    {
+      "slug": "witness",
+      "text": "witness",
+      "lessons": [
+        "lesson-19-relative-clauses"
+      ],
+      "outputPath": "audio/vocab/witness.mp3"
+    },
+    {
+      "slug": "intervene",
+      "text": "intervene",
+      "lessons": [
+        "lesson-19-relative-clauses"
+      ],
+      "outputPath": "audio/vocab/intervene.mp3"
+    },
+    {
+      "slug": "diffusion",
+      "text": "diffusion",
+      "lessons": [
+        "lesson-19-relative-clauses"
+      ],
+      "outputPath": "audio/vocab/diffusion.mp3"
+    },
+    {
+      "slug": "accountable",
+      "text": "accountable",
+      "lessons": [
+        "lesson-19-relative-clauses"
+      ],
+      "outputPath": "audio/vocab/accountable.mp3"
+    },
+    {
+      "slug": "inhibit",
+      "text": "inhibit",
+      "lessons": [
+        "lesson-19-relative-clauses"
+      ],
+      "outputPath": "audio/vocab/inhibit.mp3"
+    },
+    {
+      "slug": "empirical",
+      "text": "empirical",
+      "lessons": [
+        "lesson-19-relative-clauses"
+      ],
+      "outputPath": "audio/vocab/empirical.mp3"
+    },
+    {
+      "slug": "exaggerate",
+      "text": "exaggerate",
+      "lessons": [
+        "lesson-19-relative-clauses"
+      ],
+      "outputPath": "audio/vocab/exaggerate.mp3"
+    },
+    {
+      "slug": "apathy",
+      "text": "apathy",
+      "lessons": [
+        "lesson-19-relative-clauses"
+      ],
+      "outputPath": "audio/vocab/apathy.mp3"
+    },
+    {
+      "slug": "aversive",
+      "text": "aversive",
+      "lessons": [
+        "lesson-20-gerunds-vs-infinitives"
+      ],
+      "outputPath": "audio/vocab/aversive.mp3"
+    },
+    {
+      "slug": "temporal",
+      "text": "temporal",
+      "lessons": [
+        "lesson-20-gerunds-vs-infinitives"
+      ],
+      "outputPath": "audio/vocab/temporal.mp3"
+    },
+    {
+      "slug": "pervasive",
+      "text": "pervasive",
+      "lessons": [
+        "lesson-20-gerunds-vs-infinitives"
+      ],
+      "outputPath": "audio/vocab/pervasive.mp3"
+    },
+    {
+      "slug": "intended",
+      "text": "intended",
+      "lessons": [
+        "lesson-20-gerunds-vs-infinitives"
+      ],
+      "outputPath": "audio/vocab/intended.mp3"
+    },
+    {
+      "slug": "prioritise",
+      "text": "prioritise",
+      "lessons": [
+        "lesson-20-gerunds-vs-infinitives"
+      ],
+      "outputPath": "audio/vocab/prioritise.mp3"
+    },
+    {
+      "slug": "avoidance",
+      "text": "avoidance",
+      "lessons": [
+        "lesson-20-gerunds-vs-infinitives"
+      ],
+      "outputPath": "audio/vocab/avoidance.mp3"
+    },
+    {
+      "slug": "compassion",
+      "text": "compassion",
+      "lessons": [
+        "lesson-20-gerunds-vs-infinitives"
+      ],
+      "outputPath": "audio/vocab/compassion.mp3"
+    },
+    {
+      "slug": "repair",
+      "text": "repair",
+      "lessons": [
+        "lesson-20-gerunds-vs-infinitives"
+      ],
+      "outputPath": "audio/vocab/repair.mp3"
+    },
+    {
+      "slug": "overwhelm",
+      "text": "overwhelm",
+      "lessons": [
+        "lesson-21-articles-determiners"
+      ],
+      "outputPath": "audio/vocab/overwhelm.mp3"
+    },
+    {
+      "slug": "abundance",
+      "text": "abundance",
+      "lessons": [
+        "lesson-21-articles-determiners"
+      ],
+      "outputPath": "audio/vocab/abundance.mp3"
+    },
+    {
+      "slug": "satisfaction",
+      "text": "satisfaction",
+      "lessons": [
+        "lesson-21-articles-determiners"
+      ],
+      "outputPath": "audio/vocab/satisfaction.mp3"
+    },
+    {
+      "slug": "alternative",
+      "text": "alternative",
+      "lessons": [
+        "lesson-21-articles-determiners"
+      ],
+      "outputPath": "audio/vocab/alternative.mp3"
+    },
+    {
+      "slug": "paralysis",
+      "text": "paralysis",
+      "lessons": [
+        "lesson-21-articles-determiners"
+      ],
+      "outputPath": "audio/vocab/paralysis.mp3"
+    },
+    {
+      "slug": "discern",
+      "text": "discern",
+      "lessons": [
+        "lesson-21-articles-determiners"
+      ],
+      "outputPath": "audio/vocab/discern.mp3"
+    },
+    {
+      "slug": "conformity",
+      "text": "conformity",
+      "lessons": [
+        "lesson-22-discourse-emphasis-capstone"
+      ],
+      "outputPath": "audio/vocab/conformity.mp3"
+    },
+    {
+      "slug": "dissent",
+      "text": "dissent",
+      "lessons": [
+        "lesson-22-discourse-emphasis-capstone"
+      ],
+      "outputPath": "audio/vocab/dissent.mp3"
+    },
+    {
+      "slug": "unanimity",
+      "text": "unanimity",
+      "lessons": [
+        "lesson-22-discourse-emphasis-capstone"
+      ],
+      "outputPath": "audio/vocab/unanimity.mp3"
+    },
+    {
+      "slug": "scrutiny",
+      "text": "scrutiny",
+      "lessons": [
+        "lesson-22-discourse-emphasis-capstone"
+      ],
+      "outputPath": "audio/vocab/scrutiny.mp3"
+    },
+    {
+      "slug": "flawed",
+      "text": "flawed",
+      "lessons": [
+        "lesson-22-discourse-emphasis-capstone"
+      ],
+      "outputPath": "audio/vocab/flawed.mp3"
+    },
+    {
+      "slug": "suppress",
+      "text": "suppress",
+      "lessons": [
+        "lesson-22-discourse-emphasis-capstone"
+      ],
+      "outputPath": "audio/vocab/suppress.mp3"
+    }
+  ],
+  "listening": [
+    {
+      "lessonId": "lesson-01-present-simple-vs-continuous",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "Did you notice how differently the new manager treats Marek?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Yeah — she's giving him way more responsibility this month, ever since she found out he used to run his own startup."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Right, and he's clearly working harder because of it. It's like he's trying to prove she's right about him."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "That's exactly the Pygmalion effect we read about. She expects a lot from him, so he performs better."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Meanwhile, she barely talks to the new intern. He probably notices that too."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Definitely. People usually sense these things, even when nobody says anything out loud."
+        },
+        {
+          "speaker": "Anna",
+          "line": "So expectations really do shape behaviour, not just talent."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Seems that way. I'm rethinking how I talk to my own team now, honestly."
+        }
+      ],
+      "outputPath": "audio/lesson-01-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-02-past-simple-vs-continuous",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "Did you read that article about how the placebo effect was actually discovered?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Yeah — a nurse gave a soldier salt water because they'd run out of morphine, right?"
+        },
+        {
+          "speaker": "Anna",
+          "line": "Exactly. And while Beecher was reviewing all those old trial records years later, he kept finding the same pattern everywhere."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "That's wild. So he wasn't even looking for it originally?"
+        },
+        {
+          "speaker": "Anna",
+          "line": "No, he was just investigating something completely different when he noticed it."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "It's funny how some of the biggest discoveries happened while someone was doing something else entirely."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Definitely. Makes you wonder what we're missing right now, while we're focused on something totally different."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Now I'm slightly worried about what I overlooked this week."
+        }
+      ],
+      "outputPath": "audio/lesson-02-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-03-present-perfect-vs-past-simple",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "Have you ever felt like you don't actually deserve your job, even though everyone says you're doing great?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Constantly, actually. I read that psychologists coined a term for that back in 1978."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Right, impostor syndrome. Apparently interest in it has grown massively over the past decade."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "That doesn't surprise me. I've definitely felt it more since I got promoted last year."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Same here. I joined this team in January and I still sometimes think they made a mistake hiring me."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Have you told anyone that?"
+        },
+        {
+          "speaker": "Anna",
+          "line": "Not until just now, actually."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Well, for what it's worth, you've clearly earned your spot."
+        }
+      ],
+      "outputPath": "audio/lesson-03-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-04-present-perfect-simple-vs-continuous",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "Have you noticed that in most group projects, two people somehow end up doing all the work?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Constantly. I've actually been reading about exactly why that happens — it's called social loafing."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Oh, I think I've heard of that — some old rope-pulling experiment?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Exactly. A French engineer called Ringelmann discovered it back in 1913."
+        },
+        {
+          "speaker": "Anna",
+          "line": "So has anyone actually found a fix for it?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Sort of. Teams that track everyone's contribution separately have counteracted it pretty well."
+        },
+        {
+          "speaker": "Anna",
+          "line": "I've been trying that with my own team lately, actually."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "And has it worked?"
+        }
+      ],
+      "outputPath": "audio/lesson-04-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-05-past-perfect-simple-vs-continuous",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "Did you know that guy who robbed banks with lemon juice on his face actually believed it made him invisible?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Ha, yes — I read about that. Apparently he'd seen something about lemon juice being used as invisible ink."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Right, and he'd reasoned that it would work on cameras too, which obviously it didn't."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "That's basically how the Dunning-Kruger effect got its name, isn't it?"
+        },
+        {
+          "speaker": "Anna",
+          "line": "Yeah — the psychologists had already noticed the same pattern in much smaller ways before that story even came out."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Like people who do worst on a test rating themselves the most confident?"
+        },
+        {
+          "speaker": "Anna",
+          "line": "Exactly. They'd been seeing that in their own classroom data for a while."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Kind of comforting, actually — means the people who worry they're bad at something probably aren't."
+        }
+      ],
+      "outputPath": "audio/lesson-05-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-06-future-forms",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "Are you worried about AI taking over your job at some point?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Honestly, a bit. I think a lot of routine tasks will disappear eventually."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Same here. My company's actually launching a whole new automated system next month."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Wait, seriously? Is that going to affect your team directly?"
+        },
+        {
+          "speaker": "Anna",
+          "line": "Probably, yeah. That's why I've decided — I'm going to start a coding course next week."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Good plan. I'll probably look into something similar myself, actually."
+        },
+        {
+          "speaker": "Anna",
+          "line": "We're meeting the training provider on Friday, if you want to join."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Definitely — count me in."
+        }
+      ],
+      "outputPath": "audio/lesson-06-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-07-future-perfect-vs-continuous",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "Be honest — do you actually think we'll finish this on time?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Realistically? By the deadline, we'll probably still be fixing bugs."
+        },
+        {
+          "speaker": "Anna",
+          "line": "That's exactly the planning fallacy we read about, isn't it?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Pretty much. We always assume nothing will go wrong this time."
+        },
+        {
+          "speaker": "Anna",
+          "line": "So what if we actually built in a proper buffer for once?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Honestly, by the time we double the estimate, we'll probably have gotten it about right."
+        },
+        {
+          "speaker": "Anna",
+          "line": "This time next month, I'd rather already have shipped it than still be apologising for the delay."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Same. Let's actually plan for the unexpected this time."
+        }
+      ],
+      "outputPath": "audio/lesson-07-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-08-modals-ability-permission-obligation",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "How was your trip to the Tokyo office?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Really interesting, actually. You have to ask permission for almost everything there — even small things."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Really? Here you can just go ahead and decide yourself, mostly."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Exactly. I wasn't able to just email a client directly without looping in my manager first."
+        },
+        {
+          "speaker": "Anna",
+          "line": "That sounds exhausting, but I guess it avoids mistakes."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Maybe. Though honestly, you don't have to over-explain every little decision here, and I kind of missed that."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Could you get used to working like that long-term?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Probably, but I definitely prefer having more autonomy."
+        }
+      ],
+      "outputPath": "audio/lesson-08-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-09-modals-deduction-speculation",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "Do you actually believe you can tell when someone's lying just by watching them?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Honestly, not really. We just read an article saying crossed arms and eye contact barely mean anything."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Right, that surprised me too. I always assumed avoiding eye contact must mean someone's guilty."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Apparently not — liars might actually hold more eye contact, not less."
+        },
+        {
+          "speaker": "Anna",
+          "line": "So if my colleague seems really calm and confident, that doesn't mean she's telling the truth."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Exactly. She could just be a good liar, or she could genuinely be telling the truth — you can't really tell from that alone."
+        },
+        {
+          "speaker": "Anna",
+          "line": "So what actually works, then?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Apparently, checking if their story stays consistent matters way more than how they're standing."
+        }
+      ],
+      "outputPath": "audio/lesson-09-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-10-modal-perfect",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "Honestly, looking back, I think we should have tested this feature more before launch."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Maybe, but at the time nobody flagged it as risky — it's easy to say that now."
+        },
+        {
+          "speaker": "Anna",
+          "line": "True. I guess that's exactly the hindsight bias thing we just read about."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Right — we could have caught it earlier, sure, but we genuinely didn't have the information back then."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Still, the client shouldn't have found out about the bug from a tweet before we even told them."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Yeah, that part's fair. We definitely should have communicated faster."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Given how quiet the dev team's been all morning, they must have been dealing with it since last night."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Probably. Let's actually judge this properly instead of just blaming everyone in hindsight."
+        }
+      ],
+      "outputPath": "audio/lesson-10-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-11-passive-voice",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "Did you know some countries flipped organ donation to opt-out, and consent rates went through the roof?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Yeah, I read about that. Nothing was forced — the default was just changed."
+        },
+        {
+          "speaker": "Anna",
+          "line": "It's wild how much a tiny design choice can shape behaviour."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Apparently the same trick's been used in loads of places — like that fly thing in the Amsterdam urinals."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Right, the spillage was cut by something like 80%, just from one image."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Honestly, I think a version of that could be introduced here at work too."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Like what, exactly?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Making the healthy snack the default option in the vending machine, instead of hiding it behind three buttons."
+        }
+      ],
+      "outputPath": "audio/lesson-11-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-12-passive-extensions",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "That Milgram study is genuinely unsettling. It's believed to have actually tested obedience, not memory at all."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Right — the whole 'memory and learning' cover story was just deception from the start."
+        },
+        {
+          "speaker": "Anna",
+          "line": "I keep thinking about how few people actually walked away, even when they were clearly distressed."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Honestly, I'd like to think I'd have refused, but who really knows."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Anyway — completely different topic, I'm getting my boiler serviced this weekend."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Good idea before winter properly hits. Did you have someone recommended?"
+        },
+        {
+          "speaker": "Anna",
+          "line": "Yeah, a neighbour had hers fixed last month and said the engineer was great."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "One thing's for sure — I'd never just blindly follow instructions like that, no matter who was giving them."
+        }
+      ],
+      "outputPath": "audio/lesson-12-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-13-conditionals-zero-first",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "Honestly, that loss aversion reading hit a little close to home."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Same. I always hold onto a losing stock way longer than I should, hoping it'll recover."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Exactly the disposition effect they described. Meanwhile you'd sell a winner instantly."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Guilty. What about you — got anything you're watching right now?"
+        },
+        {
+          "speaker": "Anna",
+          "line": "Actually yes. If it drops another five percent, I'll sell it before it gets any worse."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "See, that's the rational move. I just never manage to actually do it."
+        },
+        {
+          "speaker": "Anna",
+          "line": "It's funny — if you frame it as avoiding a loss instead of missing a gain, people take way more risks."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Which explains basically every 'last chance' advert I've ever fallen for."
+        }
+      ],
+      "outputPath": "audio/lesson-13-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-14-second-conditional",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "If I had unlimited savings, I'd honestly quit tomorrow and travel for a year."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Same, though I'd probably get bored after about three months."
+        },
+        {
+          "speaker": "Anna",
+          "line": "What about your feared self, going by that possible-selves thing we read about?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Honestly? Still doing exactly this job in ten years, having never once tried anything new."
+        },
+        {
+          "speaker": "Anna",
+          "line": "That's a genuinely vivid image, not just a vague worry."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Yeah, it actually made me a bit uncomfortable, if I'm honest."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Good — if you pictured it even more clearly, you'd probably feel more motivated to actually change something."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Fair. Maybe that's exactly the point of the exercise."
+        }
+      ],
+      "outputPath": "audio/lesson-14-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-15-third-conditional",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "Didn't you take some kind of certification course last year that you weren't enjoying?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Oh, don't remind me. I kept going for another six months after I knew it wasn't for me."
+        },
+        {
+          "speaker": "Anna",
+          "line": "If you'd quit the moment you realised, you would have saved a lot of time and money."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Exactly. But I'd already paid for it, so quitting felt like throwing that money away."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Classic sunk cost thinking, though — the money was already gone either way."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "I know that now. At the time it just felt like giving up."
+        },
+        {
+          "speaker": "Anna",
+          "line": "If I'd been there, I would have told you the fee was gone regardless of what you chose next."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Fair. I'd probably have listened too — eventually."
+        }
+      ],
+      "outputPath": "audio/lesson-15-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-16-mixed-conditionals",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "Honestly, I still think about that Berlin job sometimes."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "The one you turned down? If you'd taken it, you'd be living abroad right now."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Exactly. Completely different life, probably."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "I get it. If I weren't so indecisive, I'd have applied for that course years ago."
+        },
+        {
+          "speaker": "Anna",
+          "line": "You still could, though — that one's not exactly closed forever."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "True. It's a bit like that reading, isn't it — focusing on the near miss instead of what's actually in front of you."
+        },
+        {
+          "speaker": "Anna",
+          "line": "The silver medallist thing? Yeah, exactly. Always comparing to the gold they narrowly missed."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Maybe I should start comparing to fourth place instead."
+        }
+      ],
+      "outputPath": "audio/lesson-16-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-17-wish-if-only",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "Honestly, I wish I had travelled more before starting my career."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Same. Once you're settled, it's so much harder to just go."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Speaking of things I wish were different — I wish you would stop leaving dishes in my sink."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Fair. That one's genuinely on me, not just a wish."
+        },
+        {
+          "speaker": "Anna",
+          "line": "It's funny, actually, after that reading — I don't think I'll regret this conversation in twenty years."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "No, but you might regret not travelling more, based on what we read."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Exactly. Apparently regret over things we never tried just lasts a lot longer."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Noted. I should probably stop putting off that trip I keep talking about, then."
+        }
+      ],
+      "outputPath": "audio/lesson-17-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-18-reported-speech",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "My colleague called this morning about the meeting."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Oh yeah? What did she say?"
+        },
+        {
+          "speaker": "Anna",
+          "line": "She said it had been moved to Thursday, not Wednesday."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Good thing she called. Did you ask her anything?"
+        },
+        {
+          "speaker": "Anna",
+          "line": "Yeah, I asked whether I needed to prepare anything."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "And?"
+        },
+        {
+          "speaker": "Anna",
+          "line": "She asked me to bring the quarterly figures, that's it."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Easy enough. Glad she caught the date change."
+        }
+      ],
+      "outputPath": "audio/lesson-18-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-19-relative-clauses",
+      "lines": [
+        {
+          "speaker": "Tomasz",
+          "line": "Something weird happened on my street this morning."
+        },
+        {
+          "speaker": "Anna",
+          "line": "What happened?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "A woman dropped all her shopping bags, and honestly, nobody moved for a good ten seconds."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Ten seconds is a long time. Did someone eventually help?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Yeah, the woman who was walking a dog finally stopped and helped her pick everything up."
+        },
+        {
+          "speaker": "Anna",
+          "line": "That's exactly what we just read about — diffusion of responsibility."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Right, everyone probably assumed someone else would step in first."
+        },
+        {
+          "speaker": "Anna",
+          "line": "At least someone finally did. That's the reassuring part."
+        }
+      ],
+      "outputPath": "audio/lesson-19-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-20-gerunds-vs-infinitives",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "line": "You still haven't replied to that email, have you?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "I keep avoiding opening it. I know that's ridiculous."
+        },
+        {
+          "speaker": "Anna",
+          "line": "It's not ridiculous, it's just what we read about — you're avoiding the feeling, not the task itself."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "That's fair. It's just such an aversive thing to deal with right now."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Try setting a timer for five minutes and just starting. You don't have to finish it."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Five minutes I can manage. Okay, I'll try doing that after this."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Good. Let me know how it goes."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "I will — oh, and I forgot to say, thanks for the advice."
+        }
+      ],
+      "outputPath": "audio/lesson-20-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-21-articles-determiners",
+      "lines": [
+        {
+          "speaker": "Tomasz",
+          "line": "I've been standing here for ten minutes and I still can't pick a phone."
+        },
+        {
+          "speaker": "Anna",
+          "line": "There are, what, thirty models on this wall? No wonder."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Exactly. They all look basically the same to me at this point."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Try picking two or three must-have features and ignoring everything else."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Good battery life, a decent camera, and that's genuinely it?"
+        },
+        {
+          "speaker": "Anna",
+          "line": "That's it. Anything beyond that is just noise at this point."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "This is exactly that paradox of choice thing we read about, isn't it."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Word for word. Now go pick one before we're here all afternoon."
+        }
+      ],
+      "outputPath": "audio/lesson-21-listening.mp3"
+    },
+    {
+      "lessonId": "lesson-22-discourse-emphasis-capstone",
+      "lines": [
+        {
+          "speaker": "Tomasz",
+          "line": "We launched that feature without proper testing last month, and it broke almost immediately."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Did nobody flag that during the review meeting?"
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "Honestly, I think everyone assumed someone else already had concerns and had raised them."
+        },
+        {
+          "speaker": "Anna",
+          "line": "That sounds exactly like the groupthink thing we just read about."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "It really does. Nobody wanted to be the one slowing things down."
+        },
+        {
+          "speaker": "Anna",
+          "line": "Maybe assign someone to deliberately argue against the plan next time."
+        },
+        {
+          "speaker": "Tomasz",
+          "line": "A formal devil's advocate. I like that."
+        },
+        {
+          "speaker": "Anna",
+          "line": "It sounds awkward, but arguably it's exactly what would have caught this."
+        }
+      ],
+      "outputPath": "audio/lesson-22-listening.mp3"
+    }
+  ],
+  "l21Articles": [
+    {
+      "key": "aa1",
+      "kind": "label",
+      "text": "a university",
+      "slug": "a-university",
+      "outputPath": "audio/vocab/a-university.mp3"
+    },
+    {
+      "key": "aa1",
+      "kind": "sentence",
+      "text": "She studies at a university.",
+      "slug": "she-studies-at-a-university",
+      "outputPath": "audio/vocab/she-studies-at-a-university.mp3"
+    },
+    {
+      "key": "aa2",
+      "kind": "label",
+      "text": "an hour",
+      "slug": "an-hour",
+      "outputPath": "audio/vocab/an-hour.mp3"
+    },
+    {
+      "key": "aa2",
+      "kind": "sentence",
+      "text": "It took an hour to arrive.",
+      "slug": "it-took-an-hour-to-arrive",
+      "outputPath": "audio/vocab/it-took-an-hour-to-arrive.mp3"
+    },
+    {
+      "key": "aa3",
+      "kind": "label",
+      "text": "a European",
+      "slug": "a-european",
+      "outputPath": "audio/vocab/a-european.mp3"
+    },
+    {
+      "key": "aa3",
+      "kind": "sentence",
+      "text": "He is a European citizen.",
+      "slug": "he-is-a-european-citizen",
+      "outputPath": "audio/vocab/he-is-a-european-citizen.mp3"
+    },
+    {
+      "key": "aa4",
+      "kind": "label",
+      "text": "an MP",
+      "slug": "an-mp",
+      "outputPath": "audio/vocab/an-mp.mp3"
+    },
+    {
+      "key": "aa4",
+      "kind": "sentence",
+      "text": "She used to be an MP.",
+      "slug": "she-used-to-be-an-mp",
+      "outputPath": "audio/vocab/she-used-to-be-an-mp.mp3"
+    },
+    {
+      "key": "aa5",
+      "kind": "label",
+      "text": "a one-off event",
+      "slug": "a-one-off-event",
+      "outputPath": "audio/vocab/a-one-off-event.mp3"
+    },
+    {
+      "key": "aa5",
+      "kind": "sentence",
+      "text": "It was a one-off event.",
+      "slug": "it-was-a-one-off-event",
+      "outputPath": "audio/vocab/it-was-a-one-off-event.mp3"
+    },
+    {
+      "key": "aa6",
+      "kind": "label",
+      "text": "an honest man",
+      "slug": "an-honest-man",
+      "outputPath": "audio/vocab/an-honest-man.mp3"
+    },
+    {
+      "key": "aa6",
+      "kind": "sentence",
+      "text": "He is an honest man.",
+      "slug": "he-is-an-honest-man",
+      "outputPath": "audio/vocab/he-is-an-honest-man.mp3"
+    }
+  ]
+}
