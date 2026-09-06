@@ -1352,6 +1352,15 @@ const groupParam = new URLSearchParams(window.location.search).get('group');
 function withGroup(href){
   return groupParam ? `${href}?group=${encodeURIComponent(groupParam)}` : href;
 }
+function standaloneFilename(id){
+  // Standalone files are named with just the short prefix (lesson-01,
+  // test-01, big-test-1), never the full descriptive id — e.g. the real
+  // file is "lesson-01-preview-standalone.html", not
+  // "lesson-01-present-simple-vs-continuous-preview-standalone.html".
+  const match = id.match(/^(big-test-\d+|lesson-\d+|test-\d+)/);
+  const prefix = match ? match[1] : id;
+  return `${prefix}-preview-standalone.html`;
+}
 
 function renderLessonIndex(){
   const root = document.getElementById('lesson-index');
@@ -1362,7 +1371,7 @@ function renderLessonIndex(){
     const items = LESSONS.slice(g.range[0], g.range[1]).map((l, i) => {
       const num = l.isTest ? '✓' : (g.range[0] + i + 1 - LESSONS.slice(0, g.range[0] + i).filter(x => x.isTest).length);
       return `
-        <a class="lesson-list-item${l.isTest ? ' is-test' : ''}" href="${withGroup(l.id + '-preview-standalone.html')}" style="border-left:3px solid ${g.color}${l.isTest ? `;background:${g.color}11;border-color:${g.color}33` : ''}">
+        <a class="lesson-list-item${l.isTest ? ' is-test' : ''}" href="${withGroup(standaloneFilename(l.id))}" style="border-left:3px solid ${g.color}${l.isTest ? `;background:${g.color}11;border-color:${g.color}33` : ''}">
           <span class="lesson-list-num" style="${l.isTest ? `background:${g.color};color:#fff` : `background:${g.color}22;color:${g.color}`}">${l.isTest ? '✓' : num}</span>
           <span style="color:${g.color};font-weight:600">${l.title}</span>
         </a>`;
