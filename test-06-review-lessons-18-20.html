@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test 6 — Review of Lessons 18–20 | English+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+<style>
+  /* Small click-to-reveal hint button next to the vocab gap-fill inputs —
+     shows the word's definition, not the word itself, matching the pattern
+     used in Big Test 1, Test 4, and Test 5. */
+  .hint-btn{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;border:1px solid var(--border-strong);background:var(--surface-alt);color:var(--text-tertiary);font-size:12px;font-weight:650;cursor:pointer;margin-left:6px;vertical-align:middle;line-height:1;padding:0}
+  .hint-btn:hover{background:var(--warn-bg);color:var(--text-primary)}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="shared/supabase-config.js"></script>
+</head>
+<body class="theme-reported">
+
+<div class="course-attribution">English+ Grammar Course · by Kris Galezewski</div>
+<div class="shell">
+
+  <!-- ============ HEADER ============ -->
+  <header class="lesson-header">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div class="lesson-eyebrow">📝 Test 6 · Reviewing Lessons 18–20</div>
+      <a id="all-lessons-link" href="index-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📚 All Lessons</a>
+    </div>
+    <h1 class="lesson-title">Reported Speech, Relative Clauses &amp; Verb Patterns</h1>
+    <p class="lesson-sub">Reported speech, defining/non-defining relative clauses, and gerunds vs. infinitives — mixed together.</p>
+    <div class="pb-track" style="margin-top:16px"><div class="pb-fill" id="overall-progress" style="width:0%"></div></div>
+    <div id="sync-status" style="font-size:11.5px;color:var(--text-tertiary);margin-top:8px"></div>
+  </header>
+
+  <!-- ============ 1. MULTIPLE CHOICE ============ -->
+  <section class="section" id="sec-mcq">
+    <div class="section-label"><span class="num">1</span> Multiple choice — mixed forms</div>
+    <div class="card">
+      <p style="font-size:14.5px;color:var(--text-secondary);margin-bottom:16px">These span all three lessons, in no particular order.</p>
+
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. "I am tired," she said. → She said (that) she ___ tired.</p>
+        <div id="mcq1"><button class="opt" data-value="right">was</button><button class="opt" data-value="wrong">is</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. "Where do you live?" he asked. → He asked where I ___.</p>
+        <div id="mcq2"><button class="opt" data-value="right">lived</button><button class="opt" data-value="wrong">do live</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. "Close the door," she said. → She told him ___ the door.</p>
+        <div id="mcq3"><button class="opt" data-value="right">to close</button><button class="opt" data-value="wrong">close</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">4. "I will help you," he said. → He said he ___ help me.</p>
+        <div id="mcq4"><button class="opt" data-value="right">would</button><button class="opt" data-value="wrong">will</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">5. "I can swim," she said. → She said she ___ swim.</p>
+        <div id="mcq5"><button class="opt" data-value="right">could</button><button class="opt" data-value="wrong">can</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">6. The woman ___ called earlier is my sister.</p>
+        <div id="mcq6"><button class="opt" data-value="right">who</button><button class="opt" data-value="wrong">whom</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">7. My car, ___ is ten years old, still runs well.</p>
+        <div id="mcq7"><button class="opt" data-value="right">which</button><button class="opt" data-value="wrong">that</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">8. This is the house ___ I grew up.</p>
+        <div id="mcq8"><button class="opt" data-value="right">where</button><button class="opt" data-value="wrong">which</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">9. "The book (that) I borrowed was excellent" — can "that" be dropped here?</p>
+        <div id="mcq9"><button class="opt" data-value="right">Yes, because "that" is the object of the clause</button><button class="opt" data-value="wrong">No, "that" can never be dropped</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">10. The woman ___ bag was stolen called the police.</p>
+        <div id="mcq10"><button class="opt" data-value="right">whose</button><button class="opt" data-value="wrong">who</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">11. She enjoys ___ before bed.</p>
+        <div id="mcq11"><button class="opt" data-value="right">reading</button><button class="opt" data-value="wrong">to read</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">12. They decided ___ to a new city.</p>
+        <div id="mcq12"><button class="opt" data-value="right">to move</button><button class="opt" data-value="wrong">moving</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">13. He stopped ___ five years ago.</p>
+        <div id="mcq13"><button class="opt" data-value="right">smoking</button><button class="opt" data-value="wrong">to smoke</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">14. I'm interested ___ French.</p>
+        <div id="mcq14"><button class="opt" data-value="right">in learning</button><button class="opt" data-value="wrong">to learn</button></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">15. We're thinking about ___ the trip.</p>
+        <div id="mcq15"><button class="opt" data-value="right">postponing</button><button class="opt" data-value="wrong">to postpone</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. GAP-FILL ============ -->
+  <section class="section" id="sec-gapfill">
+    <div class="section-label"><span class="num">2</span> Gap-fill</div>
+    <div class="card">
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">1. "I'm working from home today," she said. → She said (that) she <input type="text" id="gap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> from home that day.</p>
+        <button class="btn btn-sm" id="gap1-check">Check</button>
+        <div id="gap1-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">2. "Have you finished?" he asked. → He asked if I <input type="text" id="gap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px">.</p>
+        <button class="btn btn-sm" id="gap2-check">Check</button>
+        <div id="gap2-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">3. "I can help you with that," he said. → He said he <input type="text" id="gap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> help me with that.</p>
+        <button class="btn btn-sm" id="gap3-check">Check</button>
+        <div id="gap3-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">4. The man <input type="text" id="gap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> answered the phone was very helpful.</p>
+        <button class="btn btn-sm" id="gap4-check">Check</button>
+        <div id="gap4-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">5. My grandmother, <input type="text" id="gap5-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> is 90 years old, still lives alone.</p>
+        <button class="btn btn-sm" id="gap5-check">Check</button>
+        <div id="gap5-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">6. The restaurant <input type="text" id="gap6-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> we had dinner has closed down.</p>
+        <button class="btn btn-sm" id="gap6-check">Check</button>
+        <div id="gap6-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">7. He avoided <input type="text" id="gap7-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> the question directly.</p>
+        <button class="btn btn-sm" id="gap7-check">Check</button>
+        <div id="gap7-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">8. She promised <input type="text" id="gap8-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> me back later.</p>
+        <button class="btn btn-sm" id="gap8-check">Check</button>
+        <div id="gap8-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">9. I tried <input type="text" id="gap9-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> the jar, but it wouldn't budge.</p>
+        <button class="btn btn-sm" id="gap9-check">Check</button>
+        <div id="gap9-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">10. He's good <input type="text" id="gap10-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:170px"> difficult problems.</p>
+        <button class="btn btn-sm" id="gap10-check">Check</button>
+        <div id="gap10-fb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. FIND THE ERROR ============ -->
+  <section class="section" id="sec-error">
+    <div class="section-label"><span class="num">3</span> Find the error</div>
+    <div class="card">
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Each sentence has one mistake. Tap the word (or words) that are wrong.</p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary)">Sentence 1</div>
+      <p id="err1" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 2</div>
+      <p id="err2" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 3</div>
+      <p id="err3" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 4</div>
+      <p id="err4" style="font-size:15px;line-height:1.9"></p>
+    </div>
+  </section>
+
+  <!-- ============ 4. MATCHING ============ -->
+  <section class="section" id="sec-matching">
+    <div class="section-label"><span class="num">4</span> Match the word to its meaning</div>
+    <div class="card">
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Vocabulary from all three lessons. Tap a word, then its meaning.</p>
+      <div id="matching"></div>
+    </div>
+  </section>
+
+  <!-- ============ 5. SENTENCE BUILDER ============ -->
+  <section class="section" id="sec-builder">
+    <div class="section-label"><span class="num">5</span> Sentence builder</div>
+    <div class="card">
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">Tap the chips in the right order. Four rounds.</p>
+      <div id="builders"></div>
+    </div>
+  </section>
+
+  <!-- ============ 6. SENTENCE TRANSFORMATION ============ -->
+  <section class="section" id="sec-transform">
+    <div class="section-label"><span class="num">6</span> Sentence transformation</div>
+    <div class="card">
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:18px">Rewrite each sentence so it means the same thing, starting with the word given.</p>
+
+      <div style="margin-bottom:20px">
+        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:4px">Original: <i>"I will call you tomorrow," he said.</i></p>
+        <p style="margin-bottom:8px">1. He said he <input type="text" id="tf1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> call me the next day.</p>
+        <button class="btn btn-sm" id="tf1-check">Check</button>
+        <div id="tf1-fb"></div>
+      </div>
+      <div style="margin-bottom:20px">
+        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:4px">Original: <i>"The book was very good. I read it last week."</i></p>
+        <p style="margin-bottom:8px">2. The book <input type="text" id="tf2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> read last week was very good.</p>
+        <button class="btn btn-sm" id="tf2-check">Check</button>
+        <div id="tf2-fb"></div>
+      </div>
+      <div style="margin-bottom:20px">
+        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:4px">Original: <i>"I don't smoke anymore."</i></p>
+        <p style="margin-bottom:8px">3. I <input type="text" id="tf3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:220px"> five years ago.</p>
+        <button class="btn btn-sm" id="tf3-check">Check</button>
+        <div id="tf3-fb"></div>
+      </div>
+      <div>
+        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:4px">Original: <i>"Where do you live?" she asked me.</i></p>
+        <p style="margin-bottom:8px">4. She asked me <input type="text" id="tf4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> I lived.</p>
+        <button class="btn btn-sm" id="tf4-check">Check</button>
+        <div id="tf4-fb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. VOCABULARY CHECK ============ -->
+  <section class="section" id="sec-vocab">
+    <div class="section-label"><span class="num">7</span> Vocabulary check</div>
+    <div class="card">
+      <p style="font-size:14.5px;margin-bottom:16px">More words from all three lessons.</p>
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px">Match the meaning</h4>
+
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. "Phenomenon" means…</p>
+        <div id="vocab-q1"><button class="opt" data-value="right">a fact or situation that is observed to exist</button><button class="opt" data-value="wrong">a scientific law with no exceptions</button><button class="opt" data-value="wrong2">an official government document</button></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. "Misattribute" means…</p>
+        <div id="vocab-q2"><button class="opt" data-value="right">to wrongly say that something was created or said by a particular person</button><button class="opt" data-value="wrong">to correctly identify the true source of something</button><button class="opt" data-value="wrong2">to completely forget where something came from</button></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. "Verbatim" means…</p>
+        <div id="vocab-q3"><button class="opt" data-value="right">in exactly the same words as were used originally</button><button class="opt" data-value="wrong">loosely summarised, in different words</button><button class="opt" data-value="wrong2">translated into another language</button></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. "Witness" means…</p>
+        <div id="vocab-q4"><button class="opt" data-value="right">a person who sees an event happen</button><button class="opt" data-value="wrong">a person who reports a crime to police</button><button class="opt" data-value="wrong2">a person who is accused of a crime</button></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">5. "Intervene" means…</p>
+        <div id="vocab-q5"><button class="opt" data-value="right">to become involved in a situation to change what happens</button><button class="opt" data-value="wrong">to avoid getting involved in a situation</button><button class="opt" data-value="wrong2">to describe an event in great detail</button></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">6. "Ambiguous" means…</p>
+        <div id="vocab-q6"><button class="opt" data-value="right">having more than one possible meaning or interpretation</button><button class="opt" data-value="wrong">completely clear and obvious</button><button class="opt" data-value="wrong2">extremely rare or unusual</button></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">7. "Aversive" means…</p>
+        <div id="vocab-q7"><button class="opt" data-value="right">causing a strong feeling of dislike or wanting to avoid something</button><button class="opt" data-value="wrong">causing a strong feeling of excitement or anticipation</button><button class="opt" data-value="wrong2">completely neutral, provoking no reaction at all</button></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">8. "Temporal" means…</p>
+        <div id="vocab-q8"><button class="opt" data-value="right">relating to time</button><button class="opt" data-value="wrong">relating to physical location</button><button class="opt" data-value="wrong2">relating to money or cost</button></div>
+      </div>
+      <div style="margin-bottom:22px">
+        <p style="margin-bottom:8px;font-weight:550">9. "Pervasive" means…</p>
+        <div id="vocab-q9"><button class="opt" data-value="right">existing in or spreading through every part of something</button><button class="opt" data-value="wrong">existing only in one small, isolated area</button><button class="opt" data-value="wrong2">completely absent from a situation</button></div>
+      </div>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px;padding-top:6px;border-top:1px solid var(--border)">Complete the sentence</h4>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">10. This is a case of <input type="text" id="vgap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"><button type="button" class="hint-btn" data-hint="shared by, or done by, a whole group" aria-label="Show hint">?</button> false memory.</p>
+        <button class="btn btn-sm" id="vgap1-check">Check</button>
+        <div id="vgap1-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">11. Memory can <input type="text" id="vgap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"><button type="button" class="hint-btn" data-hint="to change something from its original, accurate, or natural state" aria-label="Show hint">?</button> details without us realising it.</p>
+        <button class="btn btn-sm" id="vgap2-check">Check</button>
+        <div id="vgap2-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">12. The <input type="text" id="vgap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"><button type="button" class="hint-btn" data-hint="the spreading of something more thinly across a group" aria-label="Show hint">?</button> of responsibility means each bystander feels less accountable.</p>
+        <button class="btn btn-sm" id="vgap3-check">Check</button>
+        <div id="vgap3-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">13. The fear of embarrassment can <input type="text" id="vgap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"><button type="button" class="hint-btn" data-hint="to prevent or slow down a behaviour or process" aria-label="Show hint">?</button> people from acting.</p>
+        <button class="btn btn-sm" id="vgap4-check">Check</button>
+        <div id="vgap4-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">14. Procrastination means delaying an <input type="text" id="vgap5-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"><button type="button" class="hint-btn" data-hint="planned or meant to happen" aria-label="Show hint">?</button> task.</p>
+        <button class="btn btn-sm" id="vgap5-check">Check</button>
+        <div id="vgap5-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">15. Procrastinators often <input type="text" id="vgap6-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"><button type="button" class="hint-btn" data-hint="to treat something as more important than other things" aria-label="Show hint">?</button> short-term mood over long-term goals.</p>
+        <button class="btn btn-sm" id="vgap6-check">Check</button>
+        <div id="vgap6-fb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8. RESULTS ============ -->
+  <section class="section" id="sec-results">
+    <div class="section-label"><span class="num">8</span> Your results</div>
+    <div class="card" id="summary-card">
+      <h3 style="margin-bottom:14px">Test summary</h3>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px" id="summary-ring-row">
+        <div id="score-ring-holder"></div>
+        <div>
+          <div style="font-weight:600" id="summary-name">—</div>
+          <div style="font-size:13px;margin-top:4px" id="summary-completion"></div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-top:4px" id="summary-weak">Finish the test to see your results.</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="finish-btn">Finish test &amp; see results</button>
+      <button class="btn" id="export-btn" style="margin-left:8px;display:none">⬇ Export PDF report</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="shared/course-engine.js"></script>
+<script>
+const LESSON_ID = 'test-06-review-lessons-18-20';
+
+{
+  const resetBtn = document.createElement('button');
+  resetBtn.className = 'btn btn-sm btn-ghost';
+  resetBtn.textContent = '↺ Reset my progress for this test';
+  resetBtn.style.cssText = 'margin-top:8px;font-size:12px;padding:5px 12px';
+  resetBtn.addEventListener('click', () => {
+    if (confirm('Clear all saved answers for this test on this device? (Does not affect Supabase.)')){
+      Course.resetLocalProgress(LESSON_ID);
+      location.reload();
+    }
+  });
+  document.getElementById('sync-status').insertAdjacentElement('afterend', resetBtn);
+}
+
+(async function initTest(){
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Syncing your progress…`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  await Course.syncFromSupabase(LESSON_ID);
+  const sectionMap = Course.getSectionMap(LESSON_ID);
+
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Synced · Group: ${Course.getGroupId()}`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  /* ---------------- VOCAB HINT BUTTONS (click-to-reveal definition) ---------------- */
+  document.querySelectorAll('.hint-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      Course.showPopup(`<div style="font-size:14px;line-height:1.6">${btn.dataset.hint}</div>`, btn);
+    });
+  });
+
+  /* ---------------- MULTIPLE CHOICE (mixed forms, L18-20) ---------------- */
+  const mcqSections = [
+    ['mcq1','mcq-1','right'], ['mcq2','mcq-2','right'], ['mcq3','mcq-3','right'], ['mcq4','mcq-4','right'], ['mcq5','mcq-5','right'],
+    ['mcq6','mcq-6','right'], ['mcq7','mcq-7','right'], ['mcq8','mcq-8','right'], ['mcq9','mcq-9','right'], ['mcq10','mcq-10','right'],
+    ['mcq11','mcq-11','right'], ['mcq12','mcq-12','right'], ['mcq13','mcq-13','right'], ['mcq14','mcq-14','right'], ['mcq15','mcq-15','right'],
+    ['vocab-q1','vocab-1','right'], ['vocab-q2','vocab-2','right'], ['vocab-q3','vocab-3','right'], ['vocab-q4','vocab-4','right'], ['vocab-q5','vocab-5','right'],
+    ['vocab-q6','vocab-6','right'], ['vocab-q7','vocab-7','right'], ['vocab-q8','vocab-8','right'], ['vocab-q9','vocab-9','right']
+  ];
+  mcqSections.forEach(([id, section, correctVal]) => {
+    Course.shuffleOptions(id);
+    Course.initMCQ(id, {
+      lessonId: LESSON_ID, sectionId: section, correctValue: correctVal, onAnswered: updateOverallProgress,
+      restoreAnswer: sectionMap[section] ? sectionMap[section].answer_given : undefined
+    });
+  });
+  if (!sectionMap['mcq-1']) Course.ensureGroupVariety(['mcq1','mcq2','mcq3','mcq4','mcq5','mcq6','mcq7','mcq8','mcq9','mcq10','mcq11','mcq12','mcq13','mcq14','mcq15']);
+
+  /* ---------------- GAP-FILL (grammar + vocab) ----------------
+     Pronoun-subject items get Course.withContractions for the natural
+     spoken forms ("she'd been working," "he'd finished," etc). */
+  const gapFills = [
+    ['gap1-input','gap1-check','gap1-fb','gapfill-1', Course.withContractions(['was working']), true],
+    ['gap2-input','gap2-check','gap2-fb','gapfill-2', Course.withContractions(['had finished']), false],
+    ['gap3-input','gap3-check','gap3-fb','gapfill-3', ['could'], false],
+    ['gap4-input','gap4-check','gap4-fb','gapfill-4', ['who', 'that'], false],
+    ['gap5-input','gap5-check','gap5-fb','gapfill-5', ['who'], false],
+    ['gap6-input','gap6-check','gap6-fb','gapfill-6', ['where'], false],
+    ['gap7-input','gap7-check','gap7-fb','gapfill-7', ['answering'], false],
+    ['gap8-input','gap8-check','gap8-fb','gapfill-8', ['to call'], false],
+    ['gap9-input','gap9-check','gap9-fb','gapfill-9', ['to open'], false],
+    ['gap10-input','gap10-check','gap10-fb','gapfill-10', ['at solving'], false],
+    ['vgap1-input','vgap1-check','vgap1-fb','vocab-gapfill-1', ['collective'], false],
+    ['vgap2-input','vgap2-check','vgap2-fb','vocab-gapfill-2', ['distort'], false],
+    ['vgap3-input','vgap3-check','vgap3-fb','vocab-gapfill-3', ['diffusion'], false],
+    ['vgap4-input','vgap4-check','vgap4-fb','vocab-gapfill-4', ['inhibit'], false],
+    ['vgap5-input','vgap5-check','vgap5-fb','vocab-gapfill-5', ['intended'], false],
+    ['vgap6-input','vgap6-check','vgap6-fb','vocab-gapfill-6', ['prioritise', 'prioritize'], false]
+  ];
+  gapFills.forEach(([inputId, btnId, fbId, section, answers, showHint]) => {
+    const restored = sectionMap[section];
+    Course.initGapFill(inputId, btnId, fbId, {
+      lessonId: LESSON_ID, sectionId: section, correctAnswers: answers, showAnswerHint: showHint,
+      restore: restored ? { answerGiven: restored.answer_given, isCorrect: restored.override_correct ?? restored.is_correct } : undefined,
+      onAnswered: updateOverallProgress
+    });
+  });
+
+  /* ---------------- SENTENCE TRANSFORMATION (reuses gap-fill mechanics) ---------------- */
+  const transformItems = [
+    ['tf1-input','tf1-check','tf1-fb','transform-1', ['would'], true],
+    ['tf2-input','tf2-check','tf2-fb','transform-2', ['that I', 'which I', 'I'], false],
+    ['tf3-input','tf3-check','tf3-fb','transform-3', ['stopped smoking'], false],
+    ['tf4-input','tf4-check','tf4-fb','transform-4', ['where'], false]
+  ];
+  transformItems.forEach(([inputId, btnId, fbId, section, answers, showHint]) => {
+    const restored = sectionMap[section];
+    Course.initGapFill(inputId, btnId, fbId, {
+      lessonId: LESSON_ID, sectionId: section, correctAnswers: answers, showAnswerHint: showHint,
+      restore: restored ? { answerGiven: restored.answer_given, isCorrect: restored.override_correct ?? restored.is_correct } : undefined,
+      onAnswered: updateOverallProgress
+    });
+  });
+
+  /* ---------------- FIND THE ERROR ---------------- */
+  const errorSpotItems = [
+    { id:'err1', section:'error-1', words:['She','said','that','she','is','tired.'], errorIndices:[4], correction:'was' },
+    { id:'err2', section:'error-2', words:['He','asked','did','I','like','coffee.'], errorIndices:[2,3,4], correction:'if I liked' },
+    { id:'err3', section:'error-3', words:['My','brother,','that','lives','in','London,','called.'], errorIndices:[2], correction:'who' },
+    { id:'err4', section:'error-4', words:['She','enjoys','to','read','before','bed.'], errorIndices:[2,3], correction:'reading' }
+  ];
+  errorSpotItems.forEach(item => {
+    const restored = sectionMap[item.section];
+    Course.initErrorSpot(item.id, {
+      lessonId: LESSON_ID, sectionId: item.section, words: item.words, errorIndices: item.errorIndices, correction: item.correction,
+      onAnswered: updateOverallProgress,
+      restore: restored ? { answerGiven: restored.answer_given } : undefined
+    });
+  });
+
+  /* ---------------- MATCHING (vocab, spans L18-20) ---------------- */
+  Course.initMatching('matching', {
+    lessonId: LESSON_ID, sectionPrefix: 'match', onAnswered: updateOverallProgress, sectionMap,
+    pairs: [
+      { left: 'Widespread', right: 'existing or happening in many places or among many people' },
+      { left: 'Plausible', right: 'seeming reasonable or probable' },
+      { left: 'Persistent', right: 'continuing to exist despite difficulty or opposition' },
+      { left: 'Empirical', right: 'based on observation or experiment rather than theory' },
+      { left: 'Exaggerate', right: 'to describe something as bigger, better, or worse than it really is' },
+      { left: 'Apathy', right: 'a lack of interest, enthusiasm, or concern' },
+      { left: 'Compassion', right: 'a feeling of sympathy and concern for oneself or others' },
+      { left: 'Chronic', right: 'continuing for a long time, persistent' },
+      { left: 'Repair', right: 'the act of fixing or restoring something' }
+    ]
+  });
+
+  /* ---------------- SENTENCE BUILDER (single-clause safe, reused from source
+     lessons — no fresh ambiguity risk). Locks immediately on Check. ---------------- */
+  const builderRounds = [
+    { words: ['she','said','that','she','was','tired'],
+      accepted: ['she said that she was tired'] },
+    { words: ['the','woman','who','called','earlier','is','my','sister'],
+      accepted: ['the woman who called earlier is my sister'] },
+    { words: ['my','brother','who','lives','in','london','called'],
+      accepted: ['my brother who lives in london called'] },
+    { words: ['she','enjoys','reading','before','bed'],
+      accepted: ['she enjoys reading before bed'] }
+  ];
+  const buildersEl = document.getElementById('builders');
+  builderRounds.forEach((round, ri) => {
+    const sectionId = `builder-${ri+1}`;
+    const restored = sectionMap[sectionId];
+    const bankOrder = Course.shuffleArray(round.words.map((_, i) => i));
+    let state = [];
+    let locked = false;
+
+    if (restored){
+      const used = new Set();
+      restored.answer_given.split(' ').forEach(tok => {
+        const idx = round.words.findIndex((w, i) => w === tok && !used.has(i));
+        if (idx >= 0){ used.add(idx); state.push(idx); }
+      });
+      locked = true;
+    }
+
+    const wrap = document.createElement('div');
+    wrap.style.marginBottom = '20px';
+    wrap.innerHTML = `
+      <div class="builder-bank" id="builder-bank-${ri}"></div>
+      <div class="builder-target" id="builder-target-${ri}"></div>
+      <p style="font-size:12px;color:var(--text-tertiary);margin-top:6px">Tap a word in your sentence to send it back to the pool.</p>
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+        <button class="btn btn-sm" id="builder-check-${ri}">Check order</button>
+        <button class="btn btn-sm btn-ghost" id="builder-reset-${ri}">Reset</button>
+      </div>
+      <div id="builder-fb-${ri}"></div>
+    `;
+    buildersEl.appendChild(wrap);
+
+    const bank = wrap.querySelector(`#builder-bank-${ri}`);
+    const target = wrap.querySelector(`#builder-target-${ri}`);
+    function render(){
+      bank.innerHTML = '';
+      bankOrder.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip' + (state.includes(i) ? ' used' : '');
+        chip.textContent = round.words[i];
+        if (!locked) chip.addEventListener('click', () => { if (state.includes(i)) return; state.push(i); render(); });
+        else chip.disabled = true;
+        bank.appendChild(chip);
+      });
+      target.innerHTML = '';
+      state.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip';
+        chip.textContent = round.words[i];
+        if (!locked){
+          chip.title = 'Click to remove';
+          chip.addEventListener('click', () => { state = state.filter(x => x !== i); render(); });
+        } else {
+          chip.disabled = true;
+        }
+        target.appendChild(chip);
+      });
+    }
+    render();
+
+    if (restored){
+      const isCorrect = restored.override_correct ?? restored.is_correct;
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+    }
+
+    wrap.querySelector(`#builder-reset-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      state = []; render(); wrap.querySelector(`#builder-fb-${ri}`).innerHTML = '';
+    });
+    wrap.querySelector(`#builder-check-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      const attempt = state.map(i => round.words[i]).join(' ');
+      const isCorrect = round.accepted.includes(attempt);
+      locked = true;
+      render();
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+      Course.logProgress({ lessonId: LESSON_ID, sectionId, answerGiven: attempt, isCorrect });
+      updateOverallProgress();
+    });
+  });
+
+  updateOverallProgress();
+})();
+
+/* ---------------- OVERALL PROGRESS BAR ---------------- */
+const LESSON_TOTAL_POSSIBLE = 24 + 16 + 4 + 9 + 4 + 4; // mcq(15+9vocab) + gapfill(10+6vocab) + error-spot + matching + builder + transformation
+function updateOverallProgress(){
+  const attempted = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+  const pct = Math.min(100, Math.round((attempted / LESSON_TOTAL_POSSIBLE) * 100));
+  document.getElementById('overall-progress').style.width = pct + '%';
+}
+
+/* ---------------- FINISH / SUMMARY ---------------- */
+document.getElementById('finish-btn').addEventListener('click', async () => {
+  const btn = document.getElementById('finish-btn');
+  const original = btn.textContent;
+  btn.textContent = 'Checking for teacher updates…'; btn.disabled = true;
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+  } finally {
+    btn.textContent = original; btn.disabled = false;
+  }
+  try {
+    const { correct, total } = Course.lessonScore(LESSON_ID);
+    Course.renderScoreRing('score-ring-holder', correct, total);
+    document.getElementById('summary-name').textContent = `${Course.getStudentName()} — ${correct}/${total} correct`;
+
+    const attemptedCount = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+    const completionPct = Math.min(100, Math.round((attemptedCount / LESSON_TOTAL_POSSIBLE) * 100));
+    const completionEl = document.getElementById('summary-completion');
+    if (attemptedCount < LESSON_TOTAL_POSSIBLE){
+      completionEl.style.color = 'var(--warn)';
+      completionEl.textContent = `⚠ Only ${completionPct}% of the test attempted so far (${attemptedCount} of ${LESSON_TOTAL_POSSIBLE} exercises) — the score above only reflects what's been answered.`;
+    } else {
+      completionEl.style.color = 'var(--ok)';
+      completionEl.textContent = `✓ Every exercise in this test has been attempted.`;
+    }
+
+    const weak = Course.weakSections(LESSON_ID);
+    document.getElementById('summary-weak').textContent = weak.length
+      ? `Worth revisiting: ${weak.join(', ')}`
+      : 'Strong across the board — nice work!';
+    document.getElementById('export-btn').style.display = 'inline-block';
+    updateOverallProgress();
+
+    const card = document.getElementById('summary-card');
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    card.classList.remove('summary-pulse'); void card.offsetWidth;
+    card.classList.add('summary-pulse');
+  } catch (err){
+    console.error('Finish test failed:', err);
+    let banner = document.getElementById('finish-error-banner');
+    if (!banner){
+      banner = document.createElement('div');
+      banner.id = 'finish-error-banner';
+      banner.className = 'error-banner';
+      document.getElementById('summary-card').appendChild(banner);
+    }
+    banner.textContent = `Something went wrong computing your results (${err.message}). Try reloading the page — your saved answers won't be lost.`;
+  }
+});
+document.getElementById('export-btn').addEventListener('click', async () => {
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+    Course.exportReportPDF(LESSON_ID, 'Test 6 — Review of Lessons 18–20', LESSON_TOTAL_POSSIBLE);
+  } catch (err){
+    console.error('PDF export failed:', err);
+    alert('The PDF export ran into a problem: ' + err.message);
+  }
+});
+</script>
+
+<script>
+{
+  const allLessonsLink = document.getElementById('all-lessons-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  allLessonsLink.href = groupParam ? `index-standalone.html?group=${encodeURIComponent(groupParam)}` : 'index-standalone.html';
+}
+</script>
+</body>
+</html>

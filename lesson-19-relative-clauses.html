@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 19 — Relative Clauses | English+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+<style>
+  /* Lesson-specific only — widget, tooltip, and pill styling matching
+     Lessons 12–18's finalized design, reused here for consistency. */
+  .mode-toggle-outline .pill{border-radius:var(--radius-sm)}
+  .mode-toggle-outline .pill.on{background:var(--surface);color:var(--accent);border-color:var(--accent);font-weight:700}
+  .pill[disabled]{cursor:not-allowed;pointer-events:none}
+  .pill[disabled]:not(.on){opacity:.45}
+  @keyframes wheelRoll{from{transform:translateY(-6px);opacity:.25}to{transform:translateY(0);opacity:1}}
+  .wheel-value-anim{animation:wheelRoll .16s ease-out}
+  .static-cell{display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:var(--radius-md);padding:8px 6px;background:var(--surface);text-align:center;font-size:12.5px;color:var(--text-secondary);min-height:20px}
+  .static-cell.is-primary-cell{border-color:var(--accent);background:var(--surface);color:var(--accent);font-weight:650;flex:1}
+  .static-cell.clickable-cell{cursor:pointer}
+  .static-cell.clickable-cell:hover{opacity:.85}
+  .compare-box{display:inline-block;padding:4px 10px;border-radius:6px;background:var(--surface-alt);cursor:default;transition:background .15s}
+  .compare-box:hover{background:var(--accent-soft)}
+  #compare-tooltip{
+    position:absolute;z-index:80;max-width:280px;background:var(--accent-soft);color:var(--text-secondary);
+    border:1px solid var(--accent);font-size:13px;line-height:1.5;padding:10px 12px;border-radius:8px;
+    box-shadow:0 4px 16px rgba(0,0,0,.12);pointer-events:none;
+    opacity:0;transition:opacity .1s;
+  }
+  #compare-tooltip.visible{opacity:1}
+  .tricky-box{
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius-md);
+    padding:11px 15px;font-size:13.5px;color:var(--accent-dark);
+    display:flex;flex-wrap:wrap;gap:9px;align-items:flex-start;line-height:1.6;margin-top:10px;
+  }
+  .tricky-box > *{min-width:0}
+  .trait-pill{padding:7px 12px;border-radius:var(--radius-sm);border:1px solid var(--accent);background:var(--surface);color:var(--accent);font-size:12.5px;font-weight:700;cursor:pointer;transition:background .15s}
+  .trait-pill:hover{background:var(--accent-soft)}
+  .rel-noun{color:var(--accent);font-weight:700}
+  .rel-clause{background:var(--accent-soft);border-radius:4px;padding:1px 4px}
+  .rel-word{color:var(--warn);font-weight:800;margin-right:.35em}
+  .rel-hover{color:var(--accent);font-weight:700;cursor:pointer;border-bottom:1px dashed var(--accent)}
+  .rel-hover:hover{background:var(--accent-soft)}
+  .rel-sentence-display{cursor:pointer;transition:opacity .15s}
+  .rel-sentence-display:hover{opacity:.85}
+  .static-cell.is-clause-cell{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-dark);font-weight:600;flex:1}
+  .static-cell.is-context-cell{border-color:var(--border);background:var(--surface-alt);color:var(--text-tertiary);font-style:italic;font-weight:400;flex:0 0 auto;padding-left:14px;padding-right:14px}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="shared/supabase-config.js"></script>
+</head>
+<body class="theme-reported">
+
+<div class="course-attribution">English+ Grammar Course · by Kris Galezewski</div>
+<div class="shell">
+
+  <!-- ============ HEADER ============ -->
+  <header class="lesson-header">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div class="lesson-eyebrow">Lesson 19 of 22 · Relative Clauses</div>
+      <div style="display:flex;gap:8px">
+      <a id="all-lessons-link" href="index-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📚 All Lessons</a>
+      <a id="glossary-link" href="glossary-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📖 My Glossary</a>
+    </div>
+    </div>
+    <h1 class="lesson-title">Relative Clauses</h1>
+    <p class="lesson-sub">Defining vs. non-defining — where a single comma changes what a sentence actually means.</p>
+    <div class="pb-track" style="margin-top:16px"><div class="pb-fill" id="overall-progress" style="width:0%"></div></div>
+    <div id="sync-status" style="font-size:11.5px;color:var(--text-tertiary);margin-top:8px"></div>
+  </header>
+
+  <!-- ============ 1. WARM-UP ============ -->
+  <section class="section" id="sec-warmup">
+    <div class="section-label"><span class="num">1</span> Warm-up — essential or extra?</div>
+    <div class="card">
+      <p style="margin-bottom:14px;font-size:14.5px;color:var(--text-secondary)">
+        A relative clause adds information about a noun using a word like "who," "which," or "that." The
+        question that decides everything: is that information essential to identify what you're talking
+        about, or just an extra detail?
+      </p>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. A defining relative clause…</p>
+        <div id="warm-q1">
+          <button class="opt" data-value="right">gives essential information that identifies which person or thing</button>
+          <button class="opt" data-value="wrong">gives extra, non-essential information</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. Non-defining relative clauses…</p>
+        <div id="warm-q2">
+          <button class="opt" data-value="right">are always separated by commas, and can't use "that"</button>
+          <button class="opt" data-value="wrong">never use commas, and always use "that"</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. "My brother, who lives in London, called" means…</p>
+        <div id="warm-q3">
+          <button class="opt" data-value="right">I have one brother, and this extra fact describes him</button>
+          <button class="opt" data-value="wrong">I have several brothers, and this identifies which one called</button>
+        </div>
+      </div>
+      <div class="tip-box">💡 <span style="flex:1;min-width:0">The comma isn't decoration — it's the single biggest signal of which type you're reading, and it can genuinely change what a sentence means.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 2. DIAGNOSTIC PRE-TEST ============ -->
+  <section class="section" id="sec-diagnostic">
+    <div class="section-label"><span class="num">2</span> Quick check — before we explain anything</div>
+    <div class="card">
+      <p style="margin-bottom:16px;font-size:14.5px;color:var(--text-secondary)">Four quick questions. This isn't graded harshly — it just shows us where to focus.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. The woman ___ called earlier is my sister.</p>
+        <div id="diag-q1">
+          <button class="opt" data-value="right">who</button>
+          <button class="opt" data-value="wrong">whom</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. My car, ___ is ten years old, still runs well.</p>
+        <div id="diag-q2">
+          <button class="opt" data-value="right">which</button>
+          <button class="opt" data-value="wrong">that</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. "The book (that) I borrowed was excellent" — can "that" be dropped here?</p>
+        <div id="diag-q3">
+          <button class="opt" data-value="right">Yes, because "that" is the object of the clause</button>
+          <button class="opt" data-value="wrong">No, "that" can never be dropped</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">4. This is the house ___ I grew up.</p>
+        <div id="diag-q4">
+          <button class="opt" data-value="right">where</button>
+          <button class="opt" data-value="wrong">which</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. CONCEPT EXPLANATION ============ -->
+  <section class="section" id="sec-concept">
+    <div class="section-label"><span class="num">3</span> The concept</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px">What is a relative clause?</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">
+        A relative clause adds information about a noun mentioned in the sentence — a person, a place, a
+        thing, or an idea. It usually starts with a relative pronoun (<span class="rel-hover" data-rel="who">who</span>,
+        <span class="rel-hover" data-rel="which">which</span>, <span class="rel-hover" data-rel="that">that</span>,
+        <span class="rel-hover" data-rel="whose">whose</span>, <span class="rel-hover" data-rel="whom">whom</span>)
+        or a relative adverb (<span class="rel-hover" data-rel="where">where</span>,
+        <span class="rel-hover" data-rel="when">when</span>, <span class="rel-hover" data-rel="why">why</span>) —
+        hover over any of them for a sample sentence — and its job is to combine two related pieces of
+        information into one smoother sentence, instead of two short separate ones.
+      </p>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">
+        For example, instead of two separate sentences — "I have a neighbour. She lends me her tools." — a
+        relative clause combines them into one: "I have a neighbour who lends me her tools."
+      </p>
+      <p style="font-size:14.5px;line-height:1.7">
+        There are two very different types, and telling them apart matters for both meaning and
+        punctuation: <b>defining</b> relative clauses identify exactly who or what you mean, and
+        <b>non-defining</b> ones just add an extra, non-essential detail about someone or something already
+        clear. We'll look at each in turn.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px">Defining — no commas, essential information</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">
+        A defining relative clause gives essential information — it identifies exactly which person or
+        thing you mean, and without it, the sentence would be unclear. Defining clauses are never separated
+        by commas, and the noun they describe isn't always right at the start of the sentence — hover over
+        the examples below to see both the noun and the clause highlighted, wherever they fall.
+      </p>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:16px">
+        The relative pronoun can be the subject of its own clause ("the woman who called") or the object
+        ("the book that I read"). When it's the object, it can often be left out entirely: "the book (that)
+        I read was great." In everyday speech, "that" is very commonly used instead of "who" or "which" —
+        both are correct.
+      </p>
+      <div style="margin-bottom:6px">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);font-weight:650">View</span>
+      </div>
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+        <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+          <button class="pill on" id="mode-rel1-structure">Structure</button>
+          <button class="pill" id="mode-rel1-examples">Examples</button>
+          <button class="pill" id="mode-rel1-quiz">Quick check</button>
+        </div>
+        <span id="rel1-hint" style="display:none;font-size:12.5px;color:var(--text-tertiary)">— Click any pill for another example. Blue = the noun, tinted = the clause, "…" = the rest of the sentence — hover any pill to read it in full.</span>
+      </div>
+      <div id="rel1-widget-container" style="padding:18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border)">
+        <div id="rel1-display" style="font-size:15px;line-height:1.9"></div>
+      </div>
+      <div id="rel1-quiz-container" style="padding:12px 18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border);display:none"></div>
+      <p style="font-size:13px;line-height:1.7;color:var(--text-secondary);margin-top:16px">
+        💡 One thing worth watching for: when the relative pronoun is the subject of its clause, don't add
+        another pronoun for the same person inside the clause. "She's the woman who lent me her umbrella" is
+        correct — not "she's the woman who <i>she</i> lent me her umbrella," since "who" is already filling
+        that role.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px">Non-defining — commas, extra information</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">
+        A non-defining relative clause adds extra information — an interesting or useful detail, but not
+        essential to understanding who or what is meant. The sentence still makes complete sense without
+        it. Non-defining clauses are always set off with commas, and they never use "that" — only "who,"
+        "which," "whose," or "whom."
+      </p>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:16px">
+        Where exactly do the commas go? That depends on where the clause sits in the sentence:
+      </p>
+      <ul style="font-size:14.5px;line-height:1.8;margin:0 0 16px 20px;padding:0">
+        <li>If the clause comes in the <b>middle</b> of the sentence — splitting the main clause into two
+          parts — it needs <b>two commas</b>, one on each side, to clearly mark where it starts and stops.</li>
+        <li>If the clause comes at the <b>end</b> of the sentence, it only needs <b>one comma</b>, right
+          before it, since the sentence simply finishes there — there's nothing left to "close off."</li>
+      </ul>
+      <div style="margin-bottom:6px">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);font-weight:650">View</span>
+      </div>
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+        <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+          <button class="pill on" id="mode-rel2-structure">Structure</button>
+          <button class="pill" id="mode-rel2-examples">Examples</button>
+          <button class="pill" id="mode-rel2-quiz">Quick check</button>
+        </div>
+        <span id="rel2-hint" style="display:none;font-size:12.5px;color:var(--text-tertiary)">— Click any pill for another example, mixing one-comma and two-comma cases. Hover any pill to read the sentence in full.</span>
+      </div>
+      <div id="rel2-widget-container" style="padding:18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border);margin-bottom:16px">
+        <div id="rel2-display" style="font-size:15px;line-height:1.9"></div>
+      </div>
+      <div id="rel2-quiz-container" style="padding:12px 18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border);margin-bottom:16px;display:none"></div>
+
+      <div style="padding:16px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--surface);margin-bottom:16px">
+        <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:8px">One comma, or two?</h4>
+        <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:10px">Hover over either sentence to see exactly why the comma count differs.</p>
+        <div id="compare-comma-count" style="font-size:14.5px;line-height:1.8"></div>
+      </div>
+
+      <div style="padding:16px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--surface);margin-bottom:16px">
+        <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:8px">The relative pronouns</h4>
+        <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:10px">Hover over any pronoun for what it's used for and an example.</p>
+        <div id="pronoun-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px"></div>
+      </div>
+
+      <button class="pill" id="rules-toggle">📖 Show the full rules</button>
+      <div class="expand-content" id="rules-content">
+        <div style="margin-top:16px">
+          <div class="tricky-box">
+            <span>🎯</span>
+            <span style="flex:1;min-width:0">
+              <b>The tricky part:</b> in defining clauses, you can only drop the relative pronoun if it's the object of the clause, not the subject.<br><br>
+              ✅ "The book (that) I read was great" — "that" is the object ("I read the book"), so it's optional.<br>
+              ❌ "The book arrived yesterday was a gift" — wrong: "that" was the subject here ("that arrived"), and subjects can never be dropped.<br>
+              ✅ "The book that arrived yesterday was a gift" — the subject pronoun has to stay.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Compare: same words, different meaning</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">Hover over either sentence to see exactly what the comma changes.</p>
+      <div id="compare-comma-meaning" style="font-size:14.5px;line-height:1.8"></div>
+    </div>
+  </section>
+
+  <!-- ============ 4. READING ============ -->
+  <section class="section" id="sec-reading">
+    <div class="section-label"><span class="num">4</span> Reading — The Bystander Effect</div>
+    <div class="card">
+      <button class="pill" id="gram-toggle">🔍 Show grammar in this text</button>
+      <div class="passage" id="passage" style="margin-top:14px"></div>
+      <p style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">Tap a highlighted word for pronunciation, meaning and a fresh example. Once grammar highlighting is on, tap a highlighted sentence to see why that form was used.</p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:12px">Did you follow it? Quick comprehension check</h3>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. What did later historical research find about the original Kitty Genovese story?</p>
+        <div id="comp-q1">
+          <button class="opt" data-value="right">It had exaggerated the number of witnesses and what they actually saw.</button>
+          <button class="opt" data-value="wrong">It had significantly understated how many witnesses there were.</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. According to Darley and Latané's research, when are people more likely to help in an emergency?</p>
+        <div id="comp-q2">
+          <button class="opt" data-value="right">When they're alone, rather than in a group.</button>
+          <button class="opt" data-value="wrong">When there are many other witnesses present.</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. What does more recent research suggest about the bystander effect?</p>
+        <div id="comp-q3">
+          <button class="opt" data-value="right">It's real but modest, and people intervene more often than the original story suggested.</button>
+          <button class="opt" data-value="wrong">It has since been completely disproven by every later study.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. VOCAB REVIEW ============ -->
+  <section class="section" id="sec-vocab">
+    <div class="section-label"><span class="num">5</span> Vocabulary check</div>
+    <div class="card">
+      <p style="font-size:14.5px;margin-bottom:16px">All nine words from the text — mixed formats.</p>
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px">Match the meaning</h4>
+
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. "Witness" means…</p>
+        <div id="vocab-q1">
+          <button class="opt" data-value="right">a person who sees an event happen</button>
+          <button class="opt" data-value="wrong">a person who reports a crime to police</button>
+          <button class="opt" data-value="wrong2">a person who is accused of a crime</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. "Intervene" means…</p>
+        <div id="vocab-q2">
+          <button class="opt" data-value="right">to become involved in a situation to change what happens</button>
+          <button class="opt" data-value="wrong">to avoid getting involved in a situation</button>
+          <button class="opt" data-value="wrong2">to describe an event in great detail</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. "Ambiguous" means…</p>
+        <div id="vocab-q3">
+          <button class="opt" data-value="right">having more than one possible meaning or interpretation</button>
+          <button class="opt" data-value="wrong">completely clear and obvious</button>
+          <button class="opt" data-value="wrong2">extremely rare or unusual</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. "Empirical" means…</p>
+        <div id="vocab-q4">
+          <button class="opt" data-value="right">based on observation or experiment rather than theory</button>
+          <button class="opt" data-value="wrong">based purely on theory, without testing</button>
+          <button class="opt" data-value="wrong2">based on a single person's opinion</button>
+        </div>
+      </div>
+      <div style="margin-bottom:22px">
+        <p style="margin-bottom:8px;font-weight:550">5. "Exaggerate" means…</p>
+        <div id="vocab-q5">
+          <button class="opt" data-value="right">to describe something as bigger, better, or worse than it really is</button>
+          <button class="opt" data-value="wrong">to describe something with complete accuracy</button>
+          <button class="opt" data-value="wrong2">to intentionally hide information</button>
+        </div>
+      </div>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px;padding-top:6px;border-top:1px solid var(--border)">Complete the sentence — vocabulary focus</h4>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">6. The <input type="text" id="vgap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> of responsibility means each bystander feels less personally responsible.</p>
+        <button class="btn btn-sm" id="vgap1-check">Check</button>
+        <div id="vgap1-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">7. A lone bystander feels fully <input type="text" id="vgap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> for helping.</p>
+        <button class="btn btn-sm" id="vgap2-check">Check</button>
+        <div id="vgap2-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">8. The fear of embarrassment can <input type="text" id="vgap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> people from acting.</p>
+        <button class="btn btn-sm" id="vgap3-check">Check</button>
+        <div id="vgap3-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">9. What looked like widespread <input type="text" id="vgap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> may really just be diffused responsibility.</p>
+        <button class="btn btn-sm" id="vgap4-check">Check</button>
+        <div id="vgap4-fb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. GRAMMAR PRACTICE ============ -->
+  <section class="section" id="sec-practice">
+    <div class="section-label"><span class="num">6</span> Practice</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:2px">Gap-fill</h3>
+      <p style="font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:16px">Grammar focus — defining and non-defining, mixed.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">1. The man <input type="text" id="gap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> answered the phone was very helpful.</p>
+        <button class="btn btn-sm" id="gap1-check">Check</button>
+        <div id="gap1-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">2. My grandmother, <input type="text" id="gap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> is 90 years old, still lives alone.</p>
+        <button class="btn btn-sm" id="gap2-check">Check</button>
+        <div id="gap2-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">3. The restaurant <input type="text" id="gap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> we had dinner has closed down.</p>
+        <button class="btn btn-sm" id="gap3-check">Check</button>
+        <div id="gap3-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">4. This is the reason <input type="text" id="gap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> I called you.</p>
+        <button class="btn btn-sm" id="gap4-check">Check</button>
+        <div id="gap4-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">5. The car, <input type="text" id="gap5-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> I bought last year, has already broken down.</p>
+        <button class="btn btn-sm" id="gap5-check">Check</button>
+        <div id="gap5-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">6. The woman <input type="text" id="gap6-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> bag was stolen reported it immediately.</p>
+        <button class="btn btn-sm" id="gap6-check">Check</button>
+        <div id="gap6-fb"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Categorise the sentence</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Each sentence is missing one word — read what's left, then tap which type it belongs to.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. "The man ___ called earlier is my brother."</p>
+        <div id="cat-q1">
+          <button class="opt" data-value="right">Defining</button><button class="opt" data-value="wrong">Non-defining</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. "My brother, ___ lives in London, called earlier."</p>
+        <div id="cat-q2">
+          <button class="opt" data-value="wrong">Defining</button><button class="opt" data-value="right">Non-defining</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. "The book ___ I borrowed was excellent."</p>
+        <div id="cat-q3">
+          <button class="opt" data-value="right">Defining</button><button class="opt" data-value="wrong">Non-defining</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">4. "The Eiffel Tower, ___ was built in 1889, is in Paris."</p>
+        <div id="cat-q4">
+          <button class="opt" data-value="wrong">Defining</button><button class="opt" data-value="right">Non-defining</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">5. "People ___ exercise regularly sleep better."</p>
+        <div id="cat-q5">
+          <button class="opt" data-value="right">Defining</button><button class="opt" data-value="wrong">Non-defining</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">6. "Paris, ___ I visited last year, is beautiful."</p>
+        <div id="cat-q6">
+          <button class="opt" data-value="wrong">Defining</button><button class="opt" data-value="right">Non-defining</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">7. "The company ___ logo is a red apple is famous."</p>
+        <div id="cat-q7">
+          <button class="opt" data-value="right">Defining</button><button class="opt" data-value="wrong">Non-defining</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">8. "My colleague, ___ office is next to mine, is away."</p>
+        <div id="cat-q8">
+          <button class="opt" data-value="wrong">Defining</button><button class="opt" data-value="right">Non-defining</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Fix the sentence</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Each sentence has one mistake. Tap the word (or words) that are wrong.</p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary)">Sentence 1</div>
+      <p id="fix1" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 2</div>
+      <p id="fix2" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 3</div>
+      <p id="fix3" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 4</div>
+      <p id="fix4" style="font-size:15px;line-height:1.9"></p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Sentence builder</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">Tap the chips in the right order — commas are included as their own chips where needed, so place them carefully. Three rounds.</p>
+      <div id="builders"></div>
+    </div>
+  </section>
+
+  <!-- ============ 7. SPEAKING ============ -->
+  <section class="section" id="sec-speaking">
+    <div class="section-label"><span class="num">7</span> Speaking task</div>
+    <div class="mode-toggle">
+      <button class="pill on" id="mode-solo">👤 Solo</button>
+      <button class="pill" id="mode-group">👥 Group (2–4)</button>
+    </div>
+    <div class="task-card" id="speak-solo">
+      <div class="kicker">60-second descriptions</div>
+      <p style="font-size:14.5px;line-height:1.7">
+        Describe two people you know using relative clauses — one defining ("the friend who..."), one
+        non-defining ("my sister, who...").
+      </p>
+      <button class="btn btn-sm" id="solo-done-btn" style="margin-top:14px">✓ I've done this</button>
+    </div>
+    <div class="task-card" id="speak-group" style="display:none">
+      <div class="kicker">Discussion — pick 1–2 questions to answer out loud</div>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:12px">Tap the question(s) you'll answer. Your teacher will see your pick and mark it after you speak.</p>
+      <div id="discuss-questions" style="display:flex;flex-direction:column;gap:8px"></div>
+      <p id="discuss-limit-msg" style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">You can select up to 2 questions.</p>
+    </div>
+  </section>
+
+  <!-- ============ 8. LISTENING ============ -->
+  <section class="section" id="sec-listening">
+    <div class="section-label"><span class="num">8</span> Listening</div>
+    <div class="card">
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:12px">Anna and Tomasz are discussing something they witnessed — right after reading about the bystander effect.</p>
+      <audio id="dialogue-audio" preload="none" style="display:none"></audio>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary" id="play-dialogue">▶ Play dialogue</button>
+        <button class="btn btn-ghost btn-sm" id="stop-dialogue">⏹ Stop</button>
+        <button class="btn btn-ghost btn-sm" id="show-transcript">Show full transcript</button>
+      </div>
+      <div id="transcript" style="margin-top:14px"></div>
+
+      <div style="margin-top:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. What happened on the street, according to Tomasz?</p>
+        <div id="listen-q1">
+          <button class="opt" data-value="right">Someone dropped their bags and nobody helped for a while.</button>
+          <button class="opt" data-value="wrong">Someone was involved in a minor traffic accident.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. How does Anna describe the woman who eventually helped?</p>
+        <div id="listen-q2">
+          <button class="opt" data-value="right">As the woman who was walking a dog.</button>
+          <button class="opt" data-value="wrong">As the woman whose phone had just rung.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. What does Tomasz connect the situation to?</p>
+        <div id="listen-q3">
+          <button class="opt" data-value="right">Diffusion of responsibility, which they'd just read about.</button>
+          <button class="opt" data-value="wrong">A completely unrelated childhood memory.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. WRAP-UP / EXIT TEST ============ -->
+  <section class="section" id="sec-wrapup">
+    <div class="section-label"><span class="num">9</span> Wrap-up — exit check</div>
+    <div class="card">
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. The man ___ called earlier is my brother.</p>
+        <div id="exit-q1">
+          <button class="opt" data-value="right">who</button>
+          <button class="opt" data-value="wrong">whom</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. My car, ___ is new, broke down yesterday.</p>
+        <div id="exit-q2">
+          <button class="opt" data-value="right">which</button>
+          <button class="opt" data-value="wrong">that</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. This is the house ___ I grew up.</p>
+        <div id="exit-q3">
+          <button class="opt" data-value="right">where</button>
+          <button class="opt" data-value="wrong">which</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. The woman ___ bag was stolen called the police.</p>
+        <div id="exit-q4">
+          <button class="opt" data-value="right">whose</button>
+          <button class="opt" data-value="wrong">who</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">5. My sister, ___ lives in Paris, is visiting next week.</p>
+        <div id="exit-q5">
+          <button class="opt" data-value="right">who</button>
+          <button class="opt" data-value="wrong">that</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="summary-card">
+      <h3 style="margin-bottom:14px">Your lesson summary</h3>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px" id="summary-ring-row">
+        <div id="score-ring-holder"></div>
+        <div>
+          <div style="font-weight:600" id="summary-name">—</div>
+          <div style="font-size:13px;margin-top:4px" id="summary-completion"></div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-top:4px" id="summary-weak">Finish the lesson to see your results.</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="finish-btn">Finish lesson &amp; see results</button>
+      <button class="btn" id="export-btn" style="margin-left:8px;display:none">⬇ Export PDF report</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="shared/course-engine.js"></script>
+<script>
+const LESSON_ID = 'lesson-19-relative-clauses';
+
+{
+  const glossaryLink = document.getElementById('glossary-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  const currentFile = window.location.pathname.split('/').pop();
+  let glossaryHref = `glossary-standalone.html?from=${encodeURIComponent(currentFile)}`;
+  if (groupParam) glossaryHref += `&group=${encodeURIComponent(groupParam)}`;
+  glossaryLink.href = glossaryHref;
+}
+
+{
+  const resetBtn = document.createElement('button');
+  resetBtn.className = 'btn btn-sm btn-ghost';
+  resetBtn.textContent = '↺ Reset my progress for this lesson';
+  resetBtn.style.cssText = 'margin-top:8px;font-size:12px;padding:5px 12px';
+  resetBtn.addEventListener('click', () => {
+    if (confirm('Clear all saved answers for this lesson on this device? (Does not affect Supabase.)')){
+      Course.resetLocalProgress(LESSON_ID);
+      location.reload();
+    }
+  });
+  document.getElementById('sync-status').insertAdjacentElement('afterend', resetBtn);
+}
+
+(async function initLesson(){
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Syncing your progress…`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  await Course.syncFromSupabase(LESSON_ID);
+  const sectionMap = Course.getSectionMap(LESSON_ID);
+
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Synced · Group: ${Course.getGroupId()}`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  /* ---------------- VOCAB DATA ---------------- */
+  const vocabData = {
+    witness: { word:'witness', ipa:'/ˈwɪt.nəs/', meaning:'a person who sees an event happen', example:'Several witnesses reported hearing her cries for help.' },
+    intervene: { word:'intervene', ipa:'/ˌɪn.təˈviːn/', meaning:'to become involved in a situation to change what happens', example:'Only one neighbour intervened to try to help her.' },
+    diffusion: { word:'diffusion', ipa:'/dɪˈfjuː.ʒən/', meaning:'the spreading of something more thinly across a group', example:'The diffusion of responsibility means each bystander feels less personally accountable.' },
+    accountable: { word:'accountable', ipa:'/əˈkaʊn.tə.bl/', meaning:'responsible and required to explain your actions', example:'A lone bystander feels fully accountable for helping.' },
+    ambiguous: { word:'ambiguous', ipa:'/æmˈbɪg.ju.əs/', meaning:'having more than one possible meaning or interpretation', example:'In an ambiguous situation, people often look to others for cues.' },
+    inhibit: { word:'inhibit', ipa:'/ɪnˈhɪb.ɪt/', meaning:'to prevent or slow down a behaviour or process', example:'The fear of embarrassment can inhibit people from acting.' },
+    empirical: { word:'empirical', ipa:'/ɪmˈpɪr.ɪ.kəl/', meaning:'based on observation or experiment rather than theory', example:'Empirical studies later tested whether the effect was real.' },
+    exaggerate: { word:'exaggerate', ipa:'/ɪgˈzædʒ.ə.reɪt/', meaning:'to describe something as bigger, better, or worse than it really is', example:'The original account exaggerated the number of witnesses who did nothing.' },
+    apathy: { word:'apathy', ipa:'/ˈæp.ə.θi/', meaning:'a lack of interest, enthusiasm, or concern', example:'Bystander apathy is not really about not caring, but about diffused responsibility.' }
+  };
+
+  function vocabSpan(key, text){
+    return `<span class="vocab" data-word="${key}">${text}</span>`;
+  }
+  function gramSpan(key, text){
+    return `<span class="gram" data-gram="${key}">${text}</span>`;
+  }
+  const gramExplanations = {
+    g1: 'Defining relative clause — "who saw or heard the attack" identifies WHICH witnesses, as opposed to any other kind, so no commas.',
+    g2: 'Non-defining relative clause — Kitty Genovese is already identified by name, so this just adds extra information, set off by commas.',
+    g3: 'Non-defining relative clause — Darley and Latané are already named, so "who wanted to understand..." is extra background, not identifying information.',
+    g4: 'Defining relative clause — "that first-aid courses now teach" identifies WHICH technique, so no commas, and "that" works fine here since it\'s defining.'
+  };
+
+  /* ---------------- READING PASSAGE ---------------- */
+  document.getElementById('passage').innerHTML = `
+  <p>In March 1964, a young woman named Kitty Genovese${gramSpan('g2', ', who worked as a bar manager in Queens, New York,')} was attacked and murdered outside her apartment building. Newspaper reports at the time claimed that ${vocabSpan('witness','witnesses')} ${gramSpan('g1','who saw or heard the attack')} did nothing to help — a detail that shocked the country and became the story everyone remembered. Later historical research found that the original account had ${vocabSpan('exaggerate','exaggerated')} both the number of witnesses and how much they actually saw.</p>
+
+  <p>The case still mattered enormously, because it pushed two psychologists${gramSpan('g3', ', John Darley and Bibb Latané, who wanted to understand why people fail to help in emergencies,')} to design a series of experiments. What they found is now called the bystander effect: people are less likely to ${vocabSpan('intervene','intervene')} in an emergency when other people are present, and more likely to help when they're alone.</p>
+
+  <p>The main explanation is something psychologists call ${vocabSpan('diffusion','diffusion')} of responsibility: in a group, each person feels less personally ${vocabSpan('accountable','accountable')} for stepping in, since surely someone else will. A second factor is pluralistic ignorance: in a genuinely ${vocabSpan('ambiguous','ambiguous')} situation, people look to others for cues, and if no one else looks alarmed, each person assumes the situation is less serious than it feels. Both effects can seriously ${vocabSpan('inhibit','inhibit')} the instinct to help, even in people who would otherwise act immediately.</p>
+
+  <p>One practical fix has come out of this research: ${gramSpan('g4','the technique that first-aid courses now teach')} — naming a specific bystander directly, rather than shouting for help in general, and giving them a clear, individual task. Meanwhile, more recent ${vocabSpan('empirical','empirical')} work — including a 2011 review of thousands of participants — suggests the bystander effect is real but modest, and CCTV footage of genuine public emergencies shows people intervening far more often than the original story suggested. What looked like widespread ${vocabSpan('apathy','apathy')} may really just be responsibility, spread thin enough to slow everyone down.</p>
+  `;
+  document.getElementById('passage').classList.add('passage');
+
+  document.getElementById('gram-toggle').addEventListener('click', function(){
+    const passage = document.getElementById('passage');
+    const on = passage.classList.toggle('show-grammar');
+    this.classList.toggle('on', on);
+    this.textContent = on ? '🔍 Hide grammar in this text' : '🔍 Show grammar in this text';
+  });
+  document.querySelectorAll('.gram').forEach(el => {
+    el.addEventListener('click', () => {
+      Course.showPopup(`<div style="font-size:14.5px;line-height:1.6">${gramExplanations[el.dataset.gram]}</div>`, el);
+    });
+  });
+
+  Course.initVocab(vocabData, LESSON_ID);
+
+  /* ---------------- HOVER TOOLTIP (shared across this concept section) ----------------
+     Deliberately not using Course.showPopup for hover: that system uses a
+     full-screen backdrop, and on mouseenter the backdrop immediately covers
+     the trigger, firing mouseleave, which hides the popup, uncovering the
+     trigger, which re-fires mouseenter — an infinite show/hide loop. A tiny
+     pointer-events:none tooltip avoids this entirely. */
+  function ensureCompareTooltip(){
+    let el = document.getElementById('compare-tooltip');
+    if (!el){
+      el = document.createElement('div');
+      el.id = 'compare-tooltip';
+      document.body.appendChild(el);
+    }
+    return el;
+  }
+  const compareTooltipEl = ensureCompareTooltip();
+  function showCompareTooltip(html, anchorEl){
+    compareTooltipEl.innerHTML = html;
+    const rect = anchorEl.getBoundingClientRect();
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    const scrollX = window.scrollX || document.documentElement.scrollLeft;
+    compareTooltipEl.style.top = `${rect.bottom + scrollY + 8}px`;
+    compareTooltipEl.style.left = `${rect.left + scrollX}px`;
+    compareTooltipEl.classList.add('visible');
+  }
+  function hideCompareTooltip(){
+    compareTooltipEl.classList.remove('visible');
+  }
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.compare-box') && !e.target.closest('.trait-pill')) hideCompareTooltip();
+  });
+
+  function renderCompareCard(containerId, items, explanations){
+    const el = document.getElementById(containerId);
+    el.innerHTML = items.map(it => `
+      <div style="display:flex;gap:10px;align-items:baseline;margin-bottom:8px">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);flex-shrink:0;width:190px">${it.label}</span>
+        <span class="compare-box" data-key="${it.key}">"${it.text}"</span>
+      </div>
+    `).join('');
+    el.querySelectorAll('.compare-box').forEach(node => {
+      const html = `<div>${explanations[node.dataset.key]}</div>`;
+      node.addEventListener('mouseenter', () => showCompareTooltip(html, node));
+      node.addEventListener('mouseleave', hideCompareTooltip);
+      node.addEventListener('click', () => showCompareTooltip(html, node));
+    });
+  }
+
+  /* ---------------- RELATIVE-CLAUSE WIDGET (Structure/Examples toggle,
+     click-to-advance) ---------------- Same simpler pattern as Lesson 18's
+     report widget: no clause to reorder, just two cells that cycle together
+     through examples. */
+  const sharedQuizModeTracker = {};
+  function buildRelWidget({ prefix, structureLeft, structureRight, examples, rulesToggleId = null }){
+    let mode = 'structure';
+    let idx = 0;
+    const displayEl = document.getElementById(`${prefix}-display`);
+    const hintEl = document.getElementById(`${prefix}-hint`);
+    const structureBtn = document.getElementById(`mode-${prefix}-structure`);
+    const examplesBtn = document.getElementById(`mode-${prefix}-examples`);
+    const quizBtn = document.getElementById(`mode-${prefix}-quiz`);
+    const widgetContainer = document.getElementById(`${prefix}-widget-container`);
+    const quizContainer = document.getElementById(`${prefix}-quiz-container`);
+
+    function advance(){ idx = (idx + 1) % examples.length; render(); }
+
+    function render(){
+      if (mode === 'structure'){
+        hintEl.style.display = 'none';
+        displayEl.innerHTML = `
+          <div style="overflow-x:auto;padding-bottom:2px">
+            <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:10px;align-items:center;min-width:420px">
+              <div class="static-cell is-primary-cell">${structureLeft}</div>
+              <div class="static-cell is-primary-cell">${structureRight}</div>
+            </div>
+          </div>`;
+      } else {
+        hintEl.style.display = 'block';
+        const ex = examples[idx];
+        const parts = [];
+        if (ex.before) parts.push({ cls: 'is-context-cell', text: '…' });
+        parts.push({ cls: 'is-primary-cell', text: ex.noun });
+        parts.push({ cls: 'is-clause-cell', text: ex.clause });
+        if (ex.after) parts.push({ cls: 'is-context-cell', text: '…' });
+        displayEl.innerHTML = `<div style="overflow-x:auto;padding-bottom:2px"><div style="display:flex;gap:8px;min-width:420px">
+          ${parts.map(p => `<div class="static-cell ${p.cls} clickable-cell">${p.text}</div>`).join('')}
+        </div></div>`;
+        const fullHtml = `<div>"${ex.full}"</div>`;
+        displayEl.querySelectorAll('.clickable-cell').forEach(cell => {
+          cell.addEventListener('click', advance);
+          cell.addEventListener('mouseenter', () => showCompareTooltip(fullHtml, cell));
+          cell.addEventListener('mouseleave', hideCompareTooltip);
+        });
+      }
+    }
+
+    function renderQuiz(){
+      quizContainer.innerHTML = `
+        <p style="font-size:12px;color:var(--text-tertiary);text-align:center;margin-bottom:6px">Which clause correctly completes this noun?</p>
+        <p id="${prefix}-quiz-prompt" style="font-size:15.5px;font-weight:600;text-align:center;color:var(--accent);margin-bottom:10px;line-height:1.5"></p>
+        <div style="display:flex;flex-direction:column;gap:8px;align-items:stretch;max-width:500px;margin:0 auto" id="${prefix}-quiz-options"></div>
+        <div id="${prefix}-quiz-feedback" style="text-align:center;min-height:16px;margin-top:10px;font-size:13.5px"></div>
+        <div style="text-align:center;margin-top:10px">
+          <button class="btn btn-primary" id="${prefix}-quiz-next" style="display:none">Next →</button>
+        </div>`;
+
+      const quizPool = examples.map((ex, i) => ({ prompt: ex.noun, answer: ex.clause, i }));
+      let order = Course.shuffleArray(quizPool.map((_, i) => i));
+      let pos = 0;
+      let answered = false;
+      const promptEl = document.getElementById(`${prefix}-quiz-prompt`);
+      const optionsEl = document.getElementById(`${prefix}-quiz-options`);
+      const feedbackEl = document.getElementById(`${prefix}-quiz-feedback`);
+      const nextBtn = document.getElementById(`${prefix}-quiz-next`);
+
+      function renderQ(){
+        answered = false;
+        feedbackEl.textContent = '';
+        nextBtn.style.display = 'none';
+        const correct = quizPool[order[pos]];
+        promptEl.textContent = correct.prompt;
+        const distractorPool = quizPool.filter(q => q.i !== correct.i);
+        const distractors = Course.shuffleArray(distractorPool).slice(0, 2).map(q => q.answer);
+        const options = Course.shuffleArray([correct.answer, ...distractors]);
+        optionsEl.innerHTML = options.map(o => `<button class="opt" data-answer="${o.replace(/"/g, '&quot;')}" style="text-align:left">${o}</button>`).join('');
+        optionsEl.querySelectorAll('button').forEach(btn => {
+          btn.addEventListener('click', () => {
+            if (answered) return;
+            answered = true;
+            const isCorrect = btn.dataset.answer === correct.answer;
+            [...optionsEl.children].forEach(b => {
+              if (b === btn) b.classList.add(isCorrect ? 'ok' : 'bad');
+              else if (b.dataset.answer === correct.answer) b.classList.add('ok');
+              else b.classList.add('dim');
+            });
+            feedbackEl.innerHTML = isCorrect
+              ? `<span style="color:var(--ok)">✓ Correct!</span>`
+              : `<span style="color:var(--bad)">Not quite — that was the match for "${correct.prompt}."</span>`;
+            nextBtn.style.display = 'inline-block';
+          });
+        });
+      }
+      nextBtn.addEventListener('click', () => {
+        pos += 1;
+        if (pos >= order.length){ order = Course.shuffleArray(quizPool.map((_, i) => i)); pos = 0; }
+        renderQ();
+      });
+      renderQ();
+    }
+
+    function updateRulesToggleState(){
+      if (!rulesToggleId) return;
+      sharedQuizModeTracker[prefix] = mode === 'quiz';
+      const anyQuizActive = Object.values(sharedQuizModeTracker).some(Boolean);
+      const btn = document.getElementById(rulesToggleId);
+      const content = document.getElementById('rules-content');
+      if (anyQuizActive){
+        btn.disabled = true;
+        btn.textContent = '📖 Disabled during Quick check';
+        content.classList.remove('open');
+      } else {
+        btn.disabled = false;
+        const isOpen = content.classList.contains('open');
+        btn.textContent = isOpen ? '📖 Hide the full rules' : '📖 Show the full rules';
+      }
+    }
+    function switchMode(newMode){
+      mode = newMode;
+      structureBtn.classList.toggle('on', newMode === 'structure');
+      examplesBtn.classList.toggle('on', newMode === 'examples');
+      quizBtn.classList.toggle('on', newMode === 'quiz');
+      widgetContainer.style.display = newMode === 'quiz' ? 'none' : 'block';
+      quizContainer.style.display = newMode === 'quiz' ? 'block' : 'none';
+      if (newMode === 'quiz') renderQuiz();
+      else render();
+      updateRulesToggleState();
+    }
+    structureBtn.addEventListener('click', () => switchMode('structure'));
+    examplesBtn.addEventListener('click', () => switchMode('examples'));
+    quizBtn.addEventListener('click', () => switchMode('quiz'));
+    render();
+  }
+
+  buildRelWidget({
+    prefix: 'rel1',
+    structureLeft: '[Noun]',
+    structureRight: '<span class="rel-word">who/which/that</span> + essential info (no commas)',
+    rulesToggleId: 'rules-toggle',
+    examples: [
+      { before: '', noun: 'The woman', clause: '<span class="rel-word">who</span> called earlier', after: 'is my colleague.', full: 'The woman who called earlier is my colleague.' },
+      { before: "I'm looking for", noun: 'a restaurant', clause: '<span class="rel-word">that</span> serves vegan food', after: '', full: "I'm looking for a restaurant that serves vegan food." },
+      { before: 'She finally found', noun: 'the keys', clause: "<span class=\"rel-word\">that</span> she'd been looking for all morning", after: '', full: "She finally found the keys that she'd been looking for all morning." },
+      { before: '', noun: 'People', clause: '<span class="rel-word">who</span> exercise regularly', after: 'tend to sleep better.', full: 'People who exercise regularly tend to sleep better.' },
+      { before: '', noun: 'The company', clause: '<span class="rel-word">whose</span> logo you see everywhere', after: 'started in a garage.', full: 'The company whose logo you see everywhere started in a garage.' }
+    ]
+  });
+
+  buildRelWidget({
+    prefix: 'rel2',
+    structureLeft: '[Noun],',
+    structureRight: '<span class="rel-word">who/which</span> + extra info, rest of sentence.',
+    rulesToggleId: 'rules-toggle',
+    examples: [
+      { before: "I'm going home to see", noun: 'my brother', clause: '<span class="rel-word">who</span> is 15 years old', after: 'and spend some quality time with him.', full: "I'm going home to see my brother, who is 15 years old, and spend some quality time with him." },
+      { before: 'This is', noun: 'my house', clause: '<span class="rel-word">which</span> I bought last year', after: '', full: 'This is my house, which I bought last year.' },
+      { before: '', noun: 'My colleague', clause: '<span class="rel-word">whose</span> office is next to mine', after: 'is on holiday.', full: 'My colleague, whose office is next to mine, is on holiday.' },
+      { before: 'We finally visited', noun: 'the museum', clause: '<span class="rel-word">which</span> had just reopened after renovation', after: '', full: 'We finally visited the museum, which had just reopened after renovation.' },
+      { before: '', noun: 'The Eiffel Tower', clause: '<span class="rel-word">which</span> was built in 1889', after: 'attracts millions of visitors every year.', full: 'The Eiffel Tower, which was built in 1889, attracts millions of visitors every year.' }
+    ]
+  });
+
+  /* ---------------- COMPARE: ONE COMMA, OR TWO? ---------------- */
+  renderCompareCard('compare-comma-count', [
+    { key:'p1', label:'Two commas', text: 'My brother, who is fifteen, lives with our parents.' },
+    { key:'p2', label:'One comma', text: 'I bought this jacket, which was actually on sale.' }
+  ], {
+    p1: 'The clause sits in the middle — "My brother lives with our parents" is one continuous main clause, split by the extra detail, so it needs a comma on each side to mark where it starts and stops.',
+    p2: 'The clause sits at the very end — the sentence simply finishes there, so there\'s nothing left to "close off" after it, and only one comma (before the clause) is needed.'
+  });
+
+  /* ---------------- SHARED RELATIVE-WORD EXAMPLES (used by both the intro
+     card's hoverable spans and the pronoun pills below, so the two stay
+     consistent) ---------------- */
+  const relWordExamples = {
+    who: 'The man who called is my brother. (people, subject)',
+    whom: 'The man whom I met is my brother. (people, object, formal)',
+    which: 'The car which I bought is red. (things)',
+    that: 'The book that I read was great. (people/things, defining only)',
+    whose: "The woman whose car was stolen called the police. (possession)",
+    where: 'The café where we met has closed. (places)',
+    when: 'The year when I graduated was 2015. (times)',
+    why: "That's the reason why I called you. (reasons)"
+  };
+  document.querySelectorAll('.rel-hover').forEach(el => {
+    const html = `<div>${relWordExamples[el.dataset.rel]}</div>`;
+    el.addEventListener('mouseenter', () => showCompareTooltip(html, el));
+    el.addEventListener('mouseleave', hideCompareTooltip);
+    el.addEventListener('click', (e) => { e.stopPropagation(); showCompareTooltip(html, el); });
+  });
+
+  /* ---------------- RELATIVE PRONOUN PILLS ---------------- */
+  const pronounPairs = Object.keys(relWordExamples)
+    .filter(w => w !== 'why')
+    .map(w => ({ word: w, example: relWordExamples[w] }));
+  const pronounEl = document.getElementById('pronoun-pills');
+  pronounPairs.forEach(p => {
+    const pill = document.createElement('button');
+    pill.type = 'button';
+    pill.className = 'trait-pill';
+    pill.textContent = p.word;
+    const html = `<div>${p.example}</div>`;
+    pill.addEventListener('mouseenter', () => showCompareTooltip(html, pill));
+    pill.addEventListener('mouseleave', hideCompareTooltip);
+    pill.addEventListener('click', (e) => { e.stopPropagation(); showCompareTooltip(html, pill); });
+    pronounEl.appendChild(pill);
+  });
+
+  /* ---------------- COMPARE: SAME WORDS, DIFFERENT MEANING ---------------- */
+  renderCompareCard('compare-comma-meaning', [
+    { key:'m1', label:'Defining', text: 'The students who studied hard passed the exam.' },
+    { key:'m2', label:'Non-defining', text: 'The students, who studied hard, passed the exam.' }
+  ], {
+    m1: 'No commas — this identifies a specific group: only the students who studied hard passed (implying others may not have).',
+    m2: 'Commas — "the students" is already a known, complete group; this just adds that all of them studied hard and (incidentally) passed.'
+  });
+
+  /* ---------------- EXPANDABLE RULES ---------------- */
+  document.getElementById('rules-toggle').addEventListener('click', function(){
+    const content = document.getElementById('rules-content');
+    const open = content.classList.toggle('open');
+    this.textContent = open ? '📖 Hide the full rules' : '📖 Show the full rules';
+  });
+
+  /* ---------------- MCQ SECTIONS (via shared engine) ---------------- */
+  const mcqSections = [
+    ['warm-q1','warmup-1','right'], ['warm-q2','warmup-2','right'], ['warm-q3','warmup-3','right'],
+    ['diag-q1','diagnostic-1','right'], ['diag-q2','diagnostic-2','right'], ['diag-q3','diagnostic-3','right'], ['diag-q4','diagnostic-4','right'],
+    ['comp-q1','reading-comprehension-1','right'], ['comp-q2','reading-comprehension-2','right'], ['comp-q3','reading-comprehension-3','right'],
+    ['vocab-q1','vocab-1','right'], ['vocab-q2','vocab-2','right'], ['vocab-q3','vocab-3','right'], ['vocab-q4','vocab-4','right'], ['vocab-q5','vocab-5','right'],
+    ['cat-q1','practice-categorise-1','right'], ['cat-q2','practice-categorise-2','right'], ['cat-q3','practice-categorise-3','right'], ['cat-q4','practice-categorise-4','right'],
+    ['cat-q5','practice-categorise-5','right'], ['cat-q6','practice-categorise-6','right'], ['cat-q7','practice-categorise-7','right'], ['cat-q8','practice-categorise-8','right'],
+    ['listen-q1','listening-1','right'], ['listen-q2','listening-2','right'], ['listen-q3','listening-3','right'],
+    ['exit-q1','exit-1','right'], ['exit-q2','exit-2','right'], ['exit-q3','exit-3','right'], ['exit-q4','exit-4','right'], ['exit-q5','exit-5','right']
+  ];
+  mcqSections.forEach(([id, section, correctVal]) => {
+    Course.shuffleOptions(id);
+    Course.initMCQ(id, {
+      lessonId: LESSON_ID, sectionId: section, correctValue: correctVal, onAnswered: updateOverallProgress,
+      restoreAnswer: sectionMap[section] ? sectionMap[section].answer_given : undefined
+    });
+  });
+  if (!sectionMap['listening-1']) Course.ensureGroupVariety(['listen-q1','listen-q2','listen-q3']);
+  if (!sectionMap['reading-comprehension-1']) Course.ensureGroupVariety(['comp-q1','comp-q2','comp-q3']);
+  if (!sectionMap['practice-categorise-1']) Course.ensureGroupVariety(['cat-q1','cat-q2','cat-q3','cat-q4','cat-q5','cat-q6','cat-q7','cat-q8']);
+
+  /* ---------------- GAP FILL (restorable) ---------------- */
+  const gapFills = [
+    ['gap1-input','gap1-check','gap1-fb','practice-gapfill-1', ['who', 'that'], true],
+    ['gap2-input','gap2-check','gap2-fb','practice-gapfill-2', ['who'], false],
+    ['gap3-input','gap3-check','gap3-fb','practice-gapfill-3', ['where'], false],
+    ['gap4-input','gap4-check','gap4-fb','practice-gapfill-4', ['why'], false],
+    ['gap5-input','gap5-check','gap5-fb','practice-gapfill-5', ['which'], false],
+    ['gap6-input','gap6-check','gap6-fb','practice-gapfill-6', ['whose'], false],
+    ['vgap1-input','vgap1-check','vgap1-fb','vocab-gapfill-1', ['diffusion'], true],
+    ['vgap2-input','vgap2-check','vgap2-fb','vocab-gapfill-2', ['accountable'], false],
+    ['vgap3-input','vgap3-check','vgap3-fb','vocab-gapfill-3', ['inhibit'], false],
+    ['vgap4-input','vgap4-check','vgap4-fb','vocab-gapfill-4', ['apathy'], false]
+  ];
+  gapFills.forEach(([inputId, btnId, fbId, section, answers, showHint]) => {
+    const restored = sectionMap[section];
+    Course.initGapFill(inputId, btnId, fbId, {
+      lessonId: LESSON_ID, sectionId: section, correctAnswers: answers, showAnswerHint: showHint,
+      restore: restored ? { answerGiven: restored.answer_given, isCorrect: restored.override_correct ?? restored.is_correct } : undefined,
+      onAnswered: updateOverallProgress
+    });
+  });
+
+  /* ---------------- FIX THE SENTENCE (error-spot) ---------------- */
+  const fixItems = [
+    { id:'fix1', section:'practice-fix-1', words:['My','brother,','that','lives','in','London,','called.'], errorIndices:[2], correction:'who' },
+    { id:'fix2', section:'practice-fix-2', words:['The','book,','that','I','borrowed,','was','excellent.'], errorIndices:[2], correction:'which' },
+    { id:'fix3', section:'practice-fix-3', words:["The",'man',"who's",'car','was','stolen','called','police.'], errorIndices:[2], correction:'whose' },
+    { id:'fix4', section:'practice-fix-4', words:['This','is','the','town','which','I','was','born.'], errorIndices:[4], correction:'where' }
+  ];
+  fixItems.forEach(item => {
+    const restored = sectionMap[item.section];
+    Course.initErrorSpot(item.id, {
+      lessonId: LESSON_ID, sectionId: item.section, words: item.words, errorIndices: item.errorIndices, correction: item.correction,
+      onAnswered: updateOverallProgress,
+      restore: restored ? { answerGiven: restored.answer_given } : undefined
+    });
+  });
+
+  /* ---------------- SENTENCE BUILDER (single-clause safe. Locks immediately
+     on Check, not just on reload.) ---------------- */
+  const builderRounds = [
+    { words: ['the','woman','who','called','earlier','is','my','sister'],
+      accepted: ['the woman who called earlier is my sister'] },
+    { words: ['my','brother',',','who','lives','in','london',',','called'],
+      accepted: ['my brother , who lives in london , called'] },
+    { words: ['this','is','my','house',',','which','i','bought','last','year'],
+      accepted: ['this is my house , which i bought last year'] }
+  ];
+  const buildersEl = document.getElementById('builders');
+  builderRounds.forEach((round, ri) => {
+    const sectionId = `practice-builder-${ri+1}`;
+    const restored = sectionMap[sectionId];
+    const bankOrder = Course.shuffleArray(round.words.map((_, i) => i));
+    let state = [];
+    let locked = false;
+
+    if (restored){
+      const used = new Set();
+      restored.answer_given.split(' ').forEach(tok => {
+        const idx = round.words.findIndex((w, i) => w === tok && !used.has(i));
+        if (idx >= 0){ used.add(idx); state.push(idx); }
+      });
+      locked = true;
+    }
+
+    const wrap = document.createElement('div');
+    wrap.style.marginBottom = '20px';
+    wrap.innerHTML = `
+      <div class="builder-bank" id="builder-bank-${ri}"></div>
+      <div class="builder-target" id="builder-target-${ri}"></div>
+      <p style="font-size:12px;color:var(--text-tertiary);margin-top:6px">Tap a word in your sentence to send it back to the pool.</p>
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+        <button class="btn btn-sm" id="builder-check-${ri}">Check order</button>
+        <button class="btn btn-sm btn-ghost" id="builder-reset-${ri}">Reset</button>
+      </div>
+      <div id="builder-fb-${ri}"></div>
+    `;
+    buildersEl.appendChild(wrap);
+
+    const bank = wrap.querySelector(`#builder-bank-${ri}`);
+    const target = wrap.querySelector(`#builder-target-${ri}`);
+    function render(){
+      bank.innerHTML = '';
+      bankOrder.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip' + (state.includes(i) ? ' used' : '');
+        chip.textContent = round.words[i];
+        if (!locked) chip.addEventListener('click', () => { if (state.includes(i)) return; state.push(i); render(); });
+        else chip.disabled = true;
+        bank.appendChild(chip);
+      });
+      target.innerHTML = '';
+      state.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip';
+        chip.textContent = round.words[i];
+        if (!locked){
+          chip.title = 'Click to remove';
+          chip.addEventListener('click', () => { state = state.filter(x => x !== i); render(); });
+        } else {
+          chip.disabled = true;
+        }
+        target.appendChild(chip);
+      });
+    }
+    render();
+
+    if (restored){
+      const isCorrect = restored.override_correct ?? restored.is_correct;
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+    }
+
+    wrap.querySelector(`#builder-reset-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      state = []; render(); wrap.querySelector(`#builder-fb-${ri}`).innerHTML = '';
+    });
+    wrap.querySelector(`#builder-check-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      const attempt = state.map(i => round.words[i]).join(' ');
+      const isCorrect = round.accepted.includes(attempt);
+      locked = true;
+      render();
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+      Course.logProgress({ lessonId: LESSON_ID, sectionId, answerGiven: attempt, isCorrect });
+      updateOverallProgress();
+    });
+  });
+
+  /* ---------------- SPEAKING MODE TOGGLE ---------------- */
+  document.getElementById('mode-solo').addEventListener('click', () => {
+    document.getElementById('mode-solo').classList.add('on');
+    document.getElementById('mode-group').classList.remove('on');
+    document.getElementById('speak-solo').style.display = 'block';
+    document.getElementById('speak-group').style.display = 'none';
+  });
+  document.getElementById('mode-group').addEventListener('click', () => {
+    document.getElementById('mode-group').classList.add('on');
+    document.getElementById('mode-solo').classList.remove('on');
+    document.getElementById('speak-group').style.display = 'block';
+    document.getElementById('speak-solo').style.display = 'none';
+  });
+
+  /* ---------------- SOLO SPEAKING TASK — MARK AS DONE (restorable) ---------------- */
+  const SOLO_TASK_LABEL = "Solo speaking task: describe two people using a defining and a non-defining relative clause.";
+  const soloDoneBtn = document.getElementById('solo-done-btn');
+  let soloDone = !!(sectionMap['speaking-solo'] && sectionMap['speaking-solo'].status === 'completed');
+  function renderSoloBtn(){
+    soloDoneBtn.textContent = soloDone ? "✓ Marked as done" : "✓ I've done this";
+    soloDoneBtn.classList.toggle('btn-primary', soloDone);
+  }
+  renderSoloBtn();
+  soloDoneBtn.addEventListener('click', () => {
+    soloDone = !soloDone;
+    renderSoloBtn();
+    Course.logProgress({
+      lessonId: LESSON_ID, sectionId: 'speaking-solo', exerciseType: 'oral',
+      status: soloDone ? 'completed' : 'not_attempted', answerGiven: SOLO_TASK_LABEL
+    });
+  });
+
+  /* ---------------- DISCUSSION QUESTION PICKER (restorable) ---------------- */
+  const discussQuestions = [
+    "Describe your hometown, using a relative clause to add an interesting detail.",
+    "Have you ever witnessed a situation where nobody helped, or everybody hesitated? What happened?",
+    "Do you think you'd be more likely to help alone or in a group? Why?",
+    "Describe someone important in your life using both a defining and a non-defining relative clause."
+  ];
+  const discussEl = document.getElementById('discuss-questions');
+  let pickedQuestions = [];
+  discussQuestions.forEach((q, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'discuss-q';
+    btn.dataset.idx = i;
+    btn.innerHTML = `<span class="chk"></span><span>${q}</span>`;
+    const restored = sectionMap[`speaking-q${i+1}`];
+    if (restored && restored.status === 'completed'){
+      pickedQuestions.push(i);
+      btn.classList.add('picked');
+    }
+    btn.addEventListener('click', () => {
+      const isPicked = pickedQuestions.includes(i);
+      if (isPicked){
+        pickedQuestions = pickedQuestions.filter(x => x !== i);
+        btn.classList.remove('picked');
+      } else {
+        if (pickedQuestions.length >= 2){
+          document.getElementById('discuss-limit-msg').style.color = 'var(--bad)';
+          document.getElementById('discuss-limit-msg').textContent = 'You can only pick up to 2 — deselect one first.';
+          return;
+        }
+        pickedQuestions.push(i);
+        btn.classList.add('picked');
+      }
+      document.getElementById('discuss-limit-msg').style.color = '';
+      document.getElementById('discuss-limit-msg').textContent = 'You can select up to 2 questions.';
+      Course.logProgress({
+        lessonId: LESSON_ID, sectionId: `speaking-q${i+1}`, exerciseType: 'oral',
+        status: isPicked ? 'not_attempted' : 'completed', answerGiven: q
+      });
+    });
+    discussEl.appendChild(btn);
+  });
+
+  /* ---------------- LISTENING DIALOGUE ---------------- */
+  const AUDIO_SRC = 'audio/lesson-19-listening.mp3';
+  const dialogue = [
+    { speaker:'Tomasz', pitch:0.88, line:"Something weird happened on my street this morning." },
+    { speaker:'Anna', pitch:1.12, line:"What happened?" },
+    { speaker:'Tomasz', pitch:0.88, line:"A woman dropped all her shopping bags, and honestly, nobody moved for a good ten seconds." },
+    { speaker:'Anna', pitch:1.12, line:"Ten seconds is a long time. Did someone eventually help?" },
+    { speaker:'Tomasz', pitch:0.88, line:"Yeah, the woman who was walking a dog finally stopped and helped her pick everything up." },
+    { speaker:'Anna', pitch:1.12, line:"That's exactly what we just read about — diffusion of responsibility." },
+    { speaker:'Tomasz', pitch:0.88, line:"Right, everyone probably assumed someone else would step in first." },
+    { speaker:'Anna', pitch:1.12, line:"At least someone finally did. That's the reassuring part." }
+  ];
+
+  let audioAvailable = false;
+  const audioEl = document.getElementById('dialogue-audio');
+  fetch(AUDIO_SRC, { method:'HEAD' }).then(r => { if (r.ok){ audioAvailable = true; audioEl.src = AUDIO_SRC; } }).catch(() => {});
+
+  const transcriptEl = document.getElementById('transcript');
+  dialogue.forEach((d, i) => {
+    const line = document.createElement('div');
+    line.className = 'transcript-line';
+    line.id = `t-line-${i}`;
+    line.innerHTML = `<b>${d.speaker}:</b> ${d.line}`;
+    transcriptEl.appendChild(line);
+  });
+
+  const playBtn = document.getElementById('play-dialogue');
+  let isPlaying = false;
+  let currentIdx = 0;
+
+  function updatePlayButton(){
+    if (isPlaying){ playBtn.textContent = '⏸ Pause'; return; }
+    if (window.speechSynthesis.paused){ playBtn.textContent = '▶ Resume'; return; }
+    playBtn.textContent = '▶ Play dialogue';
+  }
+
+  function speakLineAt(idx){
+    if (idx >= dialogue.length){ isPlaying = false; currentIdx = 0; updatePlayButton(); return; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    document.getElementById(`t-line-${idx}`).classList.add('shown', 'active');
+    const u = new SpeechSynthesisUtterance(dialogue[idx].line);
+    u.rate = 0.95; u.pitch = dialogue[idx].pitch;
+    u.onend = () => { if (isPlaying){ currentIdx = idx + 1; speakLineAt(currentIdx); } };
+    window.speechSynthesis.speak(u);
+  }
+
+  playBtn.addEventListener('click', () => {
+    if (audioAvailable){
+      if (audioEl.paused){ audioEl.play(); isPlaying = true; }
+      else { audioEl.pause(); isPlaying = false; }
+      updatePlayButton();
+      return;
+    }
+    if (!isPlaying){
+      isPlaying = true;
+      if (window.speechSynthesis.paused){ window.speechSynthesis.resume(); }
+      else {
+        // Defensive reset, fresh-start only (never on resume/pause): speechSynthesis
+        // has a well-documented browser bug where it can silently stop accepting
+        // new speech after earlier calls elsewhere on the page (e.g. the vocab-word
+        // audio buttons), leaving Play looking broken with no error anywhere.
+        // Clearing the queue right before a genuinely fresh play avoids that class
+        // of bug without disturbing an actual pause/resume in progress.
+        window.speechSynthesis.cancel();
+        speakLineAt(currentIdx);
+      }
+    } else {
+      isPlaying = false;
+      window.speechSynthesis.pause();
+    }
+    updatePlayButton();
+  });
+
+  document.getElementById('stop-dialogue').addEventListener('click', () => {
+    isPlaying = false;
+    currentIdx = 0;
+    window.speechSynthesis.cancel();
+    if (audioAvailable){ audioEl.pause(); audioEl.currentTime = 0; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    updatePlayButton();
+  });
+
+  audioEl.addEventListener('ended', () => { isPlaying = false; updatePlayButton(); });
+
+  document.getElementById('show-transcript').addEventListener('click', function(){
+    const shown = transcriptEl.classList.toggle('all-shown');
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.toggle('shown', shown));
+    this.textContent = shown ? 'Hide transcript' : 'Show full transcript';
+  });
+
+  updateOverallProgress();
+})();
+
+/* ---------------- OVERALL PROGRESS BAR ---------------- */
+const LESSON_TOTAL_POSSIBLE = 31 + 10 + 4 + 3; // mcqSections(incl. 8 categorise) + gapFills + fixItems + builderRounds
+function updateOverallProgress(){
+  const attempted = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+  const pct = Math.min(100, Math.round((attempted / LESSON_TOTAL_POSSIBLE) * 100));
+  document.getElementById('overall-progress').style.width = pct + '%';
+}
+
+/* ---------------- FINISH / SUMMARY ---------------- */
+document.getElementById('finish-btn').addEventListener('click', async () => {
+  const btn = document.getElementById('finish-btn');
+  const original = btn.textContent;
+  btn.textContent = 'Checking for teacher updates…'; btn.disabled = true;
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+  } finally {
+    btn.textContent = original; btn.disabled = false;
+  }
+  try {
+    const { correct, total } = Course.lessonScore(LESSON_ID);
+    Course.renderScoreRing('score-ring-holder', correct, total);
+    document.getElementById('summary-name').textContent = `${Course.getStudentName()} — ${correct}/${total} correct`;
+
+    const attemptedCount = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+    const completionPct = Math.min(100, Math.round((attemptedCount / LESSON_TOTAL_POSSIBLE) * 100));
+    const completionEl = document.getElementById('summary-completion');
+    if (attemptedCount < LESSON_TOTAL_POSSIBLE){
+      completionEl.style.color = 'var(--warn)';
+      completionEl.textContent = `⚠ Only ${completionPct}% of the lesson attempted so far (${attemptedCount} of ${LESSON_TOTAL_POSSIBLE} exercises) — the score above only reflects what's been answered.`;
+    } else {
+      completionEl.style.color = 'var(--ok)';
+      completionEl.textContent = `✓ Every exercise in this lesson has been attempted.`;
+    }
+
+    const weak = Course.weakSections(LESSON_ID);
+    document.getElementById('summary-weak').textContent = weak.length
+      ? `Worth revisiting: ${weak.join(', ')}`
+      : 'Strong across the board — nice work!';
+    document.getElementById('export-btn').style.display = 'inline-block';
+    updateOverallProgress();
+
+    const card = document.getElementById('summary-card');
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    card.classList.remove('summary-pulse'); void card.offsetWidth;
+    card.classList.add('summary-pulse');
+  } catch (err){
+    console.error('Finish lesson failed:', err);
+    let banner = document.getElementById('finish-error-banner');
+    if (!banner){
+      banner = document.createElement('div');
+      banner.id = 'finish-error-banner';
+      banner.className = 'error-banner';
+      document.getElementById('summary-card').appendChild(banner);
+    }
+    banner.textContent = `Something went wrong computing your results (${err.message}). Try reloading the page — your saved answers won't be lost.`;
+  }
+});
+document.getElementById('export-btn').addEventListener('click', async () => {
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+    Course.exportReportPDF(LESSON_ID, 'Relative Clauses', LESSON_TOTAL_POSSIBLE);
+  } catch (err){
+    console.error('PDF export failed:', err);
+    alert('The PDF export ran into a problem: ' + err.message);
+  }
+});
+</script>
+
+<script>
+{
+  const allLessonsLink = document.getElementById('all-lessons-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  allLessonsLink.href = groupParam ? `index-standalone.html?group=${encodeURIComponent(groupParam)}` : 'index-standalone.html';
+}
+</script>
+</body>
+</html>

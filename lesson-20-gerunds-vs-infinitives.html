@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 20 — Gerunds vs. Infinitives | English+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+<style>
+  /* Lesson-specific only — tooltip and pill styling matching Lessons
+     12–19's finalized design, reused here for consistency. */
+  .compare-box{display:inline-block;padding:4px 10px;border-radius:6px;background:var(--surface-alt);cursor:default;transition:background .15s}
+  .compare-box:hover{background:var(--accent-soft)}
+  #compare-tooltip{
+    position:absolute;z-index:80;max-width:280px;background:var(--accent-soft);color:var(--text-secondary);
+    border:1px solid var(--accent);font-size:13px;line-height:1.5;padding:10px 12px;border-radius:8px;
+    box-shadow:0 4px 16px rgba(0,0,0,.12);pointer-events:none;
+    opacity:0;transition:opacity .1s;
+  }
+  #compare-tooltip.visible{opacity:1}
+  .tricky-box{
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius-md);
+    padding:11px 15px;font-size:13.5px;color:var(--accent-dark);
+    display:flex;flex-wrap:wrap;gap:9px;align-items:flex-start;line-height:1.6;margin-top:10px;
+  }
+  .tricky-box > *{min-width:0}
+  .trait-pill{padding:7px 12px;border-radius:var(--radius-sm);border:1px solid var(--accent);background:var(--surface);color:var(--accent);font-size:12.5px;font-weight:700;cursor:pointer;transition:background .15s}
+  .static-cell{display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:var(--radius-md);padding:8px 6px;background:var(--surface);text-align:center;font-size:12.5px;color:var(--text-secondary);min-height:20px}
+  .static-cell.is-primary-cell{border-color:var(--accent);background:var(--surface);color:var(--accent);font-weight:650;flex:1}
+  .static-cell.clickable-cell{cursor:pointer}
+  .static-cell.clickable-cell:hover{opacity:.85}
+  .mode-toggle-outline .pill{border-radius:var(--radius-sm)}
+  .mode-toggle-outline .pill.on{background:var(--surface);color:var(--accent);border-color:var(--accent);font-weight:700}
+  .rel-word{color:var(--warn);font-weight:800}
+  .pill[disabled]{opacity:.45;cursor:not-allowed;pointer-events:none}
+  .hint-btn{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;border:1px solid var(--border-strong);background:var(--surface-alt);color:var(--text-tertiary);font-size:12px;font-weight:650;cursor:pointer;margin-left:6px;vertical-align:middle;line-height:1;padding:0}
+  .hint-btn:hover{background:var(--warn-bg);color:var(--text-primary)}
+  .trait-pill:hover{background:var(--accent-soft)}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="shared/supabase-config.js"></script>
+</head>
+<body class="theme-reported">
+
+<div class="course-attribution">English+ Grammar Course · by Kris Galezewski</div>
+<div class="shell">
+
+  <!-- ============ HEADER ============ -->
+  <header class="lesson-header">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div class="lesson-eyebrow">Lesson 20 of 22 · Verb Patterns</div>
+      <div style="display:flex;gap:8px">
+      <a id="all-lessons-link" href="index-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📚 All Lessons</a>
+      <a id="glossary-link" href="glossary-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📖 My Glossary</a>
+    </div>
+    </div>
+    <h1 class="lesson-title">Gerunds vs. Infinitives</h1>
+    <p class="lesson-sub">Which verbs take -ing, which take to + verb — and the handful that change meaning depending which you choose.</p>
+    <div class="pb-track" style="margin-top:16px"><div class="pb-fill" id="overall-progress" style="width:0%"></div></div>
+    <div id="sync-status" style="font-size:11.5px;color:var(--text-tertiary);margin-top:8px"></div>
+  </header>
+
+  <!-- ============ 1. WARM-UP ============ -->
+  <section class="section" id="sec-warmup">
+    <div class="section-label"><span class="num">1</span> Warm-up — two ways to follow a verb</div>
+    <div class="card">
+      <p style="margin-bottom:14px;font-size:14.5px;color:var(--text-secondary)">
+        After many verbs, a second verb has to take one of two forms: the -ing form (a gerund) or "to +
+        base verb" (an infinitive). Which one you need depends entirely on the first verb — there's no
+        general rule, just patterns worth learning.
+      </p>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. A gerund is…</p>
+        <div id="warm-q1">
+          <button class="opt" data-value="right">the -ing form of a verb used as a noun</button>
+          <button class="opt" data-value="wrong">the base form of a verb used after "to"</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. Which verb is followed by a gerund, not an infinitive?</p>
+        <div id="warm-q2">
+          <button class="opt" data-value="right">avoid</button>
+          <button class="opt" data-value="wrong">want</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. "I remember locking the door" vs. "I remembered to lock the door" — the difference is…</p>
+        <div id="warm-q3">
+          <button class="opt" data-value="right">one is a memory of a past action, the other is about not forgetting a future task</button>
+          <button class="opt" data-value="wrong">there is no real difference in meaning at all</button>
+        </div>
+      </div>
+      <div class="tip-box">💡 <span style="flex:1;min-width:0">Most verbs only ever take one form. A handful take either with no real difference. And a few genuinely change meaning depending which one you pick — those are worth memorising individually.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 2. DIAGNOSTIC PRE-TEST ============ -->
+  <section class="section" id="sec-diagnostic">
+    <div class="section-label"><span class="num">2</span> Quick check — before we explain anything</div>
+    <div class="card">
+      <p style="margin-bottom:16px;font-size:14.5px;color:var(--text-secondary)">Four quick questions. This isn't graded harshly — it just shows us where to focus.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. She enjoys ___ before bed.</p>
+        <div id="diag-q1">
+          <button class="opt" data-value="right">reading</button>
+          <button class="opt" data-value="wrong">to read</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. They decided ___ to a new city.</p>
+        <div id="diag-q2">
+          <button class="opt" data-value="right">to move</button>
+          <button class="opt" data-value="wrong">moving</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. He stopped ___ five years ago.</p>
+        <div id="diag-q3">
+          <button class="opt" data-value="right">smoking</button>
+          <button class="opt" data-value="wrong">to smoke</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">4. I'm interested ___ French.</p>
+        <div id="diag-q4">
+          <button class="opt" data-value="right">in learning</button>
+          <button class="opt" data-value="wrong">to learn</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. CONCEPT EXPLANATION ============ -->
+  <section class="section" id="sec-concept">
+    <div class="section-label"><span class="num">3</span> The concept</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px">What are gerunds and infinitives?</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">
+        A gerund is the -ing form of a verb used as a noun — it can be the subject of a sentence, the
+        object of a verb, or follow a preposition, exactly the way an ordinary noun would. "Swimming is
+        great exercise" uses "swimming" as the subject, the same job "football" or "exercise" would do
+        there.
+      </p>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">
+        An infinitive is "to" plus the base form of a verb — "to swim," "to see," "to work." Like a gerund,
+        it can act as a noun ("To swim was all I wanted"), but it also shows up expressing purpose ("I
+        called to apologise") or following certain adjectives ("It's important to arrive on time").
+      </p>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">
+        Both are non-finite forms — verbs used without conjugating them for tense or person — which lets a
+        verb idea function more like a noun, or add extra information to a sentence. Instead of two short
+        ideas — "I enjoy something. I read before bed." — a gerund lets you combine them naturally: "I
+        enjoy reading before bed."
+      </p>
+      <p style="font-size:14.5px;line-height:1.7">
+        The genuinely tricky part, and the focus of this lesson: after many verbs, only <b>one</b> of the
+        two forms is grammatically correct, and there's no logical rule that predicts which — it comes down
+        to the specific verb, and often just has to be learned.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px">Three patterns, no exceptions within them</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:16px">
+        Most verbs commit fully to one pattern — they never switch, no matter the context. Browse each
+        category below, or test yourself with Quick check.
+      </p>
+
+      <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+        <button class="pill on" id="mode-pattern-gerund">Gerund only</button>
+        <button class="pill" id="mode-pattern-infinitive">Infinitive only</button>
+        <button class="pill" id="mode-pattern-either">Either</button>
+        <button class="pill" id="mode-pattern-quiz">Quick check</button>
+      </div>
+
+      <div id="pattern-widget-area" style="margin-top:14px;padding:18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border)"></div>
+      <p id="pattern-widget-hint" style="font-size:12.5px;color:var(--text-tertiary);margin-top:8px">— Click the pills to see another example.</p>
+
+      <button class="pill" id="pattern-list-toggle" style="margin-top:16px">📋 Show full list of verbs</button>
+      <div class="expand-content" id="pattern-list-content">
+        <div style="margin-top:16px">
+          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">Gerund only</h4>
+          <div id="gerund-only-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px;margin-bottom:20px"></div>
+
+          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">Infinitive only</h4>
+          <div id="infinitive-only-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px;margin-bottom:20px"></div>
+
+          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">Either — no real difference in meaning</h4>
+          <div id="either-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px">The handful that change meaning</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:16px">
+        For these verbs, the choice isn't stylistic — it changes what the sentence actually means. Step
+        through them one at a time.
+      </p>
+      <div style="padding:18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border)">
+        <div id="meaning-change-display"></div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-top:16px">
+          <button class="btn btn-sm btn-ghost" id="meaning-change-prev">← Previous</button>
+          <span id="meaning-change-counter" style="font-size:12.5px;color:var(--text-tertiary);min-width:48px;text-align:center"></span>
+          <button class="btn btn-sm btn-ghost" id="meaning-change-next">Next →</button>
+        </div>
+      </div>
+      <div class="tricky-box" style="margin-top:16px">
+        <span>🎯</span>
+        <span style="flex:1;min-width:0">
+          <b>One more exception:</b> when hate, like, love, or prefer are used with "would" or "should,"
+          only the to-infinitive works — never -ing.<br><br>
+          ✅ "She'd love to get a job nearer home."<br>
+          ❌ "She'd love getting a job nearer home."
+        </span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px">Make, let, help — the bare infinitive</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:16px">
+        A small group of verbs takes an object followed by the base form of the verb, with no "to" at all —
+        this is called the bare infinitive. Hover over any verb.
+      </p>
+      <div id="bare-infinitive-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px"></div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Going further</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">A few more patterns worth knowing, once the core distinction above feels comfortable.</p>
+      <button class="pill" id="going-further-toggle">🔎 Show more patterns</button>
+      <div class="expand-content" id="going-further-content">
+        <div style="margin-top:20px;padding-top:4px;border-top:1px solid var(--border)">
+          <h4 style="font-size:15px;font-weight:650;margin:16px 0 10px">Verb + object + infinitive</h4>
+          <p style="font-size:14.5px;line-height:1.7;margin-bottom:16px">
+            Some verbs can't jump straight from the verb to "to" — they need a person or thing (an object)
+            sitting in between. "I want to help" (I'll do the helping) is a completely different sentence
+            from "I want you to help" (someone else will). Hover over any verb.
+          </p>
+          <div id="object-infinitive-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;margin-bottom:20px"></div>
+
+          <h4 style="font-size:15px;font-weight:650;margin:20px 0 10px;padding-top:16px;border-top:1px solid var(--border)">Object + gerund</h4>
+          <p style="font-size:14.5px;line-height:1.7;margin-bottom:16px">
+            A few gerund-only verbs (can't stand, dislike, imagine, involve, mind, miss, put off, risk) work
+            the same way in reverse: they can take a new subject — someone or something other than the
+            sentence's main subject — right before the -ing form. If that new subject is a pronoun, it
+            takes the object form (me, him, her, us, them), not the subject form. Hover over any verb.
+          </p>
+          <div id="object-gerund-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;margin-bottom:20px"></div>
+
+          <h4 style="font-size:15px;font-weight:650;margin:20px 0 10px;padding-top:16px;border-top:1px solid var(--border)">Feel, hear, see, watch — in progress or complete?</h4>
+          <p style="font-size:14.5px;line-height:1.7;margin-bottom:16px">
+            A group of perception verbs (feel, hear, notice, see, overhear, watch) can also take an object
+            followed by either -ing or a bare infinitive — and here the choice genuinely changes the
+            meaning. The -ing form emphasises the action in progress, possibly repeated or unfinished; the
+            bare infinitive emphasises the whole event, start to finish, as a single completed action.
+            Hover over either sentence in a pair.
+          </p>
+          <div id="compare-perception" style="font-size:14.5px;line-height:1.8;margin-bottom:20px"></div>
+
+          <h4 style="font-size:15px;font-weight:650;margin:20px 0 10px;padding-top:16px;border-top:1px solid var(--border)">Gerunds show up elsewhere too</h4>
+          <p style="font-size:14.5px;line-height:1.7;margin-bottom:16px">
+            Two more places a gerund is the only option: right after a preposition, and as the subject of a
+            sentence.
+          </p>
+          <div style="padding:16px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--surface);margin-bottom:16px">
+            <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:8px">After a preposition</h4>
+            <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:10px">A preposition is always followed by -ing, never a to-infinitive. Hover over any phrase.</p>
+            <div id="preposition-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px"></div>
+          </div>
+          <p style="font-size:14.5px;line-height:1.7;margin-bottom:16px">
+            And a gerund can open a sentence as its subject: "<b>Procrastinating</b> rarely makes a task
+            feel any easier." "<b>Exercising</b> regularly improves mood." A to-infinitive can technically
+            do the same job ("To err is human"), but it reads far more formal, and modern English reaches
+            for the gerund almost every time.
+          </p>
+          <div style="padding:16px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--surface)">
+            <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:8px">Making either form negative</h4>
+            <p style="font-size:13.5px;color:var(--text-secondary)">"Not" simply goes right before the gerund or infinitive, whichever the verb calls for: "I regret <b>not telling</b> him the truth" (negative gerund) vs. "I decided <b>not to go</b>" (negative infinitive).</p>
+          </div>
+
+          <div class="tricky-box" style="margin-top:16px">
+            <span>🎯</span>
+            <span style="flex:1;min-width:0">
+              <b>The tricky part:</b> when a verb is followed directly by a preposition ("interested in," "good at," "afraid of"), the preposition rule wins — it's always gerund, never infinitive, no matter what the main verb usually prefers.<br><br>
+              ❌ "I'm interested to learn French." — wrong: "interested" is followed by "in," and "in" demands a gerund.<br>
+              ✅ "I'm interested in learning French."<br><br>
+              This trips people up because "interested" feels similar in meaning to verbs like "want" or "hope," which do take a to-infinitive directly — but "interested in" isn't a verb pattern at all, it's adjective + preposition, and prepositions never take "to + verb."
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. READING ============ -->
+  <section class="section" id="sec-reading">
+    <div class="section-label"><span class="num">4</span> Reading — The Psychology of Procrastination</div>
+    <div class="card">
+      <button class="pill" id="gram-toggle">🔍 Show grammar in this text</button>
+      <div class="passage" id="passage" style="margin-top:14px"></div>
+      <p style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">Tap a highlighted word for pronunciation, meaning and a fresh example. Once grammar highlighting is on, tap a highlighted sentence to see why that form was used.</p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:12px">Did you follow it? Quick comprehension check</h3>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. According to Sirois and Pychyl's theory, what is procrastination really about?</p>
+        <div id="comp-q1">
+          <button class="opt" data-value="right">Managing emotion, not managing time.</button>
+          <button class="opt" data-value="wrong">A simple lack of willpower and poor scheduling.</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. What happens in the short term when someone avoids an aversive task?</p>
+        <div id="comp-q2">
+          <button class="opt" data-value="right">The unpleasant feeling genuinely fades, at least temporarily.</button>
+          <button class="opt" data-value="wrong">The feeling gets immediately and permanently worse.</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. According to the research, what actually helps reduce procrastination?</p>
+        <div id="comp-q3">
+          <button class="opt" data-value="right">Self-compassion, rather than harsher self-criticism.</button>
+          <button class="opt" data-value="wrong">Stricter self-criticism and tougher personal standards.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. VOCAB REVIEW ============ -->
+  <section class="section" id="sec-vocab">
+    <div class="section-label"><span class="num">5</span> Vocabulary check</div>
+    <div class="card">
+      <p style="font-size:14.5px;margin-bottom:16px">All nine words from the text — mixed formats.</p>
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px">Match the meaning</h4>
+
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. "Aversive" means…</p>
+        <div id="vocab-q1">
+          <button class="opt" data-value="right">causing a strong feeling of dislike or wanting to avoid something</button>
+          <button class="opt" data-value="wrong">causing a strong feeling of excitement or anticipation</button>
+          <button class="opt" data-value="wrong2">completely neutral, provoking no reaction at all</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. "Temporal" means…</p>
+        <div id="vocab-q2">
+          <button class="opt" data-value="right">relating to time</button>
+          <button class="opt" data-value="wrong">relating to physical location</button>
+          <button class="opt" data-value="wrong2">relating to money or cost</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. "Pervasive" means…</p>
+        <div id="vocab-q3">
+          <button class="opt" data-value="right">existing in or spreading through every part of something</button>
+          <button class="opt" data-value="wrong">existing only in one small, isolated area</button>
+          <button class="opt" data-value="wrong2">completely absent from a situation</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. "Chronic" means…</p>
+        <div id="vocab-q4">
+          <button class="opt" data-value="right">continuing for a long time, persistent</button>
+          <button class="opt" data-value="wrong">happening only once, briefly</button>
+          <button class="opt" data-value="wrong2">completely cured or resolved</button>
+        </div>
+      </div>
+      <div style="margin-bottom:22px">
+        <p style="margin-bottom:8px;font-weight:550">5. "Compassion" means…</p>
+        <div id="vocab-q5">
+          <button class="opt" data-value="right">a feeling of sympathy and concern for oneself or others</button>
+          <button class="opt" data-value="wrong">a feeling of harsh judgment toward oneself or others</button>
+          <button class="opt" data-value="wrong2">a complete lack of feeling toward a situation</button>
+        </div>
+      </div>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px;padding-top:6px;border-top:1px solid var(--border)">Complete the sentence — vocabulary focus</h4>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">6. Task <input type="text" id="vgap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> offers instant relief, but at a real cost later.</p>
+        <button class="btn btn-sm" id="vgap1-check">Check</button>
+        <div id="vgap1-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">7. Procrastinators often <input type="text" id="vgap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> short-term mood over long-term goals.</p>
+        <button class="btn btn-sm" id="vgap2-check">Check</button>
+        <div id="vgap2-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">8. Procrastination means delaying an <input type="text" id="vgap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> task despite knowing it will cause harm.</p>
+        <button class="btn btn-sm" id="vgap3-check">Check</button>
+        <div id="vgap3-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">9. Procrastination functions as a quick form of mood <input type="text" id="vgap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px">.</p>
+        <button class="btn btn-sm" id="vgap4-check">Check</button>
+        <div id="vgap4-fb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. GRAMMAR PRACTICE ============ -->
+  <section class="section" id="sec-practice">
+    <div class="section-label"><span class="num">6</span> Practice</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:2px">Gap-fill</h3>
+      <p style="font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:16px">Grammar focus — gerund or infinitive, mixed. Tap the "?" if you're not sure which verb is meant.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">1. He avoided <input type="text" id="gap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"><button type="button" class="hint-btn" data-hint="answer" aria-label="Show hint">?</button> the question directly.</p>
+        <button class="btn btn-sm" id="gap1-check">Check</button>
+        <div id="gap1-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">2. She promised <input type="text" id="gap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"><button type="button" class="hint-btn" data-hint="call" aria-label="Show hint">?</button> me back later.</p>
+        <button class="btn btn-sm" id="gap2-check">Check</button>
+        <div id="gap2-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">3. I tried <input type="text" id="gap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"><button type="button" class="hint-btn" data-hint="open" aria-label="Show hint">?</button> the jar, but it wouldn't budge.</p>
+        <button class="btn btn-sm" id="gap3-check">Check</button>
+        <div id="gap3-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">4. Please remember <input type="text" id="gap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"><button type="button" class="hint-btn" data-hint="send" aria-label="Show hint">?</button> the email before you leave.</p>
+        <button class="btn btn-sm" id="gap4-check">Check</button>
+        <div id="gap4-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">5. We're thinking about <input type="text" id="gap5-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"><button type="button" class="hint-btn" data-hint="postpone" aria-label="Show hint">?</button> the trip.</p>
+        <button class="btn btn-sm" id="gap5-check">Check</button>
+        <div id="gap5-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">6. He's good at <input type="text" id="gap6-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:170px"><button type="button" class="hint-btn" data-hint="solve" aria-label="Show hint">?</button> difficult problems.</p>
+        <button class="btn btn-sm" id="gap6-check">Check</button>
+        <div id="gap6-fb"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Categorise the verb</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Read each sentence, then tap which pattern the bolded verb belongs to.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. "She avoids <b>eating</b> late at night."</p>
+        <div id="cat-q1">
+          <button class="opt" data-value="right">Gerund only</button><button class="opt" data-value="wrong">Infinitive only</button><button class="opt" data-value="wrong2">Either — no change</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. "They decided <b>to leave</b> early."</p>
+        <div id="cat-q2">
+          <button class="opt" data-value="wrong">Gerund only</button><button class="opt" data-value="right">Infinitive only</button><button class="opt" data-value="wrong2">Either — no change</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. "It started <b>raining</b> heavily."</p>
+        <div id="cat-q3">
+          <button class="opt" data-value="wrong">Gerund only</button><button class="opt" data-value="wrong2">Infinitive only</button><button class="opt" data-value="right">Either — no change</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">4. "I can't afford <b>to buy</b> a new car."</p>
+        <div id="cat-q4">
+          <button class="opt" data-value="wrong">Gerund only</button><button class="opt" data-value="right">Infinitive only</button><button class="opt" data-value="wrong2">Either — no change</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">5. "She suggested <b>trying</b> a new approach."</p>
+        <div id="cat-q5">
+          <button class="opt" data-value="right">Gerund only</button><button class="opt" data-value="wrong">Infinitive only</button><button class="opt" data-value="wrong2">Either — no change</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">6. "We continued <b>walking</b> despite the rain."</p>
+        <div id="cat-q6">
+          <button class="opt" data-value="wrong">Gerund only</button><button class="opt" data-value="wrong2">Infinitive only</button><button class="opt" data-value="right">Either — no change</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">7. "He promised <b>to help</b> with the move."</p>
+        <div id="cat-q7">
+          <button class="opt" data-value="wrong">Gerund only</button><button class="opt" data-value="right">Infinitive only</button><button class="opt" data-value="wrong2">Either — no change</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">8. "They enjoy <b>hiking</b> on weekends."</p>
+        <div id="cat-q8">
+          <button class="opt" data-value="right">Gerund only</button><button class="opt" data-value="wrong">Infinitive only</button><button class="opt" data-value="wrong2">Either — no change</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Fix the sentence</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Each sentence has one mistake. Tap the word (or words) that are wrong.</p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary)">Sentence 1</div>
+      <p id="fix1" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 2</div>
+      <p id="fix2" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 3</div>
+      <p id="fix3" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 4</div>
+      <p id="fix4" style="font-size:15px;line-height:1.9"></p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Sentence builder</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">Tap the chips in the right order. Three rounds.</p>
+      <div id="builders"></div>
+    </div>
+  </section>
+
+  <!-- ============ 7. SPEAKING ============ -->
+  <section class="section" id="sec-speaking">
+    <div class="section-label"><span class="num">7</span> Speaking task</div>
+    <div class="mode-toggle">
+      <button class="pill on" id="mode-solo">👤 Solo</button>
+      <button class="pill" id="mode-group">👥 Group (2–4)</button>
+    </div>
+    <div class="task-card" id="speak-solo">
+      <div class="kicker">60-second habits</div>
+      <p style="font-size:14.5px;line-height:1.7">
+        Talk about three things you enjoy doing, one thing you've decided to do this year, and one thing
+        you keep avoiding — using the correct gerund or infinitive each time.
+      </p>
+      <button class="btn btn-sm" id="solo-done-btn" style="margin-top:14px">✓ I've done this</button>
+    </div>
+    <div class="task-card" id="speak-group" style="display:none">
+      <div class="kicker">Discussion — pick 1–2 questions to answer out loud</div>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:12px">Tap the question(s) you'll answer. Your teacher will see your pick and mark it after you speak.</p>
+      <div id="discuss-questions" style="display:flex;flex-direction:column;gap:8px"></div>
+      <p id="discuss-limit-msg" style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">You can select up to 2 questions.</p>
+    </div>
+  </section>
+
+  <!-- ============ 8. LISTENING ============ -->
+  <section class="section" id="sec-listening">
+    <div class="section-label"><span class="num">8</span> Listening</div>
+    <div class="card">
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:12px">Anna and Tomasz are talking about putting things off — right after reading about procrastination.</p>
+      <audio id="dialogue-audio" preload="none" style="display:none"></audio>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary" id="play-dialogue">▶ Play dialogue</button>
+        <button class="btn btn-ghost btn-sm" id="stop-dialogue">⏹ Stop</button>
+        <button class="btn btn-ghost btn-sm" id="show-transcript">Show full transcript</button>
+      </div>
+      <div id="transcript" style="margin-top:14px"></div>
+
+      <div style="margin-top:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. What has Tomasz been avoiding?</p>
+        <div id="listen-q1">
+          <button class="opt" data-value="right">Replying to an important email.</button>
+          <button class="opt" data-value="wrong">Booking a dentist appointment.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. What does Anna suggest trying?</p>
+        <div id="listen-q2">
+          <button class="opt" data-value="right">Setting a timer and just starting for five minutes.</button>
+          <button class="opt" data-value="wrong">Waiting until he feels completely ready.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. What does Tomasz forget to do at the end?</p>
+        <div id="listen-q3">
+          <button class="opt" data-value="right">Thank Anna for the advice.</button>
+          <button class="opt" data-value="wrong">Ask what time it is.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. WRAP-UP / EXIT TEST ============ -->
+  <section class="section" id="sec-wrapup">
+    <div class="section-label"><span class="num">9</span> Wrap-up — exit check</div>
+    <div class="card">
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. She enjoys ___ before bed.</p>
+        <div id="exit-q1">
+          <button class="opt" data-value="right">reading</button>
+          <button class="opt" data-value="wrong">to read</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. They decided ___ to a new city.</p>
+        <div id="exit-q2">
+          <button class="opt" data-value="right">to move</button>
+          <button class="opt" data-value="wrong">moving</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. He stopped ___ five years ago.</p>
+        <div id="exit-q3">
+          <button class="opt" data-value="right">smoking</button>
+          <button class="opt" data-value="wrong">to smoke</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. I'm interested ___ French.</p>
+        <div id="exit-q4">
+          <button class="opt" data-value="right">in learning</button>
+          <button class="opt" data-value="wrong">to learn</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">5. We're thinking about ___ the trip.</p>
+        <div id="exit-q5">
+          <button class="opt" data-value="right">postponing</button>
+          <button class="opt" data-value="wrong">to postpone</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="summary-card">
+      <h3 style="margin-bottom:14px">Your lesson summary</h3>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px" id="summary-ring-row">
+        <div id="score-ring-holder"></div>
+        <div>
+          <div style="font-weight:600" id="summary-name">—</div>
+          <div style="font-size:13px;margin-top:4px" id="summary-completion"></div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-top:4px" id="summary-weak">Finish the lesson to see your results.</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="finish-btn">Finish lesson &amp; see results</button>
+      <button class="btn" id="export-btn" style="margin-left:8px;display:none">⬇ Export PDF report</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="shared/course-engine.js"></script>
+<script>
+const LESSON_ID = 'lesson-20-gerunds-vs-infinitives';
+
+{
+  const glossaryLink = document.getElementById('glossary-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  const currentFile = window.location.pathname.split('/').pop();
+  let glossaryHref = `glossary-standalone.html?from=${encodeURIComponent(currentFile)}`;
+  if (groupParam) glossaryHref += `&group=${encodeURIComponent(groupParam)}`;
+  glossaryLink.href = glossaryHref;
+}
+
+{
+  const resetBtn = document.createElement('button');
+  resetBtn.className = 'btn btn-sm btn-ghost';
+  resetBtn.textContent = '↺ Reset my progress for this lesson';
+  resetBtn.style.cssText = 'margin-top:8px;font-size:12px;padding:5px 12px';
+  resetBtn.addEventListener('click', () => {
+    if (confirm('Clear all saved answers for this lesson on this device? (Does not affect Supabase.)')){
+      Course.resetLocalProgress(LESSON_ID);
+      location.reload();
+    }
+  });
+  document.getElementById('sync-status').insertAdjacentElement('afterend', resetBtn);
+}
+
+(async function initLesson(){
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Syncing your progress…`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  await Course.syncFromSupabase(LESSON_ID);
+  const sectionMap = Course.getSectionMap(LESSON_ID);
+
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Synced · Group: ${Course.getGroupId()}`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  /* ---------------- VOCAB DATA ---------------- */
+  const vocabData = {
+    aversive: { word:'aversive', ipa:'/əˈvɜː.sɪv/', meaning:'causing a strong feeling of dislike or wanting to avoid something', example:'People tend to delay tasks they find aversive.' },
+    temporal: { word:'temporal', ipa:'/ˈtem.pər.əl/', meaning:'relating to time', example:'Procrastinators show a temporal bias toward the present.' },
+    pervasive: { word:'pervasive', ipa:'/pəˈveɪ.sɪv/', meaning:'existing in or spreading through every part of something', example:'Procrastination is a pervasive problem affecting many areas of life.' },
+    intended: { word:'intended', ipa:'/ɪnˈten.dɪd/', meaning:'planned or meant to happen', example:'Procrastination means delaying an intended task despite knowing it will cause harm.' },
+    prioritise: { word:'prioritise', ipa:'/praɪˈɒr.ɪ.taɪz/', meaning:'to treat something as more important than other things', example:'Procrastinators often prioritise short-term mood over long-term goals.' },
+    avoidance: { word:'avoidance', ipa:'/əˈvɔɪ.dəns/', meaning:'the act of staying away from something', example:'Task avoidance offers instant relief, but at a real cost later.' },
+    compassion: { word:'compassion', ipa:'/kəmˈpæʃ.ən/', meaning:'a feeling of sympathy and concern for oneself or others', example:'Self-compassion has been shown to reduce procrastination more effectively than self-criticism.' },
+    chronic: { word:'chronic', ipa:'/ˈkrɒn.ɪk/', meaning:'continuing for a long time, persistent', example:'For some people, procrastination becomes a chronic pattern rather than an occasional lapse.' },
+    repair: { word:'repair', ipa:'/rɪˈpeər/', meaning:'the act of fixing or restoring something', example:'Procrastination functions as a quick form of mood repair.' }
+  };
+
+  function vocabSpan(key, text){
+    return `<span class="vocab" data-word="${key}">${text}</span>`;
+  }
+  function gramSpan(key, text){
+    return `<span class="gram" data-gram="${key}">${text}</span>`;
+  }
+  const gramExplanations = {
+    g1: "Gerund after a preposition — \"by\" always takes an -ing form, never a to-infinitive.",
+    g2: "\"Avoid\" is one of the verbs that only takes a gerund, never a to-infinitive — \"avoid to start\" would be wrong.",
+    g3: "Another verb+gerund pattern, describing an ongoing activity someone turns to instead of the task.",
+    g4: "\"Tend\" is a verb that only takes a to-infinitive, never a gerund — \"tend weighing\" would be wrong."
+  };
+
+  /* ---------------- READING PASSAGE ---------------- */
+  document.getElementById('passage').innerHTML = `
+  <p>For a long time, procrastination was treated as a simple failure of time management — something you could fix by ${gramSpan('g1','keeping a better calendar')} and finding more willpower. Psychologists Fuschia Sirois and Timothy Pychyl argued something different: procrastination is really about managing emotion, not managing time.</p>
+
+  <p>Their theory starts with a specific ${vocabSpan('aversive','aversive')} feeling. Faced with a task that seems boring or anxiety-provoking, people ${gramSpan('g2','avoid starting it')} and instead find themselves ${gramSpan('g3','checking messages or tidying a desk')} — anything that offers a bit of immediate relief. That ${vocabSpan('avoidance','avoidance')} genuinely works, in the short term.</p>
+
+  <p>The catch is what it costs later. People with a strong ${vocabSpan('temporal','temporal')} bias toward the present tend ${gramSpan('g4','to weigh how a task feels right now far more heavily than what it will cost them next week')}. Researchers describe procrastination as a form of emotional ${vocabSpan('repair','repair')} — ${vocabSpan('prioritise','prioritising')} short-term mood over long-term goals — and the task doesn't disappear; someone, usually a less patient, more stressed future version of the same person, still has to do it.</p>
+
+  <p>The problem is genuinely ${vocabSpan('pervasive','pervasive')}, and for some people it becomes a ${vocabSpan('chronic','chronic')} pattern rather than an occasional lapse, showing up at work, at home, and in relationships. What actually helps, according to this research, isn't harsher self-criticism — it's ${vocabSpan('compassion','self-compassion')}. People who forgive themselves for procrastinating in the past are less likely, not more, to keep delaying the ${vocabSpan('intended','intended')} task next time, since they no longer need to avoid the task itself in order to avoid feeling bad about themselves.</p>
+  `;
+  document.getElementById('passage').classList.add('passage');
+
+  document.getElementById('gram-toggle').addEventListener('click', function(){
+    const passage = document.getElementById('passage');
+    const on = passage.classList.toggle('show-grammar');
+    this.classList.toggle('on', on);
+    this.textContent = on ? '🔍 Hide grammar in this text' : '🔍 Show grammar in this text';
+  });
+  document.querySelectorAll('.gram').forEach(el => {
+    el.addEventListener('click', () => {
+      Course.showPopup(`<div style="font-size:14.5px;line-height:1.6">${gramExplanations[el.dataset.gram]}</div>`, el);
+    });
+  });
+
+  Course.initVocab(vocabData, LESSON_ID);
+
+  /* ---------------- GAP-FILL HINT BUTTONS (click-to-reveal base verb) ---------------- */
+  document.querySelectorAll('.hint-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      Course.showPopup(`<div style="font-size:14px;line-height:1.6">Base verb: <b>${btn.dataset.hint}</b></div>`, btn);
+    });
+  });
+
+  /* ---------------- HOVER TOOLTIP (shared across this concept section) ----------------
+     Deliberately not using Course.showPopup for hover: that system uses a
+     full-screen backdrop, and on mouseenter the backdrop immediately covers
+     the trigger, firing mouseleave, which hides the popup, uncovering the
+     trigger, which re-fires mouseenter — an infinite show/hide loop. A tiny
+     pointer-events:none tooltip avoids this entirely. */
+  function ensureCompareTooltip(){
+    let el = document.getElementById('compare-tooltip');
+    if (!el){
+      el = document.createElement('div');
+      el.id = 'compare-tooltip';
+      document.body.appendChild(el);
+    }
+    return el;
+  }
+  const compareTooltipEl = ensureCompareTooltip();
+  function showCompareTooltip(html, anchorEl){
+    compareTooltipEl.innerHTML = html;
+    const rect = anchorEl.getBoundingClientRect();
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    const scrollX = window.scrollX || document.documentElement.scrollLeft;
+    compareTooltipEl.style.top = `${rect.bottom + scrollY + 8}px`;
+    compareTooltipEl.style.left = `${rect.left + scrollX}px`;
+    compareTooltipEl.classList.add('visible');
+  }
+  function hideCompareTooltip(){
+    compareTooltipEl.classList.remove('visible');
+  }
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.compare-box') && !e.target.closest('.trait-pill')) hideCompareTooltip();
+  });
+
+  function renderCompareCard(containerId, items, explanations){
+    const el = document.getElementById(containerId);
+    el.innerHTML = items.map(it => `
+      <div style="display:flex;gap:10px;align-items:baseline;margin-bottom:${it.groupEnd ? 20 : 8}px">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);flex-shrink:0;width:190px">${it.label}</span>
+        <span class="compare-box" data-key="${it.key}">"${it.text}"</span>
+      </div>
+    `).join('');
+    el.querySelectorAll('.compare-box').forEach(node => {
+      const html = `<div>${explanations[node.dataset.key]}</div>`;
+      node.addEventListener('mouseenter', () => showCompareTooltip(html, node));
+      node.addEventListener('mouseleave', hideCompareTooltip);
+      node.addEventListener('click', () => showCompareTooltip(html, node));
+    });
+  }
+
+  function renderPills(containerId, pairs, initialCount){
+    const el = document.getElementById(containerId);
+    const cap = initialCount && initialCount < pairs.length ? initialCount : pairs.length;
+    let expanded = false;
+
+    function makePill(p){
+      const pill = document.createElement('button');
+      pill.type = 'button';
+      pill.className = 'trait-pill';
+      pill.textContent = p.word;
+      const html = `<div>${p.example}</div>`;
+      pill.addEventListener('mouseenter', () => showCompareTooltip(html, pill));
+      pill.addEventListener('mouseleave', hideCompareTooltip);
+      pill.addEventListener('click', (e) => { e.stopPropagation(); showCompareTooltip(html, pill); });
+      return pill;
+    }
+
+    function render(){
+      el.innerHTML = '';
+      const visible = expanded ? pairs : pairs.slice(0, cap);
+      visible.forEach(p => el.appendChild(makePill(p)));
+      if (cap < pairs.length){
+        const toggle = document.createElement('button');
+        toggle.type = 'button';
+        toggle.className = 'trait-pill';
+        toggle.style.cssText = 'background:var(--surface-alt);color:var(--text-tertiary);border-style:dashed';
+        toggle.textContent = expanded ? '− Show fewer' : `+${pairs.length - cap} more`;
+        toggle.addEventListener('click', () => { expanded = !expanded; render(); });
+        el.appendChild(toggle);
+      }
+    }
+    render();
+  }
+
+  /* ---------------- SHARED VERB-PATTERN DATA (used by both the widget and
+     the "show full list" pills, so the two can never drift out of sync) ---------------- */
+  const gerundOnlyVerbs = [
+    { word: 'enjoy', example: 'She enjoys reading before bed.', highlight: 'enjoys reading' },
+    { word: 'avoid', example: 'He avoids eating late at night.', highlight: 'avoids eating' },
+    { word: 'suggest', example: 'I suggest starting earlier next time.', highlight: 'suggest starting' },
+    { word: 'finish', example: 'They finished painting the fence.', highlight: 'finished painting' },
+    { word: 'admit', example: 'He admitted making a mistake.', highlight: 'admitted making' },
+    { word: 'consider', example: "We're considering moving to Berlin.", highlight: 'considering moving' },
+    { word: 'postpone', example: 'She postponed calling the dentist.', highlight: 'postponed calling' },
+    { word: 'risk', example: 'He risked losing everything.', highlight: 'risked losing' },
+    { word: 'mind', example: 'Do you mind waiting a few minutes?', highlight: 'mind waiting' },
+    { word: 'miss', example: 'I miss seeing my old friends.', highlight: 'miss seeing' },
+    { word: 'imagine', example: "I can't imagine living without my phone.", highlight: 'imagine living' },
+    { word: 'dislike', example: 'She dislikes getting up early.', highlight: 'dislikes getting' },
+    { word: 'give up', example: 'He gave up smoking last year.', highlight: 'gave up smoking' },
+    { word: 'involve', example: 'The job involves travelling every month.', highlight: 'involves travelling' }
+  ];
+  const infinitiveOnlyVerbs = [
+    { word: 'want', example: 'I want to finish this today.', highlight: 'want to finish' },
+    { word: 'decide', example: 'She decided to change careers.', highlight: 'decided to change' },
+    { word: 'hope', example: 'We hope to visit soon.', highlight: 'hope to visit' },
+    { word: 'plan', example: 'They plan to move next year.', highlight: 'plan to move' },
+    { word: 'promise', example: 'He promised to call back.', highlight: 'promised to call' },
+    { word: 'refuse', example: 'She refused to apologise.', highlight: 'refused to apologise' },
+    { word: 'agree', example: 'They agreed to meet on Friday.', highlight: 'agreed to meet' },
+    { word: 'manage', example: 'I managed to finish on time.', highlight: 'managed to finish' },
+    { word: 'afford', example: "I can't afford to go on holiday this year.", highlight: 'afford to go' },
+    { word: 'arrange', example: 'We arranged to meet at noon.', highlight: 'arranged to meet' },
+    { word: 'intend', example: 'I intend to finish this by Friday.', highlight: 'intend to finish' },
+    { word: 'offer', example: 'She offered to help with the move.', highlight: 'offered to help' },
+    { word: 'pretend', example: 'He pretended not to notice.', highlight: 'pretended not to notice' }
+  ];
+  const eitherVerbs = [
+    { word: 'start', example: 'It started raining. / It started to rain.', highlight: ['started raining', 'started to rain'] },
+    { word: 'begin', example: 'She began working. / She began to work.', highlight: ['began working', 'began to work'] },
+    { word: 'continue', example: 'He continued talking. / He continued to talk.', highlight: ['continued talking', 'continued to talk'] },
+    { word: 'like', example: 'I like swimming. / I like to swim.', highlight: ['like swimming', 'like to swim'] },
+    { word: 'love', example: 'She loves dancing. / She loves to dance.', highlight: ['loves dancing', 'loves to dance'] },
+    { word: 'hate', example: 'I hate waiting. / I hate to wait.', highlight: ['hate waiting', 'hate to wait'] },
+    { word: 'prefer', example: 'We prefer walking. / We prefer to walk.', highlight: ['prefer walking', 'prefer to walk'] }
+  ];
+
+  /* ---------------- FULL VERB LIST PILLS (behind "show full list") ---------------- */
+  renderPills('gerund-only-pills', gerundOnlyVerbs);
+  renderPills('infinitive-only-pills', infinitiveOnlyVerbs);
+  renderPills('either-pills', eitherVerbs);
+
+  document.getElementById('pattern-list-toggle').addEventListener('click', function(){
+    const content = document.getElementById('pattern-list-content');
+    const open = content.classList.toggle('open');
+    this.textContent = open ? '📋 Hide full list of verbs' : '📋 Show full list of verbs';
+  });
+
+  /* ---------------- MAIN PATTERN WIDGET: browse 3 categories, or Quick check ---------------- */
+  (function buildPatternWidget(){
+    const categories = { gerund: gerundOnlyVerbs, infinitive: infinitiveOnlyVerbs, either: eitherVerbs };
+    const quizPool = [
+      ...gerundOnlyVerbs.map(v => ({ verb: v.word, answer: 'gerund' })),
+      ...infinitiveOnlyVerbs.map(v => ({ verb: v.word, answer: 'infinitive' })),
+      ...eitherVerbs.map(v => ({ verb: v.word, answer: 'either' }))
+    ];
+    const quizLabels = { gerund: 'gerund-only', infinitive: 'infinitive-only', either: 'fine either way' };
+    let mode = 'gerund';
+    const browseIdx = { gerund: 0, infinitive: 0, either: 0 };
+    const displayEl = document.getElementById('pattern-widget-area');
+    const hintEl = document.getElementById('pattern-widget-hint');
+
+    function highlightPhrase(sentence, phrases){
+      const list = Array.isArray(phrases) ? phrases : [phrases];
+      let result = sentence;
+      list.forEach(p => { result = result.replace(p, `<span class="rel-word">${p}</span>`); });
+      return `<span>${result}</span>`;
+    }
+
+    function renderBrowse(){
+      hintEl.style.display = 'block';
+      hintEl.textContent = '— Click the pills to see another example.';
+      displayEl.style.padding = '18px';
+      const data = categories[mode];
+      const item = data[browseIdx[mode]];
+      const sentenceHtml = highlightPhrase(item.example, item.highlight);
+      displayEl.innerHTML = `
+        <div style="overflow-x:auto;padding-bottom:2px">
+          <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:10px;align-items:center;min-width:420px">
+            <div class="static-cell is-primary-cell clickable-cell">${item.word}</div>
+            <div class="static-cell is-primary-cell clickable-cell">${sentenceHtml}</div>
+          </div>
+        </div>`;
+      displayEl.querySelectorAll('.clickable-cell').forEach(c => {
+        c.addEventListener('click', () => {
+          browseIdx[mode] = (browseIdx[mode] + 1) % data.length;
+          renderBrowse();
+        });
+      });
+    }
+
+    function renderQuiz(){
+      hintEl.style.display = 'none';
+      displayEl.style.padding = '12px 18px';
+      displayEl.innerHTML = `
+        <p id="pattern-quiz-verb" style="font-size:19px;font-weight:700;text-align:center;color:var(--accent);margin-bottom:8px"></p>
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap" id="pattern-quiz-options">
+          <button class="opt" data-answer="gerund" style="flex:0 1 auto">Gerund only</button>
+          <button class="opt" data-answer="infinitive" style="flex:0 1 auto">Infinitive only</button>
+          <button class="opt" data-answer="either" style="flex:0 1 auto">Either</button>
+        </div>
+        <div id="pattern-quiz-feedback" style="text-align:center;min-height:16px;margin-top:6px;font-size:13.5px"></div>
+        <div style="text-align:center;margin-top:4px">
+          <button class="btn btn-sm btn-ghost" id="pattern-quiz-next" style="display:none">Next verb →</button>
+        </div>`;
+
+      let order = Course.shuffleArray(quizPool.map((_, i) => i));
+      let pos = 0;
+      let answered = false;
+      const verbEl = document.getElementById('pattern-quiz-verb');
+      const optionsEl = document.getElementById('pattern-quiz-options');
+      const feedbackEl = document.getElementById('pattern-quiz-feedback');
+      const nextBtn = document.getElementById('pattern-quiz-next');
+
+      function renderQ(){
+        answered = false;
+        feedbackEl.textContent = '';
+        nextBtn.style.display = 'none';
+        verbEl.textContent = quizPool[order[pos]].verb;
+        [...optionsEl.children].forEach(btn => { btn.className = 'opt'; });
+      }
+      optionsEl.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (answered) return;
+          answered = true;
+          const item = quizPool[order[pos]];
+          const correct = btn.dataset.answer === item.answer;
+          [...optionsEl.children].forEach(b => {
+            if (b === btn) b.classList.add(correct ? 'ok' : 'bad');
+            else if (b.dataset.answer === item.answer) b.classList.add('ok');
+            else b.classList.add('dim');
+          });
+          feedbackEl.innerHTML = correct
+            ? `<span style="color:var(--ok)">✓ Correct! "${item.verb}" is ${quizLabels[item.answer]}.</span>`
+            : `<span style="color:var(--bad)">Not quite — "${item.verb}" is ${quizLabels[item.answer]}.</span>`;
+          nextBtn.style.display = 'inline-block';
+        });
+      });
+      nextBtn.addEventListener('click', () => {
+        pos += 1;
+        if (pos >= order.length){ order = Course.shuffleArray(quizPool.map((_, i) => i)); pos = 0; }
+        renderQ();
+      });
+      renderQ();
+    }
+
+    function updateListToggleState(){
+      const btn = document.getElementById('pattern-list-toggle');
+      const content = document.getElementById('pattern-list-content');
+      if (mode === 'quiz'){
+        btn.disabled = true;
+        btn.textContent = '📋 Disabled during Quick check';
+        content.classList.remove('open');
+      } else {
+        btn.disabled = false;
+        const isOpen = content.classList.contains('open');
+        btn.textContent = isOpen ? '📋 Hide full list of verbs' : '📋 Show full list of verbs';
+      }
+    }
+    function switchMode(newMode){
+      mode = newMode;
+      ['gerund', 'infinitive', 'either', 'quiz'].forEach(m => {
+        document.getElementById(`mode-pattern-${m}`).classList.toggle('on', m === newMode);
+      });
+      if (newMode === 'quiz') renderQuiz();
+      else renderBrowse();
+      updateListToggleState();
+    }
+    document.getElementById('mode-pattern-gerund').addEventListener('click', () => switchMode('gerund'));
+    document.getElementById('mode-pattern-infinitive').addEventListener('click', () => switchMode('infinitive'));
+    document.getElementById('mode-pattern-either').addEventListener('click', () => switchMode('either'));
+    document.getElementById('mode-pattern-quiz').addEventListener('click', () => switchMode('quiz'));
+    switchMode('gerund');
+  })();
+
+  renderPills('object-infinitive-pills', [
+    { word: 'want', example: 'I want you to help me.' },
+    { word: 'ask', example: 'She asked him to close the door.' },
+    { word: 'tell', example: 'He told her to wait.' },
+    { word: 'expect', example: 'I expect you to arrive on time.' },
+    { word: 'would like', example: "I'd like you to meet my sister." },
+    { word: 'remind', example: 'Remind me to call her.' },
+    { word: 'invite', example: 'They invited us to join them.' },
+    { word: 'warn', example: 'She warned him to be careful.' },
+    { word: 'advise', example: 'The doctor advised him to rest.' },
+    { word: 'persuade', example: 'They persuaded her to join the team.' },
+    { word: 'teach', example: 'Did Martin teach Gary to play squash?' },
+    { word: 'order', example: 'The officer ordered them to stop.' },
+    { word: 'forbid', example: 'Her parents forbade her to go out.' }
+  ]);
+  renderPills('bare-infinitive-pills', [
+    { word: 'make', example: 'She made me laugh. (no "to")' },
+    { word: 'let', example: 'Let him go. (no "to")' },
+    { word: 'help', example: 'He helped me move the sofa. / He helped me to move the sofa. (either works)' }
+  ]);
+  renderPills('preposition-pills', [
+    { word: 'interested in', example: "She's interested in learning French." },
+    { word: 'good at', example: "He's good at solving problems." },
+    { word: 'afraid of', example: "I'm afraid of flying." },
+    { word: 'instead of', example: 'She called instead of texting.' },
+    { word: 'keen on', example: "He's keen on trying new restaurants." },
+    { word: 'tired of', example: "I'm tired of waiting." }
+  ]);
+
+  /* ---------------- OBJECT + GERUND PILLS ---------------- */
+  renderPills('object-gerund-pills', [
+    { word: "can't stand", example: "I can't stand him talking with his mouth full." },
+    { word: 'imagine', example: "We couldn't imagine Gerry singing in public." },
+    { word: 'mind', example: 'Do you mind me being here while you work?' },
+    { word: 'risk', example: "I don't want to risk him losing his job." },
+    { word: 'involve', example: 'The job involves her travelling every month.' }
+  ]);
+
+  /* ---------------- PERCEPTION VERBS: -ING VS BARE INFINITIVE ---------------- */
+  renderCompareCard('compare-perception', [
+    { key:'p1', label:'see + -ing', text: 'A police officer saw him running along the street.' },
+    { key:'p2', label:'see + bare infinitive', text: 'Emily saw Philip run out of the office.', groupEnd: true },
+    { key:'p3', label:'hear + -ing', text: 'She heard people shouting in the street below.' },
+    { key:'p4', label:'hear + bare infinitive', text: 'I heard someone shout "Help!"', groupEnd: true },
+    { key:'p5', label:'watch + -ing', text: 'I watched her cooking dinner for an hour.' },
+    { key:'p6', label:'watch + bare infinitive', text: 'I watched her cook the whole meal from start to finish.' }
+  ], {
+    p1: 'Emphasises the running as it was happening — the officer saw part of an ongoing action.',
+    p2: 'Emphasises the whole event, start to finish — Philip ran out, and that\'s the complete picture.',
+    p3: 'Emphasises that the shouting probably continued or repeated — an ongoing sound.',
+    p4: 'Emphasises the whole event as one instance — probably a single shout.',
+    p5: 'Emphasises the cooking as an ongoing process I witnessed part of.',
+    p6: 'Emphasises the entire action as a complete, finished event, beginning to end.'
+  });
+
+  /* ---------------- MEANING-CHANGE VERBS: one-at-a-time widget ---------------- */
+  const meaningChangeVerbs = [
+    { verb: 'remember', ing: 'I remember locking the door.', ingExpl: 'A memory of something that already happened — the locking is in the past, and I recall doing it.', to: 'I remembered to lock the door.', toExpl: "Not forgetting a task I had to do — I didn't forget, and the locking happened as planned." },
+    { verb: 'stop', ing: 'I stopped smoking.', ingExpl: 'Quitting a habit entirely — I no longer smoke, period.', to: 'I stopped to smoke.', toExpl: 'Pausing whatever I was doing in order to smoke — the stopping was for a purpose, not permanent.' },
+    { verb: 'try', ing: 'Try turning it off and on.', ingExpl: 'Experimenting with an action to see what happens — no guarantee of success either way.', to: 'I tried to open the door.', toExpl: 'Attempting something with effort, possibly failing — the outcome is genuinely uncertain.' },
+    { verb: 'forget', ing: 'I will never forget meeting her.', ingExpl: 'A strong, positive memory that won\'t fade — often used with "never."', to: 'I forgot to call her.', toExpl: 'Failing to do a task I was supposed to do — a simple, everyday slip.' },
+    { verb: 'regret', ing: 'I regret telling him.', ingExpl: "Wishing I hadn't done something — a personal regret about a past action.", to: 'I regret to inform you that the flight is cancelled.', toExpl: 'A fixed, formal phrase for delivering bad news — not really about "regret" as an emotion at all.' },
+    { verb: 'mean', ing: 'Working in London means leaving home at 6.30.', ingExpl: '"Means" here is closer to "implies" or "results in" — a logical consequence, not an intention.', to: "I didn't mean to make you cry.", toExpl: '"Mean to" is about intention — what I was trying (or not trying) to do.' },
+    { verb: 'need', ing: 'This shirt needs ironing.', ingExpl: 'A passive-ish sense — the shirt needs to BE ironed, by someone unspecified.', to: 'I need to iron this shirt.', toExpl: 'An active sense — I am the one who will do the ironing.' },
+    { verb: 'go on', ing: 'He went on singing after everyone else had finished.', ingExpl: 'Continuing the exact same activity without stopping — still singing, uninterrupted.', to: 'She recited a poem, then went on to sing a folk song.', toExpl: 'Finishing one thing, then moving on to a new, different activity — the poem ends, the song begins.' }
+  ];
+  (function buildMeaningChangeWidget(){
+    let idx = 0;
+    const displayEl = document.getElementById('meaning-change-display');
+    const counterEl = document.getElementById('meaning-change-counter');
+    function render(){
+      const v = meaningChangeVerbs[idx];
+      displayEl.innerHTML = `
+        <div style="text-align:center;margin-bottom:14px">
+          <span style="font-size:17px;font-weight:700;color:var(--accent)">${v.verb}</span>
+        </div>
+        <div style="overflow-x:auto;padding-bottom:2px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;min-width:420px">
+            <div style="padding:14px;border-radius:var(--radius-md);border:1px solid var(--accent);background:var(--surface)">
+              <div style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:8px">+ -ing</div>
+              <div style="font-weight:650;margin-bottom:10px;color:var(--accent)">"${v.ing}"</div>
+              <div style="font-size:13px;color:var(--text-secondary);line-height:1.5">${v.ingExpl}</div>
+            </div>
+            <div style="padding:14px;border-radius:var(--radius-md);border:1px solid var(--accent);background:var(--accent-soft)">
+              <div style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:8px">+ to</div>
+              <div style="font-weight:650;margin-bottom:10px;color:var(--accent-dark)">"${v.to}"</div>
+              <div style="font-size:13px;color:var(--text-secondary);line-height:1.5">${v.toExpl}</div>
+            </div>
+          </div>
+        </div>`;
+      counterEl.textContent = `${idx + 1} / ${meaningChangeVerbs.length}`;
+    }
+    document.getElementById('meaning-change-prev').addEventListener('click', () => {
+      idx = (idx - 1 + meaningChangeVerbs.length) % meaningChangeVerbs.length;
+      render();
+    });
+    document.getElementById('meaning-change-next').addEventListener('click', () => {
+      idx = (idx + 1) % meaningChangeVerbs.length;
+      render();
+    });
+    render();
+  })();
+
+  /* ---------------- GOING FURTHER TOGGLE ---------------- */
+  document.getElementById('going-further-toggle').addEventListener('click', function(){
+    const content = document.getElementById('going-further-content');
+    const open = content.classList.toggle('open');
+    this.textContent = open ? '🔎 Hide these patterns' : '🔎 Show more patterns';
+  });
+
+  /* ---------------- MCQ SECTIONS (via shared engine) ---------------- */
+  const mcqSections = [
+    ['warm-q1','warmup-1','right'], ['warm-q2','warmup-2','right'], ['warm-q3','warmup-3','right'],
+    ['diag-q1','diagnostic-1','right'], ['diag-q2','diagnostic-2','right'], ['diag-q3','diagnostic-3','right'], ['diag-q4','diagnostic-4','right'],
+    ['comp-q1','reading-comprehension-1','right'], ['comp-q2','reading-comprehension-2','right'], ['comp-q3','reading-comprehension-3','right'],
+    ['vocab-q1','vocab-1','right'], ['vocab-q2','vocab-2','right'], ['vocab-q3','vocab-3','right'], ['vocab-q4','vocab-4','right'], ['vocab-q5','vocab-5','right'],
+    ['cat-q1','practice-categorise-1','right'], ['cat-q2','practice-categorise-2','right'], ['cat-q3','practice-categorise-3','right'], ['cat-q4','practice-categorise-4','right'],
+    ['cat-q5','practice-categorise-5','right'], ['cat-q6','practice-categorise-6','right'], ['cat-q7','practice-categorise-7','right'], ['cat-q8','practice-categorise-8','right'],
+    ['listen-q1','listening-1','right'], ['listen-q2','listening-2','right'], ['listen-q3','listening-3','right'],
+    ['exit-q1','exit-1','right'], ['exit-q2','exit-2','right'], ['exit-q3','exit-3','right'], ['exit-q4','exit-4','right'], ['exit-q5','exit-5','right']
+  ];
+  mcqSections.forEach(([id, section, correctVal]) => {
+    Course.shuffleOptions(id);
+    Course.initMCQ(id, {
+      lessonId: LESSON_ID, sectionId: section, correctValue: correctVal, onAnswered: updateOverallProgress,
+      restoreAnswer: sectionMap[section] ? sectionMap[section].answer_given : undefined
+    });
+  });
+  if (!sectionMap['listening-1']) Course.ensureGroupVariety(['listen-q1','listen-q2','listen-q3']);
+  if (!sectionMap['reading-comprehension-1']) Course.ensureGroupVariety(['comp-q1','comp-q2','comp-q3']);
+  if (!sectionMap['practice-categorise-1']) Course.ensureGroupVariety(['cat-q1','cat-q2','cat-q3','cat-q4','cat-q5','cat-q6','cat-q7','cat-q8']);
+
+  /* ---------------- GAP FILL (restorable) ---------------- */
+  const gapFills = [
+    ['gap1-input','gap1-check','gap1-fb','practice-gapfill-1', ['answering'], true],
+    ['gap2-input','gap2-check','gap2-fb','practice-gapfill-2', ['to call'], false],
+    ['gap3-input','gap3-check','gap3-fb','practice-gapfill-3', ['to open'], false],
+    ['gap4-input','gap4-check','gap4-fb','practice-gapfill-4', ['to send'], false],
+    ['gap5-input','gap5-check','gap5-fb','practice-gapfill-5', ['postponing'], false],
+    ['gap6-input','gap6-check','gap6-fb','practice-gapfill-6', ['solving'], false],
+    ['vgap1-input','vgap1-check','vgap1-fb','vocab-gapfill-1', ['avoidance'], true],
+    ['vgap2-input','vgap2-check','vgap2-fb','vocab-gapfill-2', ['prioritise', 'prioritize'], false],
+    ['vgap3-input','vgap3-check','vgap3-fb','vocab-gapfill-3', ['intended'], false],
+    ['vgap4-input','vgap4-check','vgap4-fb','vocab-gapfill-4', ['repair'], false]
+  ];
+  gapFills.forEach(([inputId, btnId, fbId, section, answers, showHint]) => {
+    const restored = sectionMap[section];
+    Course.initGapFill(inputId, btnId, fbId, {
+      lessonId: LESSON_ID, sectionId: section, correctAnswers: answers, showAnswerHint: showHint,
+      restore: restored ? { answerGiven: restored.answer_given, isCorrect: restored.override_correct ?? restored.is_correct } : undefined,
+      onAnswered: updateOverallProgress
+    });
+  });
+
+  /* ---------------- FIX THE SENTENCE (error-spot) ---------------- */
+  const fixItems = [
+    { id:'fix1', section:'practice-fix-1', words:['She','enjoys','to','read','before','bed.'], errorIndices:[2,3], correction:'reading' },
+    { id:'fix2', section:'practice-fix-2', words:['They','decided','moving','to','a','new','city.'], errorIndices:[2], correction:'to move' },
+    { id:'fix3', section:'practice-fix-3', words:['He','avoided','to','answer','the','question.'], errorIndices:[2,3], correction:'answering' },
+    { id:'fix4', section:'practice-fix-4', words:["I'm",'interested','to','learn','French.'], errorIndices:[2,3], correction:'in learning' }
+  ];
+  fixItems.forEach(item => {
+    const restored = sectionMap[item.section];
+    Course.initErrorSpot(item.id, {
+      lessonId: LESSON_ID, sectionId: item.section, words: item.words, errorIndices: item.errorIndices, correction: item.correction,
+      onAnswered: updateOverallProgress,
+      restore: restored ? { answerGiven: restored.answer_given } : undefined
+    });
+  });
+
+  /* ---------------- SENTENCE BUILDER (single-clause safe. Locks immediately
+     on Check, not just on reload.) ---------------- */
+  const builderRounds = [
+    { words: ['she','enjoys','reading','before','bed'],
+      accepted: ['she enjoys reading before bed'] },
+    { words: ['they','decided','to','move','to','a','new','city'],
+      accepted: ['they decided to move to a new city'] },
+    { words: ['he','avoided','answering','the','question'],
+      accepted: ['he avoided answering the question'] }
+  ];
+  const buildersEl = document.getElementById('builders');
+  builderRounds.forEach((round, ri) => {
+    const sectionId = `practice-builder-${ri+1}`;
+    const restored = sectionMap[sectionId];
+    const bankOrder = Course.shuffleArray(round.words.map((_, i) => i));
+    let state = [];
+    let locked = false;
+
+    if (restored){
+      const used = new Set();
+      restored.answer_given.split(' ').forEach(tok => {
+        const idx = round.words.findIndex((w, i) => w === tok && !used.has(i));
+        if (idx >= 0){ used.add(idx); state.push(idx); }
+      });
+      locked = true;
+    }
+
+    const wrap = document.createElement('div');
+    wrap.style.marginBottom = '20px';
+    wrap.innerHTML = `
+      <div class="builder-bank" id="builder-bank-${ri}"></div>
+      <div class="builder-target" id="builder-target-${ri}"></div>
+      <p style="font-size:12px;color:var(--text-tertiary);margin-top:6px">Tap a word in your sentence to send it back to the pool.</p>
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+        <button class="btn btn-sm" id="builder-check-${ri}">Check order</button>
+        <button class="btn btn-sm btn-ghost" id="builder-reset-${ri}">Reset</button>
+      </div>
+      <div id="builder-fb-${ri}"></div>
+    `;
+    buildersEl.appendChild(wrap);
+
+    const bank = wrap.querySelector(`#builder-bank-${ri}`);
+    const target = wrap.querySelector(`#builder-target-${ri}`);
+    function render(){
+      bank.innerHTML = '';
+      bankOrder.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip' + (state.includes(i) ? ' used' : '');
+        chip.textContent = round.words[i];
+        if (!locked) chip.addEventListener('click', () => { if (state.includes(i)) return; state.push(i); render(); });
+        else chip.disabled = true;
+        bank.appendChild(chip);
+      });
+      target.innerHTML = '';
+      state.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip';
+        chip.textContent = round.words[i];
+        if (!locked){
+          chip.title = 'Click to remove';
+          chip.addEventListener('click', () => { state = state.filter(x => x !== i); render(); });
+        } else {
+          chip.disabled = true;
+        }
+        target.appendChild(chip);
+      });
+    }
+    render();
+
+    if (restored){
+      const isCorrect = restored.override_correct ?? restored.is_correct;
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+    }
+
+    wrap.querySelector(`#builder-reset-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      state = []; render(); wrap.querySelector(`#builder-fb-${ri}`).innerHTML = '';
+    });
+    wrap.querySelector(`#builder-check-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      const attempt = state.map(i => round.words[i]).join(' ');
+      const isCorrect = round.accepted.includes(attempt);
+      locked = true;
+      render();
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+      Course.logProgress({ lessonId: LESSON_ID, sectionId, answerGiven: attempt, isCorrect });
+      updateOverallProgress();
+    });
+  });
+
+  /* ---------------- SPEAKING MODE TOGGLE ---------------- */
+  document.getElementById('mode-solo').addEventListener('click', () => {
+    document.getElementById('mode-solo').classList.add('on');
+    document.getElementById('mode-group').classList.remove('on');
+    document.getElementById('speak-solo').style.display = 'block';
+    document.getElementById('speak-group').style.display = 'none';
+  });
+  document.getElementById('mode-group').addEventListener('click', () => {
+    document.getElementById('mode-group').classList.add('on');
+    document.getElementById('mode-solo').classList.remove('on');
+    document.getElementById('speak-group').style.display = 'block';
+    document.getElementById('speak-solo').style.display = 'none';
+  });
+
+  /* ---------------- SOLO SPEAKING TASK — MARK AS DONE (restorable) ---------------- */
+  const SOLO_TASK_LABEL = "Solo speaking task: three enjoyments, one decision, one avoidance, using correct gerund/infinitive forms.";
+  const soloDoneBtn = document.getElementById('solo-done-btn');
+  let soloDone = !!(sectionMap['speaking-solo'] && sectionMap['speaking-solo'].status === 'completed');
+  function renderSoloBtn(){
+    soloDoneBtn.textContent = soloDone ? "✓ Marked as done" : "✓ I've done this";
+    soloDoneBtn.classList.toggle('btn-primary', soloDone);
+  }
+  renderSoloBtn();
+  soloDoneBtn.addEventListener('click', () => {
+    soloDone = !soloDone;
+    renderSoloBtn();
+    Course.logProgress({
+      lessonId: LESSON_ID, sectionId: 'speaking-solo', exerciseType: 'oral',
+      status: soloDone ? 'completed' : 'not_attempted', answerGiven: SOLO_TASK_LABEL
+    });
+  });
+
+  /* ---------------- DISCUSSION QUESTION PICKER (restorable) ---------------- */
+  const discussQuestions = [
+    "Is there a task you keep avoiding? Describe how it makes you feel to think about starting it.",
+    "Do you think self-compassion or stricter self-discipline actually helps more with procrastination? Why?",
+    "Describe a time you finally finished something you'd been putting off. How did it feel afterwards?",
+    "What's something you've decided to start doing, and something you've managed to stop doing?"
+  ];
+  const discussEl = document.getElementById('discuss-questions');
+  let pickedQuestions = [];
+  discussQuestions.forEach((q, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'discuss-q';
+    btn.dataset.idx = i;
+    btn.innerHTML = `<span class="chk"></span><span>${q}</span>`;
+    const restored = sectionMap[`speaking-q${i+1}`];
+    if (restored && restored.status === 'completed'){
+      pickedQuestions.push(i);
+      btn.classList.add('picked');
+    }
+    btn.addEventListener('click', () => {
+      const isPicked = pickedQuestions.includes(i);
+      if (isPicked){
+        pickedQuestions = pickedQuestions.filter(x => x !== i);
+        btn.classList.remove('picked');
+      } else {
+        if (pickedQuestions.length >= 2){
+          document.getElementById('discuss-limit-msg').style.color = 'var(--bad)';
+          document.getElementById('discuss-limit-msg').textContent = 'You can only pick up to 2 — deselect one first.';
+          return;
+        }
+        pickedQuestions.push(i);
+        btn.classList.add('picked');
+      }
+      document.getElementById('discuss-limit-msg').style.color = '';
+      document.getElementById('discuss-limit-msg').textContent = 'You can select up to 2 questions.';
+      Course.logProgress({
+        lessonId: LESSON_ID, sectionId: `speaking-q${i+1}`, exerciseType: 'oral',
+        status: isPicked ? 'not_attempted' : 'completed', answerGiven: q
+      });
+    });
+    discussEl.appendChild(btn);
+  });
+
+  /* ---------------- LISTENING DIALOGUE ---------------- */
+  const AUDIO_SRC = 'audio/lesson-20-listening.mp3';
+  const dialogue = [
+    { speaker:'Anna', pitch:1.12, line:"You still haven't replied to that email, have you?" },
+    { speaker:'Tomasz', pitch:0.88, line:"I keep avoiding opening it. I know that's ridiculous." },
+    { speaker:'Anna', pitch:1.12, line:"It's not ridiculous, it's just what we read about — you're avoiding the feeling, not the task itself." },
+    { speaker:'Tomasz', pitch:0.88, line:"That's fair. It's just such an aversive thing to deal with right now." },
+    { speaker:'Anna', pitch:1.12, line:"Try setting a timer for five minutes and just starting. You don't have to finish it." },
+    { speaker:'Tomasz', pitch:0.88, line:"Five minutes I can manage. Okay, I'll try doing that after this." },
+    { speaker:'Anna', pitch:1.12, line:"Good. Let me know how it goes." },
+    { speaker:'Tomasz', pitch:0.88, line:"I will — oh, and I forgot to say, thanks for the advice." }
+  ];
+
+  let audioAvailable = false;
+  const audioEl = document.getElementById('dialogue-audio');
+  fetch(AUDIO_SRC, { method:'HEAD' }).then(r => { if (r.ok){ audioAvailable = true; audioEl.src = AUDIO_SRC; } }).catch(() => {});
+
+  const transcriptEl = document.getElementById('transcript');
+  dialogue.forEach((d, i) => {
+    const line = document.createElement('div');
+    line.className = 'transcript-line';
+    line.id = `t-line-${i}`;
+    line.innerHTML = `<b>${d.speaker}:</b> ${d.line}`;
+    transcriptEl.appendChild(line);
+  });
+
+  const playBtn = document.getElementById('play-dialogue');
+  let isPlaying = false;
+  let currentIdx = 0;
+
+  function updatePlayButton(){
+    if (isPlaying){ playBtn.textContent = '⏸ Pause'; return; }
+    if (window.speechSynthesis.paused){ playBtn.textContent = '▶ Resume'; return; }
+    playBtn.textContent = '▶ Play dialogue';
+  }
+
+  function speakLineAt(idx){
+    if (idx >= dialogue.length){ isPlaying = false; currentIdx = 0; updatePlayButton(); return; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    document.getElementById(`t-line-${idx}`).classList.add('shown', 'active');
+    const u = new SpeechSynthesisUtterance(dialogue[idx].line);
+    u.rate = 0.95; u.pitch = dialogue[idx].pitch;
+    u.onend = () => { if (isPlaying){ currentIdx = idx + 1; speakLineAt(currentIdx); } };
+    window.speechSynthesis.speak(u);
+  }
+
+  playBtn.addEventListener('click', () => {
+    if (audioAvailable){
+      if (audioEl.paused){ audioEl.play(); isPlaying = true; }
+      else { audioEl.pause(); isPlaying = false; }
+      updatePlayButton();
+      return;
+    }
+    if (!isPlaying){
+      isPlaying = true;
+      if (window.speechSynthesis.paused){ window.speechSynthesis.resume(); }
+      else {
+        // Defensive reset, fresh-start only (never on resume/pause): speechSynthesis
+        // has a well-documented browser bug where it can silently stop accepting
+        // new speech after earlier calls elsewhere on the page (e.g. the vocab-word
+        // audio buttons), leaving Play looking broken with no error anywhere.
+        // Clearing the queue right before a genuinely fresh play avoids that class
+        // of bug without disturbing an actual pause/resume in progress.
+        window.speechSynthesis.cancel();
+        speakLineAt(currentIdx);
+      }
+    } else {
+      isPlaying = false;
+      window.speechSynthesis.pause();
+    }
+    updatePlayButton();
+  });
+
+  document.getElementById('stop-dialogue').addEventListener('click', () => {
+    isPlaying = false;
+    currentIdx = 0;
+    window.speechSynthesis.cancel();
+    if (audioAvailable){ audioEl.pause(); audioEl.currentTime = 0; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    updatePlayButton();
+  });
+
+  audioEl.addEventListener('ended', () => { isPlaying = false; updatePlayButton(); });
+
+  document.getElementById('show-transcript').addEventListener('click', function(){
+    const shown = transcriptEl.classList.toggle('all-shown');
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.toggle('shown', shown));
+    this.textContent = shown ? 'Hide transcript' : 'Show full transcript';
+  });
+
+  updateOverallProgress();
+})();
+
+/* ---------------- OVERALL PROGRESS BAR ---------------- */
+const LESSON_TOTAL_POSSIBLE = 31 + 10 + 4 + 3; // mcqSections(incl. 8 categorise) + gapFills + fixItems + builderRounds
+function updateOverallProgress(){
+  const attempted = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+  const pct = Math.min(100, Math.round((attempted / LESSON_TOTAL_POSSIBLE) * 100));
+  document.getElementById('overall-progress').style.width = pct + '%';
+}
+
+/* ---------------- FINISH / SUMMARY ---------------- */
+document.getElementById('finish-btn').addEventListener('click', async () => {
+  const btn = document.getElementById('finish-btn');
+  const original = btn.textContent;
+  btn.textContent = 'Checking for teacher updates…'; btn.disabled = true;
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+  } finally {
+    btn.textContent = original; btn.disabled = false;
+  }
+  try {
+    const { correct, total } = Course.lessonScore(LESSON_ID);
+    Course.renderScoreRing('score-ring-holder', correct, total);
+    document.getElementById('summary-name').textContent = `${Course.getStudentName()} — ${correct}/${total} correct`;
+
+    const attemptedCount = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+    const completionPct = Math.min(100, Math.round((attemptedCount / LESSON_TOTAL_POSSIBLE) * 100));
+    const completionEl = document.getElementById('summary-completion');
+    if (attemptedCount < LESSON_TOTAL_POSSIBLE){
+      completionEl.style.color = 'var(--warn)';
+      completionEl.textContent = `⚠ Only ${completionPct}% of the lesson attempted so far (${attemptedCount} of ${LESSON_TOTAL_POSSIBLE} exercises) — the score above only reflects what's been answered.`;
+    } else {
+      completionEl.style.color = 'var(--ok)';
+      completionEl.textContent = `✓ Every exercise in this lesson has been attempted.`;
+    }
+
+    const weak = Course.weakSections(LESSON_ID);
+    document.getElementById('summary-weak').textContent = weak.length
+      ? `Worth revisiting: ${weak.join(', ')}`
+      : 'Strong across the board — nice work!';
+    document.getElementById('export-btn').style.display = 'inline-block';
+    updateOverallProgress();
+
+    const card = document.getElementById('summary-card');
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    card.classList.remove('summary-pulse'); void card.offsetWidth;
+    card.classList.add('summary-pulse');
+  } catch (err){
+    console.error('Finish lesson failed:', err);
+    let banner = document.getElementById('finish-error-banner');
+    if (!banner){
+      banner = document.createElement('div');
+      banner.id = 'finish-error-banner';
+      banner.className = 'error-banner';
+      document.getElementById('summary-card').appendChild(banner);
+    }
+    banner.textContent = `Something went wrong computing your results (${err.message}). Try reloading the page — your saved answers won't be lost.`;
+  }
+});
+document.getElementById('export-btn').addEventListener('click', async () => {
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+    Course.exportReportPDF(LESSON_ID, 'Gerunds vs. Infinitives', LESSON_TOTAL_POSSIBLE);
+  } catch (err){
+    console.error('PDF export failed:', err);
+    alert('The PDF export ran into a problem: ' + err.message);
+  }
+});
+</script>
+
+<script>
+{
+  const allLessonsLink = document.getElementById('all-lessons-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  allLessonsLink.href = groupParam ? `index-standalone.html?group=${encodeURIComponent(groupParam)}` : 'index-standalone.html';
+}
+</script>
+</body>
+</html>

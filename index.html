@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English+ Grammar Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+<style>
+  .course-attribution{
+    text-align:center;font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;
+    color:var(--text-tertiary);padding:14px 20px 0;
+  }
+  .welcome-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
+    padding:28px 24px;margin-bottom:24px;text-align:center;
+  }
+  .welcome-card h1{font-size:24px;margin-bottom:8px}
+  .welcome-card p{font-size:14.5px;color:var(--text-secondary);line-height:1.6;margin-bottom:20px}
+  .name-form{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;max-width:380px;margin:0 auto}
+  .name-form .btn{border-radius:var(--radius-sm)}
+  .name-input{
+    flex:1;min-width:180px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);
+    padding:10px 18px;font-family:inherit;font-size:14.5px;text-align:center;
+  }
+  .welcome-back{font-size:14.5px;color:var(--text-secondary);margin-bottom:4px}
+  .welcome-back b{color:var(--text)}
+  .change-name-link{font-size:12.5px;color:var(--text-tertiary);text-decoration:underline;cursor:pointer;background:none;border:none;font-family:inherit;padding:0;margin-top:10px}
+
+  .lesson-list-group{margin-bottom:22px}
+  .lesson-list-group-title{
+    font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--text-tertiary);
+    font-weight:650;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border);
+  }
+  .lesson-list-item{
+    display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:var(--radius-md);
+    text-decoration:none;color:var(--text);font-size:14px;transition:background .12s;
+    border:1px solid transparent;
+  }
+  .lesson-list-item:hover{background:var(--surface-alt);border-color:var(--border)}
+  .lesson-list-item.is-test{background:var(--accent-soft);border-color:var(--accent-soft-border)}
+  .lesson-list-item.is-test:hover{background:var(--accent-soft)}
+  .lesson-list-num{
+    flex-shrink:0;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:11.5px;font-weight:650;background:var(--surface-alt);color:var(--text-secondary);
+  }
+  .is-test .lesson-list-num{background:var(--accent);color:#fff}
+</style>
+</head>
+<body>
+
+<div class="course-attribution">English+ Grammar Course · by Kris Galezewski</div>
+
+<div class="shell">
+  <div class="welcome-card" id="welcome-card">
+    <h1>Welcome to English+ with Kris</h1>
+    <p id="welcome-copy">A B1+/B2 grammar course built around real practice, not just rules.<br>Add your name, so that you can track your progress throughout the course.</p>
+    <form class="name-form" id="name-form">
+      <input type="text" id="name-input" class="name-input" placeholder="Your name" autocomplete="off">
+      <button type="submit" class="btn btn-primary">Start</button>
+    </form>
+  </div>
+
+  <div id="lesson-index"></div>
+</div>
+
+<script src="shared/course-engine.js"></script>
+<script>
+const LESSONS = [
+  { id: 'lesson-01-present-simple-vs-continuous', title: 'Lesson 1 — Present Simple vs. Present Continuous' },
+  { id: 'lesson-02-past-simple-vs-continuous', title: 'Lesson 2 — Past Simple vs. Past Continuous' },
+  { id: 'lesson-03-present-perfect-vs-past-simple', title: 'Lesson 3 — Present Perfect vs. Past Simple' },
+  { id: 'test-01-review-lessons-1-3', title: 'Test 1 — Review of Lessons 1–3', isTest: true },
+  { id: 'lesson-04-present-perfect-simple-vs-continuous', title: 'Lesson 4 — Present Perfect Simple vs. Present Perfect Continuous' },
+  { id: 'lesson-05-past-perfect-simple-vs-continuous', title: 'Lesson 5 — Past Perfect Simple vs. Past Perfect Continuous' },
+  { id: 'lesson-06-future-forms', title: 'Lesson 6 — Will vs. Going To vs. Present Continuous' },
+  { id: 'test-02-review-lessons-4-6', title: 'Test 2 — Review of Lessons 4–6', isTest: true },
+  { id: 'lesson-07-future-perfect-vs-continuous', title: 'Lesson 7 — Future Perfect vs. Future Continuous' },
+  { id: 'lesson-08-modals-ability-permission-obligation', title: 'Lesson 8 — Modals of Ability, Permission, Obligation, and Prohibition' },
+  { id: 'lesson-09-modals-deduction-speculation', title: 'Lesson 9 — Modals of Deduction and Speculation' },
+  { id: 'test-03-review-lessons-7-9', title: 'Test 3 — Review of Lessons 7–9', isTest: true },
+  { id: 'lesson-10-modal-perfect', title: 'Lesson 10 — Modal Perfect: Should Have, Could Have, Would Have' },
+  { id: 'lesson-11-passive-voice', title: 'Lesson 11 — Passive Voice: Core Forms Across Tenses' },
+  { id: 'big-test-1-review-lessons-1-11', title: 'Big Test 1 — Review of Lessons 1–11', isTest: true },
+  { id: 'lesson-12-passive-extensions', title: 'Lesson 12 — Passive Extensions: Reporting Structures & Causative' },
+  { id: 'lesson-13-conditionals-zero-first', title: 'Lesson 13 — Conditionals: Zero & First' },
+  { id: 'lesson-14-second-conditional', title: 'Lesson 14 — Second Conditional' },
+  { id: 'test-04-review-lessons-12-14', title: 'Test 4 — Review of Lessons 12–14', isTest: true },
+  { id: 'lesson-15-third-conditional', title: 'Lesson 15 — Third Conditional' },
+  { id: 'lesson-16-mixed-conditionals', title: 'Lesson 16 — Mixed Conditionals' },
+  { id: 'lesson-17-wish-if-only', title: 'Lesson 17 — Wish / If Only' },
+  { id: 'test-05-review-lessons-15-17', title: 'Test 5 — Review of Lessons 15–17', isTest: true },
+  { id: 'lesson-18-reported-speech', title: 'Lesson 18 — Reported Speech' },
+  { id: 'lesson-19-relative-clauses', title: 'Lesson 19 — Relative Clauses' },
+  { id: 'lesson-20-gerunds-vs-infinitives', title: 'Lesson 20 — Gerunds vs. Infinitives' },
+  { id: 'test-06-review-lessons-18-20', title: 'Test 6 — Review of Lessons 18–20', isTest: true },
+  { id: 'lesson-21-articles-determiners', title: 'Lesson 21 — Articles & Determiners' },
+  { id: 'lesson-22-discourse-emphasis-capstone', title: 'Lesson 22 — Discourse & Emphasis Capstone' }
+];
+
+// Groups mirror the natural breaks the lesson numbering + tests already
+// imply, purely for scanability — doesn't affect which file a link opens.
+const GROUPS = [
+  { title: 'Tenses & Aspect', range: [0, 8], color: '#7C2B1F' },
+  { title: 'Modals & Passive', range: [8, 16], color: '#215A60' },
+  { title: 'Conditionals & Wish', range: [16, 23], color: '#365A2C' },
+  { title: 'Reported Speech, Clauses & Beyond', range: [23, 29], color: '#8C6321' }
+];
+
+const groupParam = new URLSearchParams(window.location.search).get('group');
+function withGroup(href){
+  return groupParam ? `${href}?group=${encodeURIComponent(groupParam)}` : href;
+}
+
+function renderLessonIndex(){
+  const root = document.getElementById('lesson-index');
+  root.innerHTML = '';
+  GROUPS.forEach(g => {
+    const section = document.createElement('div');
+    section.className = 'lesson-list-group';
+    const items = LESSONS.slice(g.range[0], g.range[1]).map((l, i) => {
+      const num = l.isTest ? '✓' : (g.range[0] + i + 1 - LESSONS.slice(0, g.range[0] + i).filter(x => x.isTest).length);
+      return `
+        <a class="lesson-list-item${l.isTest ? ' is-test' : ''}" href="${withGroup(l.id + '-preview-standalone.html')}" style="border-left:3px solid ${g.color}${l.isTest ? `;background:${g.color}11;border-color:${g.color}33` : ''}">
+          <span class="lesson-list-num" style="${l.isTest ? `background:${g.color};color:#fff` : `background:${g.color}22;color:${g.color}`}">${l.isTest ? '✓' : num}</span>
+          <span style="color:${g.color};font-weight:600">${l.title}</span>
+        </a>`;
+    }).join('');
+    section.innerHTML = `<div class="lesson-list-group-title" style="color:${g.color};border-bottom-color:${g.color}44">${g.title}</div>${items}`;
+    root.appendChild(section);
+  });
+}
+
+function showWelcomeBack(name){
+  document.getElementById('welcome-card').innerHTML = `
+    <h1>Welcome back!</h1>
+    <p class="welcome-back">Continuing as <b>${name}</b>.</p>
+    <button class="change-name-link" id="change-name-btn">Not you? Change name</button>
+  `;
+  document.getElementById('change-name-btn').addEventListener('click', () => {
+    localStorage.removeItem('englishplus_student_name');
+    location.reload();
+  });
+}
+
+const existingName = localStorage.getItem('englishplus_student_name');
+if (existingName){
+  showWelcomeBack(existingName);
+} else {
+  document.getElementById('name-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = document.getElementById('name-input').value.trim();
+    if (!val) return;
+    localStorage.setItem('englishplus_student_name', val);
+    showWelcomeBack(val);
+  });
+}
+
+renderLessonIndex();
+</script>
+</body>
+</html>

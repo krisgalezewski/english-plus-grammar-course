@@ -1,0 +1,2573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 10 — Modal Perfect: Should Have, Could Have, Would Have | English+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   English+ Grammar Course — Shared Theme
+   Design tokens + reusable component styles for all 22 lessons.
+   Loaded by every lesson-*.html via <link rel="stylesheet">.
+   ============================================================ */
+
+:root{
+  /* Surfaces */
+  --bg:#F6F7F9;
+  --surface:#FFFFFF;
+  --surface-alt:#EEF1F5;
+  --border:#DFE3E9;
+  --border-strong:#C7CDD6;
+
+  /* Text */
+  --text:#1B2430;
+  --text-secondary:#5B6472;
+  --text-tertiary:#8A93A1;
+
+  /* Accent (matches existing English+ lesson pages) */
+  --accent:#185FA5;
+  --accent-dark:#0C4577;
+  --accent-soft:#E6F1FB;
+  --accent-soft-border:#85B7EB;
+
+  /* Feedback */
+  --ok:#27500A;
+  --ok-bg:#EAF3DE;
+  --ok-border:#C0DD97;
+  --bad:#791F1F;
+  --bad-bg:#FCEBEB;
+  --bad-border:#F7C1C1;
+  --warn:#633806;
+  --warn-bg:#FAEEDA;
+  --warn-border:#E8C080;
+
+  /* Grammar-concept colour coding — kept consistent across the whole
+     course so students learn to associate a colour with a concept
+     family (same convention as the existing Verb Tenses lesson) */
+  --c-present:#0F6E56;
+  --c-present-bg:#E4F3EE;
+  --c-continuous:#534AB7;
+  --c-continuous-bg:#ECEAFA;
+  --c-past:#185FA5;
+  --c-future:#993C1D;
+  --c-modal:#854F0B;
+
+  /* Type */
+  --font-sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --font-mono:'JetBrains Mono','SFMono-Regular',Consolas,monospace;
+
+  /* Shape */
+  --radius-lg:20px;
+  --radius-md:14px;
+  --radius-sm:10px;
+  --radius-pill:999px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:var(--font-sans);
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,h4{font-weight:650;letter-spacing:-0.01em}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px}
+
+/* ---------- Layout ---------- */
+.shell{max-width:760px;margin:0 auto;padding:28px 20px 80px}
+
+.lesson-header{margin-bottom:20px}
+.lesson-eyebrow{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:8px;
+}
+.lesson-title{font-size:26px;line-height:1.25;margin-bottom:6px;color:var(--accent-dark)}
+.lesson-sub{font-size:14.5px;color:var(--text-secondary)}
+.course-attribution{
+  text-align:center;font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;
+  color:var(--text-tertiary);padding:14px 20px 0;
+}
+
+/* ---------- Per-section colour themes ----------
+   Every widget/button/hover-state throughout the course reads colour
+   purely from --accent/--accent-dark/--accent-soft/--accent-soft-border
+   (and the page background from --bg), so overriding just these four
+   variables per section re-colours the whole page — buttons, toggles,
+   compare-card hovers, formula boxes' border-left accents that use
+   --accent directly, everything — with zero changes needed to any
+   lesson's own JS/CSS. The tense-specific concept colours (--c-present,
+   --c-continuous, etc., used to distinguish tenses *within* a lesson)
+   are deliberately left untouched — those stay consistent across every
+   section since a student learns "green = present tense" regardless of
+   which part of the course they're in. */
+body.theme-tenses{
+  --accent:#A3392A; --accent-dark:#7C2B1F; --accent-soft:#F7EBE9; --accent-soft-border:#DDA99E; --bg:#FBF7F6;
+}
+body.theme-modals{
+  --accent:#2E7A82; --accent-dark:#215A60; --accent-soft:#E9F3F4; --accent-soft-border:#A0CDD1; --bg:#F5FAFA;
+}
+body.theme-conditionals{
+  --accent:#4A7A3D; --accent-dark:#365A2C; --accent-soft:#EEF4EC; --accent-soft-border:#B3D1A8; --bg:#F7FAF6;
+}
+body.theme-reported{
+  --accent:#B8842E; --accent-dark:#8C6321; --accent-soft:#FAF3E7; --accent-soft-border:#E4C48F; --bg:#FDFAF6;
+}
+
+.section{margin-bottom:36px}
+.section-label{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;font-weight:650;letter-spacing:.03em;text-transform:uppercase;
+  color:var(--text-tertiary);margin-bottom:12px;
+}
+.section-label .num{
+  width:22px;height:22px;border-radius:50%;background:var(--surface-alt);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11.5px;color:var(--text-secondary);flex-shrink:0;
+}
+
+/* ---------- Cards ---------- */
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:1.3rem 1.5rem;
+  margin-bottom:.9rem;
+}
+.card + .card{margin-top:.9rem}
+
+.tip-box{
+  background:var(--surface-alt);border-radius:var(--radius-md);
+  padding:11px 15px;font-size:13.5px;color:var(--text-secondary);
+  display:flex;flex-wrap:wrap;gap:9px;align-items:flex-start;line-height:1.6;margin-top:10px;
+}
+.tip-box > *{min-width:0}
+.warn-box{
+  background:var(--warn-bg);border:1px solid var(--warn-border);border-radius:var(--radius-md);
+  padding:11px 15px;font-size:13.5px;color:var(--warn);
+  display:flex;flex-wrap:wrap;gap:9px;align-items:flex-start;line-height:1.6;margin-top:10px;
+}
+.warn-box > *{min-width:0}
+
+/* ---------- Buttons / pills ---------- */
+.btn{
+  font-family:inherit;font-size:14px;padding:9px 20px;border-radius:var(--radius-pill);
+  border:1px solid var(--border-strong);background:var(--surface);color:var(--text);
+  cursor:pointer;transition:all .15s;
+}
+.btn:hover{background:var(--surface-alt)}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:550}
+.btn-primary:hover{background:var(--accent-dark);border-color:var(--accent-dark)}
+.btn-primary:disabled{opacity:.45;cursor:not-allowed}
+.btn-ghost{border-color:transparent;background:transparent;color:var(--text-secondary)}
+.btn-ghost:hover{background:var(--surface-alt);color:var(--text)}
+.btn-sm{padding:6px 14px;font-size:12.5px}
+
+.pill{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 14px;border-radius:var(--radius-pill);
+  border:1px solid var(--border-strong);background:var(--surface);
+  font-size:13px;color:var(--text-secondary);cursor:pointer;transition:all .15s;white-space:nowrap;
+}
+.pill:hover{background:var(--surface-alt)}
+.pill.on{color:#fff;border-color:transparent;background:var(--accent)}
+.pill.on.c-present{background:var(--c-present)}
+.pill.on.c-continuous{background:var(--c-continuous)}
+
+/* ---------- Progress bar ---------- */
+.pb-track{background:var(--surface-alt);border-radius:var(--radius-pill);height:6px;overflow:hidden}
+.pb-fill{height:6px;border-radius:var(--radius-pill);background:var(--accent);transition:width .35s}
+
+/* ---------- Formula box ---------- */
+.formula{
+  font-family:var(--font-mono);font-size:13px;background:var(--surface-alt);
+  border-radius:var(--radius-md);padding:11px 15px;border-left:3px solid var(--accent);
+  margin-bottom:8px;line-height:1.7;color:var(--text);
+}
+
+/* ---------- Multiple choice / gap-fill options ---------- */
+.opt{
+  display:block;width:100%;padding:11px 16px;border-radius:var(--radius-md);
+  border:1px solid var(--border-strong);background:var(--surface);
+  font-size:14.5px;font-family:inherit;text-align:left;cursor:pointer;
+  transition:all .15s;color:var(--text);line-height:1.5;margin-bottom:8px;
+}
+.opt:last-child{margin-bottom:0}
+.opt:hover:not(.sel):not(.ok):not(.bad):not(.dim){background:var(--surface-alt)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-dark);font-weight:550}
+.opt.ok{border-color:var(--ok-border);background:var(--ok-bg);color:var(--ok);font-weight:550;cursor:default;pointer-events:none}
+.opt.bad{border-color:var(--bad-border);background:var(--bad-bg);color:var(--bad);cursor:default;pointer-events:none}
+.opt.dim{opacity:.5;cursor:default;pointer-events:none}
+
+.fb-ok{background:var(--ok-bg);color:var(--ok);font-size:13.5px;padding:11px 15px;border-radius:var(--radius-sm);margin-top:10px;line-height:1.6}
+.fb-no{background:var(--bad-bg);color:var(--bad);font-size:13.5px;padding:11px 15px;border-radius:var(--radius-sm);margin-top:10px;line-height:1.6}
+
+/* ---------- Reading passage + vocab ---------- */
+.passage{
+  font-family:var(--font-serif);font-size:16px;line-height:1.85;color:var(--text);
+}
+.passage p{margin-bottom:14px}
+.vocab{
+  color:var(--accent-dark);background:var(--accent-soft);
+  padding:1px 4px;border-radius:5px;cursor:pointer;font-weight:550;
+  border-bottom:1.5px dotted var(--accent-soft-border);transition:all .12s;
+}
+.vocab:hover{background:#D6E9FA}
+
+.vocab-pop{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:1.1rem 1.3rem;margin-top:10px;box-shadow:0 8px 28px rgba(20,30,50,.10);
+  display:none;font-family:var(--font-sans);
+}
+.vocab-pop.open{display:block}
+.vocab-pop-word{font-size:17px;font-weight:650;margin-bottom:2px}
+.vocab-pop-ipa{font-family:var(--font-mono);font-size:13px;color:var(--text-secondary);margin-bottom:10px}
+.audio-btn{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:var(--radius-pill);
+  border:1px solid var(--border-strong);background:var(--surface);cursor:pointer;
+  font-size:12.5px;color:var(--text-secondary);transition:all .15s;margin-bottom:10px;
+}
+.audio-btn:hover{background:var(--accent-soft);border-color:var(--accent-soft-border);color:var(--accent)}
+.audio-btn.playing{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:550}
+.vocab-pop-ex{font-size:14px;color:var(--text-secondary);font-style:italic;line-height:1.6;margin-bottom:10px}
+.glossary-btn{font-size:12px}
+
+/* ---------- Sentence builder (drag/tap-to-order) ---------- */
+.builder-bank{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;min-height:40px}
+.chip{
+  padding:8px 14px;border-radius:var(--radius-pill);border:1px solid var(--border-strong);
+  background:var(--surface);font-size:14px;cursor:pointer;transition:all .15s;
+}
+.chip:hover{background:var(--surface-alt)}
+.chip.used{opacity:.35;pointer-events:none}
+.builder-target{
+  display:flex;flex-wrap:wrap;gap:8px;min-height:46px;padding:10px;
+  border:1.5px dashed var(--border-strong);border-radius:var(--radius-md);background:var(--surface-alt);
+}
+.builder-target .chip{background:var(--accent-soft);border-color:var(--accent-soft-border);color:var(--accent-dark)}
+
+/* ---------- Speaking / listening task cards ---------- */
+.task-card{
+  border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.2rem 1.4rem;
+  background:linear-gradient(180deg,var(--surface) 0%,var(--surface-alt) 130%);
+}
+.task-card .kicker{font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.04em;color:var(--accent);margin-bottom:6px}
+.mode-toggle{display:flex;gap:8px;margin-bottom:14px}
+
+/* ---------- Grammar-in-text highlight (toggle) ---------- */
+.gram{cursor:pointer;border-bottom:2px solid transparent;transition:all .15s}
+.passage.show-grammar .gram{background:var(--warn-bg);border-bottom-color:var(--c-modal);border-radius:3px;padding:0 2px}
+.passage:not(.show-grammar) .gram{pointer-events:none}
+.gram-explain{background:var(--warn-bg);border:1px solid var(--warn-border);border-radius:var(--radius-md);padding:11px 15px;font-size:13.5px;color:var(--warn);line-height:1.6;margin-top:10px;display:none}
+.gram-explain.open{display:block}
+
+/* ---------- Listening transcript ---------- */
+.transcript-line{
+  font-size:14.5px;line-height:1.8;padding:6px 0;opacity:0;transform:translateY(4px);
+  transition:opacity .3s,transform .3s;
+}
+.transcript-line.shown{opacity:1;transform:translateY(0)}
+.transcript-line b{color:var(--accent)}
+.transcript-line.active{background:var(--accent-soft);border-radius:8px;padding:6px 10px;margin:0 -10px}
+
+/* ---------- Discussion question picker (speaking task) ---------- */
+.discuss-q{
+  display:flex;align-items:flex-start;gap:10px;width:100%;text-align:left;
+  padding:12px 15px;border-radius:var(--radius-md);border:1px solid var(--border-strong);
+  background:var(--surface);cursor:pointer;font-family:inherit;font-size:14.5px;line-height:1.6;
+  color:var(--text);transition:all .15s;
+}
+.discuss-q:hover{background:var(--surface-alt)}
+.discuss-q .chk{
+  flex-shrink:0;width:20px;height:20px;border-radius:6px;border:1.5px solid var(--border-strong);
+  display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;margin-top:1px;
+}
+.discuss-q.picked{border-color:var(--accent);background:var(--accent-soft)}
+.discuss-q.picked .chk{background:var(--accent);border-color:var(--accent)}
+.discuss-q.disabled{opacity:.45;cursor:not-allowed}
+
+/* ---------- Print-to-PDF report ---------- */
+#course-print-report{display:none}
+@media print{
+  body > *:not(#course-print-report){display:none !important}
+  #course-print-report{
+    display:block !important;
+    font-family:Arial,Helvetica,sans-serif;color:#1B2430;
+    max-width:680px;margin:0 auto;padding:20px;
+  }
+}
+
+/* ---------- Shared popup (vocab, grammar, stative verbs) ---------- */
+.course-popup-backdrop{position:fixed;inset:0;background:rgba(20,30,50,.4);display:none;z-index:9998}
+.course-popup-box{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  background:var(--surface);border-radius:var(--radius-lg);box-shadow:0 24px 64px rgba(20,30,50,.28);
+  padding:1.5rem 1.7rem;max-width:420px;width:calc(100% - 40px);max-height:80vh;overflow-y:auto;
+  display:none;z-index:9999;
+}
+#course-popup-root.open .course-popup-backdrop{display:block}
+#course-popup-root.open .course-popup-box{display:block}
+.course-popup-close{
+  position:absolute;top:8px;right:10px;background:none;border:none;font-size:22px;line-height:1;
+  cursor:pointer;color:var(--text-tertiary);padding:5px 9px;border-radius:7px;transition:all .15s;
+}
+.course-popup-close:hover{background:var(--surface-alt);color:var(--text)}
+
+/* ---------- Stative verb tricky cases (stative vs dynamic) ---------- */
+.tricky-pair{border:1px solid var(--border);border-radius:var(--radius-md);padding:12px 14px;margin-bottom:10px}
+.tricky-pair:last-child{margin-bottom:0}
+.tricky-word{font-weight:650;margin-bottom:8px;font-size:14.5px}
+.tricky-row{font-size:13.5px;line-height:1.6;margin-bottom:5px;display:flex;gap:8px;align-items:baseline}
+.tricky-row:last-child{margin-bottom:0}
+.tricky-row .audio-btn{padding:2px 8px;font-size:11px;margin-bottom:0}
+.tricky-example{cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px;text-decoration-color:var(--border-strong);transition:color .15s}
+.tricky-example:hover{color:var(--accent)}
+.tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:3px 7px;border-radius:5px;flex-shrink:0}
+.tag.stative{background:var(--c-present-bg);color:var(--c-present)}
+.tag.dynamic{background:var(--c-continuous-bg);color:var(--c-continuous)}
+
+/* ---------- Expandable "full rules" content ---------- */
+.expand-content{display:none}
+.expand-content.open{display:block}
+
+/* ---------- Stative verb groups ---------- */
+.verb-group{margin-bottom:18px}
+.verb-group:last-child{margin-bottom:0}
+.verb-group-title{font-size:12.5px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px}
+.verb-chip{
+  display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border-radius:var(--radius-pill);
+  border:1px solid var(--border-strong);background:var(--surface);font-size:14px;font-family:inherit;
+  cursor:pointer;transition:all .15s;margin:0 8px 8px 0;color:var(--text);
+}
+.verb-chip:hover{background:var(--accent-soft);border-color:var(--accent-soft-border);color:var(--accent-dark)}
+.verb-chip .star{color:var(--c-modal);font-weight:700}
+
+/* ---------- Finish/summary feedback ---------- */
+@keyframes summary-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(24,95,165,0.35); }
+  70% { box-shadow: 0 0 0 14px rgba(24,95,165,0); }
+  100% { box-shadow: 0 0 0 0 rgba(24,95,165,0); }
+}
+.summary-pulse{ animation: summary-pulse 1.1s ease-out; }
+.error-banner{
+  background:var(--bad-bg);border:1px solid var(--bad-border);color:var(--bad);
+  border-radius:var(--radius-md);padding:12px 16px;font-size:13.5px;margin-top:10px;line-height:1.6;
+}
+
+/* ---------- Find-the-error (click the wrong word) ---------- */
+.err-word{cursor:pointer;padding:1px 4px;border-radius:5px;transition:all .12s}
+.err-word:hover{background:var(--surface-alt)}
+.err-word.err-target{background:var(--ok-bg);color:var(--ok);font-weight:600}
+.err-word.err-wrong-pick{background:var(--bad-bg);color:var(--bad);text-decoration:line-through}
+
+/* ---------- Matching (click left, then right) ---------- */
+.match-item{
+  width:100%;text-align:left;padding:10px 14px;border-radius:var(--radius-md);
+  border:1px solid var(--border-strong);background:var(--surface);font-size:13.5px;
+  font-family:inherit;cursor:pointer;transition:all .12s;line-height:1.5;
+}
+.match-item:hover:not(:disabled){background:var(--surface-alt)}
+.match-item.sel{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-dark)}
+.match-item.match-correct{background:var(--ok-bg);color:var(--ok);border-color:var(--ok-border)}
+.match-item.match-wrong{background:var(--bad-bg);color:var(--bad);border-color:var(--bad-border)}
+
+/* ---------- Score summary ---------- */
+.score-ring{
+  width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-weight:650;font-size:15px;background:var(--accent-soft);color:var(--accent-dark);flex-shrink:0;
+}
+.summary-row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid var(--border)}
+.summary-row:last-child{border-bottom:none}
+
+@media (max-width:520px){
+  .shell{padding:20px 16px 64px}
+  .lesson-title{font-size:22px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
+
+</style>
+<style>
+  /* Lesson-specific only — a fourth highlight colour for the four-way
+     categorise exercise (theme.css only wires up .c-present/.c-continuous),
+     plus the clickable compare-example styling used in the concept section. */
+  .pill.on.c-future{background:var(--c-future)}
+  .pill.on.c-bad{background:var(--bad)}
+  .compare-box{display:inline-block;padding:4px 10px;border-radius:6px;background:var(--surface-alt);cursor:default;transition:background .15s}
+  .compare-box:hover{background:var(--accent-soft)}
+  .compare-ex{cursor:pointer;border-bottom:1px dashed var(--c-modal);padding:0 1px;transition:background .15s}
+  .trait-pill{padding:7px 12px;border-radius:var(--radius-sm);border:1px solid var(--accent);background:var(--surface);color:var(--accent);font-size:12.5px;font-weight:700;cursor:pointer;transition:background .15s}
+  .trait-pill:hover{background:var(--accent-soft)}
+  #compare-tooltip{
+    position:absolute;z-index:80;max-width:280px;background:var(--accent-soft);color:var(--text-secondary);
+    border:1px solid var(--accent);font-size:13px;line-height:1.5;padding:10px 12px;border-radius:8px;
+    box-shadow:0 4px 16px rgba(0,0,0,.12);pointer-events:none;
+    opacity:0;transition:opacity .1s;
+  }
+  #compare-tooltip.visible{opacity:1}
+  .static-cell{display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:var(--radius-md);padding:8px 6px;background:var(--surface);text-align:center;font-size:12.5px;color:var(--text-secondary);min-height:20px}
+  .static-cell.is-primary-cell{border-color:var(--accent);background:var(--surface);color:var(--accent);font-weight:650;flex:1}
+  .static-cell.clickable-cell{cursor:pointer}
+  .static-cell.clickable-cell:hover{opacity:.85}
+  .mode-toggle-outline .pill{border-radius:var(--radius-sm)}
+  .mode-toggle-outline .pill.on{background:var(--surface);color:var(--accent);border-color:var(--accent);font-weight:700}
+  .pill[disabled]{cursor:not-allowed;pointer-events:none}
+  .pill[disabled]:not(.on){opacity:.45}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+/* ============================================================
+   Supabase project config for the English+ Grammar Course.
+   The anon key is safe to be public — same as your games
+   leaderboard — access is controlled by the RLS policies in
+   supabase/schema.sql, not by keeping this key secret.
+   ============================================================ */
+window.SUPABASE_URL = 'https://ovosqztjtnvasbaursnh.supabase.co';
+window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92b3NxenRqdG52YXNiYXVyc25oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc0ODcxNzcsImV4cCI6MjEwMzA2MzE3N30.I5yzw18Jd2-AgCqLxbkS3CioeUb3kFBjby8dcKUmvoM';
+
+</script>
+</head>
+<body class="theme-modals">
+
+<div class="course-attribution">English+ Grammar Course · by Kris Galezewski</div>
+<div class="shell">
+
+  <!-- ============ HEADER ============ -->
+  <header class="lesson-header">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div class="lesson-eyebrow">Lesson 10 of 22 · Modality</div>
+      <div style="display:flex;gap:8px">
+      <a id="all-lessons-link" href="index-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📚 All Lessons</a>
+      <a id="glossary-link" href="glossary-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📖 My Glossary</a>
+    </div>
+    </div>
+    <h1 class="lesson-title">Modal Perfect: Should Have, Could Have, Would Have</h1>
+    <p class="lesson-sub">Judging the past, instead of just describing it.</p>
+    <div class="pb-track" style="margin-top:16px"><div class="pb-fill" id="overall-progress" style="width:0%"></div></div>
+    <div id="sync-status" style="font-size:11.5px;color:var(--text-tertiary);margin-top:8px"></div>
+  </header>
+
+  <!-- ============ 1. WARM-UP ============ -->
+  <section class="section" id="sec-warmup">
+    <div class="section-label"><span class="num">1</span> Warm-up — from guessing to judging</div>
+    <div class="card">
+      <p style="margin-bottom:14px;font-size:14.5px;color:var(--text-secondary)">
+        Lesson 9 covered guessing about the past — must have, can't have. Today covers something related but
+        different: judging the past, based on what should or shouldn't have happened, or what was genuinely
+        possible but didn't.
+      </p>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. Today's forms are mostly for expressing…</p>
+        <div id="warm-q1">
+          <button class="opt" data-value="right">regret, criticism, a missed opportunity, or a hypothetical outcome about the past</button>
+          <button class="opt" data-value="wrong">a confident guess about what definitely happened</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. "You should have called me" mainly expresses…</p>
+        <div id="warm-q2">
+          <button class="opt" data-value="right">regret or criticism that you didn't call</button>
+          <button class="opt" data-value="wrong">a confident guess about whether you called</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. "She could have won the race" (but she stopped to help someone) describes…</p>
+        <div id="warm-q3">
+          <button class="opt" data-value="right">a real possibility that didn't happen</button>
+          <button class="opt" data-value="wrong">an uncertain guess about what actually happened</button>
+        </div>
+      </div>
+      <div class="tip-box">💡 <span style="flex:1;min-width:0">Same grammar shape as Lesson 9 (modal + have + past participle) — but this time, it's judgement, not a guess.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 2. DIAGNOSTIC PRE-TEST ============ -->
+  <section class="section" id="sec-diagnostic">
+    <div class="section-label"><span class="num">2</span> Quick check — before we explain anything</div>
+    <div class="card">
+      <p style="margin-bottom:16px;font-size:14.5px;color:var(--text-secondary)">Four quick questions. This isn't graded harshly — it just shows us where to focus.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. I ___ studied harder for that exam.</p>
+        <div id="diag-q1">
+          <button class="opt" data-value="right">should have</button>
+          <button class="opt" data-value="wrong">must have</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. You ___ borrowed my car without asking — that was out of line.</p>
+        <div id="diag-q2">
+          <button class="opt" data-value="right">shouldn't have</button>
+          <button class="opt" data-value="wrong">could have</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. She ___ taken the promotion, but she turned it down for personal reasons.</p>
+        <div id="diag-q3">
+          <button class="opt" data-value="right">could have</button>
+          <button class="opt" data-value="wrong">should have</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">4. He looked exhausted, so he ___ slept badly.</p>
+        <div id="diag-q4">
+          <button class="opt" data-value="right">must have</button>
+          <button class="opt" data-value="wrong">should have</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. CONCEPT EXPLANATION ============ -->
+  <section class="section" id="sec-concept">
+    <div class="section-label"><span class="num">3</span> The concept</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px">Same shape, new job</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">
+        Every form here uses the exact same structure as Lesson 9 — <b>modal + have + past participle</b> — but
+        instead of guessing what happened, you're judging it: was it the right choice, the wrong choice, or a
+        chance that slipped by? Browse each below, or test yourself with Quick check.
+      </p>
+
+      <div style="margin-bottom:6px">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);font-weight:650">View</span>
+      </div>
+      <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+        <button class="pill on" id="mode-modal-structure" style="font-size:14px;padding:8px 18px">Structure</button>
+        <button class="pill" id="mode-modal-examples" style="font-size:14px;padding:8px 18px">Examples</button>
+      </div>
+
+      <div style="margin:18px 0 6px;padding-top:16px;border-top:1px solid var(--border)">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);font-weight:650">Judgement</span>
+      </div>
+      <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+        <button class="pill on" id="mode-modal-should">Should have</button>
+        <button class="pill" id="mode-modal-shouldnt">Shouldn't have</button>
+        <button class="pill" id="mode-modal-could">Could have</button>
+        <button class="pill" id="mode-modal-would">Would have</button>
+        <button class="pill" id="mode-modal-quiz">Quick check</button>
+      </div>
+
+      <div id="modal-widget-area" style="margin-top:14px;padding:18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border)"></div>
+      <p id="modal-widget-hint" style="font-size:12.5px;color:var(--text-tertiary);margin-top:8px">— Click the pills to see another example.</p>
+
+      <button class="pill" id="rules-toggle" style="margin-top:16px">📖 Show the full rules</button>
+      <div class="expand-content" id="rules-content">
+        <div style="margin-top:16px">
+          <div class="formula" style="border-left-color:var(--c-present)">✅ Regret / criticism of inaction: <b>should have + past participle</b> — e.g. "I should have called you sooner."</div>
+          <div class="formula" style="border-left-color:var(--bad)">✅ Criticism of an action taken: <b>shouldn't have + past participle</b> — e.g. "He shouldn't have said that in the meeting."</div>
+          <div class="formula" style="border-left-color:var(--c-continuous)">✅ Missed opportunity: <b>could have + past participle</b> — e.g. "She could have taken the earlier train."</div>
+          <div class="formula" style="border-left-color:var(--c-future);margin-bottom:20px">✅ Hypothetical past outcome: <b>would / wouldn't have + past participle</b> — e.g. "I would have called, but I didn't have your number." / "I wouldn't have called so late, but it was an emergency."</div>
+
+          <div class="warn-box">
+            <span>🎯</span>
+            <span style="flex:1;min-width:0">
+              <b>The tricky part:</b> "should have" and "shouldn't have" aren't a simple opposite pair pointing at the same event — they criticise two different things.<br><br>
+              ✅ "You <b>should have</b> locked the door." — you didn't lock it, and that was the mistake.<br>
+              ✅ "You <b>shouldn't have</b> left the door unlocked." — same situation, but now the criticised action is leaving it unlocked, not a missing action.<br><br>
+              In practice, pick whichever one matches what actually happened: something that wasn't done (should have) or something that was (shouldn't have).
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Careful — "could have" has two different jobs</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">
+        You already met "could have" in Lesson 9, for a tentative guess about the past. It does something
+        completely different here: describing a real, missed opportunity — something that genuinely could have
+        happened, but didn't. Hover over the pairs below to compare.
+      </p>
+      <div id="l9-contrast-examples" style="font-size:14.5px;line-height:2"></div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">The judgement scale</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:18px">Drag the slider through all four stages and see how the same past event gets a completely different treatment depending on the modal.</p>
+      <input type="range" id="timeline-slider" min="0" max="3" step="1" value="0" style="width:100%">
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-tertiary);margin-top:6px;padding:0 2px;gap:4px">
+        <span style="text-align:left">Missed<br>opportunity</span>
+        <span style="text-align:center">Regret,<br>inaction</span>
+        <span style="text-align:center">Criticism,<br>action taken</span>
+        <span style="text-align:right">Hypothetical<br>outcome</span>
+      </div>
+      <div id="timeline-display" style="margin-top:20px;padding:16px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border)"></div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Compare: same sentence, different modal</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">Hover over any sentence below to see exactly why that form was chosen.</p>
+      <div id="compare-examples" style="font-size:14.5px;line-height:2"></div>
+    </div>
+  </section>
+
+  <!-- ============ 4. READING ============ -->
+  <section class="section" id="sec-reading">
+    <div class="section-label"><span class="num">4</span> Reading — Hindsight Bias: The "I Knew It All Along" Effect</div>
+    <div class="card">
+      <button class="pill" id="gram-toggle">🔍 Show grammar in this text</button>
+      <div class="passage" id="passage" style="margin-top:14px"></div>
+      <p style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">Tap a highlighted word for pronunciation, meaning and a fresh example. Once grammar highlighting is on, tap a highlighted sentence to see why that form was used.</p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:12px">Did you follow it? Quick comprehension check</h3>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. What did Fischhoff's participants do differently depending on which "outcome" they were told?</p>
+        <div id="comp-q1">
+          <button class="opt" data-value="right">Those told the real outcome rated it as far more predictable than those who weren't told anything.</button>
+          <button class="opt" data-value="wrong">They all rated every possible outcome as equally likely, regardless of what they were told.</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. According to the text, what happens to a coach whose risky play fails?</p>
+        <div id="comp-q2">
+          <button class="opt" data-value="right">Fans say the coach shouldn't have taken the risk, even though the same call would be praised if it had worked.</button>
+          <button class="opt" data-value="wrong">Fans agree the decision was reasonable at the time, regardless of the outcome.</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. What's the recommended fix for hindsight bias, according to the text?</p>
+        <div id="comp-q3">
+          <button class="opt" data-value="right">Judge decisions by the information available at the time, not by how the story ended.</button>
+          <button class="opt" data-value="wrong">Wait until an outcome is known before evaluating any decision.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. VOCAB REVIEW ============ -->
+  <section class="section" id="sec-vocab">
+    <div class="section-label"><span class="num">5</span> Vocabulary check</div>
+    <div class="card">
+      <p style="font-size:14.5px;margin-bottom:16px">All nine words from the text — mixed formats.</p>
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px">Match the meaning</h4>
+
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. "Inevitable" means…</p>
+        <div id="vocab-q1">
+          <button class="opt" data-value="right">certain to happen, impossible to avoid</button>
+          <button class="opt" data-value="wrong">extremely unlikely to happen</button>
+          <button class="opt" data-value="wrong2">officially forbidden</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. "Overconfidence" means…</p>
+        <div id="vocab-q2">
+          <button class="opt" data-value="right">excessive confidence in your own judgement or abilities</button>
+          <button class="opt" data-value="wrong">a complete lack of confidence</button>
+          <button class="opt" data-value="wrong2">confidence based on solid evidence</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. "Foresight" means…</p>
+        <div id="vocab-q3">
+          <button class="opt" data-value="right">the ability to predict or plan for future events</button>
+          <button class="opt" data-value="wrong">a clear memory of past events</button>
+          <button class="opt" data-value="wrong2">a formal warning</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. "Plausible" means…</p>
+        <div id="vocab-q4">
+          <button class="opt" data-value="right">seeming reasonable or probable</button>
+          <button class="opt" data-value="wrong">obviously false and unconvincing</button>
+          <button class="opt" data-value="wrong2">officially confirmed</button>
+        </div>
+      </div>
+      <div style="margin-bottom:22px">
+        <p style="margin-bottom:8px;font-weight:550">5. "Deem" means…</p>
+        <div id="vocab-q5">
+          <button class="opt" data-value="right">to consider or judge something in a particular way</button>
+          <button class="opt" data-value="wrong">to completely ignore something</button>
+          <button class="opt" data-value="wrong2">to publicly announce something</button>
+        </div>
+      </div>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px;padding-top:6px;border-top:1px solid var(--border)">Complete the sentence — vocabulary focus</h4>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">6. <input type="text" id="vgap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px">, the warning signs seem obvious — at the time, they rarely are.</p>
+        <button class="btn btn-sm" id="vgap1-check">Check</button>
+        <div id="vgap1-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">7. Knowing how a story ends can <input type="text" id="vgap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> our judgement of the decisions that led there.</p>
+        <button class="btn btn-sm" id="vgap2-check">Check</button>
+        <div id="vgap2-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">8. Reviewers often <input type="text" id="vgap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> their assessment once they already know the outcome.</p>
+        <button class="btn btn-sm" id="vgap3-check">Check</button>
+        <div id="vgap3-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">9. The information available at the time didn't <input type="text" id="vgap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> such a confident conclusion.</p>
+        <button class="btn btn-sm" id="vgap4-check">Check</button>
+        <div id="vgap4-fb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. GRAMMAR PRACTICE ============ -->
+  <section class="section" id="sec-practice">
+    <div class="section-label"><span class="num">6</span> Practice</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:2px">Gap-fill</h3>
+      <p style="font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:16px">Grammar focus — should have, shouldn't have, could have, or would have?</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">1. I <input type="text" id="gap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (call) her back yesterday — I completely forgot, and now she's upset.</p>
+        <button class="btn btn-sm" id="gap1-check">Check</button>
+        <div id="gap1-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">2. You <input type="text" id="gap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (tell) him that — it was meant to be a secret, and now he's upset.</p>
+        <button class="btn btn-sm" id="gap2-check">Check</button>
+        <div id="gap2-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">3. She <input type="text" id="gap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (take) the job in Berlin, but she decided to stay close to family instead.</p>
+        <button class="btn btn-sm" id="gap3-check">Check</button>
+        <div id="gap3-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">4. He <input type="text" id="gap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:170px"> (finish) on time, if the printer hadn't broken down.</p>
+        <button class="btn btn-sm" id="gap4-check">Check</button>
+        <div id="gap4-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">5. We <input type="text" id="gap5-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (book) the tickets earlier — now the good seats are all gone.</p>
+        <button class="btn btn-sm" id="gap5-check">Check</button>
+        <div id="gap5-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">6. They <input type="text" id="gap6-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (finish) the project sooner if they'd started planning properly from day one.</p>
+        <button class="btn btn-sm" id="gap6-check">Check</button>
+        <div id="gap6-fb"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Categorise the judgement</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Read the context, then tap the function it belongs to — the modal itself is missing, so you have to reason it out.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. "She ___ apologised sooner — everyone was upset that she waited so long."</p>
+        <div id="cat-q1">
+          <button class="opt" data-value="right">Regret (should have)</button>
+          <button class="opt" data-value="wrong">Criticism (shouldn't have)</button>
+          <button class="opt" data-value="wrong2">Missed opportunity (could have)</button>
+          <button class="opt" data-value="wrong3">Hypothetical (would have)</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. "He ___ said that in front of the client — it was completely unprofessional."</p>
+        <div id="cat-q2">
+          <button class="opt" data-value="wrong">Regret (should have)</button>
+          <button class="opt" data-value="right">Criticism (shouldn't have)</button>
+          <button class="opt" data-value="wrong2">Missed opportunity (could have)</button>
+          <button class="opt" data-value="wrong3">Hypothetical (would have)</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. "They ___ taken the earlier flight, but they wanted to sleep in instead."</p>
+        <div id="cat-q3">
+          <button class="opt" data-value="wrong">Regret (should have)</button>
+          <button class="opt" data-value="wrong2">Criticism (shouldn't have)</button>
+          <button class="opt" data-value="right">Missed opportunity (could have)</button>
+          <button class="opt" data-value="wrong3">Hypothetical (would have)</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">4. "He ___ finished on time, if the printer hadn't broken down halfway through."</p>
+        <div id="cat-q4">
+          <button class="opt" data-value="wrong">Regret (should have)</button>
+          <button class="opt" data-value="wrong2">Criticism (shouldn't have)</button>
+          <button class="opt" data-value="wrong3">Missed opportunity (could have)</button>
+          <button class="opt" data-value="right">Hypothetical (would have)</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">5. "We ___ backed up the files — losing everything was completely avoidable."</p>
+        <div id="cat-q5">
+          <button class="opt" data-value="right">Regret (should have)</button>
+          <button class="opt" data-value="wrong">Criticism (shouldn't have)</button>
+          <button class="opt" data-value="wrong2">Missed opportunity (could have)</button>
+          <button class="opt" data-value="wrong3">Hypothetical (would have)</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">6. "You ___ shared that information without asking first — it wasn't yours to share."</p>
+        <div id="cat-q6">
+          <button class="opt" data-value="wrong">Regret (should have)</button>
+          <button class="opt" data-value="right">Criticism (shouldn't have)</button>
+          <button class="opt" data-value="wrong2">Missed opportunity (could have)</button>
+          <button class="opt" data-value="wrong3">Hypothetical (would have)</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">7. "He ___ won the race easily, but he stopped to help a fallen competitor instead."</p>
+        <div id="cat-q7">
+          <button class="opt" data-value="wrong">Regret (should have)</button>
+          <button class="opt" data-value="wrong2">Criticism (shouldn't have)</button>
+          <button class="opt" data-value="right">Missed opportunity (could have)</button>
+          <button class="opt" data-value="wrong3">Hypothetical (would have)</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">8. "She ___ taken the job, if they'd offered a slightly higher salary."</p>
+        <div id="cat-q8">
+          <button class="opt" data-value="wrong">Regret (should have)</button>
+          <button class="opt" data-value="wrong2">Criticism (shouldn't have)</button>
+          <button class="opt" data-value="wrong3">Missed opportunity (could have)</button>
+          <button class="opt" data-value="right">Hypothetical (would have)</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Sentence builder</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">Tap the chips in the right order. Four rounds.</p>
+      <div id="builders"></div>
+    </div>
+  </section>
+
+  <!-- ============ 7. SPEAKING ============ -->
+  <section class="section" id="sec-speaking">
+    <div class="section-label"><span class="num">7</span> Speaking task</div>
+    <div class="mode-toggle">
+      <button class="pill on" id="mode-solo">👤 Solo</button>
+      <button class="pill" id="mode-group">👥 Group (2–4)</button>
+    </div>
+    <div class="task-card" id="speak-solo">
+      <div class="kicker">60-second hindsight review</div>
+      <p style="font-size:14.5px;line-height:1.7">
+        Think of a real decision — yours or someone else's — that didn't go perfectly. Describe what should
+        have been done differently, anything that shouldn't have happened, and any real opportunity that was
+        missed along the way (should have / shouldn't have / could have).
+      </p>
+      <button class="btn btn-sm" id="solo-done-btn" style="margin-top:14px">✓ I've done this</button>
+    </div>
+    <div class="task-card" id="speak-group" style="display:none">
+      <div class="kicker">Discussion — pick 1–2 questions to answer out loud</div>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:12px">Tap the question(s) you'll answer. Your teacher will see your pick and mark it after you speak.</p>
+      <div id="discuss-questions" style="display:flex;flex-direction:column;gap:8px"></div>
+      <p id="discuss-limit-msg" style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">You can select up to 2 questions.</p>
+    </div>
+  </section>
+
+  <!-- ============ 8. LISTENING ============ -->
+  <section class="section" id="sec-listening">
+    <div class="section-label"><span class="num">8</span> Listening</div>
+    <div class="card">
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:12px">Anna and Tomasz are reviewing a rough product launch — right after reading about hindsight bias.</p>
+      <audio id="dialogue-audio" preload="none" style="display:none"></audio>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary" id="play-dialogue">▶ Play dialogue</button>
+        <button class="btn btn-ghost btn-sm" id="stop-dialogue">⏹ Stop</button>
+        <button class="btn btn-ghost btn-sm" id="show-transcript">Show full transcript</button>
+      </div>
+      <div id="transcript" style="margin-top:14px"></div>
+
+      <div style="margin-top:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. What does Anna think, looking back at the launch?</p>
+        <div id="listen-q1">
+          <button class="opt" data-value="right">They should have tested the feature more before launch.</button>
+          <button class="opt" data-value="wrong">They should have launched even earlier than they did.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. According to Tomasz, why didn't anyone flag the risk at the time?</p>
+        <div id="listen-q2">
+          <button class="opt" data-value="right">Nobody had the information to know it was risky back then.</button>
+          <button class="opt" data-value="wrong">They were told about the risk but chose to ignore it.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. What does Anna say the client shouldn't have had to do?</p>
+        <div id="listen-q3">
+          <button class="opt" data-value="right">Find out about the bug from a tweet before being told directly.</button>
+          <button class="opt" data-value="wrong">Wait more than a week for any kind of response.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. WRAP-UP / EXIT TEST ============ -->
+  <section class="section" id="sec-wrapup">
+    <div class="section-label"><span class="num">9</span> Wrap-up — exit check</div>
+    <div class="card">
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. I ___ finished this earlier — I had plenty of time.</p>
+        <div id="exit-q1">
+          <button class="opt" data-value="right">should have</button>
+          <button class="opt" data-value="wrong">must have</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. You ___ said that to her — it was really unkind.</p>
+        <div id="exit-q2">
+          <button class="opt" data-value="right">shouldn't have</button>
+          <button class="opt" data-value="wrong">could have</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. He ___ won the match, but he stopped playing seriously halfway through.</p>
+        <div id="exit-q3">
+          <button class="opt" data-value="right">could have</button>
+          <button class="opt" data-value="wrong">should have</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. She looked thrilled, so the news ___ been good.</p>
+        <div id="exit-q4">
+          <button class="opt" data-value="right">must have</button>
+          <button class="opt" data-value="wrong">should have</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">5. We ___ left earlier — now we're stuck in terrible traffic.</p>
+        <div id="exit-q5">
+          <button class="opt" data-value="right">should have</button>
+          <button class="opt" data-value="wrong">shouldn't have</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="summary-card">
+      <h3 style="margin-bottom:14px">Your lesson summary</h3>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px" id="summary-ring-row">
+        <div id="score-ring-holder"></div>
+        <div>
+          <div style="font-weight:600" id="summary-name">—</div>
+          <div style="font-size:13px;margin-top:4px" id="summary-completion"></div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-top:4px" id="summary-weak">Finish the lesson to see your results.</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="finish-btn">Finish lesson &amp; see results</button>
+      <button class="btn" id="export-btn" style="margin-left:8px;display:none">⬇ Export PDF report</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ============================================================
+   English+ Grammar Course — Shared Engine
+   Used by every lesson-*.html. Handles:
+     - progress logging (local stand-in for the Supabase schema
+       described in the course design doc, §9 — swap point marked
+       below so lessons 2-22 don't need to change when we wire up
+       the real backend)
+     - vocab popovers (audio / IPA / example sentence / glossary)
+     - generic exercise-checking helpers (MCQ, gap-fill, builder)
+     - end-of-lesson score summary + JSON export (stand-in for the
+       PDF report until that's built)
+   ============================================================ */
+
+const Course = (() => {
+
+  /* ----------------------------------------------------------
+     SUPABASE CLIENT
+     Loaded from shared/supabase-config.js + the supabase-js CDN
+     script, both included before this file. If either is missing
+     (offline, or a lesson opened before those scripts are added),
+     Course still works entirely on localStorage — every Supabase
+     call below is wrapped so a missing/failed connection never
+     breaks the lesson itself, it just means that device's progress
+     doesn't sync until it's back online.
+     ---------------------------------------------------------- */
+  let supabaseClient = null;
+  try {
+    if (window.supabase && window.SUPABASE_URL && window.SUPABASE_ANON_KEY){
+      supabaseClient = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+    }
+  } catch (e){ console.warn('Supabase client not initialised:', e); }
+
+  function getGroupId(){
+    const params = new URLSearchParams(window.location.search);
+    return params.get('group') || 'local-demo';
+  }
+  const GROUP_ID = getGroupId();
+
+  const knownMemberships = new Set(); // avoids re-checking group membership on every single answer
+  async function ensureGroupMembership(groupId, studentName){
+    if (!supabaseClient) return;
+    const cacheKey = `${groupId}::${studentName}`;
+    if (knownMemberships.has(cacheKey)) return;
+    try {
+      const { data } = await supabaseClient.from('groups').select('student_names').eq('group_id', groupId).maybeSingle();
+      if (!data){
+        await supabaseClient.from('groups').insert({ group_id: groupId, group_name: groupId, student_names: [studentName] });
+      } else if (!data.student_names.includes(studentName)){
+        await supabaseClient.from('groups').update({ student_names: [...data.student_names, studentName] }).eq('group_id', groupId);
+      }
+      knownMemberships.add(cacheKey);
+    } catch (e){ console.warn('Supabase group membership check failed (will retry next answer):', e); }
+  }
+
+  /* ----------------------------------------------------------
+     PROGRESS LOG
+     Row shape intentionally mirrors the planned `lesson_progress`
+     Supabase table so swapping localStorage.setItem() below for a
+     supabase.from('lesson_progress').insert() call is a drop-in
+     change — nothing else in a lesson file needs to know the
+     difference.
+     ---------------------------------------------------------- */
+  const STORAGE_KEY = 'englishplus_progress';
+  const GLOSSARY_KEY = 'englishplus_glossary';
+
+  function getStudentName(){
+    let name = localStorage.getItem('englishplus_student_name');
+    if (!name){
+      name = prompt("What's your name? (used to save your progress on this device)") || 'You';
+      localStorage.setItem('englishplus_student_name', name);
+    }
+    return name;
+  }
+
+  function readLog(){
+    try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+    catch(e){ return []; }
+  }
+  function writeLog(rows){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(rows));
+  }
+
+  /**
+   * Log one row of progress.
+   * @param {Object} p
+   * @param {string} p.lessonId
+   * @param {string} p.sectionId
+   * @param {'auto_graded'|'oral'} p.exerciseType
+   * @param {'completed'|'absent'|'not_attempted'} p.status
+   * @param {string} [p.answerGiven]
+   * @param {boolean|null} [p.isCorrect]
+   */
+  function logProgress(p){
+    const rows = readLog();
+    const row = {
+      group_id: GROUP_ID,
+      student_name: getStudentName(),
+      lesson_id: p.lessonId,
+      section_id: p.sectionId,
+      exercise_type: p.exerciseType || 'auto_graded',
+      status: p.status || 'completed',
+      answer_given: p.answerGiven ?? null,
+      is_correct: p.isCorrect ?? null,
+      override_correct: null,
+      teacher_verdict: null,
+      session_date: new Date().toISOString().slice(0,10),
+      timestamp: new Date().toISOString()
+    };
+    rows.push(row);
+    writeLog(rows);
+
+    // Mirror to Supabase in the background — never blocks the UI, and a
+    // failed/offline write here doesn't lose the answer, since the
+    // localStorage copy above is already saved either way.
+    if (supabaseClient){
+      (async () => {
+        await ensureGroupMembership(row.group_id, row.student_name);
+        const { session_date, timestamp, ...dbRow } = row; // timestamp has a DB default; session_date matches the DB column
+        dbRow.session_date = session_date;
+        const { error } = await supabaseClient.from('lesson_progress').insert(dbRow);
+        if (error) console.warn('Supabase progress insert failed:', error.message);
+      })();
+    }
+  }
+
+  function getLessonRows(lessonId){
+    return readLog().filter(r => r.lesson_id === lessonId && r.student_name === getStudentName());
+  }
+
+  /**
+   * Same rows as getLessonRows, but deduplicated to only the most recent
+   * attempt per section_id. Without this, a student re-attempting a
+   * section (or, during testing, the same person answering a lesson
+   * across many separate sessions) would have every historical attempt
+   * summed together, inflating both the score and the total — this is
+   * what "current progress" should actually mean.
+   */
+  function getCurrentRows(lessonId){
+    const rows = getLessonRows(lessonId);
+    const latestBySection = {};
+    rows.forEach(r => {
+      const existing = latestBySection[r.section_id];
+      if (!existing || new Date(r.timestamp) >= new Date(existing.timestamp)){
+        latestBySection[r.section_id] = r;
+      }
+    });
+    return Object.values(latestBySection);
+  }
+
+  /** Same as getCurrentRows, but keyed by section_id for quick lookup — the shape rehydration needs. */
+  function getSectionMap(lessonId){
+    const map = {};
+    getCurrentRows(lessonId).forEach(r => { map[r.section_id] = r; });
+    return map;
+  }
+
+  function resetLocalProgress(lessonId){
+    const rows = readLog().filter(r => !(r.lesson_id === lessonId && r.student_name === getStudentName()));
+    writeLog(rows);
+  }
+
+  function lessonScore(lessonId, sectionPrefix){
+    const rows = getCurrentRows(lessonId).filter(r =>
+      r.exercise_type === 'auto_graded' &&
+      (!sectionPrefix || r.section_id.startsWith(sectionPrefix)) &&
+      r.is_correct !== null
+    );
+    const correct = rows.filter(r => (r.override_correct ?? r.is_correct)).length;
+    return { correct, total: rows.length };
+  }
+
+  function weakSections(lessonId){
+    const rows = getCurrentRows(lessonId).filter(r => (r.override_correct ?? r.is_correct) === false);
+    return [...new Set(rows.map(r => r.section_id))];
+  }
+
+  /**
+   * Pulls this student's rows down from Supabase and merges them into
+   * local storage — patching override_correct/teacher_verdict onto rows
+   * that already exist locally, AND adding any row that exists remotely
+   * but not locally at all (e.g. this device's local storage is empty,
+   * fresh, or was cleared, but the student has answers on Supabase from
+   * another session/device). Also PRUNES any local row whose section no
+   * longer exists remotely — this is what makes a teacher's "wipe" on the
+   * dashboard actually show up on the student's own device, not just on
+   * Supabase. Pruning only ever happens right here, immediately after a
+   * confirmed-successful fetch, never on a failed one — so a dropped
+   * connection can never masquerade as a wipe and erase real local
+   * progress that just hasn't synced yet.
+   * Call this right before showing/exporting results, not continuously.
+   */
+  async function syncFromSupabase(lessonId){
+    if (!supabaseClient) return;
+    try {
+      const { data, error } = await supabaseClient
+        .from('lesson_progress')
+        .select('*')
+        .eq('group_id', GROUP_ID)
+        .eq('student_name', getStudentName())
+        .eq('lesson_id', lessonId);
+      if (error || !data) { if (error) console.warn('Sync from Supabase failed:', error.message); return; }
+      // Past this point the fetch has genuinely succeeded — `data` is an
+      // authoritative snapshot (possibly empty) of this student's rows for
+      // this lesson, safe to reconcile local storage against.
+      const remoteSections = new Set(data.map(r => r.section_id));
+      let rows = readLog();
+      let changed = false;
+
+      data.forEach(remote => {
+        const idx = rows.findIndex(r => r.lesson_id === lessonId && r.student_name === getStudentName() && r.section_id === remote.section_id);
+        if (idx >= 0){
+          if (rows[idx].override_correct !== remote.override_correct || rows[idx].teacher_verdict !== remote.teacher_verdict){
+            rows[idx].override_correct = remote.override_correct;
+            rows[idx].teacher_verdict = remote.teacher_verdict;
+            changed = true;
+          }
+        } else {
+          rows.push({ ...remote, timestamp: remote.created_at || new Date().toISOString() });
+          changed = true;
+        }
+      });
+
+      const beforeCount = rows.length;
+      rows = rows.filter(r => {
+        if (r.lesson_id !== lessonId || r.student_name !== getStudentName()) return true; // different lesson/student, not our concern here
+        return remoteSections.has(r.section_id);
+      });
+      if (rows.length !== beforeCount) changed = true;
+
+      if (changed) writeLog(rows);
+    } catch (e){ console.warn('Sync from Supabase failed:', e); }
+  }
+
+  function exportReport(lessonId, lessonTitle){
+    const rows = getLessonRows(lessonId);
+    const report = {
+      student: getStudentName(),
+      lesson_id: lessonId,
+      lesson_title: lessonTitle,
+      generated_at: new Date().toISOString(),
+      rows
+    };
+    const blob = new Blob([JSON.stringify(report, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `${lessonId}-${getStudentName()}-progress.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  async function exportReportPDF(lessonId, lessonTitle, totalPossible){
+    const rows = getCurrentRows(lessonId);
+    const student = getStudentName();
+    const date = new Date().toLocaleDateString();
+    const autoRows = rows.filter(r => r.exercise_type === 'auto_graded');
+    const oralRows = rows.filter(r => r.exercise_type === 'oral' && r.status === 'completed');
+    const correct = autoRows.filter(r => (r.override_correct ?? r.is_correct)).length;
+    const pct = autoRows.length ? Math.round((correct / autoRows.length) * 100) : 0;
+    const esc = (s) => (s ?? '').toString().replace(/</g, '&lt;');
+
+    let printRoot = document.getElementById('course-print-report');
+    if (!printRoot){
+      printRoot = document.createElement('div');
+      printRoot.id = 'course-print-report';
+      document.body.appendChild(printRoot);
+    }
+    printRoot.innerHTML = `
+      <div style="border-bottom:3px solid #185FA5;padding-bottom:12px;margin-bottom:20px">
+        <div style="font-size:11px;color:#5B6472;text-transform:uppercase;letter-spacing:.05em">English+ Grammar Course</div>
+        <h1 style="font-size:21px;margin:4px 0 0">${esc(lessonTitle)}</h1>
+      </div>
+      <p style="font-size:13px;margin:0 0 3px"><b>Student:</b> ${esc(student)}</p>
+      <p style="font-size:13px;margin:0 0 18px"><b>Date:</b> ${esc(date)}</p>
+      <div style="background:#E6F1FB;border-radius:10px;padding:14px 18px;margin-bottom:${typeof totalPossible === 'number' ? '8px' : '22px'}">
+        <div style="font-size:19px;font-weight:700;color:#0C4577">${correct} / ${autoRows.length} correct (${pct}%)</div>
+      </div>
+      ${typeof totalPossible === 'number' ? (autoRows.length < totalPossible ? `
+      <div style="background:#FAEEDA;border:1px solid #E8C080;border-radius:8px;padding:10px 14px;margin-bottom:22px;font-size:12px;color:#633806">
+        ⚠ Only ${Math.round((autoRows.length / totalPossible) * 100)}% of the lesson attempted (${autoRows.length} of ${totalPossible} exercises) — this score reflects only what's been answered so far.
+      </div>` : `
+      <div style="background:#EAF3DE;border:1px solid #C0DD97;border-radius:8px;padding:10px 14px;margin-bottom:22px;font-size:12px;color:#27500A">
+        ✓ Every exercise in this lesson has been attempted.
+      </div>`) : ''}
+      <h2 style="font-size:14px;margin-bottom:8px">Exercise breakdown</h2>
+      <table style="width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:22px">
+        <thead><tr style="background:#EEF1F5;text-align:left">
+          <th style="padding:5px 7px;border-bottom:1px solid #DFE3E9">Section</th>
+          <th style="padding:5px 7px;border-bottom:1px solid #DFE3E9">Your answer</th>
+          <th style="padding:5px 7px;border-bottom:1px solid #DFE3E9">Result</th>
+        </tr></thead>
+        <tbody>
+          ${autoRows.map(r => {
+            const ok = r.override_correct ?? r.is_correct;
+            const resultLabel = r.override_correct !== null && r.override_correct !== undefined ? (ok ? 'Correct (revised)' : 'Needs review (revised)') : (ok ? 'Correct' : 'Needs review');
+            return `<tr>
+              <td style="padding:5px 7px;border-bottom:1px solid #EEF1F5">${esc(r.section_id)}</td>
+              <td style="padding:5px 7px;border-bottom:1px solid #EEF1F5">${esc(r.answer_given)}</td>
+              <td style="padding:5px 7px;border-bottom:1px solid #EEF1F5;color:${ok ? '#27500A' : '#791F1F'}">${resultLabel}</td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+      ${oralRows.length ? `
+        <h2 style="font-size:14px;margin-bottom:8px">Speaking / discussion</h2>
+        <ul style="font-size:11.5px;padding-left:16px;margin:0">
+          ${oralRows.map(r => `<li style="margin-bottom:5px">${esc(r.answer_given)} — <i>${esc(r.teacher_verdict) || 'not yet marked'}</i></li>`).join('')}
+        </ul>` : ''}
+    `;
+    window.print();
+  }
+
+  /* ----------------------------------------------------------
+     VOCAB POPOVERS
+     ---------------------------------------------------------- */
+  /* ----------------------------------------------------------
+     AUDIO: file-first, speechSynthesis fallback
+     Mirrors the pattern each lesson's listening dialogue already
+     uses (fetch HEAD once, cache the result, play the real file if
+     present) — generalised here so vocab words and any other
+     hoverable/clickable audio button gets the same upgrade path
+     for free the moment real files are dropped into audio/vocab/.
+     Slugifying the spoken text itself (rather than requiring a
+     separate key at every call site) means no lesson file needs to
+     change when real audio arrives — only this function does.
+     ---------------------------------------------------------- */
+  function slugifyForAudio(text){
+    return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+  const audioFileCache = new Map(); // slug -> true|false, checked once per session
+  let currentAudioEl = null;
+  async function speakSmart(text, fallback){
+    const slug = slugifyForAudio(text);
+    const src = `audio/vocab/${slug}.mp3`;
+    if (!audioFileCache.has(slug)){
+      try {
+        const res = await fetch(src, { method: 'HEAD' });
+        audioFileCache.set(slug, res.ok);
+      } catch (e) { audioFileCache.set(slug, false); }
+    }
+    if (audioFileCache.get(slug)){
+      if (currentAudioEl) currentAudioEl.pause();
+      currentAudioEl = new Audio(src);
+      currentAudioEl.play().catch(() => fallback());
+    } else {
+      fallback();
+    }
+  }
+  function speak(text){
+    speakSmart(text, () => {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.rate = 0.92;
+      window.speechSynthesis.speak(u);
+    });
+  }
+
+  /* ----------------------------------------------------------
+     GLOSSARY
+     Same local-write-plus-background-mirror pattern as progress
+     logging — instant local save, best-effort sync to Supabase so
+     it's durable and follows the student across devices.
+     ---------------------------------------------------------- */
+  function getGlossary(){
+    try { return JSON.parse(localStorage.getItem(GLOSSARY_KEY)) || {}; }
+    catch (e){ return {}; }
+  }
+  function writeGlossaryLocal(glossary){
+    localStorage.setItem(GLOSSARY_KEY, JSON.stringify(glossary));
+  }
+
+  async function saveToGlossary(wordKey, data, lessonId){
+    const glossary = getGlossary();
+    glossary[wordKey] = { word: data.word, ipa: data.ipa, meaning: data.meaning, example: data.example, lessonId: lessonId || null };
+    writeGlossaryLocal(glossary);
+
+    if (supabaseClient){
+      (async () => {
+        await ensureGroupMembership(GROUP_ID, getStudentName());
+        const { error } = await supabaseClient.from('glossary').upsert({
+          group_id: GROUP_ID, student_name: getStudentName(), word_key: wordKey,
+          word: data.word, ipa: data.ipa, meaning: data.meaning, example: data.example, lesson_id: lessonId || null
+        }, { onConflict: 'group_id,student_name,word_key' });
+        if (error) console.warn('Glossary sync failed:', error.message);
+      })();
+    }
+  }
+
+  async function removeFromGlossary(wordKey){
+    const glossary = getGlossary();
+    delete glossary[wordKey];
+    writeGlossaryLocal(glossary);
+    if (supabaseClient){
+      const { error } = await supabaseClient.from('glossary').delete()
+        .eq('group_id', GROUP_ID).eq('student_name', getStudentName()).eq('word_key', wordKey);
+      if (error) console.warn('Glossary remove failed:', error.message);
+    }
+  }
+
+  async function syncGlossaryFromSupabase(){
+    if (!supabaseClient) return;
+    try {
+      const { data, error } = await supabaseClient.from('glossary').select('*')
+        .eq('group_id', GROUP_ID).eq('student_name', getStudentName());
+      if (error || !data) { if (error) console.warn('Glossary sync failed:', error.message); return; }
+      const glossary = getGlossary();
+      data.forEach(r => {
+        glossary[r.word_key] = { word: r.word, ipa: r.ipa, meaning: r.meaning, example: r.example, lessonId: r.lesson_id };
+      });
+      writeGlossaryLocal(glossary);
+    } catch (e){ console.warn('Glossary sync failed:', e); }
+  }
+
+  function initVocab(vocabData, lessonId){
+    document.querySelectorAll('.vocab').forEach(el => {
+      el.addEventListener('click', () => {
+        const key = el.dataset.word;
+        const data = vocabData[key];
+        if (!data) return;
+        if (popupTrigger === el){ hidePopup(); return; }
+        const alreadySaved = !!getGlossary()[key];
+        const html = `
+          <div class="vocab-pop-word">${data.word}</div>
+          <div class="vocab-pop-ipa">${data.ipa}</div>
+          <button class="audio-btn vocab-audio-btn" data-speak="${data.word}">🔊 Hear it</button>
+          <div style="font-size:14px;margin-bottom:8px">${data.meaning}</div>
+          <div class="vocab-pop-ex">"${data.example}"</div>
+          <button class="btn btn-sm glossary-btn" data-word="${key}" ${alreadySaved ? 'disabled' : ''}>${alreadySaved ? 'Saved ✓' : '+ Add to my glossary'}</button>
+        `;
+        showPopup(html, el);
+        const content = document.getElementById('course-popup-content');
+        content.querySelector('.vocab-audio-btn')?.addEventListener('click', (e) => { e.stopPropagation(); speak(data.word); });
+        content.querySelector('.glossary-btn')?.addEventListener('click', async (e) => {
+          e.stopPropagation();
+          await saveToGlossary(key, data, lessonId);
+          const btn = content.querySelector('.glossary-btn');
+          btn.textContent = 'Saved ✓'; btn.disabled = true;
+        });
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     SHUFFLING
+     Used for MCQ option order and sentence-builder word banks so
+     the correct answer/order is never predictably in the same
+     position — applies across every lesson via the shared engine.
+     ---------------------------------------------------------- */
+  function shuffleArray(arr){
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function shuffleOptions(containerId){
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const buttons = Array.from(container.querySelectorAll('.opt'));
+    shuffleArray(buttons).forEach(btn => container.appendChild(btn));
+  }
+
+  /* ----------------------------------------------------------
+     POPUP
+     Shared by vocab words, grammar highlights, and any other
+     "click a term, see an explanation" pattern. Closes via the X
+     button, clicking outside, or clicking the same trigger again.
+     ---------------------------------------------------------- */
+  let popupTrigger = null;
+  function ensurePopupRoot(){
+    let root = document.getElementById('course-popup-root');
+    if (!root){
+      root = document.createElement('div');
+      root.id = 'course-popup-root';
+      root.innerHTML = `
+        <div id="course-popup-backdrop" class="course-popup-backdrop"></div>
+        <div id="course-popup-box" class="course-popup-box" role="dialog">
+          <button id="course-popup-close" class="course-popup-close" aria-label="Close">&times;</button>
+          <div id="course-popup-content"></div>
+        </div>
+      `;
+      document.body.appendChild(root);
+      document.getElementById('course-popup-backdrop').addEventListener('click', hidePopup);
+      document.getElementById('course-popup-close').addEventListener('click', hidePopup);
+    }
+    return root;
+  }
+  function showPopup(html, triggerEl){
+    const root = ensurePopupRoot();
+    if (triggerEl && popupTrigger === triggerEl){ hidePopup(); return; }
+    document.getElementById('course-popup-content').innerHTML = html;
+    root.classList.add('open');
+    popupTrigger = triggerEl || null;
+  }
+  function hidePopup(){
+    const root = document.getElementById('course-popup-root');
+    if (root) root.classList.remove('open');
+    popupTrigger = null;
+  }
+
+  /* ----------------------------------------------------------
+     SHUFFLE-WITH-VARIETY
+     Shuffles each container normally, then checks whether the
+     correct answer landed in the same position (usually top) for
+     every single question in the group — if so, forces one to be
+     different, so a themed set of questions never visually looks
+     like "the answer is always first" even by chance.
+     ---------------------------------------------------------- */
+  function ensureGroupVariety(containerIds){
+    if (containerIds.length < 2) return;
+    const firstIsCorrect = containerIds.map(id => {
+      const first = document.querySelector(`#${id} .opt`);
+      return first && first.dataset.value === 'right';
+    });
+    const allSame = firstIsCorrect.every(v => v === firstIsCorrect[0]);
+    if (!allSame) return;
+    // Force one container (at random) to have a different top position.
+    const targetId = containerIds[Math.floor(Math.random() * containerIds.length)];
+    const container = document.getElementById(targetId);
+    const opts = Array.from(container.querySelectorAll('.opt'));
+    const differentIdx = opts.findIndex(o => o.dataset.value !== opts[0].dataset.value);
+    if (differentIdx > 0) container.insertBefore(opts[differentIdx], opts[0]);
+  }
+
+  /* ----------------------------------------------------------
+     GENERIC MULTIPLE-CHOICE EXERCISE
+     Container needs: data-lesson, data-section, data-correct
+     Options: <button class="opt" data-value="...">
+     ---------------------------------------------------------- */
+  function initMCQ(containerId, {lessonId, sectionId, correctValue, onAnswered, restoreAnswer}){
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const opts = container.querySelectorAll('.opt');
+    let answered = false;
+
+    function applyResult(chosenValue){
+      opts.forEach(o => {
+        if (o.dataset.value === correctValue) o.classList.add('ok');
+        else if (o.dataset.value === chosenValue) o.classList.add('bad');
+        else o.classList.add('dim');
+      });
+    }
+
+    // Restoring a prior answer (e.g. reopening a lesson already in progress)
+    // applies the same visual result a click would, without re-logging it.
+    if (restoreAnswer !== undefined && restoreAnswer !== null){
+      answered = true;
+      applyResult(restoreAnswer);
+    }
+
+    opts.forEach(opt => {
+      opt.addEventListener('click', () => {
+        if (answered) return;
+        answered = true;
+        const chosen = opt.dataset.value;
+        const isCorrect = chosen === correctValue;
+        applyResult(chosen);
+        logProgress({ lessonId, sectionId, answerGiven: chosen, isCorrect });
+        if (onAnswered) onAnswered(isCorrect, chosen);
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     FIND-THE-ERROR (click the wrong word/phrase within a sentence)
+     A different interaction from the two-option MCQ pair used in
+     Lesson 1's "spot the correct sentence" — same underlying skill
+     (identify the tense mistake), different format, so lessons can
+     genuinely vary which exercise types appear.
+     ---------------------------------------------------------- */
+  function initErrorSpot(containerId, {lessonId, sectionId, words, errorIndices, correction, onAnswered, restore}){
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = words.map((w, i) => `<span class="err-word" data-idx="${i}">${w}</span>`).join(' ');
+    const spans = container.querySelectorAll('.err-word');
+    let answered = false;
+
+    function reveal(clickedIdx){
+      spans.forEach(s => {
+        const idx = Number(s.dataset.idx);
+        if (errorIndices.includes(idx)) s.classList.add('err-target');
+        else if (idx === clickedIdx) s.classList.add('err-wrong-pick');
+        s.style.pointerEvents = 'none';
+      });
+      const isCorrect = errorIndices.includes(clickedIdx);
+      const note = document.createElement('div');
+      note.className = isCorrect ? 'fb-ok' : 'fb-no';
+      note.style.marginTop = '8px';
+      note.textContent = isCorrect
+        ? `✓ Correct — should be "${correction}"`
+        : `Not quite — the error was "${errorIndices.map(i => words[i]).join(' ')}", which should be "${correction}"`;
+      container.insertAdjacentElement('afterend', note);
+    }
+
+    if (restore){
+      answered = true;
+      reveal(Number(restore.answerGiven));
+      return;
+    }
+
+    spans.forEach(s => {
+      s.addEventListener('click', () => {
+        if (answered) return;
+        answered = true;
+        const idx = Number(s.dataset.idx);
+        const isCorrect = errorIndices.includes(idx);
+        reveal(idx);
+        logProgress({ lessonId, sectionId, answerGiven: String(idx), isCorrect });
+        if (onAnswered) onAnswered(isCorrect);
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     MATCHING (click a left item, then its matching right item)
+     A third exercise format for the practice slot that's used
+     "spot the correct sentence" (L1) and "find the error" (L2) —
+     lessons can rotate through these so consecutive lessons never
+     feel identical. Each pair gets its own section_id so it's
+     individually restorable/reveal-able, same as everything else.
+     A wrong attempt locks that LEFT item (shown in red) but leaves
+     the right item available, since it may still be the correct
+     partner for a different, not-yet-answered left item.
+     ---------------------------------------------------------- */
+  function initMatching(containerId, {lessonId, sectionPrefix, pairs, onAnswered, sectionMap}){
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = `
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 16px">
+        <div id="${containerId}-left" style="display:flex;flex-direction:column;gap:8px"></div>
+        <div id="${containerId}-right" style="display:flex;flex-direction:column;gap:8px"></div>
+      </div>
+    `;
+    const leftEl = document.getElementById(`${containerId}-left`);
+    const rightEl = document.getElementById(`${containerId}-right`);
+    const leftItems = pairs.map((p, i) => ({ text: p.left, idx: i }));
+    // Plain shuffle can, by chance, leave a pair's true partner sitting on the
+    // same visual row as its left half — which reads as though the answer is
+    // already given away. Reshuffle (bounded) until at most one row does that.
+    let rightItems;
+    let attempts = 0;
+    do {
+      rightItems = shuffleArray(pairs.map((p, i) => ({ text: p.right, idx: i })));
+      attempts++;
+    } while (rightItems.filter((item, row) => item.idx === row).length > 1 && attempts < 50);
+
+    let selectedLeftIdx = null;
+    const answeredLeft = new Map();  // idx -> isCorrect
+    const usedRight = new Set();     // idx of right items already correctly claimed
+
+    if (sectionMap){
+      pairs.forEach((p, i) => {
+        const row = sectionMap[`${sectionPrefix}-${i + 1}`];
+        if (row){
+          const isCorrect = row.override_correct ?? row.is_correct;
+          answeredLeft.set(i, isCorrect);
+          if (isCorrect) usedRight.add(i);
+        }
+      });
+    }
+
+    function renderLeft(){
+      leftEl.innerHTML = '';
+      leftItems.forEach(item => {
+        const btn = document.createElement('button');
+        btn.className = 'chip match-item';
+        if (answeredLeft.has(item.idx)){
+          btn.classList.add(answeredLeft.get(item.idx) ? 'match-correct' : 'match-wrong');
+          btn.disabled = true;
+        } else {
+          if (selectedLeftIdx === item.idx) btn.classList.add('sel');
+          btn.addEventListener('click', () => { selectedLeftIdx = item.idx; renderLeft(); });
+        }
+        btn.textContent = item.text;
+        leftEl.appendChild(btn);
+      });
+    }
+    function renderRight(){
+      rightEl.innerHTML = '';
+      rightItems.forEach(item => {
+        const btn = document.createElement('button');
+        btn.className = 'chip match-item';
+        if (usedRight.has(item.idx)){
+          btn.classList.add('match-correct');
+          btn.disabled = true;
+        } else {
+          btn.addEventListener('click', () => {
+            if (selectedLeftIdx === null || answeredLeft.has(selectedLeftIdx)) return;
+            const isCorrect = item.idx === selectedLeftIdx;
+            const sectionId = `${sectionPrefix}-${selectedLeftIdx + 1}`;
+            answeredLeft.set(selectedLeftIdx, isCorrect);
+            if (isCorrect) usedRight.add(item.idx);
+            logProgress({ lessonId, sectionId, answerGiven: item.text, isCorrect });
+            selectedLeftIdx = null;
+            renderLeft(); renderRight();
+            if (onAnswered) onAnswered(isCorrect);
+          });
+        }
+        btn.textContent = item.text;
+        rightEl.appendChild(btn);
+      });
+    }
+    renderLeft();
+    renderRight();
+  }
+
+  /* ----------------------------------------------------------
+     GENERIC GAP-FILL (typed answer, case-insensitive, trims)
+     showAnswerHint controls whether the feedback reveals the
+     expected answer(s) — intended for just the first exercise in a
+     themed set, to model the expected format, while the rest stay
+     silent on the exact answer so students genuinely have to recall
+     it (any review then happens live, e.g. via the teacher's reveal
+     panel, rather than being handed to them instantly).
+     ---------------------------------------------------------- */
+  /**
+   * Given a list of full-form correct answers, returns the list with a
+   * contracted variant added for any answer starting with a word that
+   * naturally contracts with a preceding subject pronoun (have -> 've,
+   * has/is -> 's, are -> 're, will -> 'll, would/had -> 'd). The blank
+   * itself never includes the subject, so a student who thinks "I've
+   * never been" naturally types "'ve never been" — without this, that's
+   * marked wrong even though it's exactly correct.
+   */
+  function withContractions(answers){
+    const subjectMap = { have:"'ve", has:"'s", am:"'m", are:"'re", is:"'s", will:"'ll", would:"'d", had:"'d" };
+    const modalMap = { would:"would've", could:"could've", might:"might've", should:"should've", must:"must've" };
+    const expanded = [...answers];
+    answers.forEach(a => {
+      const words = a.split(' ');
+      const firstWord = words[0].toLowerCase();
+      const rest = a.slice(words[0].length); // keeps the leading space, or ''
+
+      // Pattern A: contract the first word alone, assuming a subject pronoun
+      // already precedes it in the visible sentence ("would" -> "'d", so
+      // "she" + "'d have shared" reads as "she'd have shared").
+      if (subjectMap[firstWord] && rest) expanded.push(subjectMap[firstWord] + rest);
+
+      // Pattern B: modal + have -> modal've ("would've saved"), the far more
+      // common spoken contraction — Pattern A alone never produces this since
+      // it only ever touches the first word. Also handles a single adverb
+      // wedged between the modal and "have" ("would probably have saved" ->
+      // "would've probably saved"), which is how it naturally reads once
+      // "have" fuses onto the modal instead of staying separate.
+      if (modalMap[firstWord]){
+        if (words[1] && words[1].toLowerCase() === 'have'){
+          const tail = words.slice(2).join(' ');
+          expanded.push(`${modalMap[firstWord]}${tail ? ' ' + tail : ''}`);
+        } else if (words[2] && words[2].toLowerCase() === 'have'){
+          const adverb = words[1];
+          const tail = words.slice(3).join(' ');
+          expanded.push(`${modalMap[firstWord]} ${adverb}${tail ? ' ' + tail : ''}`);
+        }
+      }
+    });
+    return expanded;
+  }
+
+  function initGapFill(inputId, checkBtnId, feedbackId, {lessonId, sectionId, correctAnswers, showAnswerHint = false, restore, onAnswered}){
+    const input = document.getElementById(inputId);
+    const btn = document.getElementById(checkBtnId);
+    const fb = document.getElementById(feedbackId);
+    if (!input || !btn) return;
+
+    // Curly/smart apostrophes (from autocorrect, mobile keyboards) and a
+    // missing apostrophe entirely ("dont" for "don't") were being marked
+    // wrong even when every other letter matched a correct answer — this
+    // strips all apostrophe variants from both sides before comparing, so
+    // typing style/typos never cause a false "incorrect". Trailing sentence
+    // punctuation and repeated whitespace are normalized away too.
+    function normalizeAnswer(s){
+      return s
+        .trim()
+        .toLowerCase()
+        .replace(/[\u2018\u2019\u02BC']/g, '')
+        .replace(/[.!?]+$/, '')
+        .replace(/\s+/g, ' ');
+    }
+
+    function showFeedback(isCorrect){
+      // withContractions() adds bare fragments like "'ve sent" so a typed
+      // contraction is still marked correct — but shown alone in a hint,
+      // with no subject in front of it, that apostrophe-first fragment
+      // reads as broken rather than helpful. The full form(s) are always
+      // still in this list too, so filtering fragments never empties it.
+      const hintAnswers = correctAnswers.filter(a => !a.startsWith("'"));
+      if (isCorrect){
+        fb.innerHTML = showAnswerHint
+          ? `<div class="fb-ok">✓ Correct — "${hintAnswers.join(' OR ')}"</div>`
+          : `<div class="fb-ok">✓ Correct!</div>`;
+        return;
+      }
+      // A wrong answer always reveals the correct one(s) now — previously
+      // only the first item in a themed set (showAnswerHint: true) did this,
+      // and every other item just said "we'll go over this one together"
+      // with no indication of what was actually expected. When several
+      // answers are genuinely valid, all of them are listed so the person
+      // reviewing can see there's real nuance here, not just one fixed
+      // answer they happened to miss.
+      if (hintAnswers.length > 1){
+        const list = hintAnswers.map(a => `"${a}"`).join(' or ');
+        fb.innerHTML = `<div class="fb-no">Not quite. A few answers would work here: ${list} — we'll go over this one together.</div>`;
+      } else {
+        fb.innerHTML = `<div class="fb-no">Not quite. A correct answer would be: "${hintAnswers[0]}".</div>`;
+      }
+    }
+
+    if (restore){
+      input.value = restore.answerGiven ?? '';
+      input.disabled = true; btn.disabled = true;
+      showFeedback(restore.isCorrect);
+      return;
+    }
+
+    btn.addEventListener('click', () => {
+      const val = normalizeAnswer(input.value);
+      const accepted = correctAnswers.map(normalizeAnswer);
+      const isCorrect = accepted.includes(val);
+      showFeedback(isCorrect);
+      input.disabled = true; btn.disabled = true;
+      logProgress({ lessonId, sectionId, answerGiven: input.value.trim(), isCorrect });
+      if (onAnswered) onAnswered(isCorrect);
+    });
+  }
+
+  /* ----------------------------------------------------------
+     SCORE SUMMARY RENDER
+     ---------------------------------------------------------- */
+  function renderScoreRing(elId, correct, total){
+    const el = document.getElementById(elId);
+    if (!el) return;
+    const pct = total ? Math.round((correct/total)*100) : 0;
+    el.innerHTML = `<div class="score-ring">${pct}%</div>`;
+  }
+
+  return { logProgress, getLessonRows, getCurrentRows, getSectionMap, lessonScore, weakSections, exportReport, exportReportPDF,
+           speak, speakSmart, initVocab, initMCQ, initGapFill, initErrorSpot, initMatching, withContractions, renderScoreRing, getStudentName,
+           shuffleArray, shuffleOptions, ensureGroupVariety, showPopup, hidePopup, resetLocalProgress, syncFromSupabase,
+           getGlossary, saveToGlossary, removeFromGlossary, syncGlossaryFromSupabase,
+           getGroupId: () => GROUP_ID, isConnected: () => !!supabaseClient };
+})();
+
+</script>
+<script>
+const LESSON_ID = 'lesson-10-modal-perfect';
+
+/* ---------------- HOVER-TOOLTIP INFRASTRUCTURE ---------------- */
+function ensureCompareTooltip(){
+  let el = document.getElementById('compare-tooltip');
+  if (!el){
+    el = document.createElement('div');
+    el.id = 'compare-tooltip';
+    document.body.appendChild(el);
+  }
+  return el;
+}
+const compareTooltipEl = ensureCompareTooltip();
+function showCompareTooltip(html, anchorEl){
+  compareTooltipEl.innerHTML = html;
+  const rect = anchorEl.getBoundingClientRect();
+  const scrollY = window.scrollY || document.documentElement.scrollTop;
+  const scrollX = window.scrollX || document.documentElement.scrollLeft;
+  compareTooltipEl.style.top = `${rect.bottom + scrollY + 8}px`;
+  compareTooltipEl.style.left = `${rect.left + scrollX}px`;
+  compareTooltipEl.classList.add('visible');
+}
+function hideCompareTooltip(){
+  compareTooltipEl.classList.remove('visible');
+}
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.trait-pill') && !e.target.closest('.compare-box')) hideCompareTooltip();
+});
+function renderCompareCard(containerId, items, explanations){
+  const el = document.getElementById(containerId);
+  el.innerHTML = items.map(it => `
+    <div style="display:flex;gap:10px;align-items:baseline;margin-bottom:${it.groupEnd ? 20 : 8}px">
+      <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);flex-shrink:0;width:${it.labelWidth || 110}px">${it.label}</span>
+      <span class="compare-box" data-key="${it.key}">"${it.text}"</span>
+    </div>
+  `).join('');
+  el.querySelectorAll('.compare-box').forEach(node => {
+    const html = `<div>${explanations[node.dataset.key]}</div>`;
+    node.addEventListener('mouseenter', () => showCompareTooltip(html, node));
+    node.addEventListener('mouseleave', hideCompareTooltip);
+    node.addEventListener('click', () => showCompareTooltip(html, node));
+  });
+}
+
+/* ---------------- MODAL WIDGET: view x judgement, or Quick check
+   (no present/past split needed — modal perfect is inherently past) ---------------- */
+const judgementUses = {
+  should: [{ word: 'should have', example: 'I should have backed up the file. (regret/criticism of inaction — I didn\'t, and now I regret it)' }],
+  shouldnt: [{ word: "shouldn't have", example: "You shouldn't have told him that. (criticism of an action taken — you did, and it was the wrong call)" }],
+  could: [{ word: 'could have', example: "He could have won easily, but he slowed down to help a fallen runner. (a real possibility that existed but didn't happen — no blame required)" }],
+  would: [
+    { word: 'would have', example: "I would have finished on time, if the printer hadn't broken down. (a hypothetical outcome — the result changes only because something else was missing)" },
+    { word: "wouldn't have", example: "I wouldn't have called so late, but it was an emergency. (the same hypothetical reasoning, negated — normally this wouldn't happen, but a different circumstance changed the outcome)" }
+  ]
+};
+const judgementStructure = {
+  should: [{ word: 'Regret / criticism of inaction', example: 'should have + past participle' }],
+  shouldnt: [{ word: 'Criticism of an action taken', example: "shouldn't have + past participle" }],
+  could: [{ word: 'Missed opportunity', example: 'could have + past participle' }],
+  would: [{ word: 'Hypothetical past outcome', example: "would / wouldn't have + past participle" }]
+};
+(function buildModalWidget(){
+  const quizPool = [
+    { word: 'should have', answer: 'should' },
+    { word: "shouldn't have", answer: 'shouldnt' },
+    { word: 'could have', answer: 'could' },
+    { word: 'would have', answer: 'would' },
+    { word: "wouldn't have", answer: 'would' }
+  ];
+  const quizLabels = { should: 'regret / criticism of inaction', shouldnt: 'criticism of an action taken', could: 'a missed opportunity', would: 'a hypothetical outcome' };
+  let view = 'structure';
+  let fn = 'should';
+  const idx = {
+    structure: { should: 0, shouldnt: 0, could: 0, would: 0 },
+    examples: { should: 0, shouldnt: 0, could: 0, would: 0 }
+  };
+  const displayEl = document.getElementById('modal-widget-area');
+  const hintEl = document.getElementById('modal-widget-hint');
+
+  function renderBrowse(){
+    displayEl.style.padding = '18px';
+    const data = view === 'structure' ? judgementStructure[fn] : judgementUses[fn];
+    const canCycle = data.length > 1;
+    hintEl.style.display = canCycle ? 'block' : 'none';
+    hintEl.textContent = '— Click the pills to see another example.';
+    const item = data[idx[view][fn]];
+    displayEl.innerHTML = `
+      <div style="overflow-x:auto;padding-bottom:2px">
+        <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:10px;align-items:center;min-width:420px">
+          <div class="static-cell is-primary-cell${canCycle ? ' clickable-cell' : ''}">${item.word}</div>
+          <div class="static-cell is-primary-cell${canCycle ? ' clickable-cell' : ''}">${item.example}</div>
+        </div>
+      </div>`;
+    if (canCycle){
+      displayEl.querySelectorAll('.clickable-cell').forEach(c => {
+        c.addEventListener('click', () => {
+          idx[view][fn] = (idx[view][fn] + 1) % data.length;
+          renderBrowse();
+        });
+      });
+    }
+  }
+
+  function renderQuiz(){
+    hintEl.style.display = 'none';
+    displayEl.style.padding = '12px 18px';
+    displayEl.innerHTML = `
+      <p id="modal-quiz-word" style="font-size:18px;font-weight:650;text-align:center;color:var(--accent);margin-bottom:10px"></p>
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap" id="modal-quiz-options">
+        <button class="opt" data-answer="should" style="flex:0 1 auto">Regret / criticism of inaction</button>
+        <button class="opt" data-answer="shouldnt" style="flex:0 1 auto">Criticism of an action taken</button>
+        <button class="opt" data-answer="could" style="flex:0 1 auto">Missed opportunity</button>
+        <button class="opt" data-answer="would" style="flex:0 1 auto">Hypothetical past outcome</button>
+      </div>
+      <div id="modal-quiz-feedback" style="text-align:center;min-height:16px;margin-top:8px;font-size:13.5px"></div>
+      <div style="text-align:center;margin-top:10px">
+        <button class="btn btn-primary" id="modal-quiz-next" style="display:none">Next →</button>
+      </div>`;
+
+    let order = Course.shuffleArray(quizPool.map((_, i) => i));
+    let pos = 0;
+    let answered = false;
+    const wordEl = document.getElementById('modal-quiz-word');
+    const optionsEl = document.getElementById('modal-quiz-options');
+    const feedbackEl = document.getElementById('modal-quiz-feedback');
+    const nextBtn = document.getElementById('modal-quiz-next');
+
+    function renderQ(){
+      answered = false;
+      feedbackEl.textContent = '';
+      nextBtn.style.display = 'none';
+      wordEl.textContent = quizPool[order[pos]].word;
+      [...optionsEl.children].forEach(btn => { btn.className = 'opt'; });
+    }
+    optionsEl.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (answered) return;
+        answered = true;
+        const item = quizPool[order[pos]];
+        const correct = btn.dataset.answer === item.answer;
+        [...optionsEl.children].forEach(b => {
+          if (b === btn) b.classList.add(correct ? 'ok' : 'bad');
+          else if (b.dataset.answer === item.answer) b.classList.add('ok');
+          else b.classList.add('dim');
+        });
+        feedbackEl.innerHTML = correct
+          ? `<span style="color:var(--ok)">✓ Correct! "${item.word}" expresses ${quizLabels[item.answer]}.</span>`
+          : `<span style="color:var(--bad)">Not quite — "${item.word}" expresses ${quizLabels[item.answer]}.</span>`;
+        nextBtn.style.display = 'inline-block';
+      });
+    });
+    nextBtn.addEventListener('click', () => {
+      pos += 1;
+      if (pos >= order.length){ order = Course.shuffleArray(quizPool.map((_, i) => i)); pos = 0; }
+      renderQ();
+    });
+    renderQ();
+  }
+
+  function updateRulesToggleState(){
+    const btn = document.getElementById('rules-toggle');
+    const content = document.getElementById('rules-content');
+    if (fn === 'quiz'){
+      btn.disabled = true;
+      btn.textContent = '📖 Disabled during Quick check';
+      content.classList.remove('open');
+    } else {
+      btn.disabled = false;
+      const isOpen = content.classList.contains('open');
+      btn.textContent = isOpen ? '📖 Hide the full rules' : '📖 Show the full rules';
+    }
+  }
+  function switchView(newView){
+    view = newView;
+    document.getElementById('mode-modal-structure').classList.toggle('on', newView === 'structure');
+    document.getElementById('mode-modal-examples').classList.toggle('on', newView === 'examples');
+    if (fn !== 'quiz') renderBrowse();
+  }
+  function switchFn(newFn){
+    fn = newFn;
+    ['should', 'shouldnt', 'could', 'would', 'quiz'].forEach(m => {
+      document.getElementById(`mode-modal-${m}`).classList.toggle('on', m === newFn);
+    });
+    if (newFn === 'quiz') renderQuiz();
+    else renderBrowse();
+    updateRulesToggleState();
+  }
+  document.getElementById('mode-modal-structure').addEventListener('click', () => switchView('structure'));
+  document.getElementById('mode-modal-examples').addEventListener('click', () => switchView('examples'));
+  document.getElementById('mode-modal-should').addEventListener('click', () => switchFn('should'));
+  document.getElementById('mode-modal-shouldnt').addEventListener('click', () => switchFn('shouldnt'));
+  document.getElementById('mode-modal-could').addEventListener('click', () => switchFn('could'));
+  document.getElementById('mode-modal-would').addEventListener('click', () => switchFn('would'));
+  document.getElementById('mode-modal-quiz').addEventListener('click', () => switchFn('quiz'));
+  switchFn('should');
+})();
+
+{
+  const glossaryLink = document.getElementById('glossary-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  const currentFile = window.location.pathname.split('/').pop();
+  let glossaryHref = `glossary-standalone.html?from=${encodeURIComponent(currentFile)}`;
+  if (groupParam) glossaryHref += `&group=${encodeURIComponent(groupParam)}`;
+  glossaryLink.href = glossaryHref;
+}
+
+{
+  const resetBtn = document.createElement('button');
+  resetBtn.className = 'btn btn-sm btn-ghost';
+  resetBtn.textContent = '↺ Reset my progress for this lesson';
+  resetBtn.style.cssText = 'margin-top:8px;font-size:12px;padding:5px 12px';
+  resetBtn.addEventListener('click', () => {
+    if (confirm('Clear all saved answers for this lesson on this device? (Does not affect Supabase.)')){
+      Course.resetLocalProgress(LESSON_ID);
+      location.reload();
+    }
+  });
+  document.getElementById('sync-status').insertAdjacentElement('afterend', resetBtn);
+}
+
+(async function initLesson(){
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Syncing your progress…`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  await Course.syncFromSupabase(LESSON_ID);
+  const sectionMap = Course.getSectionMap(LESSON_ID);
+
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Synced · Group: ${Course.getGroupId()}`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  /* ---------------- VOCAB DATA ---------------- */
+  const vocabData = {
+    inevitable: { word:'inevitable', ipa:'/ɪˈnev.ɪ.tə.bl/', meaning:'certain to happen, impossible to avoid', example:"Given how underprepared they were, the delay felt inevitable in hindsight." },
+    retrospect: { word:'retrospect', ipa:'/ˈret.rə.spekt/', meaning:'looking back on a past event or period', example:"In retrospect, the warning signs were there all along — or so it seems now." },
+    distort: { word:'distort', ipa:'/dɪˈstɔːt/', meaning:"to change something so it no longer represents the truth accurately", example:"Memory tends to distort the past to fit what we now know." },
+    overconfidence: { word:'overconfidence', ipa:'/ˌəʊ.vəˈkɒn.fɪ.dəns/', meaning:"excessive confidence in one's own judgement or abilities", example:"Overconfidence after a lucky win can lead to much bigger mistakes later." },
+    foresight: { word:'foresight', ipa:'/ˈfɔː.saɪt/', meaning:'the ability to predict or plan for future events', example:"It took real foresight to invest before anyone else saw the opportunity." },
+    plausible: { word:'plausible', ipa:'/ˈplɔː.zə.bl/', meaning:'seeming reasonable or probable', example:"Her explanation sounded plausible, even though it later turned out to be wrong." },
+    deem: { word:'deem', ipa:'/diːm/', meaning:'to consider or judge something in a particular way', example:"The proposal was deemed too risky by the board." },
+    skew: { word:'skew', ipa:'/skjuː/', meaning:'to distort something, making it biased in a particular direction', example:"Knowing the final score can skew how fairly people judge the earlier decisions." },
+    warrant: { word:'warrant', ipa:'/ˈwɒr.ənt/', meaning:'to justify or deserve a particular response or conclusion', example:"The evidence available at the time didn't warrant such a confident prediction." }
+  };
+
+  function vocabSpan(key, text){
+    return `<span class="vocab" data-word="${key}">${text}</span>`;
+  }
+  function gramSpan(key, text){
+    return `<span class="gram" data-gram="${key}">${text}</span>`;
+  }
+  const gramExplanations = {
+    g1: "Should have (regret/criticism of inaction) — implies the colleague didn't see it coming, and the speaker believes they should have.",
+    g2: "Shouldn't have (criticism of an action taken) — the coach DID take the risk, and fans believe that was the wrong call.",
+    g3: "Could have (missed opportunity) — a real possibility that existed at the time, not a guess about what happened; the team simply didn't catch it.",
+    g4: "Must have (confident past deduction, from Lesson 9) — a neutral guess about someone's mental state, not a judgement of right or wrong.",
+    g5: "Should have (general regret) — a broad wish that something had been done differently, with no single person being singled out."
+  };
+
+  /* ---------------- READING PASSAGE ---------------- */
+  document.getElementById('passage').innerHTML = `
+  <p>In 1975, psychologist Baruch Fischhoff ran a simple experiment that gave a name to something almost everyone does. He gave people a short account of an obscure 1814 conflict between British and Gurkha forces, then told different groups different "outcomes" — British victory, stalemate, and so on — before asking each group how likely that outcome had actually been. People who were told the real outcome rated it as far more ${vocabSpan('inevitable','inevitable')} than people who weren't told anything at all.</p>
+
+  <p>Fischhoff called it hindsight bias, though most people know it by a blunter name: the "I knew it all along" effect. In ${vocabSpan('retrospect','retrospect')}, almost any outcome looks obvious — the warning signs feel clear, the risky decision feels reckless. At the time, though, the same situation usually looked genuinely uncertain. Looking back on a bad outcome, people often insist a colleague ${gramSpan('g1','should have seen it coming')}, when the truth is that almost nobody did.</p>
+
+  <p>The bias doesn't just make the past look more predictable — it ${vocabSpan('distort','distorts')} how people judge decisions made under real uncertainty. A doctor who missed a rare diagnosis gets accused of ${vocabSpan('overconfidence','overconfidence')} they never actually had; a coach who called a losing play ${gramSpan('g2',"shouldn't have taken the risk")}, according to fans who would have praised the exact same call if it had worked. None of this requires actual ${vocabSpan('foresight','foresight')} — just the comfortable, ${vocabSpan('plausible','plausible')}-sounding certainty that arrives after the fact. The very same decision gets ${vocabSpan('deem','deemed')} reckless or brilliant based entirely on how it turned out, not on the reasoning behind it.</p>
+
+  <p>The practical cost is real. A postmortem that concludes a team ${gramSpan('g3','could have caught the problem')} earlier, if only they'd looked harder, often ${vocabSpan('skew','skews')} the actual lesson — the information available at the time may not have ${vocabSpan('warrant','warranted')} that conclusion at all. Reviewers who ${gramSpan('g4','must have felt')} confident in their own judgement, simply because they now know the ending, rarely stop to ask whether they'd have called it correctly beforehand. The fix isn't complicated, even if it's rarely followed: judge a decision by the information available at the time, not by how the story ended. Most workplaces ${gramSpan('g5','should have built')} this kind of fair review into their culture years ago — instead, hindsight keeps doing the judging for free.</p>
+  `;
+  document.getElementById('passage').classList.add('passage');
+
+  document.getElementById('gram-toggle').addEventListener('click', function(){
+    const passage = document.getElementById('passage');
+    const on = passage.classList.toggle('show-grammar');
+    this.classList.toggle('on', on);
+    this.textContent = on ? '🔍 Hide grammar in this text' : '🔍 Show grammar in this text';
+    if (!on) Course.hidePopup();
+  });
+  document.querySelectorAll('.gram').forEach(el => {
+    el.addEventListener('click', () => {
+      Course.showPopup(`<div style="font-size:14.5px;line-height:1.6">${gramExplanations[el.dataset.gram]}</div>`, el);
+    });
+  });
+
+  Course.initVocab(vocabData, LESSON_ID);
+
+  /* ---------------- L9 CONTRAST EXAMPLES (clickable) ----------------
+     "Could have" is the single biggest confusion risk in this lesson —
+     same word, same grammar shape, two unrelated meanings depending on
+     which lesson's logic applies. */
+  const l9ContrastExamples = [
+    { key:'l9a', label:'Lesson 9 (deduction)', text:"The email hasn't been read yet, so she could have missed it.", labelWidth: 170 },
+    { key:'l10a', label:'Lesson 10 (missed opportunity)', text:'She could have caught the train, but she stopped for coffee instead.', labelWidth: 170, groupEnd: true },
+    { key:'l9b', label:'Lesson 9 (deduction)', text:'He could have taken a different route — traffic was bad everywhere that day.', labelWidth: 170 },
+    { key:'l10b', label:'Lesson 10 (missed opportunity)', text:'He could have taken the promotion, but he chose to stay in his current role.', labelWidth: 170 }
+  ];
+  const l9ContrastExplanations = {
+    l9a: "A Lesson 9 use — this is a guess about what might have happened, based on the evidence that the email is still unread. Nobody knows for certain.",
+    l10a: 'A Lesson 10 use — this is a known fact, stated with reflection: catching the train was genuinely possible, and it definitely didn\'t happen.',
+    l9b: "A Lesson 9 use — a tentative guess about an unknown detail (which route he actually took), not a statement about what he chose.",
+    l10b: 'A Lesson 10 use — a known, specific choice: the promotion was real and available, and he turned it down.'
+  };
+  renderCompareCard('l9-contrast-examples', l9ContrastExamples, l9ContrastExplanations);
+
+  /* ---------------- JUDGEMENT SLIDER ----------------
+     Purely exploratory, ungraded. Four discrete stops (a native range input,
+     step=1) — these are four genuinely distinct functions, not points on a
+     single smooth scale, so snapping to exact stages is more honest than a
+     free-drag continuum. "Must have" (Lesson 9's neutral deduction) is
+     deliberately NOT one of the four — it was already fully taught there,
+     so re-presenting it as new content here would be redundant. The fourth
+     stop is "would have" instead: a hypothetical outcome, genuinely new
+     content that completes the set of ways to reflect on the past. */
+  const timelineStages = [
+    { form:'COULD HAVE', color:'c-continuous', example:'She could have taken the promotion, but she turned it down.', note:'A real possibility that existed — no blame, just noting the option was there.' },
+    { form:'SHOULD HAVE', color:'c-present', example:"I should have backed up the file before the update.", note:"Regret or criticism that something wasn't done — the missing action is the problem." },
+    { form:"SHOULDN'T HAVE", color:'bad', example:"He shouldn't have ignored the warning light for so long.", note:'Criticism of something that WAS done — the action itself is the problem this time.' },
+    { form:'WOULD HAVE', color:'c-future', example:"I would have finished on time, if the printer hadn't broken down.", note:"A hypothetical outcome — the result changes only because a different circumstance was missing, not a judgement of right or wrong." }
+  ];
+  const timelineSlider = document.getElementById('timeline-slider');
+  const timelineDisplay = document.getElementById('timeline-display');
+  function renderTimeline(){
+    const stage = timelineStages[timelineSlider.value];
+    timelineDisplay.innerHTML = `
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:8px">Form:</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+        <span style="width:10px;height:10px;border-radius:3px;background:var(--${stage.color});display:inline-block;flex-shrink:0"></span>
+        <span style="font-size:15px;font-weight:700;letter-spacing:.02em;color:var(--${stage.color})">${stage.form}</span>
+      </div>
+      <div style="font-size:15px;font-weight:550;margin-bottom:6px">"${stage.example}"</div>
+      <div style="font-size:13.5px;color:var(--text-secondary)">${stage.note}</div>
+    `;
+  }
+  timelineSlider.addEventListener('input', renderTimeline);
+  renderTimeline();
+
+  /* ---------------- COMPARE EXAMPLES (clickable) ---------------- */
+  const compareExamples = [
+    { key:'s1a', label:'should have', text:'She should have told me about the change.' },
+    { key:'s1b', label:"shouldn't have", text:"She shouldn't have told me about the change." },
+    { key:'s1c', label:'could have', text:'She could have told me about the change.' },
+    { key:'s1d', label:'would have', text:"She would have told me about the change, if she'd had my number.", groupEnd: true },
+    { key:'s2a', label:'should have', text:'You should have listened to your doctor.' },
+    { key:'s2b', label:"shouldn't have", text:"You shouldn't have listened to your doctor." },
+    { key:'s2c', label:'could have', text:"You could have listened to your doctor, but you decided not to." },
+    { key:'s2d', label:'would have', text:"You would have listened to your doctor, if the advice had actually made sense." }
+  ];
+  const compareExplanations = {
+    s1a: "Regret/criticism of inaction — she didn't tell me, and the speaker believes she should have.",
+    s1b: "Criticism of an action taken — she DID tell me, and the speaker thinks that was the wrong call, perhaps because it wasn't her place to.",
+    s1c: 'Missed opportunity, stated neutrally — she had the chance to tell me and simply didn\'t, with no blame implied either way.',
+    s1d: "Hypothetical outcome — implies a missing circumstance (having my number); the telling would have happened if that one thing had been different.",
+    s2a: "Regret/criticism of inaction — you didn't listen, and the speaker believes that was the mistake.",
+    s2b: "Criticism of an action taken — you DID listen, and the speaker thinks the doctor's advice turned out to be bad.",
+    s2c: 'Missed opportunity — a real option that existed, stated as a simple fact about what happened.',
+    s2d: "Hypothetical outcome — implies the advice itself was the missing piece; different advice would have led to a different result."
+  };
+  renderCompareCard('compare-examples', compareExamples, compareExplanations);
+
+  /* ---------------- EXPANDABLE RULES ---------------- */
+  document.getElementById('rules-toggle').addEventListener('click', function(){
+    const content = document.getElementById('rules-content');
+    const open = content.classList.toggle('open');
+    this.textContent = open ? '📖 Hide the full rules' : '📖 Show the full rules';
+  });
+
+  /* ---------------- MCQ SECTIONS (via shared engine) ---------------- */
+  const mcqSections = [
+    ['warm-q1','warmup-1','right'], ['warm-q2','warmup-2','right'], ['warm-q3','warmup-3','right'],
+    ['diag-q1','diagnostic-1','right'], ['diag-q2','diagnostic-2','right'], ['diag-q3','diagnostic-3','right'], ['diag-q4','diagnostic-4','right'],
+    ['comp-q1','reading-comprehension-1','right'], ['comp-q2','reading-comprehension-2','right'], ['comp-q3','reading-comprehension-3','right'],
+    ['vocab-q1','vocab-1','right'], ['vocab-q2','vocab-2','right'], ['vocab-q3','vocab-3','right'], ['vocab-q4','vocab-4','right'], ['vocab-q5','vocab-5','right'],
+    ['cat-q1','practice-categorise-1','right'], ['cat-q2','practice-categorise-2','right'], ['cat-q3','practice-categorise-3','right'], ['cat-q4','practice-categorise-4','right'],
+    ['cat-q5','practice-categorise-5','right'], ['cat-q6','practice-categorise-6','right'], ['cat-q7','practice-categorise-7','right'], ['cat-q8','practice-categorise-8','right'],
+    ['listen-q1','listening-1','right'], ['listen-q2','listening-2','right'], ['listen-q3','listening-3','right'],
+    ['exit-q1','exit-1','right'], ['exit-q2','exit-2','right'], ['exit-q3','exit-3','right'], ['exit-q4','exit-4','right'], ['exit-q5','exit-5','right']
+  ];
+  mcqSections.forEach(([id, section, correctVal]) => {
+    Course.shuffleOptions(id);
+    Course.initMCQ(id, {
+      lessonId: LESSON_ID, sectionId: section, correctValue: correctVal, onAnswered: updateOverallProgress,
+      restoreAnswer: sectionMap[section] ? sectionMap[section].answer_given : undefined
+    });
+  });
+  if (!sectionMap['listening-1']) Course.ensureGroupVariety(['listen-q1','listen-q2','listen-q3']);
+  if (!sectionMap['reading-comprehension-1']) Course.ensureGroupVariety(['comp-q1','comp-q2','comp-q3']);
+  if (!sectionMap['practice-categorise-1']) Course.ensureGroupVariety(['cat-q1','cat-q2','cat-q3','cat-q4','cat-q5','cat-q6','cat-q7','cat-q8']);
+
+  /* ---------------- GAP FILL (restorable) ----------------
+     Modal-perfect answers (should have, would have, etc.) aren't in
+     Course.withContractions' map, so no contraction handling applies here. */
+  const gapFills = [
+    ['gap1-input','gap1-check','gap1-fb','practice-gapfill-1', ['should have called', "should've called"], true],
+    ['gap2-input','gap2-check','gap2-fb','practice-gapfill-2', ["shouldn't have told",'should not have told'], false],
+    ['gap3-input','gap3-check','gap3-fb','practice-gapfill-3', ['could have taken', "could've taken"], false],
+    ['gap4-input','gap4-check','gap4-fb','practice-gapfill-4', ['would have finished', "would've finished", 'could have finished', "could've finished"], false],
+    ['gap5-input','gap5-check','gap5-fb','practice-gapfill-5', ['should have booked', "should've booked"], false],
+    ['gap6-input','gap6-check','gap6-fb','practice-gapfill-6', ['could have finished', "could've finished", 'would have finished', "would've finished"], false],
+    ['vgap1-input','vgap1-check','vgap1-fb','vocab-gapfill-1', ['in retrospect'], true],
+    ['vgap2-input','vgap2-check','vgap2-fb','vocab-gapfill-2', ['distort'], false],
+    ['vgap3-input','vgap3-check','vgap3-fb','vocab-gapfill-3', ['skew'], false],
+    ['vgap4-input','vgap4-check','vgap4-fb','vocab-gapfill-4', ['warrant'], false]
+  ];
+  gapFills.forEach(([inputId, btnId, fbId, section, answers, showHint]) => {
+    const restored = sectionMap[section];
+    Course.initGapFill(inputId, btnId, fbId, {
+      lessonId: LESSON_ID, sectionId: section, correctAnswers: answers, showAnswerHint: showHint,
+      restore: restored ? { answerGiven: restored.answer_given, isCorrect: restored.override_correct ?? restored.is_correct } : undefined,
+      onAnswered: updateOverallProgress
+    });
+  });
+
+  /* ---------------- SENTENCE BUILDER (single-clause. Locks immediately on
+     Check, not just on reload. Chips avoid contracted words like "shouldn't"
+     to sidestep any apostrophe-in-chip edge cases. ---------------- */
+  const builderRounds = [
+    { words: ['you','should','have','told','me','sooner'],
+      accepted: ['you should have told me sooner'] },
+    { words: ['he','should','not','have','said','that'],
+      accepted: ['he should not have said that'] },
+    { words: ['she','could','have','won','easily'],
+      accepted: ['she could have won easily'] },
+    { words: ['he','would','have','called','you','back'],
+      accepted: ['he would have called you back'] }
+  ];
+  const buildersEl = document.getElementById('builders');
+  builderRounds.forEach((round, ri) => {
+    const sectionId = `practice-builder-${ri+1}`;
+    const restored = sectionMap[sectionId];
+    const bankOrder = Course.shuffleArray(round.words.map((_, i) => i));
+    let state = [];
+    let locked = false;
+
+    if (restored){
+      const used = new Set();
+      restored.answer_given.split(' ').forEach(tok => {
+        const idx = round.words.findIndex((w, i) => w === tok && !used.has(i));
+        if (idx >= 0){ used.add(idx); state.push(idx); }
+      });
+      locked = true;
+    }
+
+    const wrap = document.createElement('div');
+    wrap.style.marginBottom = '20px';
+    wrap.innerHTML = `
+      <div class="builder-bank" id="builder-bank-${ri}"></div>
+      <div class="builder-target" id="builder-target-${ri}"></div>
+      <p style="font-size:12px;color:var(--text-tertiary);margin-top:6px">Tap a word in your sentence to send it back to the pool.</p>
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+        <button class="btn btn-sm" id="builder-check-${ri}">Check order</button>
+        <button class="btn btn-sm btn-ghost" id="builder-reset-${ri}">Reset</button>
+      </div>
+      <div id="builder-fb-${ri}"></div>
+    `;
+    buildersEl.appendChild(wrap);
+
+    const bank = wrap.querySelector(`#builder-bank-${ri}`);
+    const target = wrap.querySelector(`#builder-target-${ri}`);
+    function render(){
+      bank.innerHTML = '';
+      bankOrder.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip' + (state.includes(i) ? ' used' : '');
+        chip.textContent = round.words[i];
+        if (!locked) chip.addEventListener('click', () => { if (state.includes(i)) return; state.push(i); render(); });
+        else chip.disabled = true;
+        bank.appendChild(chip);
+      });
+      target.innerHTML = '';
+      state.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip';
+        chip.textContent = round.words[i];
+        if (!locked){
+          chip.title = 'Click to remove';
+          chip.addEventListener('click', () => { state = state.filter(x => x !== i); render(); });
+        } else {
+          chip.disabled = true;
+        }
+        target.appendChild(chip);
+      });
+    }
+    render();
+
+    if (restored){
+      const isCorrect = restored.override_correct ?? restored.is_correct;
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+    }
+
+    wrap.querySelector(`#builder-reset-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      state = []; render(); wrap.querySelector(`#builder-fb-${ri}`).innerHTML = '';
+    });
+    wrap.querySelector(`#builder-check-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      const attempt = state.map(i => round.words[i]).join(' ');
+      const isCorrect = round.accepted.includes(attempt);
+      locked = true;
+      render();
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+      Course.logProgress({ lessonId: LESSON_ID, sectionId, answerGiven: attempt, isCorrect });
+      updateOverallProgress();
+    });
+  });
+
+  /* ---------------- SPEAKING MODE TOGGLE ---------------- */
+  document.getElementById('mode-solo').addEventListener('click', () => {
+    document.getElementById('mode-solo').classList.add('on');
+    document.getElementById('mode-group').classList.remove('on');
+    document.getElementById('speak-solo').style.display = 'block';
+    document.getElementById('speak-group').style.display = 'none';
+  });
+  document.getElementById('mode-group').addEventListener('click', () => {
+    document.getElementById('mode-group').classList.add('on');
+    document.getElementById('mode-solo').classList.remove('on');
+    document.getElementById('speak-group').style.display = 'block';
+    document.getElementById('speak-solo').style.display = 'none';
+  });
+
+  /* ---------------- SOLO SPEAKING TASK — MARK AS DONE (restorable) ---------------- */
+  const SOLO_TASK_LABEL = "Solo speaking task: review a real decision using should have / shouldn't have / could have.";
+  const soloDoneBtn = document.getElementById('solo-done-btn');
+  let soloDone = !!(sectionMap['speaking-solo'] && sectionMap['speaking-solo'].status === 'completed');
+  function renderSoloBtn(){
+    soloDoneBtn.textContent = soloDone ? "✓ Marked as done" : "✓ I've done this";
+    soloDoneBtn.classList.toggle('btn-primary', soloDone);
+  }
+  renderSoloBtn();
+  soloDoneBtn.addEventListener('click', () => {
+    soloDone = !soloDone;
+    renderSoloBtn();
+    Course.logProgress({
+      lessonId: LESSON_ID, sectionId: 'speaking-solo', exerciseType: 'oral',
+      status: soloDone ? 'completed' : 'not_attempted', answerGiven: SOLO_TASK_LABEL
+    });
+  });
+
+  /* ---------------- DISCUSSION QUESTION PICKER (restorable) ---------------- */
+  const discussQuestions = [
+    "Tell us about a decision that looked fine at the time but obviously wasn't, in hindsight.",
+    "What's something you could have done differently, but genuinely don't regret not doing?",
+    "Describe a mistake where you think you were judged too harshly, given what you actually knew at the time.",
+    "Do you think hindsight bias makes people more or less likely to learn from real mistakes? Why?"
+  ];
+  const discussEl = document.getElementById('discuss-questions');
+  let pickedQuestions = [];
+  discussQuestions.forEach((q, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'discuss-q';
+    btn.dataset.idx = i;
+    btn.innerHTML = `<span class="chk"></span><span>${q}</span>`;
+    const restored = sectionMap[`speaking-q${i+1}`];
+    if (restored && restored.status === 'completed'){
+      pickedQuestions.push(i);
+      btn.classList.add('picked');
+    }
+    btn.addEventListener('click', () => {
+      const isPicked = pickedQuestions.includes(i);
+      if (isPicked){
+        pickedQuestions = pickedQuestions.filter(x => x !== i);
+        btn.classList.remove('picked');
+      } else {
+        if (pickedQuestions.length >= 2){
+          document.getElementById('discuss-limit-msg').style.color = 'var(--bad)';
+          document.getElementById('discuss-limit-msg').textContent = 'You can only pick up to 2 — deselect one first.';
+          return;
+        }
+        pickedQuestions.push(i);
+        btn.classList.add('picked');
+      }
+      document.getElementById('discuss-limit-msg').style.color = '';
+      document.getElementById('discuss-limit-msg').textContent = 'You can select up to 2 questions.';
+      Course.logProgress({
+        lessonId: LESSON_ID, sectionId: `speaking-q${i+1}`, exerciseType: 'oral',
+        status: isPicked ? 'not_attempted' : 'completed', answerGiven: q
+      });
+    });
+    discussEl.appendChild(btn);
+  });
+
+  /* ---------------- LISTENING DIALOGUE ---------------- */
+  const AUDIO_SRC = 'audio/lesson-10-listening.mp3';
+  const dialogue = [
+    { speaker:'Anna', pitch:1.12, line:"Honestly, looking back, I think we should have tested this feature more before launch." },
+    { speaker:'Tomasz', pitch:0.88, line:"Maybe, but at the time nobody flagged it as risky — it's easy to say that now." },
+    { speaker:'Anna', pitch:1.12, line:"True. I guess that's exactly the hindsight bias thing we just read about." },
+    { speaker:'Tomasz', pitch:0.88, line:"Right — we could have caught it earlier, sure, but we genuinely didn't have the information back then." },
+    { speaker:'Anna', pitch:1.12, line:"Still, the client shouldn't have found out about the bug from a tweet before we even told them." },
+    { speaker:'Tomasz', pitch:0.88, line:"Yeah, that part's fair. We definitely should have communicated faster." },
+    { speaker:'Anna', pitch:1.12, line:"Given how quiet the dev team's been all morning, they must have been dealing with it since last night." },
+    { speaker:'Tomasz', pitch:0.88, line:"Probably. Let's actually judge this properly instead of just blaming everyone in hindsight." }
+  ];
+
+  let audioAvailable = false;
+  const audioEl = document.getElementById('dialogue-audio');
+  fetch(AUDIO_SRC, { method:'HEAD' }).then(r => { if (r.ok){ audioAvailable = true; audioEl.src = AUDIO_SRC; } }).catch(() => {});
+
+  const transcriptEl = document.getElementById('transcript');
+  dialogue.forEach((d, i) => {
+    const line = document.createElement('div');
+    line.className = 'transcript-line';
+    line.id = `t-line-${i}`;
+    line.innerHTML = `<b>${d.speaker}:</b> ${d.line}`;
+    transcriptEl.appendChild(line);
+  });
+
+  const playBtn = document.getElementById('play-dialogue');
+  let isPlaying = false;
+  let currentIdx = 0;
+
+  function updatePlayButton(){
+    if (isPlaying){ playBtn.textContent = '⏸ Pause'; return; }
+    if (window.speechSynthesis.paused){ playBtn.textContent = '▶ Resume'; return; }
+    playBtn.textContent = '▶ Play dialogue';
+  }
+
+  function speakLineAt(idx){
+    if (idx >= dialogue.length){ isPlaying = false; currentIdx = 0; updatePlayButton(); return; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    document.getElementById(`t-line-${idx}`).classList.add('shown', 'active');
+    const u = new SpeechSynthesisUtterance(dialogue[idx].line);
+    u.rate = 0.95; u.pitch = dialogue[idx].pitch;
+    u.onend = () => { if (isPlaying){ currentIdx = idx + 1; speakLineAt(currentIdx); } };
+    window.speechSynthesis.speak(u);
+  }
+
+  playBtn.addEventListener('click', () => {
+    if (audioAvailable){
+      if (audioEl.paused){ audioEl.play(); isPlaying = true; }
+      else { audioEl.pause(); isPlaying = false; }
+      updatePlayButton();
+      return;
+    }
+    if (!isPlaying){
+      isPlaying = true;
+      if (window.speechSynthesis.paused){ window.speechSynthesis.resume(); }
+      else {
+        // Defensive reset, fresh-start only (never on resume/pause): speechSynthesis
+        // has a well-documented browser bug where it can silently stop accepting
+        // new speech after earlier calls elsewhere on the page (e.g. the vocab-word
+        // audio buttons), leaving Play looking broken with no error anywhere.
+        // Clearing the queue right before a genuinely fresh play avoids that class
+        // of bug without disturbing an actual pause/resume in progress.
+        window.speechSynthesis.cancel();
+        speakLineAt(currentIdx);
+      }
+    } else {
+      isPlaying = false;
+      window.speechSynthesis.pause();
+    }
+    updatePlayButton();
+  });
+
+  document.getElementById('stop-dialogue').addEventListener('click', () => {
+    isPlaying = false;
+    currentIdx = 0;
+    window.speechSynthesis.cancel();
+    if (audioAvailable){ audioEl.pause(); audioEl.currentTime = 0; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    updatePlayButton();
+  });
+
+  audioEl.addEventListener('ended', () => { isPlaying = false; updatePlayButton(); });
+
+  document.getElementById('show-transcript').addEventListener('click', function(){
+    const shown = transcriptEl.classList.toggle('all-shown');
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.toggle('shown', shown));
+    this.textContent = shown ? 'Hide transcript' : 'Show full transcript';
+  });
+
+  updateOverallProgress();
+})();
+
+/* ---------------- OVERALL PROGRESS BAR ---------------- */
+const LESSON_TOTAL_POSSIBLE = 31 + 10 + 4; // mcqSections(incl. 8 categorise) + gapFills + builderRounds(4)
+function updateOverallProgress(){
+  const attempted = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+  const pct = Math.min(100, Math.round((attempted / LESSON_TOTAL_POSSIBLE) * 100));
+  document.getElementById('overall-progress').style.width = pct + '%';
+}
+
+/* ---------------- FINISH / SUMMARY ---------------- */
+document.getElementById('finish-btn').addEventListener('click', async () => {
+  const btn = document.getElementById('finish-btn');
+  const original = btn.textContent;
+  btn.textContent = 'Checking for teacher updates…'; btn.disabled = true;
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+  } finally {
+    btn.textContent = original; btn.disabled = false;
+  }
+  try {
+    const { correct, total } = Course.lessonScore(LESSON_ID);
+    Course.renderScoreRing('score-ring-holder', correct, total);
+    document.getElementById('summary-name').textContent = `${Course.getStudentName()} — ${correct}/${total} correct`;
+
+    const attemptedCount = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+    const completionPct = Math.min(100, Math.round((attemptedCount / LESSON_TOTAL_POSSIBLE) * 100));
+    const completionEl = document.getElementById('summary-completion');
+    if (attemptedCount < LESSON_TOTAL_POSSIBLE){
+      completionEl.style.color = 'var(--warn)';
+      completionEl.textContent = `⚠ Only ${completionPct}% of the lesson attempted so far (${attemptedCount} of ${LESSON_TOTAL_POSSIBLE} exercises) — the score above only reflects what's been answered.`;
+    } else {
+      completionEl.style.color = 'var(--ok)';
+      completionEl.textContent = `✓ Every exercise in this lesson has been attempted.`;
+    }
+
+    const weak = Course.weakSections(LESSON_ID);
+    document.getElementById('summary-weak').textContent = weak.length
+      ? `Worth revisiting: ${weak.join(', ')}`
+      : 'Strong across the board — nice work!';
+    document.getElementById('export-btn').style.display = 'inline-block';
+    updateOverallProgress();
+
+    const card = document.getElementById('summary-card');
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    card.classList.remove('summary-pulse'); void card.offsetWidth;
+    card.classList.add('summary-pulse');
+  } catch (err){
+    console.error('Finish lesson failed:', err);
+    let banner = document.getElementById('finish-error-banner');
+    if (!banner){
+      banner = document.createElement('div');
+      banner.id = 'finish-error-banner';
+      banner.className = 'error-banner';
+      document.getElementById('summary-card').appendChild(banner);
+    }
+    banner.textContent = `Something went wrong computing your results (${err.message}). Try reloading the page — your saved answers won't be lost.`;
+  }
+});
+document.getElementById('export-btn').addEventListener('click', async () => {
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+    Course.exportReportPDF(LESSON_ID, 'Modal Perfect: Should Have, Could Have, Would Have', LESSON_TOTAL_POSSIBLE);
+  } catch (err){
+    console.error('PDF export failed:', err);
+    alert('The PDF export ran into a problem: ' + err.message);
+  }
+});
+</script>
+
+<script>
+{
+  const allLessonsLink = document.getElementById('all-lessons-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  allLessonsLink.href = groupParam ? `index-standalone.html?group=${encodeURIComponent(groupParam)}` : 'index-standalone.html';
+}
+</script>
+</body>
+</html>

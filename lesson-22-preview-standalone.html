@@ -1,0 +1,2915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 22 — Discourse &amp; Emphasis Capstone | English+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   English+ Grammar Course — Shared Theme
+   Design tokens + reusable component styles for all 22 lessons.
+   Loaded by every lesson-*.html via <link rel="stylesheet">.
+   ============================================================ */
+
+:root{
+  /* Surfaces */
+  --bg:#F6F7F9;
+  --surface:#FFFFFF;
+  --surface-alt:#EEF1F5;
+  --border:#DFE3E9;
+  --border-strong:#C7CDD6;
+
+  /* Text */
+  --text:#1B2430;
+  --text-secondary:#5B6472;
+  --text-tertiary:#8A93A1;
+
+  /* Accent (matches existing English+ lesson pages) */
+  --accent:#185FA5;
+  --accent-dark:#0C4577;
+  --accent-soft:#E6F1FB;
+  --accent-soft-border:#85B7EB;
+
+  /* Feedback */
+  --ok:#27500A;
+  --ok-bg:#EAF3DE;
+  --ok-border:#C0DD97;
+  --bad:#791F1F;
+  --bad-bg:#FCEBEB;
+  --bad-border:#F7C1C1;
+  --warn:#633806;
+  --warn-bg:#FAEEDA;
+  --warn-border:#E8C080;
+
+  /* Grammar-concept colour coding — kept consistent across the whole
+     course so students learn to associate a colour with a concept
+     family (same convention as the existing Verb Tenses lesson) */
+  --c-present:#0F6E56;
+  --c-present-bg:#E4F3EE;
+  --c-continuous:#534AB7;
+  --c-continuous-bg:#ECEAFA;
+  --c-past:#185FA5;
+  --c-future:#993C1D;
+  --c-modal:#854F0B;
+
+  /* Type */
+  --font-sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --font-mono:'JetBrains Mono','SFMono-Regular',Consolas,monospace;
+
+  /* Shape */
+  --radius-lg:20px;
+  --radius-md:14px;
+  --radius-sm:10px;
+  --radius-pill:999px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:var(--font-sans);
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,h4{font-weight:650;letter-spacing:-0.01em}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px}
+
+/* ---------- Layout ---------- */
+.shell{max-width:760px;margin:0 auto;padding:28px 20px 80px}
+
+.lesson-header{margin-bottom:20px}
+.lesson-eyebrow{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:8px;
+}
+.lesson-title{font-size:26px;line-height:1.25;margin-bottom:6px;color:var(--accent-dark)}
+.lesson-sub{font-size:14.5px;color:var(--text-secondary)}
+.course-attribution{
+  text-align:center;font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;
+  color:var(--text-tertiary);padding:14px 20px 0;
+}
+
+/* ---------- Per-section colour themes ----------
+   Every widget/button/hover-state throughout the course reads colour
+   purely from --accent/--accent-dark/--accent-soft/--accent-soft-border
+   (and the page background from --bg), so overriding just these four
+   variables per section re-colours the whole page — buttons, toggles,
+   compare-card hovers, formula boxes' border-left accents that use
+   --accent directly, everything — with zero changes needed to any
+   lesson's own JS/CSS. The tense-specific concept colours (--c-present,
+   --c-continuous, etc., used to distinguish tenses *within* a lesson)
+   are deliberately left untouched — those stay consistent across every
+   section since a student learns "green = present tense" regardless of
+   which part of the course they're in. */
+body.theme-tenses{
+  --accent:#A3392A; --accent-dark:#7C2B1F; --accent-soft:#F7EBE9; --accent-soft-border:#DDA99E; --bg:#FBF7F6;
+}
+body.theme-modals{
+  --accent:#2E7A82; --accent-dark:#215A60; --accent-soft:#E9F3F4; --accent-soft-border:#A0CDD1; --bg:#F5FAFA;
+}
+body.theme-conditionals{
+  --accent:#4A7A3D; --accent-dark:#365A2C; --accent-soft:#EEF4EC; --accent-soft-border:#B3D1A8; --bg:#F7FAF6;
+}
+body.theme-reported{
+  --accent:#B8842E; --accent-dark:#8C6321; --accent-soft:#FAF3E7; --accent-soft-border:#E4C48F; --bg:#FDFAF6;
+}
+
+.section{margin-bottom:36px}
+.section-label{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;font-weight:650;letter-spacing:.03em;text-transform:uppercase;
+  color:var(--text-tertiary);margin-bottom:12px;
+}
+.section-label .num{
+  width:22px;height:22px;border-radius:50%;background:var(--surface-alt);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11.5px;color:var(--text-secondary);flex-shrink:0;
+}
+
+/* ---------- Cards ---------- */
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:1.3rem 1.5rem;
+  margin-bottom:.9rem;
+}
+.card + .card{margin-top:.9rem}
+
+.tip-box{
+  background:var(--surface-alt);border-radius:var(--radius-md);
+  padding:11px 15px;font-size:13.5px;color:var(--text-secondary);
+  display:flex;flex-wrap:wrap;gap:9px;align-items:flex-start;line-height:1.6;margin-top:10px;
+}
+.tip-box > *{min-width:0}
+.warn-box{
+  background:var(--warn-bg);border:1px solid var(--warn-border);border-radius:var(--radius-md);
+  padding:11px 15px;font-size:13.5px;color:var(--warn);
+  display:flex;flex-wrap:wrap;gap:9px;align-items:flex-start;line-height:1.6;margin-top:10px;
+}
+.warn-box > *{min-width:0}
+
+/* ---------- Buttons / pills ---------- */
+.btn{
+  font-family:inherit;font-size:14px;padding:9px 20px;border-radius:var(--radius-pill);
+  border:1px solid var(--border-strong);background:var(--surface);color:var(--text);
+  cursor:pointer;transition:all .15s;
+}
+.btn:hover{background:var(--surface-alt)}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:550}
+.btn-primary:hover{background:var(--accent-dark);border-color:var(--accent-dark)}
+.btn-primary:disabled{opacity:.45;cursor:not-allowed}
+.btn-ghost{border-color:transparent;background:transparent;color:var(--text-secondary)}
+.btn-ghost:hover{background:var(--surface-alt);color:var(--text)}
+.btn-sm{padding:6px 14px;font-size:12.5px}
+
+.pill{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 14px;border-radius:var(--radius-pill);
+  border:1px solid var(--border-strong);background:var(--surface);
+  font-size:13px;color:var(--text-secondary);cursor:pointer;transition:all .15s;white-space:nowrap;
+}
+.pill:hover{background:var(--surface-alt)}
+.pill.on{color:#fff;border-color:transparent;background:var(--accent)}
+.pill.on.c-present{background:var(--c-present)}
+.pill.on.c-continuous{background:var(--c-continuous)}
+
+/* ---------- Progress bar ---------- */
+.pb-track{background:var(--surface-alt);border-radius:var(--radius-pill);height:6px;overflow:hidden}
+.pb-fill{height:6px;border-radius:var(--radius-pill);background:var(--accent);transition:width .35s}
+
+/* ---------- Formula box ---------- */
+.formula{
+  font-family:var(--font-mono);font-size:13px;background:var(--surface-alt);
+  border-radius:var(--radius-md);padding:11px 15px;border-left:3px solid var(--accent);
+  margin-bottom:8px;line-height:1.7;color:var(--text);
+}
+
+/* ---------- Multiple choice / gap-fill options ---------- */
+.opt{
+  display:block;width:100%;padding:11px 16px;border-radius:var(--radius-md);
+  border:1px solid var(--border-strong);background:var(--surface);
+  font-size:14.5px;font-family:inherit;text-align:left;cursor:pointer;
+  transition:all .15s;color:var(--text);line-height:1.5;margin-bottom:8px;
+}
+.opt:last-child{margin-bottom:0}
+.opt:hover:not(.sel):not(.ok):not(.bad):not(.dim){background:var(--surface-alt)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-dark);font-weight:550}
+.opt.ok{border-color:var(--ok-border);background:var(--ok-bg);color:var(--ok);font-weight:550;cursor:default;pointer-events:none}
+.opt.bad{border-color:var(--bad-border);background:var(--bad-bg);color:var(--bad);cursor:default;pointer-events:none}
+.opt.dim{opacity:.5;cursor:default;pointer-events:none}
+
+.fb-ok{background:var(--ok-bg);color:var(--ok);font-size:13.5px;padding:11px 15px;border-radius:var(--radius-sm);margin-top:10px;line-height:1.6}
+.fb-no{background:var(--bad-bg);color:var(--bad);font-size:13.5px;padding:11px 15px;border-radius:var(--radius-sm);margin-top:10px;line-height:1.6}
+
+/* ---------- Reading passage + vocab ---------- */
+.passage{
+  font-family:var(--font-serif);font-size:16px;line-height:1.85;color:var(--text);
+}
+.passage p{margin-bottom:14px}
+.vocab{
+  color:var(--accent-dark);background:var(--accent-soft);
+  padding:1px 4px;border-radius:5px;cursor:pointer;font-weight:550;
+  border-bottom:1.5px dotted var(--accent-soft-border);transition:all .12s;
+}
+.vocab:hover{background:#D6E9FA}
+
+.vocab-pop{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:1.1rem 1.3rem;margin-top:10px;box-shadow:0 8px 28px rgba(20,30,50,.10);
+  display:none;font-family:var(--font-sans);
+}
+.vocab-pop.open{display:block}
+.vocab-pop-word{font-size:17px;font-weight:650;margin-bottom:2px}
+.vocab-pop-ipa{font-family:var(--font-mono);font-size:13px;color:var(--text-secondary);margin-bottom:10px}
+.audio-btn{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:var(--radius-pill);
+  border:1px solid var(--border-strong);background:var(--surface);cursor:pointer;
+  font-size:12.5px;color:var(--text-secondary);transition:all .15s;margin-bottom:10px;
+}
+.audio-btn:hover{background:var(--accent-soft);border-color:var(--accent-soft-border);color:var(--accent)}
+.audio-btn.playing{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:550}
+.vocab-pop-ex{font-size:14px;color:var(--text-secondary);font-style:italic;line-height:1.6;margin-bottom:10px}
+.glossary-btn{font-size:12px}
+
+/* ---------- Sentence builder (drag/tap-to-order) ---------- */
+.builder-bank{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;min-height:40px}
+.chip{
+  padding:8px 14px;border-radius:var(--radius-pill);border:1px solid var(--border-strong);
+  background:var(--surface);font-size:14px;cursor:pointer;transition:all .15s;
+}
+.chip:hover{background:var(--surface-alt)}
+.chip.used{opacity:.35;pointer-events:none}
+.builder-target{
+  display:flex;flex-wrap:wrap;gap:8px;min-height:46px;padding:10px;
+  border:1.5px dashed var(--border-strong);border-radius:var(--radius-md);background:var(--surface-alt);
+}
+.builder-target .chip{background:var(--accent-soft);border-color:var(--accent-soft-border);color:var(--accent-dark)}
+
+/* ---------- Speaking / listening task cards ---------- */
+.task-card{
+  border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.2rem 1.4rem;
+  background:linear-gradient(180deg,var(--surface) 0%,var(--surface-alt) 130%);
+}
+.task-card .kicker{font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.04em;color:var(--accent);margin-bottom:6px}
+.mode-toggle{display:flex;gap:8px;margin-bottom:14px}
+
+/* ---------- Grammar-in-text highlight (toggle) ---------- */
+.gram{cursor:pointer;border-bottom:2px solid transparent;transition:all .15s}
+.passage.show-grammar .gram{background:var(--warn-bg);border-bottom-color:var(--c-modal);border-radius:3px;padding:0 2px}
+.passage:not(.show-grammar) .gram{pointer-events:none}
+.gram-explain{background:var(--warn-bg);border:1px solid var(--warn-border);border-radius:var(--radius-md);padding:11px 15px;font-size:13.5px;color:var(--warn);line-height:1.6;margin-top:10px;display:none}
+.gram-explain.open{display:block}
+
+/* ---------- Listening transcript ---------- */
+.transcript-line{
+  font-size:14.5px;line-height:1.8;padding:6px 0;opacity:0;transform:translateY(4px);
+  transition:opacity .3s,transform .3s;
+}
+.transcript-line.shown{opacity:1;transform:translateY(0)}
+.transcript-line b{color:var(--accent)}
+.transcript-line.active{background:var(--accent-soft);border-radius:8px;padding:6px 10px;margin:0 -10px}
+
+/* ---------- Discussion question picker (speaking task) ---------- */
+.discuss-q{
+  display:flex;align-items:flex-start;gap:10px;width:100%;text-align:left;
+  padding:12px 15px;border-radius:var(--radius-md);border:1px solid var(--border-strong);
+  background:var(--surface);cursor:pointer;font-family:inherit;font-size:14.5px;line-height:1.6;
+  color:var(--text);transition:all .15s;
+}
+.discuss-q:hover{background:var(--surface-alt)}
+.discuss-q .chk{
+  flex-shrink:0;width:20px;height:20px;border-radius:6px;border:1.5px solid var(--border-strong);
+  display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;margin-top:1px;
+}
+.discuss-q.picked{border-color:var(--accent);background:var(--accent-soft)}
+.discuss-q.picked .chk{background:var(--accent);border-color:var(--accent)}
+.discuss-q.disabled{opacity:.45;cursor:not-allowed}
+
+/* ---------- Print-to-PDF report ---------- */
+#course-print-report{display:none}
+@media print{
+  body > *:not(#course-print-report){display:none !important}
+  #course-print-report{
+    display:block !important;
+    font-family:Arial,Helvetica,sans-serif;color:#1B2430;
+    max-width:680px;margin:0 auto;padding:20px;
+  }
+}
+
+/* ---------- Shared popup (vocab, grammar, stative verbs) ---------- */
+.course-popup-backdrop{position:fixed;inset:0;background:rgba(20,30,50,.4);display:none;z-index:9998}
+.course-popup-box{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  background:var(--surface);border-radius:var(--radius-lg);box-shadow:0 24px 64px rgba(20,30,50,.28);
+  padding:1.5rem 1.7rem;max-width:420px;width:calc(100% - 40px);max-height:80vh;overflow-y:auto;
+  display:none;z-index:9999;
+}
+#course-popup-root.open .course-popup-backdrop{display:block}
+#course-popup-root.open .course-popup-box{display:block}
+.course-popup-close{
+  position:absolute;top:8px;right:10px;background:none;border:none;font-size:22px;line-height:1;
+  cursor:pointer;color:var(--text-tertiary);padding:5px 9px;border-radius:7px;transition:all .15s;
+}
+.course-popup-close:hover{background:var(--surface-alt);color:var(--text)}
+
+/* ---------- Stative verb tricky cases (stative vs dynamic) ---------- */
+.tricky-pair{border:1px solid var(--border);border-radius:var(--radius-md);padding:12px 14px;margin-bottom:10px}
+.tricky-pair:last-child{margin-bottom:0}
+.tricky-word{font-weight:650;margin-bottom:8px;font-size:14.5px}
+.tricky-row{font-size:13.5px;line-height:1.6;margin-bottom:5px;display:flex;gap:8px;align-items:baseline}
+.tricky-row:last-child{margin-bottom:0}
+.tricky-row .audio-btn{padding:2px 8px;font-size:11px;margin-bottom:0}
+.tricky-example{cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px;text-decoration-color:var(--border-strong);transition:color .15s}
+.tricky-example:hover{color:var(--accent)}
+.tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:3px 7px;border-radius:5px;flex-shrink:0}
+.tag.stative{background:var(--c-present-bg);color:var(--c-present)}
+.tag.dynamic{background:var(--c-continuous-bg);color:var(--c-continuous)}
+
+/* ---------- Expandable "full rules" content ---------- */
+.expand-content{display:none}
+.expand-content.open{display:block}
+
+/* ---------- Stative verb groups ---------- */
+.verb-group{margin-bottom:18px}
+.verb-group:last-child{margin-bottom:0}
+.verb-group-title{font-size:12.5px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px}
+.verb-chip{
+  display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border-radius:var(--radius-pill);
+  border:1px solid var(--border-strong);background:var(--surface);font-size:14px;font-family:inherit;
+  cursor:pointer;transition:all .15s;margin:0 8px 8px 0;color:var(--text);
+}
+.verb-chip:hover{background:var(--accent-soft);border-color:var(--accent-soft-border);color:var(--accent-dark)}
+.verb-chip .star{color:var(--c-modal);font-weight:700}
+
+/* ---------- Finish/summary feedback ---------- */
+@keyframes summary-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(24,95,165,0.35); }
+  70% { box-shadow: 0 0 0 14px rgba(24,95,165,0); }
+  100% { box-shadow: 0 0 0 0 rgba(24,95,165,0); }
+}
+.summary-pulse{ animation: summary-pulse 1.1s ease-out; }
+.error-banner{
+  background:var(--bad-bg);border:1px solid var(--bad-border);color:var(--bad);
+  border-radius:var(--radius-md);padding:12px 16px;font-size:13.5px;margin-top:10px;line-height:1.6;
+}
+
+/* ---------- Find-the-error (click the wrong word) ---------- */
+.err-word{cursor:pointer;padding:1px 4px;border-radius:5px;transition:all .12s}
+.err-word:hover{background:var(--surface-alt)}
+.err-word.err-target{background:var(--ok-bg);color:var(--ok);font-weight:600}
+.err-word.err-wrong-pick{background:var(--bad-bg);color:var(--bad);text-decoration:line-through}
+
+/* ---------- Matching (click left, then right) ---------- */
+.match-item{
+  width:100%;text-align:left;padding:10px 14px;border-radius:var(--radius-md);
+  border:1px solid var(--border-strong);background:var(--surface);font-size:13.5px;
+  font-family:inherit;cursor:pointer;transition:all .12s;line-height:1.5;
+}
+.match-item:hover:not(:disabled){background:var(--surface-alt)}
+.match-item.sel{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-dark)}
+.match-item.match-correct{background:var(--ok-bg);color:var(--ok);border-color:var(--ok-border)}
+.match-item.match-wrong{background:var(--bad-bg);color:var(--bad);border-color:var(--bad-border)}
+
+/* ---------- Score summary ---------- */
+.score-ring{
+  width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-weight:650;font-size:15px;background:var(--accent-soft);color:var(--accent-dark);flex-shrink:0;
+}
+.summary-row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid var(--border)}
+.summary-row:last-child{border-bottom:none}
+
+@media (max-width:520px){
+  .shell{padding:20px 16px 64px}
+  .lesson-title{font-size:22px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
+
+</style>
+<style>
+  /* Lesson-specific only — tooltip and pill styling matching Lessons
+     12–21's finalized design, reused here for consistency. */
+  .compare-box{display:inline-block;padding:4px 10px;border-radius:6px;background:var(--surface-alt);cursor:default;transition:background .15s}
+  .compare-box:hover{background:var(--accent-soft)}
+  #compare-tooltip{
+    position:absolute;z-index:80;max-width:280px;background:var(--accent-soft);color:var(--text-secondary);
+    border:1px solid var(--accent);font-size:13px;line-height:1.5;padding:10px 12px;border-radius:8px;
+    box-shadow:0 4px 16px rgba(0,0,0,.12);pointer-events:none;
+    opacity:0;transition:opacity .1s;
+  }
+  #compare-tooltip.visible{opacity:1}
+  .tricky-box{
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius-md);
+    padding:11px 15px;font-size:13.5px;color:var(--accent-dark);
+    display:flex;flex-wrap:wrap;gap:9px;align-items:flex-start;line-height:1.6;margin-top:10px;
+  }
+  .tricky-box > *{min-width:0}
+  .trait-pill{padding:7px 12px;border-radius:var(--radius-sm);border:1px solid var(--accent);background:var(--surface);color:var(--accent);font-size:12.5px;font-weight:700;cursor:pointer;transition:background .15s}
+  .trait-pill:hover{background:var(--accent-soft)}
+  .static-cell{display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:var(--radius-md);padding:8px 6px;background:var(--surface);text-align:center;font-size:12.5px;color:var(--text-secondary);min-height:20px}
+  .static-cell.is-primary-cell{border-color:var(--accent);background:var(--surface);color:var(--accent);font-weight:650;flex:1}
+  .static-cell.is-b-cell{border-color:var(--warn);background:var(--surface);color:var(--warn);font-weight:650;flex:1}
+  .static-cell.is-context-cell{border-color:var(--border);background:var(--surface-alt);color:var(--text-tertiary);font-style:italic;font-weight:400;flex:0 0 auto;padding-left:14px;padding-right:14px}
+  .static-cell.clickable-cell{cursor:pointer}
+  .static-cell.clickable-cell:hover{opacity:.85}
+  .mode-toggle-outline .pill{border-radius:var(--radius-sm)}
+  .mode-toggle-outline .pill.on{background:var(--surface);color:var(--accent);border-color:var(--accent);font-weight:700}
+  .hint-btn{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;border:1px solid var(--border-strong);background:var(--surface-alt);color:var(--text-tertiary);font-size:12px;font-weight:650;cursor:pointer;margin-left:6px;vertical-align:middle;line-height:1;padding:0}
+  .hint-btn:hover{background:var(--warn-bg);color:var(--text-primary)}
+  .pill[disabled]{opacity:.45;cursor:not-allowed;pointer-events:none}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+/* ============================================================
+   Supabase project config for the English+ Grammar Course.
+   The anon key is safe to be public — same as your games
+   leaderboard — access is controlled by the RLS policies in
+   supabase/schema.sql, not by keeping this key secret.
+   ============================================================ */
+window.SUPABASE_URL = 'https://ovosqztjtnvasbaursnh.supabase.co';
+window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92b3NxenRqdG52YXNiYXVyc25oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc0ODcxNzcsImV4cCI6MjEwMzA2MzE3N30.I5yzw18Jd2-AgCqLxbkS3CioeUb3kFBjby8dcKUmvoM';
+
+</script>
+</head>
+<body class="theme-reported">
+
+<div class="course-attribution">English+ Grammar Course · by Kris Galezewski</div>
+<div class="shell">
+
+  <!-- ============ HEADER ============ -->
+  <header class="lesson-header">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div class="lesson-eyebrow">Lesson 22 of 22 · Capstone</div>
+      <div style="display:flex;gap:8px">
+      <a id="all-lessons-link" href="index-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📚 All Lessons</a>
+      <a id="glossary-link" href="glossary-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📖 My Glossary</a>
+    </div>
+    </div>
+    <h1 class="lesson-title">Discourse &amp; Emphasis</h1>
+    <p class="lesson-sub">Linking ideas, softening claims, and putting the spotlight exactly where you want it — the final lesson.</p>
+    <div class="pb-track" style="margin-top:16px"><div class="pb-fill" id="overall-progress" style="width:0%"></div></div>
+    <div id="sync-status" style="font-size:11.5px;color:var(--text-tertiary);margin-top:8px"></div>
+  </header>
+
+  <!-- ============ 1. WARM-UP ============ -->
+  <section class="section" id="sec-warmup">
+    <div class="section-label"><span class="num">1</span> Warm-up — three finishing tools</div>
+    <div class="card">
+      <p style="margin-bottom:14px;font-size:14.5px;color:var(--text-secondary)">
+        This final lesson isn't about a new verb form — it's about three tools that make writing and speech
+        feel more connected, more careful, and more precisely emphatic.
+      </p>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. Linking words like "however" and "therefore" are used to…</p>
+        <div id="warm-q1">
+          <button class="opt" data-value="right">show the logical relationship between ideas</button>
+          <button class="opt" data-value="wrong">replace the subject of a sentence</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. Hedging language is used to…</p>
+        <div id="warm-q2">
+          <button class="opt" data-value="right">soften a claim, making it sound more careful and less absolute</button>
+          <button class="opt" data-value="wrong">make a claim sound as strong and certain as possible</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. Cleft sentences (like "It was John who...") are used to…</p>
+        <div id="warm-q3">
+          <button class="opt" data-value="right">emphasise one particular part of a sentence</button>
+          <button class="opt" data-value="wrong">shorten a sentence by removing unnecessary words</button>
+        </div>
+      </div>
+      <div class="tip-box">💡 <span style="flex:1;min-width:0">You already know the grammar underneath all three of these — this lesson is about using what you know more deliberately.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 2. DIAGNOSTIC PRE-TEST ============ -->
+  <section class="section" id="sec-diagnostic">
+    <div class="section-label"><span class="num">2</span> Quick check — before we explain anything</div>
+    <div class="card">
+      <p style="margin-bottom:16px;font-size:14.5px;color:var(--text-secondary)">Four quick questions. This isn't graded harshly — it just shows us where to focus.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. The plan was risky. ___, it relied on outdated data.</p>
+        <div id="diag-q1">
+          <button class="opt" data-value="right">Moreover</button>
+          <button class="opt" data-value="wrong">However</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. The team had plenty of experience. ___, they rarely challenged each other.</p>
+        <div id="diag-q2">
+          <button class="opt" data-value="right">However</button>
+          <button class="opt" data-value="wrong">Therefore</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. No one raised concerns. ___, the flawed plan went ahead.</p>
+        <div id="diag-q3">
+          <button class="opt" data-value="right">Therefore</button>
+          <button class="opt" data-value="wrong">However</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">4. ___ was groupthink that caused the failure.</p>
+        <div id="diag-q4">
+          <button class="opt" data-value="right">It</button>
+          <button class="opt" data-value="wrong">This</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. CONCEPT EXPLANATION ============ -->
+  <section class="section" id="sec-concept">
+    <div class="section-label"><span class="num">3</span> The concept</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px">Linking ideas together</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:16px">
+        Linking words signal exactly how one idea relates to the last one — adding to it, pushing back
+        against it, explaining its result, or simply moving things along. Browse each category below, or
+        see the full list behind the button underneath.
+      </p>
+
+      <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+        <button class="pill on" id="mode-link-addition">Addition</button>
+        <button class="pill" id="mode-link-contrast">Contrast</button>
+        <button class="pill" id="mode-link-cause">Cause &amp; effect</button>
+        <button class="pill" id="mode-link-sequence">Sequence</button>
+        <button class="pill" id="mode-link-quiz">Quick check</button>
+      </div>
+
+      <div id="link-widget-area" style="margin-top:14px;padding:18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border)"></div>
+      <p id="link-widget-hint" style="font-size:12.5px;color:var(--text-tertiary);margin-top:8px">— Click the pills to see another example.</p>
+
+      <button class="pill" id="link-list-toggle" style="margin-top:16px">📖 Show the full rules</button>
+      <div class="expand-content" id="link-list-content">
+        <div style="margin-top:16px">
+          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">Addition</h4>
+          <div id="linking-addition-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:20px"></div>
+
+          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">Contrast</h4>
+          <div id="linking-contrast-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:20px"></div>
+
+          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">Cause &amp; effect</h4>
+          <div id="linking-cause-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:20px"></div>
+
+          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">Sequence</h4>
+          <div id="linking-sequence-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px">Softening a claim: hedging</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:16px">
+        Academic and professional writing rarely states things as flat, absolute facts — hedging signals
+        "this is likely true," not "this is certainly true," which is usually more honest anyway. Browse
+        each type of hedge below, or see the full list behind the button underneath.
+      </p>
+
+      <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+        <button class="pill on" id="mode-hedge-modals">Modals</button>
+        <button class="pill" id="mode-hedge-semimodals">Semi-modals</button>
+        <button class="pill" id="mode-hedge-adverbs">Adverbs</button>
+        <button class="pill" id="mode-hedge-phrases">Phrases</button>
+        <button class="pill" id="mode-hedge-quiz">Quick check</button>
+      </div>
+
+      <div id="hedge-widget-area" style="margin-top:14px;padding:18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border)"></div>
+      <p id="hedge-widget-hint" style="font-size:12.5px;color:var(--text-tertiary);margin-top:8px">— Click the pills to see another example.</p>
+
+      <button class="pill" id="hedge-list-toggle" style="margin-top:16px">📖 Show the full rules</button>
+      <div class="expand-content" id="hedge-list-content">
+        <div style="margin-top:16px">
+          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">Modals</h4>
+          <div id="hedge-modals-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px;margin-bottom:20px"></div>
+
+          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">Semi-modals</h4>
+          <div id="hedge-semimodals-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-bottom:20px"></div>
+
+          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">Adverbs</h4>
+          <div id="hedge-adverbs-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;margin-bottom:20px"></div>
+
+          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">Phrases</h4>
+          <div id="hedge-phrases-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px">Putting the spotlight where you want it: cleft sentences</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:16px">
+        A cleft sentence rebuilds an ordinary sentence around "it" or a wh-word to push one particular part
+        into the spotlight — the rest of the content stays exactly the same, it just moves. "What" is the
+        most common choice, but "where," "why," "how," and "when" all work the same way, each pulling out
+        whichever piece of information they naturally ask about. Switch between the forms below:
+        <span style="color:var(--accent);font-weight:700">blue</span> always marks the answer being
+        emphasised, <span style="color:var(--warn);font-weight:700">amber</span> always marks the
+        describing clause — watch where each color travels as you switch.
+      </p>
+
+      <div style="margin-bottom:6px">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);font-weight:650">View</span>
+      </div>
+      <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+        <button class="pill on" id="mode-cleft-structure" style="font-size:14px;padding:8px 18px">Structure</button>
+        <button class="pill" id="mode-cleft-examples" style="font-size:14px;padding:8px 18px">Examples</button>
+      </div>
+
+      <div style="margin:18px 0 6px;padding-top:16px;border-top:1px solid var(--border)">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);font-weight:650">Sentence type</span>
+      </div>
+      <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+        <button class="pill on" id="mode-cleft-normal">Normal</button>
+        <button class="pill" id="mode-cleft-it">It-cleft</button>
+        <button class="pill" id="mode-cleft-wh">Wh-cleft</button>
+      </div>
+
+      <div id="cleft-widget-area" style="margin-top:14px;padding:18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border)"></div>
+      <p id="cleft-widget-hint" style="font-size:12.5px;color:var(--text-tertiary);margin-top:8px;display:none">— Click any pill to see another example.</p>
+
+      <button class="pill" id="rules-toggle" style="margin-top:16px">📖 Show the full rules</button>
+      <div class="expand-content" id="rules-content">
+        <div style="margin-top:16px">
+          <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:6px">
+            "What," "who," and "which" can each emphasise either the subject or the object of the original
+            sentence — hover over any pair below to see both. "Where," "why," "how," and "when" don't have
+            this subject/object split since they emphasise a place, reason, method, or time instead, so
+            each gets just one example. A caution on "who" and "which": both are grammatical here but
+            noticeably rarer and more stilted-sounding than "what" — in real usage, it-cleft is usually
+            preferred for emphasising a specific person or a specific choice from a set.
+          </p>
+          <div id="compare-cleft" style="font-size:14.5px;line-height:1.8"></div>
+
+          <div class="tricky-box" style="margin-top:16px">
+            <span>🎯</span>
+            <span style="flex:1;min-width:0">
+              <b>The tricky part:</b> in an it-cleft, the verb after "it" agrees with "it" (always singular), not with the emphasised noun.<br><br>
+              ❌ "It were the advisors who ignored the signs." — wrong: "it" needs "was," regardless of what follows.<br>
+              ✅ "It was the advisors who ignored the signs."<br><br>
+              And a wh-cleft's second verb has to match the real subject of the original sentence, not "what": "What caused the delay was poor planning" (singular "was," matching "poor planning," not "what").
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. READING ============ -->
+  <section class="section" id="sec-reading">
+    <div class="section-label"><span class="num">4</span> Reading — Groupthink in Business Decision-Making</div>
+    <div class="card">
+      <button class="pill" id="gram-toggle">🔍 Show grammar in this text</button>
+      <div class="passage" id="passage" style="margin-top:14px"></div>
+      <p style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">Tap a highlighted word for pronunciation, meaning and a fresh example. Once grammar highlighting is on, tap a highlighted sentence to see why that form was used.</p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:12px">Did you follow it? Quick comprehension check</h3>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. What did Janis mean by "groupthink"?</p>
+        <div id="comp-q1">
+          <button class="opt" data-value="right">A pattern where a group's desire for unanimity overrides realistic evaluation of alternatives.</button>
+          <button class="opt" data-value="wrong">A technique for making faster group decisions through majority voting.</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. Why did Kennedy's advisors approve a flawed plan for the Bay of Pigs invasion?</p>
+        <div id="comp-q2">
+          <button class="opt" data-value="right">The group's desire for consensus overrode individual members' better judgement.</button>
+          <button class="opt" data-value="wrong">None of the advisors had any relevant experience or expertise.</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. According to the text, what actually helps prevent groupthink?</p>
+        <div id="comp-q3">
+          <button class="opt" data-value="right">Deliberately building friction into decisions, like a formal devil's advocate.</button>
+          <button class="opt" data-value="wrong">Making sure everyone in the group always agrees with the leader.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. VOCAB REVIEW ============ -->
+  <section class="section" id="sec-vocab">
+    <div class="section-label"><span class="num">5</span> Vocabulary check</div>
+    <div class="card">
+      <p style="font-size:14.5px;margin-bottom:16px">All nine words from the text — mixed formats.</p>
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px">Match the meaning</h4>
+
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. "Consensus" means…</p>
+        <div id="vocab-q1">
+          <button class="opt" data-value="right">general agreement among a group of people</button>
+          <button class="opt" data-value="wrong">strong disagreement within a group</button>
+          <button class="opt" data-value="wrong2">a formal vote with a clear winner</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. "Dissent" means…</p>
+        <div id="vocab-q2">
+          <button class="opt" data-value="right">disagreement with an official or widely held opinion</button>
+          <button class="opt" data-value="wrong">complete agreement with an official opinion</button>
+          <button class="opt" data-value="wrong2">a formal complaint to authorities</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. "Cohesive" means…</p>
+        <div id="vocab-q3">
+          <button class="opt" data-value="right">closely united</button>
+          <button class="opt" data-value="wrong">loosely connected or fragmented</button>
+          <button class="opt" data-value="wrong2">extremely large in size</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. "Illusion" means…</p>
+        <div id="vocab-q4">
+          <button class="opt" data-value="right">a false idea or belief</button>
+          <button class="opt" data-value="wrong">a proven, verified fact</button>
+          <button class="opt" data-value="wrong2">an official government document</button>
+        </div>
+      </div>
+      <div style="margin-bottom:22px">
+        <p style="margin-bottom:8px;font-weight:550">5. "Scrutiny" means…</p>
+        <div id="vocab-q5">
+          <button class="opt" data-value="right">careful and thorough examination</button>
+          <button class="opt" data-value="wrong">a quick, careless glance</button>
+          <button class="opt" data-value="wrong2">complete and total avoidance</button>
+        </div>
+      </div>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px;padding-top:6px;border-top:1px solid var(--border)">Complete the sentence — vocabulary focus</h4>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">6. Even highly intelligent groups can reach deeply <input type="text" id="vgap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> conclusions.</p>
+        <button class="btn btn-sm" id="vgap1-check">Check</button>
+        <div id="vgap1-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">7. Pressure toward <input type="text" id="vgap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> can silence valid objections.</p>
+        <button class="btn btn-sm" id="vgap2-check">Check</button>
+        <div id="vgap2-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">8. Team members often <input type="text" id="vgap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> doubts to preserve group harmony.</p>
+        <button class="btn btn-sm" id="vgap3-check">Check</button>
+        <div id="vgap3-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">9. An illusion of <input type="text" id="vgap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> can form even when several members privately disagree.</p>
+        <button class="btn btn-sm" id="vgap4-check">Check</button>
+        <div id="vgap4-fb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. GRAMMAR PRACTICE ============ -->
+  <section class="section" id="sec-practice">
+    <div class="section-label"><span class="num">6</span> Practice</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:2px">Gap-fill</h3>
+      <p style="font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:16px">Grammar focus — linking words, hedging, and cleft sentences, mixed. Tap the "?" if you're not sure which type of word is needed.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">1. The advisors were experienced. <input type="text" id="gap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"><button type="button" class="hint-btn" data-hint="a contrast word" aria-label="Show hint">?</button>, they lacked outside perspective.</p>
+        <button class="btn btn-sm" id="gap1-check">Check</button>
+        <div id="gap1-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">2. No one challenged the plan. <input type="text" id="gap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:170px"><button type="button" class="hint-btn" data-hint="a cause-and-effect word" aria-label="Show hint">?</button>, the invasion failed within days.</p>
+        <button class="btn btn-sm" id="gap2-check">Check</button>
+        <div id="gap2-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">3. This is <input type="text" id="gap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"><button type="button" class="hint-btn" data-hint="a hedging word" aria-label="Show hint">?</button> the most famous groupthink case in history.</p>
+        <button class="btn btn-sm" id="gap3-check">Check</button>
+        <div id="gap3-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">4. Cohesive groups <input type="text" id="gap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:110px"><button type="button" class="hint-btn" data-hint="a hedging word" aria-label="Show hint">?</button> to silence dissent under pressure.</p>
+        <button class="btn btn-sm" id="gap4-check">Check</button>
+        <div id="gap4-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">5. <input type="text" id="gap5-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:110px"><button type="button" class="hint-btn" data-hint="cleft sentence" aria-label="Show hint">?</button> was fear of disagreement that kept the team quiet.</p>
+        <button class="btn btn-sm" id="gap5-check">Check</button>
+        <div id="gap5-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">6. <input type="text" id="gap6-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"><button type="button" class="hint-btn" data-hint="cleft sentence" aria-label="Show hint">?</button> the group lacked was healthy disagreement.</p>
+        <button class="btn btn-sm" id="gap6-check">Check</button>
+        <div id="gap6-fb"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Categorise the sentence</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Each sentence is missing one word — read what's left, then tap which tool it belongs to.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. "___, the plan proceeded without real debate."</p>
+        <div id="cat-q1">
+          <button class="opt" data-value="right">Linking word</button><button class="opt" data-value="wrong">Hedging</button><button class="opt" data-value="wrong2">Cleft sentence</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. "This ___ suggest that structure matters more than talent."</p>
+        <div id="cat-q2">
+          <button class="opt" data-value="wrong">Linking word</button><button class="opt" data-value="right">Hedging</button><button class="opt" data-value="wrong2">Cleft sentence</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. "___ was the advisors who ignored the warning signs."</p>
+        <div id="cat-q3">
+          <button class="opt" data-value="wrong">Linking word</button><button class="opt" data-value="wrong2">Hedging</button><button class="opt" data-value="right">Cleft sentence</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">4. "The risks were clear. ___, the group proceeded anyway."</p>
+        <div id="cat-q4">
+          <button class="opt" data-value="right">Linking word</button><button class="opt" data-value="wrong">Hedging</button><button class="opt" data-value="wrong2">Cleft sentence</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">5. "A cohesive team is ___ to underestimate risk."</p>
+        <div id="cat-q5">
+          <button class="opt" data-value="wrong">Linking word</button><button class="opt" data-value="right">Hedging</button><button class="opt" data-value="wrong2">Cleft sentence</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">6. "___ the group did was ignore every warning sign."</p>
+        <div id="cat-q6">
+          <button class="opt" data-value="wrong">Linking word</button><button class="opt" data-value="wrong2">Hedging</button><button class="opt" data-value="right">Cleft sentence</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">7. "No one raised concerns; ___, the flawed plan went ahead."</p>
+        <div id="cat-q7">
+          <button class="opt" data-value="right">Linking word</button><button class="opt" data-value="wrong">Hedging</button><button class="opt" data-value="wrong2">Cleft sentence</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">8. "To ___ extent, every group is vulnerable to this pattern."</p>
+        <div id="cat-q8">
+          <button class="opt" data-value="wrong">Linking word</button><button class="opt" data-value="right">Hedging</button><button class="opt" data-value="wrong2">Cleft sentence</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Fix the sentence</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Each sentence has one mistake. Tap the word (or words) that are wrong.</p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary)">Sentence 1</div>
+      <p id="fix1" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 2</div>
+      <p id="fix2" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 3</div>
+      <p id="fix3" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 4</div>
+      <p id="fix4" style="font-size:15px;line-height:1.9"></p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Sentence builder</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">Tap the chips in the right order. Three rounds.</p>
+      <div id="builders"></div>
+    </div>
+  </section>
+
+  <!-- ============ 7. SPEAKING ============ -->
+  <section class="section" id="sec-speaking">
+    <div class="section-label"><span class="num">7</span> Speaking task</div>
+    <div class="mode-toggle">
+      <button class="pill on" id="mode-solo">👤 Solo</button>
+      <button class="pill" id="mode-group">👥 Group (2–4)</button>
+    </div>
+    <div class="task-card" id="speak-solo">
+      <div class="kicker">60-second reflection</div>
+      <p style="font-size:14.5px;line-height:1.7">
+        Looking back across the whole course, describe one grammar point you found genuinely difficult and
+        one you now feel confident about — using at least one linking word and one hedge.
+      </p>
+      <button class="btn btn-sm" id="solo-done-btn" style="margin-top:14px">✓ I've done this</button>
+    </div>
+    <div class="task-card" id="speak-group" style="display:none">
+      <div class="kicker">Discussion — pick 1–2 questions to answer out loud</div>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:12px">Tap the question(s) you'll answer. Your teacher will see your pick and mark it after you speak.</p>
+      <div id="discuss-questions" style="display:flex;flex-direction:column;gap:8px"></div>
+      <p id="discuss-limit-msg" style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">You can select up to 2 questions.</p>
+    </div>
+  </section>
+
+  <!-- ============ 8. LISTENING ============ -->
+  <section class="section" id="sec-listening">
+    <div class="section-label"><span class="num">8</span> Listening</div>
+    <div class="card">
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:12px">Anna and Tomasz are discussing a decision at work — right after reading about groupthink.</p>
+      <audio id="dialogue-audio" preload="none" style="display:none"></audio>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary" id="play-dialogue">▶ Play dialogue</button>
+        <button class="btn btn-ghost btn-sm" id="stop-dialogue">⏹ Stop</button>
+        <button class="btn btn-ghost btn-sm" id="show-transcript">Show full transcript</button>
+      </div>
+      <div id="transcript" style="margin-top:14px"></div>
+
+      <div style="margin-top:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. What decision does Tomasz say his team made too quickly?</p>
+        <div id="listen-q1">
+          <button class="opt" data-value="right">Launching a product without proper testing.</button>
+          <button class="opt" data-value="wrong">Cancelling a project that was actually going well.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. Why does Tomasz think nobody objected at the time?</p>
+        <div id="listen-q2">
+          <button class="opt" data-value="right">Everyone assumed someone else had already raised concerns.</button>
+          <button class="opt" data-value="wrong">Nobody on the team actually noticed any problems at all.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. What does Anna suggest for next time?</p>
+        <div id="listen-q3">
+          <button class="opt" data-value="right">Assigning someone to deliberately argue against the plan.</button>
+          <button class="opt" data-value="wrong">Making decisions faster to avoid overthinking things.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. WRAP-UP / EXIT TEST ============ -->
+  <section class="section" id="sec-wrapup">
+    <div class="section-label"><span class="num">9</span> Wrap-up — exit check</div>
+    <div class="card">
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. The plan was risky. ___, it relied on outdated data.</p>
+        <div id="exit-q1">
+          <button class="opt" data-value="right">Moreover</button>
+          <button class="opt" data-value="wrong">However</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. The team had experience. ___, they avoided conflict entirely.</p>
+        <div id="exit-q2">
+          <button class="opt" data-value="right">However</button>
+          <button class="opt" data-value="wrong">Therefore</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. No one objected. ___, the plan was approved.</p>
+        <div id="exit-q3">
+          <button class="opt" data-value="right">Therefore</button>
+          <button class="opt" data-value="wrong">However</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. ___ was groupthink that caused the failure.</p>
+        <div id="exit-q4">
+          <button class="opt" data-value="right">It</button>
+          <button class="opt" data-value="wrong">This</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">5. This is ___ the most studied case in the field.</p>
+        <div id="exit-q5">
+          <button class="opt" data-value="right">arguably</button>
+          <button class="opt" data-value="wrong">arguable</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="summary-card">
+      <h3 style="margin-bottom:14px">Your lesson summary</h3>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px" id="summary-ring-row">
+        <div id="score-ring-holder"></div>
+        <div>
+          <div style="font-weight:600" id="summary-name">—</div>
+          <div style="font-size:13px;margin-top:4px" id="summary-completion"></div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-top:4px" id="summary-weak">Finish the lesson to see your results.</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="finish-btn">Finish lesson &amp; see results</button>
+      <button class="btn" id="export-btn" style="margin-left:8px;display:none">⬇ Export PDF report</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ============================================================
+   English+ Grammar Course — Shared Engine
+   Used by every lesson-*.html. Handles:
+     - progress logging (local stand-in for the Supabase schema
+       described in the course design doc, §9 — swap point marked
+       below so lessons 2-22 don't need to change when we wire up
+       the real backend)
+     - vocab popovers (audio / IPA / example sentence / glossary)
+     - generic exercise-checking helpers (MCQ, gap-fill, builder)
+     - end-of-lesson score summary + JSON export (stand-in for the
+       PDF report until that's built)
+   ============================================================ */
+
+const Course = (() => {
+
+  /* ----------------------------------------------------------
+     SUPABASE CLIENT
+     Loaded from shared/supabase-config.js + the supabase-js CDN
+     script, both included before this file. If either is missing
+     (offline, or a lesson opened before those scripts are added),
+     Course still works entirely on localStorage — every Supabase
+     call below is wrapped so a missing/failed connection never
+     breaks the lesson itself, it just means that device's progress
+     doesn't sync until it's back online.
+     ---------------------------------------------------------- */
+  let supabaseClient = null;
+  try {
+    if (window.supabase && window.SUPABASE_URL && window.SUPABASE_ANON_KEY){
+      supabaseClient = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+    }
+  } catch (e){ console.warn('Supabase client not initialised:', e); }
+
+  function getGroupId(){
+    const params = new URLSearchParams(window.location.search);
+    return params.get('group') || 'local-demo';
+  }
+  const GROUP_ID = getGroupId();
+
+  const knownMemberships = new Set(); // avoids re-checking group membership on every single answer
+  async function ensureGroupMembership(groupId, studentName){
+    if (!supabaseClient) return;
+    const cacheKey = `${groupId}::${studentName}`;
+    if (knownMemberships.has(cacheKey)) return;
+    try {
+      const { data } = await supabaseClient.from('groups').select('student_names').eq('group_id', groupId).maybeSingle();
+      if (!data){
+        await supabaseClient.from('groups').insert({ group_id: groupId, group_name: groupId, student_names: [studentName] });
+      } else if (!data.student_names.includes(studentName)){
+        await supabaseClient.from('groups').update({ student_names: [...data.student_names, studentName] }).eq('group_id', groupId);
+      }
+      knownMemberships.add(cacheKey);
+    } catch (e){ console.warn('Supabase group membership check failed (will retry next answer):', e); }
+  }
+
+  /* ----------------------------------------------------------
+     PROGRESS LOG
+     Row shape intentionally mirrors the planned `lesson_progress`
+     Supabase table so swapping localStorage.setItem() below for a
+     supabase.from('lesson_progress').insert() call is a drop-in
+     change — nothing else in a lesson file needs to know the
+     difference.
+     ---------------------------------------------------------- */
+  const STORAGE_KEY = 'englishplus_progress';
+  const GLOSSARY_KEY = 'englishplus_glossary';
+
+  function getStudentName(){
+    let name = localStorage.getItem('englishplus_student_name');
+    if (!name){
+      name = prompt("What's your name? (used to save your progress on this device)") || 'You';
+      localStorage.setItem('englishplus_student_name', name);
+    }
+    return name;
+  }
+
+  function readLog(){
+    try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+    catch(e){ return []; }
+  }
+  function writeLog(rows){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(rows));
+  }
+
+  /**
+   * Log one row of progress.
+   * @param {Object} p
+   * @param {string} p.lessonId
+   * @param {string} p.sectionId
+   * @param {'auto_graded'|'oral'} p.exerciseType
+   * @param {'completed'|'absent'|'not_attempted'} p.status
+   * @param {string} [p.answerGiven]
+   * @param {boolean|null} [p.isCorrect]
+   */
+  function logProgress(p){
+    const rows = readLog();
+    const row = {
+      group_id: GROUP_ID,
+      student_name: getStudentName(),
+      lesson_id: p.lessonId,
+      section_id: p.sectionId,
+      exercise_type: p.exerciseType || 'auto_graded',
+      status: p.status || 'completed',
+      answer_given: p.answerGiven ?? null,
+      is_correct: p.isCorrect ?? null,
+      override_correct: null,
+      teacher_verdict: null,
+      session_date: new Date().toISOString().slice(0,10),
+      timestamp: new Date().toISOString()
+    };
+    rows.push(row);
+    writeLog(rows);
+
+    // Mirror to Supabase in the background — never blocks the UI, and a
+    // failed/offline write here doesn't lose the answer, since the
+    // localStorage copy above is already saved either way.
+    if (supabaseClient){
+      (async () => {
+        await ensureGroupMembership(row.group_id, row.student_name);
+        const { session_date, timestamp, ...dbRow } = row; // timestamp has a DB default; session_date matches the DB column
+        dbRow.session_date = session_date;
+        const { error } = await supabaseClient.from('lesson_progress').insert(dbRow);
+        if (error) console.warn('Supabase progress insert failed:', error.message);
+      })();
+    }
+  }
+
+  function getLessonRows(lessonId){
+    return readLog().filter(r => r.lesson_id === lessonId && r.student_name === getStudentName());
+  }
+
+  /**
+   * Same rows as getLessonRows, but deduplicated to only the most recent
+   * attempt per section_id. Without this, a student re-attempting a
+   * section (or, during testing, the same person answering a lesson
+   * across many separate sessions) would have every historical attempt
+   * summed together, inflating both the score and the total — this is
+   * what "current progress" should actually mean.
+   */
+  function getCurrentRows(lessonId){
+    const rows = getLessonRows(lessonId);
+    const latestBySection = {};
+    rows.forEach(r => {
+      const existing = latestBySection[r.section_id];
+      if (!existing || new Date(r.timestamp) >= new Date(existing.timestamp)){
+        latestBySection[r.section_id] = r;
+      }
+    });
+    return Object.values(latestBySection);
+  }
+
+  /** Same as getCurrentRows, but keyed by section_id for quick lookup — the shape rehydration needs. */
+  function getSectionMap(lessonId){
+    const map = {};
+    getCurrentRows(lessonId).forEach(r => { map[r.section_id] = r; });
+    return map;
+  }
+
+  function resetLocalProgress(lessonId){
+    const rows = readLog().filter(r => !(r.lesson_id === lessonId && r.student_name === getStudentName()));
+    writeLog(rows);
+  }
+
+  function lessonScore(lessonId, sectionPrefix){
+    const rows = getCurrentRows(lessonId).filter(r =>
+      r.exercise_type === 'auto_graded' &&
+      (!sectionPrefix || r.section_id.startsWith(sectionPrefix)) &&
+      r.is_correct !== null
+    );
+    const correct = rows.filter(r => (r.override_correct ?? r.is_correct)).length;
+    return { correct, total: rows.length };
+  }
+
+  function weakSections(lessonId){
+    const rows = getCurrentRows(lessonId).filter(r => (r.override_correct ?? r.is_correct) === false);
+    return [...new Set(rows.map(r => r.section_id))];
+  }
+
+  /**
+   * Pulls this student's rows down from Supabase and merges them into
+   * local storage — patching override_correct/teacher_verdict onto rows
+   * that already exist locally, AND adding any row that exists remotely
+   * but not locally at all (e.g. this device's local storage is empty,
+   * fresh, or was cleared, but the student has answers on Supabase from
+   * another session/device). Also PRUNES any local row whose section no
+   * longer exists remotely — this is what makes a teacher's "wipe" on the
+   * dashboard actually show up on the student's own device, not just on
+   * Supabase. Pruning only ever happens right here, immediately after a
+   * confirmed-successful fetch, never on a failed one — so a dropped
+   * connection can never masquerade as a wipe and erase real local
+   * progress that just hasn't synced yet.
+   * Call this right before showing/exporting results, not continuously.
+   */
+  async function syncFromSupabase(lessonId){
+    if (!supabaseClient) return;
+    try {
+      const { data, error } = await supabaseClient
+        .from('lesson_progress')
+        .select('*')
+        .eq('group_id', GROUP_ID)
+        .eq('student_name', getStudentName())
+        .eq('lesson_id', lessonId);
+      if (error || !data) { if (error) console.warn('Sync from Supabase failed:', error.message); return; }
+      // Past this point the fetch has genuinely succeeded — `data` is an
+      // authoritative snapshot (possibly empty) of this student's rows for
+      // this lesson, safe to reconcile local storage against.
+      const remoteSections = new Set(data.map(r => r.section_id));
+      let rows = readLog();
+      let changed = false;
+
+      data.forEach(remote => {
+        const idx = rows.findIndex(r => r.lesson_id === lessonId && r.student_name === getStudentName() && r.section_id === remote.section_id);
+        if (idx >= 0){
+          if (rows[idx].override_correct !== remote.override_correct || rows[idx].teacher_verdict !== remote.teacher_verdict){
+            rows[idx].override_correct = remote.override_correct;
+            rows[idx].teacher_verdict = remote.teacher_verdict;
+            changed = true;
+          }
+        } else {
+          rows.push({ ...remote, timestamp: remote.created_at || new Date().toISOString() });
+          changed = true;
+        }
+      });
+
+      const beforeCount = rows.length;
+      rows = rows.filter(r => {
+        if (r.lesson_id !== lessonId || r.student_name !== getStudentName()) return true; // different lesson/student, not our concern here
+        return remoteSections.has(r.section_id);
+      });
+      if (rows.length !== beforeCount) changed = true;
+
+      if (changed) writeLog(rows);
+    } catch (e){ console.warn('Sync from Supabase failed:', e); }
+  }
+
+  function exportReport(lessonId, lessonTitle){
+    const rows = getLessonRows(lessonId);
+    const report = {
+      student: getStudentName(),
+      lesson_id: lessonId,
+      lesson_title: lessonTitle,
+      generated_at: new Date().toISOString(),
+      rows
+    };
+    const blob = new Blob([JSON.stringify(report, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `${lessonId}-${getStudentName()}-progress.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  async function exportReportPDF(lessonId, lessonTitle, totalPossible){
+    const rows = getCurrentRows(lessonId);
+    const student = getStudentName();
+    const date = new Date().toLocaleDateString();
+    const autoRows = rows.filter(r => r.exercise_type === 'auto_graded');
+    const oralRows = rows.filter(r => r.exercise_type === 'oral' && r.status === 'completed');
+    const correct = autoRows.filter(r => (r.override_correct ?? r.is_correct)).length;
+    const pct = autoRows.length ? Math.round((correct / autoRows.length) * 100) : 0;
+    const esc = (s) => (s ?? '').toString().replace(/</g, '&lt;');
+
+    let printRoot = document.getElementById('course-print-report');
+    if (!printRoot){
+      printRoot = document.createElement('div');
+      printRoot.id = 'course-print-report';
+      document.body.appendChild(printRoot);
+    }
+    printRoot.innerHTML = `
+      <div style="border-bottom:3px solid #185FA5;padding-bottom:12px;margin-bottom:20px">
+        <div style="font-size:11px;color:#5B6472;text-transform:uppercase;letter-spacing:.05em">English+ Grammar Course</div>
+        <h1 style="font-size:21px;margin:4px 0 0">${esc(lessonTitle)}</h1>
+      </div>
+      <p style="font-size:13px;margin:0 0 3px"><b>Student:</b> ${esc(student)}</p>
+      <p style="font-size:13px;margin:0 0 18px"><b>Date:</b> ${esc(date)}</p>
+      <div style="background:#E6F1FB;border-radius:10px;padding:14px 18px;margin-bottom:${typeof totalPossible === 'number' ? '8px' : '22px'}">
+        <div style="font-size:19px;font-weight:700;color:#0C4577">${correct} / ${autoRows.length} correct (${pct}%)</div>
+      </div>
+      ${typeof totalPossible === 'number' ? (autoRows.length < totalPossible ? `
+      <div style="background:#FAEEDA;border:1px solid #E8C080;border-radius:8px;padding:10px 14px;margin-bottom:22px;font-size:12px;color:#633806">
+        ⚠ Only ${Math.round((autoRows.length / totalPossible) * 100)}% of the lesson attempted (${autoRows.length} of ${totalPossible} exercises) — this score reflects only what's been answered so far.
+      </div>` : `
+      <div style="background:#EAF3DE;border:1px solid #C0DD97;border-radius:8px;padding:10px 14px;margin-bottom:22px;font-size:12px;color:#27500A">
+        ✓ Every exercise in this lesson has been attempted.
+      </div>`) : ''}
+      <h2 style="font-size:14px;margin-bottom:8px">Exercise breakdown</h2>
+      <table style="width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:22px">
+        <thead><tr style="background:#EEF1F5;text-align:left">
+          <th style="padding:5px 7px;border-bottom:1px solid #DFE3E9">Section</th>
+          <th style="padding:5px 7px;border-bottom:1px solid #DFE3E9">Your answer</th>
+          <th style="padding:5px 7px;border-bottom:1px solid #DFE3E9">Result</th>
+        </tr></thead>
+        <tbody>
+          ${autoRows.map(r => {
+            const ok = r.override_correct ?? r.is_correct;
+            const resultLabel = r.override_correct !== null && r.override_correct !== undefined ? (ok ? 'Correct (revised)' : 'Needs review (revised)') : (ok ? 'Correct' : 'Needs review');
+            return `<tr>
+              <td style="padding:5px 7px;border-bottom:1px solid #EEF1F5">${esc(r.section_id)}</td>
+              <td style="padding:5px 7px;border-bottom:1px solid #EEF1F5">${esc(r.answer_given)}</td>
+              <td style="padding:5px 7px;border-bottom:1px solid #EEF1F5;color:${ok ? '#27500A' : '#791F1F'}">${resultLabel}</td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+      ${oralRows.length ? `
+        <h2 style="font-size:14px;margin-bottom:8px">Speaking / discussion</h2>
+        <ul style="font-size:11.5px;padding-left:16px;margin:0">
+          ${oralRows.map(r => `<li style="margin-bottom:5px">${esc(r.answer_given)} — <i>${esc(r.teacher_verdict) || 'not yet marked'}</i></li>`).join('')}
+        </ul>` : ''}
+    `;
+    window.print();
+  }
+
+  /* ----------------------------------------------------------
+     VOCAB POPOVERS
+     ---------------------------------------------------------- */
+  /* ----------------------------------------------------------
+     AUDIO: file-first, speechSynthesis fallback
+     Mirrors the pattern each lesson's listening dialogue already
+     uses (fetch HEAD once, cache the result, play the real file if
+     present) — generalised here so vocab words and any other
+     hoverable/clickable audio button gets the same upgrade path
+     for free the moment real files are dropped into audio/vocab/.
+     Slugifying the spoken text itself (rather than requiring a
+     separate key at every call site) means no lesson file needs to
+     change when real audio arrives — only this function does.
+     ---------------------------------------------------------- */
+  function slugifyForAudio(text){
+    return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+  const audioFileCache = new Map(); // slug -> true|false, checked once per session
+  let currentAudioEl = null;
+  async function speakSmart(text, fallback){
+    const slug = slugifyForAudio(text);
+    const src = `audio/vocab/${slug}.mp3`;
+    if (!audioFileCache.has(slug)){
+      try {
+        const res = await fetch(src, { method: 'HEAD' });
+        audioFileCache.set(slug, res.ok);
+      } catch (e) { audioFileCache.set(slug, false); }
+    }
+    if (audioFileCache.get(slug)){
+      if (currentAudioEl) currentAudioEl.pause();
+      currentAudioEl = new Audio(src);
+      currentAudioEl.play().catch(() => fallback());
+    } else {
+      fallback();
+    }
+  }
+  function speak(text){
+    speakSmart(text, () => {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.rate = 0.92;
+      window.speechSynthesis.speak(u);
+    });
+  }
+
+  /* ----------------------------------------------------------
+     GLOSSARY
+     Same local-write-plus-background-mirror pattern as progress
+     logging — instant local save, best-effort sync to Supabase so
+     it's durable and follows the student across devices.
+     ---------------------------------------------------------- */
+  function getGlossary(){
+    try { return JSON.parse(localStorage.getItem(GLOSSARY_KEY)) || {}; }
+    catch (e){ return {}; }
+  }
+  function writeGlossaryLocal(glossary){
+    localStorage.setItem(GLOSSARY_KEY, JSON.stringify(glossary));
+  }
+
+  async function saveToGlossary(wordKey, data, lessonId){
+    const glossary = getGlossary();
+    glossary[wordKey] = { word: data.word, ipa: data.ipa, meaning: data.meaning, example: data.example, lessonId: lessonId || null };
+    writeGlossaryLocal(glossary);
+
+    if (supabaseClient){
+      (async () => {
+        await ensureGroupMembership(GROUP_ID, getStudentName());
+        const { error } = await supabaseClient.from('glossary').upsert({
+          group_id: GROUP_ID, student_name: getStudentName(), word_key: wordKey,
+          word: data.word, ipa: data.ipa, meaning: data.meaning, example: data.example, lesson_id: lessonId || null
+        }, { onConflict: 'group_id,student_name,word_key' });
+        if (error) console.warn('Glossary sync failed:', error.message);
+      })();
+    }
+  }
+
+  async function removeFromGlossary(wordKey){
+    const glossary = getGlossary();
+    delete glossary[wordKey];
+    writeGlossaryLocal(glossary);
+    if (supabaseClient){
+      const { error } = await supabaseClient.from('glossary').delete()
+        .eq('group_id', GROUP_ID).eq('student_name', getStudentName()).eq('word_key', wordKey);
+      if (error) console.warn('Glossary remove failed:', error.message);
+    }
+  }
+
+  async function syncGlossaryFromSupabase(){
+    if (!supabaseClient) return;
+    try {
+      const { data, error } = await supabaseClient.from('glossary').select('*')
+        .eq('group_id', GROUP_ID).eq('student_name', getStudentName());
+      if (error || !data) { if (error) console.warn('Glossary sync failed:', error.message); return; }
+      const glossary = getGlossary();
+      data.forEach(r => {
+        glossary[r.word_key] = { word: r.word, ipa: r.ipa, meaning: r.meaning, example: r.example, lessonId: r.lesson_id };
+      });
+      writeGlossaryLocal(glossary);
+    } catch (e){ console.warn('Glossary sync failed:', e); }
+  }
+
+  function initVocab(vocabData, lessonId){
+    document.querySelectorAll('.vocab').forEach(el => {
+      el.addEventListener('click', () => {
+        const key = el.dataset.word;
+        const data = vocabData[key];
+        if (!data) return;
+        if (popupTrigger === el){ hidePopup(); return; }
+        const alreadySaved = !!getGlossary()[key];
+        const html = `
+          <div class="vocab-pop-word">${data.word}</div>
+          <div class="vocab-pop-ipa">${data.ipa}</div>
+          <button class="audio-btn vocab-audio-btn" data-speak="${data.word}">🔊 Hear it</button>
+          <div style="font-size:14px;margin-bottom:8px">${data.meaning}</div>
+          <div class="vocab-pop-ex">"${data.example}"</div>
+          <button class="btn btn-sm glossary-btn" data-word="${key}" ${alreadySaved ? 'disabled' : ''}>${alreadySaved ? 'Saved ✓' : '+ Add to my glossary'}</button>
+        `;
+        showPopup(html, el);
+        const content = document.getElementById('course-popup-content');
+        content.querySelector('.vocab-audio-btn')?.addEventListener('click', (e) => { e.stopPropagation(); speak(data.word); });
+        content.querySelector('.glossary-btn')?.addEventListener('click', async (e) => {
+          e.stopPropagation();
+          await saveToGlossary(key, data, lessonId);
+          const btn = content.querySelector('.glossary-btn');
+          btn.textContent = 'Saved ✓'; btn.disabled = true;
+        });
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     SHUFFLING
+     Used for MCQ option order and sentence-builder word banks so
+     the correct answer/order is never predictably in the same
+     position — applies across every lesson via the shared engine.
+     ---------------------------------------------------------- */
+  function shuffleArray(arr){
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function shuffleOptions(containerId){
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const buttons = Array.from(container.querySelectorAll('.opt'));
+    shuffleArray(buttons).forEach(btn => container.appendChild(btn));
+  }
+
+  /* ----------------------------------------------------------
+     POPUP
+     Shared by vocab words, grammar highlights, and any other
+     "click a term, see an explanation" pattern. Closes via the X
+     button, clicking outside, or clicking the same trigger again.
+     ---------------------------------------------------------- */
+  let popupTrigger = null;
+  function ensurePopupRoot(){
+    let root = document.getElementById('course-popup-root');
+    if (!root){
+      root = document.createElement('div');
+      root.id = 'course-popup-root';
+      root.innerHTML = `
+        <div id="course-popup-backdrop" class="course-popup-backdrop"></div>
+        <div id="course-popup-box" class="course-popup-box" role="dialog">
+          <button id="course-popup-close" class="course-popup-close" aria-label="Close">&times;</button>
+          <div id="course-popup-content"></div>
+        </div>
+      `;
+      document.body.appendChild(root);
+      document.getElementById('course-popup-backdrop').addEventListener('click', hidePopup);
+      document.getElementById('course-popup-close').addEventListener('click', hidePopup);
+    }
+    return root;
+  }
+  function showPopup(html, triggerEl){
+    const root = ensurePopupRoot();
+    if (triggerEl && popupTrigger === triggerEl){ hidePopup(); return; }
+    document.getElementById('course-popup-content').innerHTML = html;
+    root.classList.add('open');
+    popupTrigger = triggerEl || null;
+  }
+  function hidePopup(){
+    const root = document.getElementById('course-popup-root');
+    if (root) root.classList.remove('open');
+    popupTrigger = null;
+  }
+
+  /* ----------------------------------------------------------
+     SHUFFLE-WITH-VARIETY
+     Shuffles each container normally, then checks whether the
+     correct answer landed in the same position (usually top) for
+     every single question in the group — if so, forces one to be
+     different, so a themed set of questions never visually looks
+     like "the answer is always first" even by chance.
+     ---------------------------------------------------------- */
+  function ensureGroupVariety(containerIds){
+    if (containerIds.length < 2) return;
+    const firstIsCorrect = containerIds.map(id => {
+      const first = document.querySelector(`#${id} .opt`);
+      return first && first.dataset.value === 'right';
+    });
+    const allSame = firstIsCorrect.every(v => v === firstIsCorrect[0]);
+    if (!allSame) return;
+    // Force one container (at random) to have a different top position.
+    const targetId = containerIds[Math.floor(Math.random() * containerIds.length)];
+    const container = document.getElementById(targetId);
+    const opts = Array.from(container.querySelectorAll('.opt'));
+    const differentIdx = opts.findIndex(o => o.dataset.value !== opts[0].dataset.value);
+    if (differentIdx > 0) container.insertBefore(opts[differentIdx], opts[0]);
+  }
+
+  /* ----------------------------------------------------------
+     GENERIC MULTIPLE-CHOICE EXERCISE
+     Container needs: data-lesson, data-section, data-correct
+     Options: <button class="opt" data-value="...">
+     ---------------------------------------------------------- */
+  function initMCQ(containerId, {lessonId, sectionId, correctValue, onAnswered, restoreAnswer}){
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const opts = container.querySelectorAll('.opt');
+    let answered = false;
+
+    function applyResult(chosenValue){
+      opts.forEach(o => {
+        if (o.dataset.value === correctValue) o.classList.add('ok');
+        else if (o.dataset.value === chosenValue) o.classList.add('bad');
+        else o.classList.add('dim');
+      });
+    }
+
+    // Restoring a prior answer (e.g. reopening a lesson already in progress)
+    // applies the same visual result a click would, without re-logging it.
+    if (restoreAnswer !== undefined && restoreAnswer !== null){
+      answered = true;
+      applyResult(restoreAnswer);
+    }
+
+    opts.forEach(opt => {
+      opt.addEventListener('click', () => {
+        if (answered) return;
+        answered = true;
+        const chosen = opt.dataset.value;
+        const isCorrect = chosen === correctValue;
+        applyResult(chosen);
+        logProgress({ lessonId, sectionId, answerGiven: chosen, isCorrect });
+        if (onAnswered) onAnswered(isCorrect, chosen);
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     FIND-THE-ERROR (click the wrong word/phrase within a sentence)
+     A different interaction from the two-option MCQ pair used in
+     Lesson 1's "spot the correct sentence" — same underlying skill
+     (identify the tense mistake), different format, so lessons can
+     genuinely vary which exercise types appear.
+     ---------------------------------------------------------- */
+  function initErrorSpot(containerId, {lessonId, sectionId, words, errorIndices, correction, onAnswered, restore}){
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = words.map((w, i) => `<span class="err-word" data-idx="${i}">${w}</span>`).join(' ');
+    const spans = container.querySelectorAll('.err-word');
+    let answered = false;
+
+    function reveal(clickedIdx){
+      spans.forEach(s => {
+        const idx = Number(s.dataset.idx);
+        if (errorIndices.includes(idx)) s.classList.add('err-target');
+        else if (idx === clickedIdx) s.classList.add('err-wrong-pick');
+        s.style.pointerEvents = 'none';
+      });
+      const isCorrect = errorIndices.includes(clickedIdx);
+      const note = document.createElement('div');
+      note.className = isCorrect ? 'fb-ok' : 'fb-no';
+      note.style.marginTop = '8px';
+      note.textContent = isCorrect
+        ? `✓ Correct — should be "${correction}"`
+        : `Not quite — the error was "${errorIndices.map(i => words[i]).join(' ')}", which should be "${correction}"`;
+      container.insertAdjacentElement('afterend', note);
+    }
+
+    if (restore){
+      answered = true;
+      reveal(Number(restore.answerGiven));
+      return;
+    }
+
+    spans.forEach(s => {
+      s.addEventListener('click', () => {
+        if (answered) return;
+        answered = true;
+        const idx = Number(s.dataset.idx);
+        const isCorrect = errorIndices.includes(idx);
+        reveal(idx);
+        logProgress({ lessonId, sectionId, answerGiven: String(idx), isCorrect });
+        if (onAnswered) onAnswered(isCorrect);
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     MATCHING (click a left item, then its matching right item)
+     A third exercise format for the practice slot that's used
+     "spot the correct sentence" (L1) and "find the error" (L2) —
+     lessons can rotate through these so consecutive lessons never
+     feel identical. Each pair gets its own section_id so it's
+     individually restorable/reveal-able, same as everything else.
+     A wrong attempt locks that LEFT item (shown in red) but leaves
+     the right item available, since it may still be the correct
+     partner for a different, not-yet-answered left item.
+     ---------------------------------------------------------- */
+  function initMatching(containerId, {lessonId, sectionPrefix, pairs, onAnswered, sectionMap}){
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = `
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 16px">
+        <div id="${containerId}-left" style="display:flex;flex-direction:column;gap:8px"></div>
+        <div id="${containerId}-right" style="display:flex;flex-direction:column;gap:8px"></div>
+      </div>
+    `;
+    const leftEl = document.getElementById(`${containerId}-left`);
+    const rightEl = document.getElementById(`${containerId}-right`);
+    const leftItems = pairs.map((p, i) => ({ text: p.left, idx: i }));
+    // Plain shuffle can, by chance, leave a pair's true partner sitting on the
+    // same visual row as its left half — which reads as though the answer is
+    // already given away. Reshuffle (bounded) until at most one row does that.
+    let rightItems;
+    let attempts = 0;
+    do {
+      rightItems = shuffleArray(pairs.map((p, i) => ({ text: p.right, idx: i })));
+      attempts++;
+    } while (rightItems.filter((item, row) => item.idx === row).length > 1 && attempts < 50);
+
+    let selectedLeftIdx = null;
+    const answeredLeft = new Map();  // idx -> isCorrect
+    const usedRight = new Set();     // idx of right items already correctly claimed
+
+    if (sectionMap){
+      pairs.forEach((p, i) => {
+        const row = sectionMap[`${sectionPrefix}-${i + 1}`];
+        if (row){
+          const isCorrect = row.override_correct ?? row.is_correct;
+          answeredLeft.set(i, isCorrect);
+          if (isCorrect) usedRight.add(i);
+        }
+      });
+    }
+
+    function renderLeft(){
+      leftEl.innerHTML = '';
+      leftItems.forEach(item => {
+        const btn = document.createElement('button');
+        btn.className = 'chip match-item';
+        if (answeredLeft.has(item.idx)){
+          btn.classList.add(answeredLeft.get(item.idx) ? 'match-correct' : 'match-wrong');
+          btn.disabled = true;
+        } else {
+          if (selectedLeftIdx === item.idx) btn.classList.add('sel');
+          btn.addEventListener('click', () => { selectedLeftIdx = item.idx; renderLeft(); });
+        }
+        btn.textContent = item.text;
+        leftEl.appendChild(btn);
+      });
+    }
+    function renderRight(){
+      rightEl.innerHTML = '';
+      rightItems.forEach(item => {
+        const btn = document.createElement('button');
+        btn.className = 'chip match-item';
+        if (usedRight.has(item.idx)){
+          btn.classList.add('match-correct');
+          btn.disabled = true;
+        } else {
+          btn.addEventListener('click', () => {
+            if (selectedLeftIdx === null || answeredLeft.has(selectedLeftIdx)) return;
+            const isCorrect = item.idx === selectedLeftIdx;
+            const sectionId = `${sectionPrefix}-${selectedLeftIdx + 1}`;
+            answeredLeft.set(selectedLeftIdx, isCorrect);
+            if (isCorrect) usedRight.add(item.idx);
+            logProgress({ lessonId, sectionId, answerGiven: item.text, isCorrect });
+            selectedLeftIdx = null;
+            renderLeft(); renderRight();
+            if (onAnswered) onAnswered(isCorrect);
+          });
+        }
+        btn.textContent = item.text;
+        rightEl.appendChild(btn);
+      });
+    }
+    renderLeft();
+    renderRight();
+  }
+
+  /* ----------------------------------------------------------
+     GENERIC GAP-FILL (typed answer, case-insensitive, trims)
+     showAnswerHint controls whether the feedback reveals the
+     expected answer(s) — intended for just the first exercise in a
+     themed set, to model the expected format, while the rest stay
+     silent on the exact answer so students genuinely have to recall
+     it (any review then happens live, e.g. via the teacher's reveal
+     panel, rather than being handed to them instantly).
+     ---------------------------------------------------------- */
+  /**
+   * Given a list of full-form correct answers, returns the list with a
+   * contracted variant added for any answer starting with a word that
+   * naturally contracts with a preceding subject pronoun (have -> 've,
+   * has/is -> 's, are -> 're, will -> 'll, would/had -> 'd). The blank
+   * itself never includes the subject, so a student who thinks "I've
+   * never been" naturally types "'ve never been" — without this, that's
+   * marked wrong even though it's exactly correct.
+   */
+  function withContractions(answers){
+    const subjectMap = { have:"'ve", has:"'s", am:"'m", are:"'re", is:"'s", will:"'ll", would:"'d", had:"'d" };
+    const modalMap = { would:"would've", could:"could've", might:"might've", should:"should've", must:"must've" };
+    const expanded = [...answers];
+    answers.forEach(a => {
+      const words = a.split(' ');
+      const firstWord = words[0].toLowerCase();
+      const rest = a.slice(words[0].length); // keeps the leading space, or ''
+
+      // Pattern A: contract the first word alone, assuming a subject pronoun
+      // already precedes it in the visible sentence ("would" -> "'d", so
+      // "she" + "'d have shared" reads as "she'd have shared").
+      if (subjectMap[firstWord] && rest) expanded.push(subjectMap[firstWord] + rest);
+
+      // Pattern B: modal + have -> modal've ("would've saved"), the far more
+      // common spoken contraction — Pattern A alone never produces this since
+      // it only ever touches the first word. Also handles a single adverb
+      // wedged between the modal and "have" ("would probably have saved" ->
+      // "would've probably saved"), which is how it naturally reads once
+      // "have" fuses onto the modal instead of staying separate.
+      if (modalMap[firstWord]){
+        if (words[1] && words[1].toLowerCase() === 'have'){
+          const tail = words.slice(2).join(' ');
+          expanded.push(`${modalMap[firstWord]}${tail ? ' ' + tail : ''}`);
+        } else if (words[2] && words[2].toLowerCase() === 'have'){
+          const adverb = words[1];
+          const tail = words.slice(3).join(' ');
+          expanded.push(`${modalMap[firstWord]} ${adverb}${tail ? ' ' + tail : ''}`);
+        }
+      }
+    });
+    return expanded;
+  }
+
+  function initGapFill(inputId, checkBtnId, feedbackId, {lessonId, sectionId, correctAnswers, showAnswerHint = false, restore, onAnswered}){
+    const input = document.getElementById(inputId);
+    const btn = document.getElementById(checkBtnId);
+    const fb = document.getElementById(feedbackId);
+    if (!input || !btn) return;
+
+    // Curly/smart apostrophes (from autocorrect, mobile keyboards) and a
+    // missing apostrophe entirely ("dont" for "don't") were being marked
+    // wrong even when every other letter matched a correct answer — this
+    // strips all apostrophe variants from both sides before comparing, so
+    // typing style/typos never cause a false "incorrect". Trailing sentence
+    // punctuation and repeated whitespace are normalized away too.
+    function normalizeAnswer(s){
+      return s
+        .trim()
+        .toLowerCase()
+        .replace(/[\u2018\u2019\u02BC']/g, '')
+        .replace(/[.!?]+$/, '')
+        .replace(/\s+/g, ' ');
+    }
+
+    function showFeedback(isCorrect){
+      // withContractions() adds bare fragments like "'ve sent" so a typed
+      // contraction is still marked correct — but shown alone in a hint,
+      // with no subject in front of it, that apostrophe-first fragment
+      // reads as broken rather than helpful. The full form(s) are always
+      // still in this list too, so filtering fragments never empties it.
+      const hintAnswers = correctAnswers.filter(a => !a.startsWith("'"));
+      if (isCorrect){
+        fb.innerHTML = showAnswerHint
+          ? `<div class="fb-ok">✓ Correct — "${hintAnswers.join(' OR ')}"</div>`
+          : `<div class="fb-ok">✓ Correct!</div>`;
+        return;
+      }
+      // A wrong answer always reveals the correct one(s) now — previously
+      // only the first item in a themed set (showAnswerHint: true) did this,
+      // and every other item just said "we'll go over this one together"
+      // with no indication of what was actually expected. When several
+      // answers are genuinely valid, all of them are listed so the person
+      // reviewing can see there's real nuance here, not just one fixed
+      // answer they happened to miss.
+      if (hintAnswers.length > 1){
+        const list = hintAnswers.map(a => `"${a}"`).join(' or ');
+        fb.innerHTML = `<div class="fb-no">Not quite. A few answers would work here: ${list} — we'll go over this one together.</div>`;
+      } else {
+        fb.innerHTML = `<div class="fb-no">Not quite. A correct answer would be: "${hintAnswers[0]}".</div>`;
+      }
+    }
+
+    if (restore){
+      input.value = restore.answerGiven ?? '';
+      input.disabled = true; btn.disabled = true;
+      showFeedback(restore.isCorrect);
+      return;
+    }
+
+    btn.addEventListener('click', () => {
+      const val = normalizeAnswer(input.value);
+      const accepted = correctAnswers.map(normalizeAnswer);
+      const isCorrect = accepted.includes(val);
+      showFeedback(isCorrect);
+      input.disabled = true; btn.disabled = true;
+      logProgress({ lessonId, sectionId, answerGiven: input.value.trim(), isCorrect });
+      if (onAnswered) onAnswered(isCorrect);
+    });
+  }
+
+  /* ----------------------------------------------------------
+     SCORE SUMMARY RENDER
+     ---------------------------------------------------------- */
+  function renderScoreRing(elId, correct, total){
+    const el = document.getElementById(elId);
+    if (!el) return;
+    const pct = total ? Math.round((correct/total)*100) : 0;
+    el.innerHTML = `<div class="score-ring">${pct}%</div>`;
+  }
+
+  return { logProgress, getLessonRows, getCurrentRows, getSectionMap, lessonScore, weakSections, exportReport, exportReportPDF,
+           speak, speakSmart, initVocab, initMCQ, initGapFill, initErrorSpot, initMatching, withContractions, renderScoreRing, getStudentName,
+           shuffleArray, shuffleOptions, ensureGroupVariety, showPopup, hidePopup, resetLocalProgress, syncFromSupabase,
+           getGlossary, saveToGlossary, removeFromGlossary, syncGlossaryFromSupabase,
+           getGroupId: () => GROUP_ID, isConnected: () => !!supabaseClient };
+})();
+
+</script>
+<script>
+const LESSON_ID = 'lesson-22-discourse-emphasis-capstone';
+
+{
+  const glossaryLink = document.getElementById('glossary-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  const currentFile = window.location.pathname.split('/').pop();
+  let glossaryHref = `glossary-standalone.html?from=${encodeURIComponent(currentFile)}`;
+  if (groupParam) glossaryHref += `&group=${encodeURIComponent(groupParam)}`;
+  glossaryLink.href = glossaryHref;
+}
+
+{
+  const resetBtn = document.createElement('button');
+  resetBtn.className = 'btn btn-sm btn-ghost';
+  resetBtn.textContent = '↺ Reset my progress for this lesson';
+  resetBtn.style.cssText = 'margin-top:8px;font-size:12px;padding:5px 12px';
+  resetBtn.addEventListener('click', () => {
+    if (confirm('Clear all saved answers for this lesson on this device? (Does not affect Supabase.)')){
+      Course.resetLocalProgress(LESSON_ID);
+      location.reload();
+    }
+  });
+  document.getElementById('sync-status').insertAdjacentElement('afterend', resetBtn);
+}
+
+(async function initLesson(){
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Syncing your progress…`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  await Course.syncFromSupabase(LESSON_ID);
+  const sectionMap = Course.getSectionMap(LESSON_ID);
+
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Synced · Group: ${Course.getGroupId()}`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  /* ---------------- VOCAB DATA ---------------- */
+  const vocabData = {
+    conformity: { word:'conformity', ipa:'/kənˈfɔː.mə.ti/', meaning:'behaviour that matches general standards or what the group expects', example:'Pressure toward conformity can silence valid objections.' },
+    dissent: { word:'dissent', ipa:'/dɪˈsent/', meaning:'disagreement with an official or widely held opinion', example:'Groupthink actively discourages dissent within the group.' },
+    consensus: { word:'consensus', ipa:'/kənˈsen.səs/', meaning:'general agreement among a group of people', example:'The desire for consensus overrode careful evaluation of the risks.' },
+    unanimity: { word:'unanimity', ipa:'/ˌjuː.nəˈnɪm.ə.ti/', meaning:'complete agreement by everyone involved', example:'An illusion of unanimity can form even when several members privately disagree.' },
+    scrutiny: { word:'scrutiny', ipa:'/ˈskruː.tɪ.ni/', meaning:'careful and thorough examination', example:'Groupthink decisions often escape the scrutiny they genuinely need.' },
+    flawed: { word:'flawed', ipa:'/flɔːd/', meaning:'having a mistake, weakness, or fault', example:'Even highly intelligent groups can reach deeply flawed conclusions.' },
+    illusion: { word:'illusion', ipa:'/ɪˈluː.ʒən/', meaning:'a false idea or belief', example:'An illusion of invulnerability can make a group take reckless risks.' },
+    cohesive: { word:'cohesive', ipa:'/kəʊˈhiː.sɪv/', meaning:'closely united', example:'Groupthink is most likely in tight, cohesive teams.' },
+    suppress: { word:'suppress', ipa:'/səˈpres/', meaning:'to prevent something from being expressed or noticed', example:'Team members often suppress doubts to preserve group harmony.' }
+  };
+
+  function vocabSpan(key, text){
+    return `<span class="vocab" data-word="${key}">${text}</span>`;
+  }
+  function gramSpan(key, text){
+    return `<span class="gram" data-gram="${key}">${text}</span>`;
+  }
+  const gramExplanations = {
+    g1: 'Wh-cleft (pseudo-cleft) — "What Janis discovered was..." emphasises the discovery itself, more dramatically than plain "Janis discovered a pattern."',
+    g2: 'It-cleft — "It was the Bay of Pigs invasion...that..." emphasises which case mattered most, singling it out from other possibilities.',
+    g3: 'Linking word (contrast) — "However" signals that the next idea pushes back against what was just said.',
+    g4: 'Linking word (result) — "As a result" signals that what follows is a direct consequence of what came before.',
+    g5: 'Hedging — "It seems that" softens the claim, presenting it as a reasonable inference rather than a certain fact.',
+    g6: 'Wh-cleft (pseudo-cleft) — "What actually prevents groupthink is..." emphasises the solution, contrasting it directly with "harmony."'
+  };
+
+  /* ---------------- READING PASSAGE ---------------- */
+  document.getElementById('passage').innerHTML = `
+  <p>In 1972, Yale psychologist Irving Janis coined a term for something he'd noticed across several historical disasters: intelligent, capable groups sometimes make astonishingly bad decisions. ${gramSpan('g1','What Janis discovered was a pattern he called "groupthink"')} — decisions gone wrong not despite group discussion, but partly because of it.</p>
+
+  <p>${gramSpan('g2','It was the 1961 Bay of Pigs invasion, more than any other case, that shaped his thinking')}. President Kennedy's advisors were experienced and well-informed. ${gramSpan('g3','However')}, the group's desire for ${vocabSpan('consensus','consensus')} had quietly overridden its members' judgement, and a deeply ${vocabSpan('flawed','flawed')} plan sailed through largely unchallenged.</p>
+
+  <p>Janis identified several warning signs. Pressure toward ${vocabSpan('conformity','conformity')} builds gradually inside a ${vocabSpan('cohesive','cohesive')} group, which can develop an ${vocabSpan('illusion','illusion')} of invulnerability far stronger than any single member would feel alone. Members start to ${vocabSpan('suppress','suppress')} private doubts rather than voice ${vocabSpan('dissent','dissent')}, and silence gets mistaken for genuine agreement — an illusion of ${vocabSpan('unanimity','unanimity')} that's rarely as solid as it looks. ${gramSpan('g4','As a result')}, proposals that would normally face serious ${vocabSpan('scrutiny','scrutiny')} slip through largely unexamined.</p>
+
+  <p>${gramSpan('g5','It seems')} that prevention has to be deliberate: many organisations now build friction into their decision processes — assigning a formal devil's advocate, bringing in outside experts, or having leaders withhold their own opinion until everyone else has spoken. ${gramSpan('g6','What actually prevents groupthink is friction, not harmony')} — scrutiny has to be built in on purpose; it rarely survives once a group starts prioritising agreement over honesty.</p>
+  `;
+  document.getElementById('passage').classList.add('passage');
+
+  document.getElementById('gram-toggle').addEventListener('click', function(){
+    const passage = document.getElementById('passage');
+    const on = passage.classList.toggle('show-grammar');
+    this.classList.toggle('on', on);
+    this.textContent = on ? '🔍 Hide grammar in this text' : '🔍 Show grammar in this text';
+  });
+  document.querySelectorAll('.gram').forEach(el => {
+    el.addEventListener('click', () => {
+      Course.showPopup(`<div style="font-size:14.5px;line-height:1.6">${gramExplanations[el.dataset.gram]}</div>`, el);
+    });
+  });
+
+  Course.initVocab(vocabData, LESSON_ID);
+
+  /* ---------------- GAP-FILL HINT BUTTONS (click-to-reveal category) ---------------- */
+  document.querySelectorAll('.hint-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      Course.showPopup(`<div style="font-size:14px;line-height:1.6">Look for: <b>${btn.dataset.hint}</b></div>`, btn);
+    });
+  });
+
+  /* ---------------- HOVER TOOLTIP (shared across this concept section) ----------------
+     Deliberately not using Course.showPopup for hover: that system uses a
+     full-screen backdrop, and on mouseenter the backdrop immediately covers
+     the trigger, firing mouseleave, which hides the popup, uncovering the
+     trigger, which re-fires mouseenter — an infinite show/hide loop. A tiny
+     pointer-events:none tooltip avoids this entirely. */
+  function ensureCompareTooltip(){
+    let el = document.getElementById('compare-tooltip');
+    if (!el){
+      el = document.createElement('div');
+      el.id = 'compare-tooltip';
+      document.body.appendChild(el);
+    }
+    return el;
+  }
+  const compareTooltipEl = ensureCompareTooltip();
+  function showCompareTooltip(html, anchorEl){
+    compareTooltipEl.innerHTML = html;
+    const rect = anchorEl.getBoundingClientRect();
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    const scrollX = window.scrollX || document.documentElement.scrollLeft;
+    compareTooltipEl.style.top = `${rect.bottom + scrollY + 8}px`;
+    compareTooltipEl.style.left = `${rect.left + scrollX}px`;
+    compareTooltipEl.classList.add('visible');
+  }
+  function hideCompareTooltip(){
+    compareTooltipEl.classList.remove('visible');
+  }
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.compare-box') && !e.target.closest('.trait-pill')) hideCompareTooltip();
+  });
+
+  function renderCompareCard(containerId, items, explanations){
+    const el = document.getElementById(containerId);
+    el.innerHTML = items.map(it => `
+      <div style="display:flex;gap:10px;align-items:baseline;margin-bottom:${it.groupEnd ? 20 : 8}px">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);flex-shrink:0;width:190px">${it.label}</span>
+        <span class="compare-box" data-key="${it.key}">"${it.text}"</span>
+      </div>
+    `).join('');
+    el.querySelectorAll('.compare-box').forEach(node => {
+      const html = `<div>${explanations[node.dataset.key]}</div>`;
+      node.addEventListener('mouseenter', () => showCompareTooltip(html, node));
+      node.addEventListener('mouseleave', hideCompareTooltip);
+      node.addEventListener('click', () => showCompareTooltip(html, node));
+    });
+  }
+
+  function renderPills(containerId, pairs){
+    const el = document.getElementById(containerId);
+    pairs.forEach(p => {
+      const pill = document.createElement('button');
+      pill.type = 'button';
+      pill.className = 'trait-pill';
+      pill.textContent = p.word;
+      const html = `<div>${p.example}</div>`;
+      pill.addEventListener('mouseenter', () => showCompareTooltip(html, pill));
+      pill.addEventListener('mouseleave', hideCompareTooltip);
+      pill.addEventListener('click', (e) => { e.stopPropagation(); showCompareTooltip(html, pill); });
+      el.appendChild(pill);
+    });
+  }
+
+  /* ---------------- SHARED LINKING-WORD DATA (used by both the widget and
+     the full-list pills, so the two can never drift out of sync) ---------------- */
+  const linkingAddition = [
+    { word: 'moreover', example: 'The plan was risky. Moreover, it was based on outdated intelligence.' },
+    { word: 'furthermore', example: 'The team lacked expertise. Furthermore, no one questioned the timeline.' },
+    { word: 'in addition', example: 'In addition to the budget problems, the schedule was unrealistic.' },
+    { word: 'additionally', example: 'Additionally, several warning signs were simply ignored.' },
+    { word: 'besides', example: 'Besides, the timeline was always unrealistic.' },
+    { word: "what's more", example: "What's more, nobody had reviewed the final numbers." },
+    { word: 'on top of that', example: 'On top of that, the team was already understaffed.' },
+    { word: 'also', example: 'Also, no one had reviewed the budget in months.' },
+    { word: 'not to mention', example: 'Not to mention, the timeline was already tight.' },
+    { word: 'to add to that', example: 'To add to that, morale was already low.' }
+  ];
+  const linkingContrast = [
+    { word: 'however', example: 'The plan looked solid. However, it had one flaw.' },
+    { word: 'on the other hand', example: 'One member had doubts; on the other hand, he stayed silent.' },
+    { word: 'nevertheless', example: 'The risks were clear. Nevertheless, the group proceeded.' },
+    { word: 'in contrast', example: 'In contrast to earlier warnings, the final report sounded confident.' },
+    { word: 'whereas', example: 'Whereas some hesitated, others acted quickly.' },
+    { word: 'yet', example: 'The evidence was clear, yet nobody acted on it.' },
+    { word: 'that said', example: 'That said, hindsight makes every decision look obvious.' },
+    { word: 'on the contrary', example: 'On the contrary, the team felt more confident than ever.' },
+    { word: 'still', example: 'The risks were obvious. Still, nobody spoke up.' },
+    { word: 'even so', example: 'The warnings were clear. Even so, the team pressed ahead.' }
+  ];
+  const linkingCause = [
+    { word: 'therefore', example: 'No one raised concerns; therefore, the flawed plan went ahead.' },
+    { word: 'as a result', example: 'As a result, the invasion failed within days.' },
+    { word: 'consequently', example: 'Consequently, historians still study the decision today.' },
+    { word: 'thus', example: 'Thus, the project became a valuable case study.' },
+    { word: 'hence', example: 'No one objected; hence, the plan moved forward unchanged.' },
+    { word: 'for this reason', example: 'For this reason, many companies now require a second opinion.' },
+    { word: 'accordingly', example: "Accordingly, the board revised its approval process." },
+    { word: 'as a consequence', example: 'As a consequence, three executives resigned.' },
+    { word: 'so', example: 'No one objected, so the plan went ahead unchanged.' },
+    { word: 'owing to this', example: 'Owing to this, the company changed its review process.' }
+  ];
+  const linkingSequence = [
+    { word: 'firstly', example: 'Firstly, the group grew unusually close-knit.' },
+    { word: 'subsequently', example: 'Subsequently, dissenting voices grew quieter.' },
+    { word: 'finally', example: 'Finally, the plan was approved without real debate.' },
+    { word: 'secondly', example: 'Secondly, the deadline was moved up without warning.' },
+    { word: 'then', example: 'The plan was approved; then, reality intervened.' },
+    { word: 'next', example: 'Next, the team began implementation without further review.' },
+    { word: 'eventually', example: 'Eventually, the flawed assumptions became impossible to ignore.' },
+    { word: 'to begin with', example: 'To begin with, the group seemed united.' },
+    { word: 'after that', example: 'After that, dissent became increasingly rare.' },
+    { word: 'in the end', example: 'In the end, no one could pinpoint a single cause.' }
+  ];
+
+  renderPills('linking-addition-pills', linkingAddition);
+  renderPills('linking-contrast-pills', linkingContrast);
+  renderPills('linking-cause-pills', linkingCause);
+  renderPills('linking-sequence-pills', linkingSequence);
+
+  document.getElementById('link-list-toggle').addEventListener('click', function(){
+    const content = document.getElementById('link-list-content');
+    const open = content.classList.toggle('open');
+    this.textContent = open ? '📖 Hide the full rules' : '📖 Show the full rules';
+  });
+
+  /* ---------------- LINKING WORD WIDGET: browse 4 categories ---------------- */
+  (function buildLinkingWidget(){
+    const categories = { addition: linkingAddition, contrast: linkingContrast, cause: linkingCause, sequence: linkingSequence };
+    const quizPool = [
+      ...linkingAddition.map(v => ({ word: v.word, answer: 'addition' })),
+      ...linkingContrast.map(v => ({ word: v.word, answer: 'contrast' })),
+      ...linkingCause.map(v => ({ word: v.word, answer: 'cause' })),
+      ...linkingSequence.map(v => ({ word: v.word, answer: 'sequence' }))
+    ];
+    const quizLabels = { addition: 'addition', contrast: 'contrast', cause: 'cause & effect', sequence: 'sequence' };
+    let mode = 'addition';
+    const idx = { addition: 0, contrast: 0, cause: 0, sequence: 0 };
+    const displayEl = document.getElementById('link-widget-area');
+    const hintEl = document.getElementById('link-widget-hint');
+
+    function renderBrowse(){
+      hintEl.style.display = 'block';
+      hintEl.textContent = '— Click the pills to see another example.';
+      displayEl.style.padding = '18px';
+      const data = categories[mode];
+      const item = data[idx[mode]];
+      displayEl.innerHTML = `
+        <div style="overflow-x:auto;padding-bottom:2px">
+          <div style="display:grid;grid-template-columns:0.7fr 2fr;gap:10px;align-items:center;min-width:420px">
+            <div class="static-cell is-primary-cell clickable-cell">${item.word}</div>
+            <div class="static-cell is-primary-cell clickable-cell">${item.example}</div>
+          </div>
+        </div>`;
+      displayEl.querySelectorAll('.clickable-cell').forEach(c => {
+        c.addEventListener('click', () => {
+          idx[mode] = (idx[mode] + 1) % data.length;
+          renderBrowse();
+        });
+      });
+    }
+
+    function renderQuiz(){
+      hintEl.style.display = 'none';
+      displayEl.style.padding = '12px 18px';
+      displayEl.innerHTML = `
+        <p id="link-quiz-word" style="font-size:19px;font-weight:650;text-align:center;color:var(--accent);margin-bottom:8px"></p>
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap" id="link-quiz-options">
+          <button class="opt" data-answer="addition" style="flex:0 1 auto">Addition</button>
+          <button class="opt" data-answer="contrast" style="flex:0 1 auto">Contrast</button>
+          <button class="opt" data-answer="cause" style="flex:0 1 auto">Cause &amp; effect</button>
+          <button class="opt" data-answer="sequence" style="flex:0 1 auto">Sequence</button>
+        </div>
+        <div id="link-quiz-feedback" style="text-align:center;min-height:16px;margin-top:6px;font-size:13.5px"></div>
+        <div style="text-align:center;margin-top:4px">
+          <button class="btn btn-sm btn-ghost" id="link-quiz-next" style="display:none">Next →</button>
+        </div>`;
+
+      let order = Course.shuffleArray(quizPool.map((_, i) => i));
+      let pos = 0;
+      let answered = false;
+      const wordEl = document.getElementById('link-quiz-word');
+      const optionsEl = document.getElementById('link-quiz-options');
+      const feedbackEl = document.getElementById('link-quiz-feedback');
+      const nextBtn = document.getElementById('link-quiz-next');
+
+      function renderQ(){
+        answered = false;
+        feedbackEl.textContent = '';
+        nextBtn.style.display = 'none';
+        wordEl.textContent = quizPool[order[pos]].word;
+        [...optionsEl.children].forEach(btn => { btn.className = 'opt'; });
+      }
+      optionsEl.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (answered) return;
+          answered = true;
+          const item = quizPool[order[pos]];
+          const correct = btn.dataset.answer === item.answer;
+          [...optionsEl.children].forEach(b => {
+            if (b === btn) b.classList.add(correct ? 'ok' : 'bad');
+            else if (b.dataset.answer === item.answer) b.classList.add('ok');
+            else b.classList.add('dim');
+          });
+          feedbackEl.innerHTML = correct
+            ? `<span style="color:var(--ok)">✓ Correct! This is ${quizLabels[item.answer]}.</span>`
+            : `<span style="color:var(--bad)">Not quite — this is ${quizLabels[item.answer]}.</span>`;
+          nextBtn.style.display = 'inline-block';
+        });
+      });
+      nextBtn.addEventListener('click', () => {
+        pos += 1;
+        if (pos >= order.length){ order = Course.shuffleArray(quizPool.map((_, i) => i)); pos = 0; }
+        renderQ();
+      });
+      renderQ();
+    }
+
+    function updateListToggleState(){
+      const btn = document.getElementById('link-list-toggle');
+      const content = document.getElementById('link-list-content');
+      if (mode === 'quiz'){
+        btn.disabled = true;
+        btn.textContent = '📖 Disabled during Quick check';
+        content.classList.remove('open');
+      } else {
+        btn.disabled = false;
+        const isOpen = content.classList.contains('open');
+        btn.textContent = isOpen ? '📖 Hide the full rules' : '📖 Show the full rules';
+      }
+    }
+    function switchMode(newMode){
+      mode = newMode;
+      ['addition', 'contrast', 'cause', 'sequence', 'quiz'].forEach(m => {
+        document.getElementById(`mode-link-${m}`).classList.toggle('on', m === newMode);
+      });
+      if (newMode === 'quiz') renderQuiz();
+      else renderBrowse();
+      updateListToggleState();
+    }
+    document.getElementById('mode-link-addition').addEventListener('click', () => switchMode('addition'));
+    document.getElementById('mode-link-contrast').addEventListener('click', () => switchMode('contrast'));
+    document.getElementById('mode-link-cause').addEventListener('click', () => switchMode('cause'));
+    document.getElementById('mode-link-sequence').addEventListener('click', () => switchMode('sequence'));
+    document.getElementById('mode-link-quiz').addEventListener('click', () => switchMode('quiz'));
+    switchMode('addition');
+  })();
+
+  /* ---------------- SHARED HEDGING DATA (used by both the widget and the
+     full-list pills, so the two can never drift out of sync) ---------------- */
+  const hedgeModals = [
+    { word: 'may', example: 'This may indicate a wider problem.' },
+    { word: 'might', example: 'The results might change with more data.' },
+    { word: 'could', example: 'This could explain the delay.' },
+    { word: 'would', example: 'I would suggest a different approach.' },
+    { word: 'should', example: 'One should be cautious with these numbers.' }
+  ];
+  const hedgeSemiModals = [
+    { word: 'seem to', example: 'The plan seems to have worked.' },
+    { word: 'appear to', example: 'The data appears to support this.' },
+    { word: 'tend to', example: 'Teams tend to avoid conflict.' },
+    { word: 'be likely to', example: 'This is likely to cause delays.' },
+    { word: 'be unlikely to', example: 'This is unlikely to succeed.' }
+  ];
+  const hedgeAdverbs = [
+    { word: 'perhaps', example: 'Perhaps the timeline was too tight.' },
+    { word: 'possibly', example: 'This is possibly the main cause.' },
+    { word: 'probably', example: 'The team was probably under pressure.' },
+    { word: 'arguably', example: 'This is arguably avoidable.' },
+    { word: 'presumably', example: 'Presumably, no one checked the numbers.' },
+    { word: 'apparently', example: 'Apparently, the report was never reviewed.' }
+  ];
+  const hedgePhrases = [
+    { word: 'it could be argued that', example: 'It could be argued that timing mattered most.' },
+    { word: 'to some extent', example: 'To some extent, everyone shares responsibility.' },
+    { word: 'it is possible that', example: 'It is possible that no one noticed.' },
+    { word: 'as far as I know', example: 'As far as I know, no one raised concerns.' },
+    { word: 'it seems that', example: 'It seems that the plan was rushed.' }
+  ];
+
+  renderPills('hedge-modals-pills', hedgeModals);
+  renderPills('hedge-semimodals-pills', hedgeSemiModals);
+  renderPills('hedge-adverbs-pills', hedgeAdverbs);
+  renderPills('hedge-phrases-pills', hedgePhrases);
+
+  document.getElementById('hedge-list-toggle').addEventListener('click', function(){
+    const content = document.getElementById('hedge-list-content');
+    const open = content.classList.toggle('open');
+    this.textContent = open ? '📖 Hide the full rules' : '📖 Show the full rules';
+  });
+
+  /* ---------------- HEDGING WIDGET: browse 4 categories, or Quick check ---------------- */
+  (function buildHedgeWidget(){
+    const categories = { modals: hedgeModals, semimodals: hedgeSemiModals, adverbs: hedgeAdverbs, phrases: hedgePhrases };
+    const quizPool = [
+      ...hedgeModals.map(v => ({ word: v.word, answer: 'modals' })),
+      ...hedgeSemiModals.map(v => ({ word: v.word, answer: 'semimodals' })),
+      ...hedgeAdverbs.map(v => ({ word: v.word, answer: 'adverbs' })),
+      ...hedgePhrases.map(v => ({ word: v.word, answer: 'phrases' }))
+    ];
+    const quizLabels = { modals: 'a modal', semimodals: 'a semi-modal', adverbs: 'an adverb', phrases: 'a phrase' };
+    let mode = 'modals';
+    const idx = { modals: 0, semimodals: 0, adverbs: 0, phrases: 0 };
+    const displayEl = document.getElementById('hedge-widget-area');
+    const hintEl = document.getElementById('hedge-widget-hint');
+
+    function renderBrowse(){
+      hintEl.style.display = 'block';
+      hintEl.textContent = '— Click the pills to see another example.';
+      displayEl.style.padding = '18px';
+      const data = categories[mode];
+      const item = data[idx[mode]];
+      displayEl.innerHTML = `
+        <div style="overflow-x:auto;padding-bottom:2px">
+          <div style="display:grid;grid-template-columns:0.7fr 2fr;gap:10px;align-items:center;min-width:420px">
+            <div class="static-cell is-primary-cell clickable-cell">${item.word}</div>
+            <div class="static-cell is-primary-cell clickable-cell">${item.example}</div>
+          </div>
+        </div>`;
+      displayEl.querySelectorAll('.clickable-cell').forEach(c => {
+        c.addEventListener('click', () => {
+          idx[mode] = (idx[mode] + 1) % data.length;
+          renderBrowse();
+        });
+      });
+    }
+
+    function renderQuiz(){
+      hintEl.style.display = 'none';
+      displayEl.style.padding = '12px 18px';
+      displayEl.innerHTML = `
+        <p id="hedge-quiz-word" style="font-size:19px;font-weight:650;text-align:center;color:var(--accent);margin-bottom:8px"></p>
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap" id="hedge-quiz-options">
+          <button class="opt" data-answer="modals" style="flex:0 1 auto">Modals</button>
+          <button class="opt" data-answer="semimodals" style="flex:0 1 auto">Semi-modals</button>
+          <button class="opt" data-answer="adverbs" style="flex:0 1 auto">Adverbs</button>
+          <button class="opt" data-answer="phrases" style="flex:0 1 auto">Phrases</button>
+        </div>
+        <div id="hedge-quiz-feedback" style="text-align:center;min-height:16px;margin-top:6px;font-size:13.5px"></div>
+        <div style="text-align:center;margin-top:4px">
+          <button class="btn btn-sm btn-ghost" id="hedge-quiz-next" style="display:none">Next →</button>
+        </div>`;
+
+      let order = Course.shuffleArray(quizPool.map((_, i) => i));
+      let pos = 0;
+      let answered = false;
+      const wordEl = document.getElementById('hedge-quiz-word');
+      const optionsEl = document.getElementById('hedge-quiz-options');
+      const feedbackEl = document.getElementById('hedge-quiz-feedback');
+      const nextBtn = document.getElementById('hedge-quiz-next');
+
+      function renderQ(){
+        answered = false;
+        feedbackEl.textContent = '';
+        nextBtn.style.display = 'none';
+        wordEl.textContent = quizPool[order[pos]].word;
+        [...optionsEl.children].forEach(btn => { btn.className = 'opt'; });
+      }
+      optionsEl.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (answered) return;
+          answered = true;
+          const item = quizPool[order[pos]];
+          const correct = btn.dataset.answer === item.answer;
+          [...optionsEl.children].forEach(b => {
+            if (b === btn) b.classList.add(correct ? 'ok' : 'bad');
+            else if (b.dataset.answer === item.answer) b.classList.add('ok');
+            else b.classList.add('dim');
+          });
+          feedbackEl.innerHTML = correct
+            ? `<span style="color:var(--ok)">✓ Correct! "${item.word}" is ${quizLabels[item.answer]}.</span>`
+            : `<span style="color:var(--bad)">Not quite — "${item.word}" is ${quizLabels[item.answer]}.</span>`;
+          nextBtn.style.display = 'inline-block';
+        });
+      });
+      nextBtn.addEventListener('click', () => {
+        pos += 1;
+        if (pos >= order.length){ order = Course.shuffleArray(quizPool.map((_, i) => i)); pos = 0; }
+        renderQ();
+      });
+      renderQ();
+    }
+
+    function updateListToggleState(){
+      const btn = document.getElementById('hedge-list-toggle');
+      const content = document.getElementById('hedge-list-content');
+      if (mode === 'quiz'){
+        btn.disabled = true;
+        btn.textContent = '📖 Disabled during Quick check';
+        content.classList.remove('open');
+      } else {
+        btn.disabled = false;
+        const isOpen = content.classList.contains('open');
+        btn.textContent = isOpen ? '📖 Hide the full rules' : '📖 Show the full rules';
+      }
+    }
+    function switchMode(newMode){
+      mode = newMode;
+      ['modals', 'semimodals', 'adverbs', 'phrases', 'quiz'].forEach(m => {
+        document.getElementById(`mode-hedge-${m}`).classList.toggle('on', m === newMode);
+      });
+      if (newMode === 'quiz') renderQuiz();
+      else renderBrowse();
+      updateListToggleState();
+    }
+    document.getElementById('mode-hedge-modals').addEventListener('click', () => switchMode('modals'));
+    document.getElementById('mode-hedge-semimodals').addEventListener('click', () => switchMode('semimodals'));
+    document.getElementById('mode-hedge-adverbs').addEventListener('click', () => switchMode('adverbs'));
+    document.getElementById('mode-hedge-phrases').addEventListener('click', () => switchMode('phrases'));
+    document.getElementById('mode-hedge-quiz').addEventListener('click', () => switchMode('quiz'));
+    switchMode('modals');
+  })();
+
+  /* ---------------- CLEFT SENTENCE WIDGET: switch sentence type and
+     structure/examples view, tracking two consistently-coloured segments
+     (subject in blue, verb+object in amber) across all three forms ---------------- */
+  (function buildCleftWidget(){
+    const cleftData = {
+      normal: {
+        structure: [
+          [{ type:'a', text:'[Subject]' }, { type:'b', text:'[Verb + object]' }]
+        ],
+        examples: [
+          [{ type:'a', text:'Poor planning' }, { type:'b', text:'causes delays.' }],
+          [{ type:'a', text:'A lack of communication' }, { type:'b', text:'creates misunderstandings.' }],
+          [{ type:'a', text:'Poor planning' }, { type:'b', text:'caused the delay.' }],
+          [{ type:'a', text:'A lack of communication' }, { type:'b', text:'caused the misunderstanding.' }]
+        ]
+      },
+      it: {
+        structure: [
+          [{ type:'s', text:'It is' }, { type:'a', text:'[Subject]' }, { type:'s', text:'that' }, { type:'b', text:'[Verb + object]' }],
+          [{ type:'s', text:'It was' }, { type:'a', text:'[Subject]' }, { type:'s', text:'that' }, { type:'b', text:'[Verb + object]' }]
+        ],
+        examples: [
+          [{ type:'s', text:'It is' }, { type:'a', text:'poor planning' }, { type:'s', text:'that' }, { type:'b', text:'causes delays.' }],
+          [{ type:'s', text:'It is' }, { type:'a', text:'a lack of communication' }, { type:'s', text:'that' }, { type:'b', text:'creates misunderstandings.' }],
+          [{ type:'s', text:'It was' }, { type:'a', text:'poor planning' }, { type:'s', text:'that' }, { type:'b', text:'caused the delay.' }],
+          [{ type:'s', text:'It was' }, { type:'a', text:'a lack of communication' }, { type:'s', text:'that' }, { type:'b', text:'caused the misunderstanding.' }]
+        ]
+      },
+      wh: {
+        structure: [
+          [{ type:'s', text:'[Wh-word]' }, { type:'b', text:'[Verb + object]' }, { type:'s', text:'is' }, { type:'a', text:'[Answer]' }],
+          [{ type:'s', text:'[Wh-word]' }, { type:'b', text:'[Verb + object]' }, { type:'s', text:'was' }, { type:'a', text:'[Answer]' }]
+        ],
+        examples: [
+          [{ type:'s', text:'What' }, { type:'b', text:'causes delays' }, { type:'s', text:'is' }, { type:'a', text:'poor planning.' }],
+          [{ type:'s', text:'What' }, { type:'b', text:'creates misunderstandings' }, { type:'s', text:'is' }, { type:'a', text:'a lack of communication.' }],
+          [{ type:'s', text:'What' }, { type:'b', text:'caused the delay' }, { type:'s', text:'was' }, { type:'a', text:'poor planning.' }],
+          [{ type:'s', text:'What' }, { type:'b', text:'caused the misunderstanding' }, { type:'s', text:'was' }, { type:'a', text:'a lack of communication.' }],
+          [{ type:'s', text:'Where' }, { type:'b', text:'the team struggled' }, { type:'s', text:'was' }, { type:'a', text:'communication.' }],
+          [{ type:'s', text:'Why' }, { type:'b', text:'the plan failed' }, { type:'s', text:'was' }, { type:'a', text:'poor timing.' }],
+          [{ type:'s', text:'How' }, { type:'b', text:'they fixed it' }, { type:'s', text:'was' }, { type:'a', text:'by rewriting the code.' }],
+          [{ type:'s', text:'When' }, { type:'b', text:'the problem started' }, { type:'s', text:'was' }, { type:'a', text:'before the merger.' }]
+        ]
+      }
+    };
+    const segClass = { a: 'is-primary-cell', b: 'is-b-cell', s: 'is-context-cell' };
+    let sentenceType = 'normal';
+    let view = 'structure';
+    const cycleIdx = { structure: { normal: 0, it: 0, wh: 0 }, examples: { normal: 0, it: 0, wh: 0 } };
+    const displayEl = document.getElementById('cleft-widget-area');
+    const hintEl = document.getElementById('cleft-widget-hint');
+
+    function render(){
+      const set = cleftData[sentenceType][view];
+      const idx = cycleIdx[view][sentenceType];
+      const segments = set[idx];
+      const canCycle = set.length > 1;
+      hintEl.style.display = canCycle ? 'block' : 'none';
+      hintEl.textContent = view === 'examples' ? '— Click any pill to see another example.' : '— Click any pill to switch between present and past.';
+      displayEl.innerHTML = `
+        <div style="overflow-x:auto;padding-bottom:2px">
+          <div style="display:flex;gap:8px;min-width:420px">
+            ${segments.map(seg => `<div class="static-cell ${segClass[seg.type]}${canCycle ? ' clickable-cell' : ''}">${seg.text}</div>`).join('')}
+          </div>
+        </div>`;
+      if (canCycle){
+        displayEl.querySelectorAll('.clickable-cell').forEach(c => {
+          c.addEventListener('click', () => {
+            cycleIdx[view][sentenceType] = (cycleIdx[view][sentenceType] + 1) % set.length;
+            render();
+          });
+        });
+      }
+    }
+    function switchSentenceType(newType){
+      sentenceType = newType;
+      ['normal', 'it', 'wh'].forEach(t => {
+        document.getElementById(`mode-cleft-${t}`).classList.toggle('on', t === newType);
+      });
+      render();
+    }
+    function switchView(newView){
+      view = newView;
+      document.getElementById('mode-cleft-structure').classList.toggle('on', newView === 'structure');
+      document.getElementById('mode-cleft-examples').classList.toggle('on', newView === 'examples');
+      render();
+    }
+    document.getElementById('mode-cleft-normal').addEventListener('click', () => switchSentenceType('normal'));
+    document.getElementById('mode-cleft-it').addEventListener('click', () => switchSentenceType('it'));
+    document.getElementById('mode-cleft-wh').addEventListener('click', () => switchSentenceType('wh'));
+    document.getElementById('mode-cleft-structure').addEventListener('click', () => switchView('structure'));
+    document.getElementById('mode-cleft-examples').addEventListener('click', () => switchView('examples'));
+    render();
+  })();
+
+  /* ---------------- CLEFT SENTENCES: MORE REFERENCE EXAMPLES (present and past) ---------------- */
+  renderCompareCard('compare-cleft', [
+    { key:'c1', label:'What (subject)', text: 'What caused the delay was poor planning.' },
+    { key:'c2', label:'What (object)', text: 'What the team ignored was the warning signs.', groupEnd: true },
+    { key:'c3', label:'Who (subject)', text: 'Who caused the delay was the new manager.' },
+    { key:'c4', label:'Who (object)', text: 'Who they blamed was the new manager.', groupEnd: true },
+    { key:'c5', label:'Which (subject)', text: 'Which plan failed was the original one.' },
+    { key:'c6', label:'Which (object)', text: 'Which plan they chose was the original one.', groupEnd: true },
+    { key:'c7', label:'Where', text: 'Where the team struggled was communication.' },
+    { key:'c8', label:'Why', text: 'Why the plan failed was poor timing.' },
+    { key:'c9', label:'How', text: 'How they fixed it was by rewriting the code.' },
+    { key:'c10', label:'When', text: 'When the problem started was before the merger.' }
+  ], {
+    c1: '"What" pulls out the subject — the specific cause, ruling out other explanations.',
+    c2: '"What" pulls out the object instead — the specific thing that got ignored.',
+    c3: '"Who" pulls out the subject — grammatical, but noticeably stilted; "It was the new manager who caused the delay" is far more natural.',
+    c4: '"Who" pulls out the object — again grammatical, but real usage strongly prefers it-cleft: "It was the new manager (that/who) they blamed."',
+    c5: '"Which" pulls out the subject — picks one plan out of a known set as the one that failed.',
+    c6: '"Which" pulls out the object — picks one plan out of a known set as the one they chose; like "who," it-cleft ("It was the original plan that they chose") is more common in speech.',
+    c7: '"Where" has no subject/object split — it simply emphasises a location.',
+    c8: '"Why" has no subject/object split — it emphasises a reason.',
+    c9: '"How" has no subject/object split — it emphasises a method, often as a "by + -ing" phrase.',
+    c10: '"When" has no subject/object split — it emphasises a point in time.'
+  });
+
+  /* ---------------- EXPANDABLE RULES ---------------- */
+  document.getElementById('rules-toggle').addEventListener('click', function(){
+    const content = document.getElementById('rules-content');
+    const open = content.classList.toggle('open');
+    this.textContent = open ? '📖 Hide the full rules' : '📖 Show the full rules';
+  });
+
+  /* ---------------- MCQ SECTIONS (via shared engine) ---------------- */
+  const mcqSections = [
+    ['warm-q1','warmup-1','right'], ['warm-q2','warmup-2','right'], ['warm-q3','warmup-3','right'],
+    ['diag-q1','diagnostic-1','right'], ['diag-q2','diagnostic-2','right'], ['diag-q3','diagnostic-3','right'], ['diag-q4','diagnostic-4','right'],
+    ['comp-q1','reading-comprehension-1','right'], ['comp-q2','reading-comprehension-2','right'], ['comp-q3','reading-comprehension-3','right'],
+    ['vocab-q1','vocab-1','right'], ['vocab-q2','vocab-2','right'], ['vocab-q3','vocab-3','right'], ['vocab-q4','vocab-4','right'], ['vocab-q5','vocab-5','right'],
+    ['cat-q1','practice-categorise-1','right'], ['cat-q2','practice-categorise-2','right'], ['cat-q3','practice-categorise-3','right'], ['cat-q4','practice-categorise-4','right'],
+    ['cat-q5','practice-categorise-5','right'], ['cat-q6','practice-categorise-6','right'], ['cat-q7','practice-categorise-7','right'], ['cat-q8','practice-categorise-8','right'],
+    ['listen-q1','listening-1','right'], ['listen-q2','listening-2','right'], ['listen-q3','listening-3','right'],
+    ['exit-q1','exit-1','right'], ['exit-q2','exit-2','right'], ['exit-q3','exit-3','right'], ['exit-q4','exit-4','right'], ['exit-q5','exit-5','right']
+  ];
+  mcqSections.forEach(([id, section, correctVal]) => {
+    Course.shuffleOptions(id);
+    Course.initMCQ(id, {
+      lessonId: LESSON_ID, sectionId: section, correctValue: correctVal, onAnswered: updateOverallProgress,
+      restoreAnswer: sectionMap[section] ? sectionMap[section].answer_given : undefined
+    });
+  });
+  if (!sectionMap['listening-1']) Course.ensureGroupVariety(['listen-q1','listen-q2','listen-q3']);
+  if (!sectionMap['reading-comprehension-1']) Course.ensureGroupVariety(['comp-q1','comp-q2','comp-q3']);
+  if (!sectionMap['practice-categorise-1']) Course.ensureGroupVariety(['cat-q1','cat-q2','cat-q3','cat-q4','cat-q5','cat-q6','cat-q7','cat-q8']);
+
+  /* ---------------- GAP FILL (restorable) ---------------- */
+  const gapFills = [
+    ['gap1-input','gap1-check','gap1-fb','practice-gapfill-1', ['However', 'Nevertheless', 'That said', 'On the other hand', 'Still', 'Even so'], true],
+    ['gap2-input','gap2-check','gap2-fb','practice-gapfill-2', ['As a result', 'Consequently', 'Thus', 'Hence', 'Therefore', 'As a consequence', 'Owing to this'], false],
+    ['gap3-input','gap3-check','gap3-fb','practice-gapfill-3', ['arguably'], false],
+    ['gap4-input','gap4-check','gap4-fb','practice-gapfill-4', ['tend'], false],
+    ['gap5-input','gap5-check','gap5-fb','practice-gapfill-5', ['It'], false],
+    ['gap6-input','gap6-check','gap6-fb','practice-gapfill-6', ['What'], false]
+  ];
+  gapFills.forEach(([inputId, btnId, fbId, section, answers, showHint]) => {
+    const restored = sectionMap[section];
+    Course.initGapFill(inputId, btnId, fbId, {
+      lessonId: LESSON_ID, sectionId: section, correctAnswers: answers, showAnswerHint: showHint,
+      restore: restored ? { answerGiven: restored.answer_given, isCorrect: restored.override_correct ?? restored.is_correct } : undefined,
+      onAnswered: updateOverallProgress
+    });
+  });
+
+  /* ---------------- VOCAB GAP FILL ---------------- */
+  const vocabGapFills = [
+    ['vgap1-input','vgap1-check','vgap1-fb','vocab-gapfill-1', ['flawed'], true],
+    ['vgap2-input','vgap2-check','vgap2-fb','vocab-gapfill-2', ['conformity'], false],
+    ['vgap3-input','vgap3-check','vgap3-fb','vocab-gapfill-3', ['suppress'], false],
+    ['vgap4-input','vgap4-check','vgap4-fb','vocab-gapfill-4', ['unanimity'], false]
+  ];
+  vocabGapFills.forEach(([inputId, btnId, fbId, section, answers, showHint]) => {
+    const restored = sectionMap[section];
+    Course.initGapFill(inputId, btnId, fbId, {
+      lessonId: LESSON_ID, sectionId: section, correctAnswers: answers, showAnswerHint: showHint,
+      restore: restored ? { answerGiven: restored.answer_given, isCorrect: restored.override_correct ?? restored.is_correct } : undefined,
+      onAnswered: updateOverallProgress
+    });
+  });
+
+  /* ---------------- FIX THE SENTENCE (error-spot) ---------------- */
+  const fixItems = [
+    { id:'fix1', section:'practice-fix-1', words:['The','plan','was','risky.','Although,','it','was','based','on','outdated','data.'], errorIndices:[4], correction:'Moreover,' },
+    { id:'fix2', section:'practice-fix-2', words:['It','were','groupthink','that','caused','the','failure.'], errorIndices:[1], correction:'was' },
+    { id:'fix3', section:'practice-fix-3', words:['This','is','arguable','the','most','famous','case','in','history.'], errorIndices:[2], correction:'arguably' },
+    { id:'fix4', section:'practice-fix-4', words:['The','advisors','were','experienced.','Therefore,','they','rarely','challenged','each','other.'], errorIndices:[4], correction:'However,' }
+  ];
+  fixItems.forEach(item => {
+    const restored = sectionMap[item.section];
+    Course.initErrorSpot(item.id, {
+      lessonId: LESSON_ID, sectionId: item.section, words: item.words, errorIndices: item.errorIndices, correction: item.correction,
+      onAnswered: updateOverallProgress,
+      restore: restored ? { answerGiven: restored.answer_given } : undefined
+    });
+  });
+
+  /* ---------------- SENTENCE BUILDER (single-clause safe. Locks immediately
+     on Check, not just on reload.) ---------------- */
+  const builderRounds = [
+    { words: ['it','was','groupthink','that','caused','the','failure'],
+      accepted: ['it was groupthink that caused the failure'] },
+    { words: ['what','the','advisors','ignored','was','the','warning','signs'],
+      accepted: ['what the advisors ignored was the warning signs'] },
+    { words: ['the','risks','were','clear','however','the','group','proceeded'],
+      accepted: ['the risks were clear however the group proceeded'] }
+  ];
+  const buildersEl = document.getElementById('builders');
+  builderRounds.forEach((round, ri) => {
+    const sectionId = `practice-builder-${ri+1}`;
+    const restored = sectionMap[sectionId];
+    const bankOrder = Course.shuffleArray(round.words.map((_, i) => i));
+    let state = [];
+    let locked = false;
+
+    if (restored){
+      const used = new Set();
+      restored.answer_given.split(' ').forEach(tok => {
+        const idx = round.words.findIndex((w, i) => w === tok && !used.has(i));
+        if (idx >= 0){ used.add(idx); state.push(idx); }
+      });
+      locked = true;
+    }
+
+    const wrap = document.createElement('div');
+    wrap.style.marginBottom = '20px';
+    wrap.innerHTML = `
+      <div class="builder-bank" id="builder-bank-${ri}"></div>
+      <div class="builder-target" id="builder-target-${ri}"></div>
+      <p style="font-size:12px;color:var(--text-tertiary);margin-top:6px">Tap a word in your sentence to send it back to the pool.</p>
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+        <button class="btn btn-sm" id="builder-check-${ri}">Check order</button>
+        <button class="btn btn-sm btn-ghost" id="builder-reset-${ri}">Reset</button>
+      </div>
+      <div id="builder-fb-${ri}"></div>
+    `;
+    buildersEl.appendChild(wrap);
+
+    const bank = wrap.querySelector(`#builder-bank-${ri}`);
+    const target = wrap.querySelector(`#builder-target-${ri}`);
+    function render(){
+      bank.innerHTML = '';
+      bankOrder.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip' + (state.includes(i) ? ' used' : '');
+        chip.textContent = round.words[i];
+        if (!locked) chip.addEventListener('click', () => { if (state.includes(i)) return; state.push(i); render(); });
+        else chip.disabled = true;
+        bank.appendChild(chip);
+      });
+      target.innerHTML = '';
+      state.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip';
+        chip.textContent = round.words[i];
+        if (!locked){
+          chip.title = 'Click to remove';
+          chip.addEventListener('click', () => { state = state.filter(x => x !== i); render(); });
+        } else {
+          chip.disabled = true;
+        }
+        target.appendChild(chip);
+      });
+    }
+    render();
+
+    if (restored){
+      const isCorrect = restored.override_correct ?? restored.is_correct;
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+    }
+
+    wrap.querySelector(`#builder-reset-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      state = []; render(); wrap.querySelector(`#builder-fb-${ri}`).innerHTML = '';
+    });
+    wrap.querySelector(`#builder-check-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      const attempt = state.map(i => round.words[i]).join(' ');
+      const isCorrect = round.accepted.includes(attempt);
+      locked = true;
+      render();
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+      Course.logProgress({ lessonId: LESSON_ID, sectionId, answerGiven: attempt, isCorrect });
+      updateOverallProgress();
+    });
+  });
+
+  /* ---------------- SPEAKING MODE TOGGLE ---------------- */
+  document.getElementById('mode-solo').addEventListener('click', () => {
+    document.getElementById('mode-solo').classList.add('on');
+    document.getElementById('mode-group').classList.remove('on');
+    document.getElementById('speak-solo').style.display = 'block';
+    document.getElementById('speak-group').style.display = 'none';
+  });
+  document.getElementById('mode-group').addEventListener('click', () => {
+    document.getElementById('mode-group').classList.add('on');
+    document.getElementById('mode-solo').classList.remove('on');
+    document.getElementById('speak-group').style.display = 'block';
+    document.getElementById('speak-solo').style.display = 'none';
+  });
+
+  /* ---------------- SOLO SPEAKING TASK — MARK AS DONE (restorable) ---------------- */
+  const SOLO_TASK_LABEL = "Solo speaking task: reflect on the course using a linking word and a hedge.";
+  const soloDoneBtn = document.getElementById('solo-done-btn');
+  let soloDone = !!(sectionMap['speaking-solo'] && sectionMap['speaking-solo'].status === 'completed');
+  function renderSoloBtn(){
+    soloDoneBtn.textContent = soloDone ? "✓ Marked as done" : "✓ I've done this";
+    soloDoneBtn.classList.toggle('btn-primary', soloDone);
+  }
+  renderSoloBtn();
+  soloDoneBtn.addEventListener('click', () => {
+    soloDone = !soloDone;
+    renderSoloBtn();
+    Course.logProgress({
+      lessonId: LESSON_ID, sectionId: 'speaking-solo', exerciseType: 'oral',
+      status: soloDone ? 'completed' : 'not_attempted', answerGiven: SOLO_TASK_LABEL
+    });
+  });
+
+  /* ---------------- DISCUSSION QUESTION PICKER (restorable) ---------------- */
+  const discussQuestions = [
+    "Have you ever been part of a group that made a decision nobody actually agreed with privately?",
+    "Do you think remote/online teams are more or less vulnerable to groupthink than in-person ones?",
+    "Describe a time you stayed silent about a doubt, using hedging language to soften how you explain it now.",
+    "Looking back across this whole course, which grammar topic changed how you actually speak or write the most?"
+  ];
+  const discussEl = document.getElementById('discuss-questions');
+  let pickedQuestions = [];
+  discussQuestions.forEach((q, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'discuss-q';
+    btn.dataset.idx = i;
+    btn.innerHTML = `<span class="chk"></span><span>${q}</span>`;
+    const restored = sectionMap[`speaking-q${i+1}`];
+    if (restored && restored.status === 'completed'){
+      pickedQuestions.push(i);
+      btn.classList.add('picked');
+    }
+    btn.addEventListener('click', () => {
+      const isPicked = pickedQuestions.includes(i);
+      if (isPicked){
+        pickedQuestions = pickedQuestions.filter(x => x !== i);
+        btn.classList.remove('picked');
+      } else {
+        if (pickedQuestions.length >= 2){
+          document.getElementById('discuss-limit-msg').style.color = 'var(--bad)';
+          document.getElementById('discuss-limit-msg').textContent = 'You can only pick up to 2 — deselect one first.';
+          return;
+        }
+        pickedQuestions.push(i);
+        btn.classList.add('picked');
+      }
+      document.getElementById('discuss-limit-msg').style.color = '';
+      document.getElementById('discuss-limit-msg').textContent = 'You can select up to 2 questions.';
+      Course.logProgress({
+        lessonId: LESSON_ID, sectionId: `speaking-q${i+1}`, exerciseType: 'oral',
+        status: isPicked ? 'not_attempted' : 'completed', answerGiven: q
+      });
+    });
+    discussEl.appendChild(btn);
+  });
+
+  /* ---------------- LISTENING DIALOGUE ---------------- */
+  const AUDIO_SRC = 'audio/lesson-22-listening.mp3';
+  const dialogue = [
+    { speaker:'Tomasz', pitch:0.88, line:"We launched that feature without proper testing last month, and it broke almost immediately." },
+    { speaker:'Anna', pitch:1.12, line:"Did nobody flag that during the review meeting?" },
+    { speaker:'Tomasz', pitch:0.88, line:"Honestly, I think everyone assumed someone else already had concerns and had raised them." },
+    { speaker:'Anna', pitch:1.12, line:"That sounds exactly like the groupthink thing we just read about." },
+    { speaker:'Tomasz', pitch:0.88, line:"It really does. Nobody wanted to be the one slowing things down." },
+    { speaker:'Anna', pitch:1.12, line:"Maybe assign someone to deliberately argue against the plan next time." },
+    { speaker:'Tomasz', pitch:0.88, line:"A formal devil's advocate. I like that." },
+    { speaker:'Anna', pitch:1.12, line:"It sounds awkward, but arguably it's exactly what would have caught this." }
+  ];
+
+  let audioAvailable = false;
+  const audioEl = document.getElementById('dialogue-audio');
+  fetch(AUDIO_SRC, { method:'HEAD' }).then(r => { if (r.ok){ audioAvailable = true; audioEl.src = AUDIO_SRC; } }).catch(() => {});
+
+  const transcriptEl = document.getElementById('transcript');
+  dialogue.forEach((d, i) => {
+    const line = document.createElement('div');
+    line.className = 'transcript-line';
+    line.id = `t-line-${i}`;
+    line.innerHTML = `<b>${d.speaker}:</b> ${d.line}`;
+    transcriptEl.appendChild(line);
+  });
+
+  const playBtn = document.getElementById('play-dialogue');
+  let isPlaying = false;
+  let currentIdx = 0;
+
+  function updatePlayButton(){
+    if (isPlaying){ playBtn.textContent = '⏸ Pause'; return; }
+    if (window.speechSynthesis.paused){ playBtn.textContent = '▶ Resume'; return; }
+    playBtn.textContent = '▶ Play dialogue';
+  }
+
+  function speakLineAt(idx){
+    if (idx >= dialogue.length){ isPlaying = false; currentIdx = 0; updatePlayButton(); return; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    document.getElementById(`t-line-${idx}`).classList.add('shown', 'active');
+    const u = new SpeechSynthesisUtterance(dialogue[idx].line);
+    u.rate = 0.95; u.pitch = dialogue[idx].pitch;
+    u.onend = () => { if (isPlaying){ currentIdx = idx + 1; speakLineAt(currentIdx); } };
+    window.speechSynthesis.speak(u);
+  }
+
+  playBtn.addEventListener('click', () => {
+    if (audioAvailable){
+      if (audioEl.paused){ audioEl.play(); isPlaying = true; }
+      else { audioEl.pause(); isPlaying = false; }
+      updatePlayButton();
+      return;
+    }
+    if (!isPlaying){
+      isPlaying = true;
+      if (window.speechSynthesis.paused){ window.speechSynthesis.resume(); }
+      else {
+        // Defensive reset, fresh-start only (never on resume/pause): speechSynthesis
+        // has a well-documented browser bug where it can silently stop accepting
+        // new speech after earlier calls elsewhere on the page (e.g. the vocab-word
+        // audio buttons), leaving Play looking broken with no error anywhere.
+        // Clearing the queue right before a genuinely fresh play avoids that class
+        // of bug without disturbing an actual pause/resume in progress.
+        window.speechSynthesis.cancel();
+        speakLineAt(currentIdx);
+      }
+    } else {
+      isPlaying = false;
+      window.speechSynthesis.pause();
+    }
+    updatePlayButton();
+  });
+
+  document.getElementById('stop-dialogue').addEventListener('click', () => {
+    isPlaying = false;
+    currentIdx = 0;
+    window.speechSynthesis.cancel();
+    if (audioAvailable){ audioEl.pause(); audioEl.currentTime = 0; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    updatePlayButton();
+  });
+
+  audioEl.addEventListener('ended', () => { isPlaying = false; updatePlayButton(); });
+
+  document.getElementById('show-transcript').addEventListener('click', function(){
+    const shown = transcriptEl.classList.toggle('all-shown');
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.toggle('shown', shown));
+    this.textContent = shown ? 'Hide transcript' : 'Show full transcript';
+  });
+
+  updateOverallProgress();
+})();
+
+/* ---------------- OVERALL PROGRESS BAR ---------------- */
+const LESSON_TOTAL_POSSIBLE = 31 + 10 + 4 + 3; // mcqSections(incl. 8 categorise) + gapFills(6+4vocab) + fixItems + builderRounds
+function updateOverallProgress(){
+  const attempted = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+  const pct = Math.min(100, Math.round((attempted / LESSON_TOTAL_POSSIBLE) * 100));
+  document.getElementById('overall-progress').style.width = pct + '%';
+}
+
+/* ---------------- FINISH / SUMMARY ---------------- */
+document.getElementById('finish-btn').addEventListener('click', async () => {
+  const btn = document.getElementById('finish-btn');
+  const original = btn.textContent;
+  btn.textContent = 'Checking for teacher updates…'; btn.disabled = true;
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+  } finally {
+    btn.textContent = original; btn.disabled = false;
+  }
+  try {
+    const { correct, total } = Course.lessonScore(LESSON_ID);
+    Course.renderScoreRing('score-ring-holder', correct, total);
+    document.getElementById('summary-name').textContent = `${Course.getStudentName()} — ${correct}/${total} correct`;
+
+    const attemptedCount = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+    const completionPct = Math.min(100, Math.round((attemptedCount / LESSON_TOTAL_POSSIBLE) * 100));
+    const completionEl = document.getElementById('summary-completion');
+    if (attemptedCount < LESSON_TOTAL_POSSIBLE){
+      completionEl.style.color = 'var(--warn)';
+      completionEl.textContent = `⚠ Only ${completionPct}% of the lesson attempted so far (${attemptedCount} of ${LESSON_TOTAL_POSSIBLE} exercises) — the score above only reflects what's been answered.`;
+    } else {
+      completionEl.style.color = 'var(--ok)';
+      completionEl.textContent = `✓ Every exercise in this lesson has been attempted.`;
+    }
+
+    const weak = Course.weakSections(LESSON_ID);
+    document.getElementById('summary-weak').textContent = weak.length
+      ? `Worth revisiting: ${weak.join(', ')}`
+      : 'Strong across the board — congratulations on finishing the course!';
+    document.getElementById('export-btn').style.display = 'inline-block';
+    updateOverallProgress();
+
+    const card = document.getElementById('summary-card');
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    card.classList.remove('summary-pulse'); void card.offsetWidth;
+    card.classList.add('summary-pulse');
+  } catch (err){
+    console.error('Finish lesson failed:', err);
+    let banner = document.getElementById('finish-error-banner');
+    if (!banner){
+      banner = document.createElement('div');
+      banner.id = 'finish-error-banner';
+      banner.className = 'error-banner';
+      document.getElementById('summary-card').appendChild(banner);
+    }
+    banner.textContent = `Something went wrong computing your results (${err.message}). Try reloading the page — your saved answers won't be lost.`;
+  }
+});
+document.getElementById('export-btn').addEventListener('click', async () => {
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+    Course.exportReportPDF(LESSON_ID, 'Discourse & Emphasis', LESSON_TOTAL_POSSIBLE);
+  } catch (err){
+    console.error('PDF export failed:', err);
+    alert('The PDF export ran into a problem: ' + err.message);
+  }
+});
+</script>
+
+<script>
+{
+  const allLessonsLink = document.getElementById('all-lessons-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  allLessonsLink.href = groupParam ? `index-standalone.html?group=${encodeURIComponent(groupParam)}` : 'index-standalone.html';
+}
+</script>
+</body>
+</html>

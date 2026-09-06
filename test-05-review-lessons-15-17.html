@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test 5 — Review of Lessons 15–17 | English+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+<style>
+  /* Small click-to-reveal hint button next to the vocab gap-fill inputs —
+     shows the word's definition, not the word itself, matching the pattern
+     used in Big Test 1 and Test 4. */
+  .hint-btn{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;border:1px solid var(--border-strong);background:var(--surface-alt);color:var(--text-tertiary);font-size:12px;font-weight:650;cursor:pointer;margin-left:6px;vertical-align:middle;line-height:1;padding:0}
+  .hint-btn:hover{background:var(--warn-bg);color:var(--text-primary)}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="shared/supabase-config.js"></script>
+</head>
+<body class="theme-conditionals">
+
+<div class="course-attribution">English+ Grammar Course · by Kris Galezewski</div>
+<div class="shell">
+
+  <!-- ============ HEADER ============ -->
+  <header class="lesson-header">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div class="lesson-eyebrow">📝 Test 5 · Reviewing Lessons 15–17</div>
+      <a id="all-lessons-link" href="index-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📚 All Lessons</a>
+    </div>
+    <h1 class="lesson-title">Third, Mixed &amp; Wish Review</h1>
+    <p class="lesson-sub">Third conditional, mixed conditionals, and wish/if only — mixed together.</p>
+    <div class="pb-track" style="margin-top:16px"><div class="pb-fill" id="overall-progress" style="width:0%"></div></div>
+    <div id="sync-status" style="font-size:11.5px;color:var(--text-tertiary);margin-top:8px"></div>
+  </header>
+
+  <!-- ============ 1. MULTIPLE CHOICE ============ -->
+  <section class="section" id="sec-mcq">
+    <div class="section-label"><span class="num">1</span> Multiple choice — mixed forms</div>
+    <div class="card">
+      <p style="font-size:14.5px;color:var(--text-secondary);margin-bottom:16px">These span all three lessons, in no particular order.</p>
+
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. If I ___ harder, I would have passed.</p>
+        <div id="mcq1"><button class="opt" data-value="right">had studied</button><button class="opt" data-value="wrong">studied</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. If she had known the truth, she ___ someone.</p>
+        <div id="mcq2"><button class="opt" data-value="right">would have told</button><button class="opt" data-value="wrong">would tell</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. If we hadn't left late, we ___ the flight.</p>
+        <div id="mcq3"><button class="opt" data-value="right">would have caught</button><button class="opt" data-value="wrong">would catch</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">4. If he had listened to advice, he ___ have lost the money.</p>
+        <div id="mcq4"><button class="opt" data-value="right">would not</button><button class="opt" data-value="wrong">will not</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">5. If they had known about the risk, they ___ differently.</p>
+        <div id="mcq5"><button class="opt" data-value="right">would have acted</button><button class="opt" data-value="wrong">would act</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">6. If I had taken that course, I would ___ a completely different career now.</p>
+        <div id="mcq6"><button class="opt" data-value="right">have</button><button class="opt" data-value="wrong">have had</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">7. If she weren't so shy, she ___ up at yesterday's meeting.</p>
+        <div id="mcq7"><button class="opt" data-value="right">would have spoken</button><button class="opt" data-value="wrong">would speak</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">8. If they had left earlier, they ___ here by now.</p>
+        <div id="mcq8"><button class="opt" data-value="right">would be</button><button class="opt" data-value="wrong">would have been</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">9. If he weren't so stubborn, he ___ accepted the help.</p>
+        <div id="mcq9"><button class="opt" data-value="right">would have</button><button class="opt" data-value="wrong">would</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">10. If we had saved more back then, we ___ less stressed now.</p>
+        <div id="mcq10"><button class="opt" data-value="right">would be</button><button class="opt" data-value="wrong">would have been</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">11. I wish I ___ taller.</p>
+        <div id="mcq11"><button class="opt" data-value="right">were</button><button class="opt" data-value="wrong">am</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">12. I wish I ___ that to him.</p>
+        <div id="mcq12"><button class="opt" data-value="right">hadn't said</button><button class="opt" data-value="wrong">didn't say</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">13. I wish he ___ interrupting me.</p>
+        <div id="mcq13"><button class="opt" data-value="right">would stop</button><button class="opt" data-value="wrong">stopped</button></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">14. If only she ___ the truth sooner.</p>
+        <div id="mcq14"><button class="opt" data-value="right">had known</button><button class="opt" data-value="wrong">knew</button></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">15. I wish I ___ how to swim.</p>
+        <div id="mcq15"><button class="opt" data-value="right">knew</button><button class="opt" data-value="wrong">had known</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. GAP-FILL ============ -->
+  <section class="section" id="sec-gapfill">
+    <div class="section-label"><span class="num">2</span> Gap-fill</div>
+    <div class="card">
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">1. If the weather <input type="text" id="gap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> (be) better yesterday, we would have gone for a walk.</p>
+        <button class="btn btn-sm" id="gap1-check">Check</button>
+        <div id="gap1-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">2. If we had booked earlier, we <input type="text" id="gap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:220px"> (probably/save) some money.</p>
+        <button class="btn btn-sm" id="gap2-check">Check</button>
+        <div id="gap2-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">3. If you had asked me, I <input type="text" id="gap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (help) you.</p>
+        <button class="btn btn-sm" id="gap3-check">Check</button>
+        <div id="gap3-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">4. If she weren't so private about her life, she <input type="text" id="gap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:220px"> (share) the news already.</p>
+        <button class="btn btn-sm" id="gap4-check">Check</button>
+        <div id="gap4-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">5. If he had taken that job, he <input type="text" id="gap5-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (live) in Berlin right now.</p>
+        <button class="btn btn-sm" id="gap5-check">Check</button>
+        <div id="gap5-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">6. If they <input type="text" id="gap6-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> (be) more careful with money, they wouldn't have gotten into debt.</p>
+        <button class="btn btn-sm" id="gap6-check">Check</button>
+        <div id="gap6-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">7. If I weren't so afraid of flying, I <input type="text" id="gap7-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:220px"> (visit) you last year.</p>
+        <button class="btn btn-sm" id="gap7-check">Check</button>
+        <div id="gap7-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">8. If only we <input type="text" id="gap8-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (know) about the traffic before we left.</p>
+        <button class="btn btn-sm" id="gap8-check">Check</button>
+        <div id="gap8-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">9. I wish they <input type="text" id="gap9-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (stop) making so much noise.</p>
+        <button class="btn btn-sm" id="gap9-check">Check</button>
+        <div id="gap9-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">10. I wish it <input type="text" id="gap10-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (not/rain) all the time here.</p>
+        <button class="btn btn-sm" id="gap10-check">Check</button>
+        <div id="gap10-fb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. FIND THE ERROR ============ -->
+  <section class="section" id="sec-error">
+    <div class="section-label"><span class="num">3</span> Find the error</div>
+    <div class="card">
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Each sentence has one mistake. Tap the word (or words) that are wrong.</p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary)">Sentence 1</div>
+      <p id="err1" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 2</div>
+      <p id="err2" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 3</div>
+      <p id="err3" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 4</div>
+      <p id="err4" style="font-size:15px;line-height:1.9"></p>
+    </div>
+  </section>
+
+  <!-- ============ 4. MATCHING ============ -->
+  <section class="section" id="sec-matching">
+    <div class="section-label"><span class="num">4</span> Match the word to its meaning</div>
+    <div class="card">
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Vocabulary from all three lessons. Tap a word, then its meaning.</p>
+      <div id="matching"></div>
+    </div>
+  </section>
+
+  <!-- ============ 5. SENTENCE BUILDER ============ -->
+  <section class="section" id="sec-builder">
+    <div class="section-label"><span class="num">5</span> Sentence builder</div>
+    <div class="card">
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">Tap the chips in the right order. Four rounds.</p>
+      <div id="builders"></div>
+    </div>
+  </section>
+
+  <!-- ============ 6. SENTENCE TRANSFORMATION ============ -->
+  <section class="section" id="sec-transform">
+    <div class="section-label"><span class="num">6</span> Sentence transformation</div>
+    <div class="card">
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:18px">Rewrite each sentence so it means the same thing, starting with the word given.</p>
+
+      <div style="margin-bottom:20px">
+        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:4px">Original: <i>"I didn't take that course, and I still have this same career today."</i></p>
+        <p style="margin-bottom:8px">1. If I <input type="text" id="tf1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> that course, I would have a completely different career now.</p>
+        <button class="btn btn-sm" id="tf1-check">Check</button>
+        <div id="tf1-fb"></div>
+      </div>
+      <div style="margin-bottom:20px">
+        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:4px">Original: <i>"It's a shame I don't have more free time."</i></p>
+        <p style="margin-bottom:8px">2. I <input type="text" id="tf2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> more free time.</p>
+        <button class="btn btn-sm" id="tf2-check">Check</button>
+        <div id="tf2-fb"></div>
+      </div>
+      <div style="margin-bottom:20px">
+        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:4px">Original: <i>"I regret not telling her the truth sooner."</i></p>
+        <p style="margin-bottom:8px">3. I wish I <input type="text" id="tf3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:220px"> her the truth sooner.</p>
+        <button class="btn btn-sm" id="tf3-check">Check</button>
+        <div id="tf3-fb"></div>
+      </div>
+      <div>
+        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:4px">Original: <i>"She didn't study medicine, so she isn't a doctor now."</i></p>
+        <p style="margin-bottom:8px">4. If she <input type="text" id="tf4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> medicine, she would be a doctor now.</p>
+        <button class="btn btn-sm" id="tf4-check">Check</button>
+        <div id="tf4-fb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. VOCABULARY CHECK ============ -->
+  <section class="section" id="sec-vocab">
+    <div class="section-label"><span class="num">7</span> Vocabulary check</div>
+    <div class="card">
+      <p style="font-size:14.5px;margin-bottom:16px">More words from all three lessons.</p>
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px">Match the meaning</h4>
+
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. "Irrecoverable" means…</p>
+        <div id="vocab-q1"><button class="opt" data-value="right">impossible to get back or repair</button><button class="opt" data-value="wrong">easily replaced</button><button class="opt" data-value="wrong2">extremely valuable</button></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. "Commitment" means…</p>
+        <div id="vocab-q2"><button class="opt" data-value="right">a promise or strong dedication to a course of action</button><button class="opt" data-value="wrong">a brief, casual interest</button><button class="opt" data-value="wrong2">a financial refund</button></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. "Counterfactual" means…</p>
+        <div id="vocab-q3"><button class="opt" data-value="right">relating to what did not actually happen, but could have</button><button class="opt" data-value="wrong">relating to a proven scientific fact</button><button class="opt" data-value="wrong2">relating to an official ranking</button></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. "Narrowly" means…</p>
+        <div id="vocab-q4"><button class="opt" data-value="right">by a very small margin</button><button class="opt" data-value="wrong">by a huge margin</button><button class="opt" data-value="wrong2">without any effort at all</button></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">5. "Regret" means…</p>
+        <div id="vocab-q5"><button class="opt" data-value="right">a feeling of sadness or disappointment over something that happened or didn't happen</button><button class="opt" data-value="wrong">a feeling of pride in a past decision</button><button class="opt" data-value="wrong2">a plan for the future</button></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">6. "Inaction" means…</p>
+        <div id="vocab-q6"><button class="opt" data-value="right">the state of not doing anything, failing to act</button><button class="opt" data-value="wrong">a sudden, decisive response</button><button class="opt" data-value="wrong2">a formal complaint</button></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">7. "Justify" means…</p>
+        <div id="vocab-q7"><button class="opt" data-value="right">to give a good reason for something</button><button class="opt" data-value="wrong">to strongly criticise something</button><button class="opt" data-value="wrong2">to completely forget about something</button></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">8. "Objectively" means…</p>
+        <div id="vocab-q8"><button class="opt" data-value="right">based on facts rather than feelings or opinions</button><button class="opt" data-value="wrong">based entirely on personal feelings</button><button class="opt" data-value="wrong2">in a biased, one-sided way</button></div>
+      </div>
+      <div style="margin-bottom:22px">
+        <p style="margin-bottom:8px;font-weight:550">9. "Foregone" means…</p>
+        <div id="vocab-q9"><button class="opt" data-value="right">given up or not done, especially deliberately</button><button class="opt" data-value="wrong">achieved successfully</button><button class="opt" data-value="wrong2">guaranteed to happen</button></div>
+      </div>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px;padding-top:6px;border-top:1px solid var(--border)">Complete the sentence</h4>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">10. Many people <input type="text" id="vgap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"><button type="button" class="hint-btn" data-hint="to continue doing something despite difficulty" aria-label="Show hint">?</button> with a bad decision simply to avoid admitting a mistake.</p>
+        <button class="btn btn-sm" id="vgap1-check">Check</button>
+        <div id="vgap1-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">11. <input type="text" id="vgap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:170px"><button type="button" class="hint-btn" data-hint="to stop doing something before it's finished" aria-label="Show hint">?</button> the project felt like a personal failure, even though it was the smart choice.</p>
+        <button class="btn btn-sm" id="vgap2-check">Check</button>
+        <div id="vgap2-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">12. The most <input type="text" id="vgap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"><button type="button" class="hint-btn" data-hint="most noticeable or important" aria-label="Show hint">?</button> thought for a silver medallist is usually the gold they missed.</p>
+        <button class="btn btn-sm" id="vgap3-check">Check</button>
+        <div id="vgap3-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">13. Only <input type="text" id="vgap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"><button type="button" class="hint-btn" data-hint="the best or most skilled group in a particular field" aria-label="Show hint">?</button> athletes reach an Olympic final at all.</p>
+        <button class="btn btn-sm" id="vgap4-check">Check</button>
+        <div id="vgap4-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">14. He looked back on his twenties with a <input type="text" id="vgap5-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"><button type="button" class="hint-btn" data-hint="having a feeling of vague or regretful longing" aria-label="Show hint">?</button> sense of what might have been.</p>
+        <button class="btn btn-sm" id="vgap5-check">Check</button>
+        <div id="vgap5-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">15. The <input type="text" id="vgap6-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"><button type="button" class="hint-btn" data-hint="a chance to do something" aria-label="Show hint">?</button> to study abroad never came around again.</p>
+        <button class="btn btn-sm" id="vgap6-check">Check</button>
+        <div id="vgap6-fb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8. RESULTS ============ -->
+  <section class="section" id="sec-results">
+    <div class="section-label"><span class="num">8</span> Your results</div>
+    <div class="card" id="summary-card">
+      <h3 style="margin-bottom:14px">Test summary</h3>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px" id="summary-ring-row">
+        <div id="score-ring-holder"></div>
+        <div>
+          <div style="font-weight:600" id="summary-name">—</div>
+          <div style="font-size:13px;margin-top:4px" id="summary-completion"></div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-top:4px" id="summary-weak">Finish the test to see your results.</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="finish-btn">Finish test &amp; see results</button>
+      <button class="btn" id="export-btn" style="margin-left:8px;display:none">⬇ Export PDF report</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="shared/course-engine.js"></script>
+<script>
+const LESSON_ID = 'test-05-review-lessons-15-17';
+
+{
+  const resetBtn = document.createElement('button');
+  resetBtn.className = 'btn btn-sm btn-ghost';
+  resetBtn.textContent = '↺ Reset my progress for this test';
+  resetBtn.style.cssText = 'margin-top:8px;font-size:12px;padding:5px 12px';
+  resetBtn.addEventListener('click', () => {
+    if (confirm('Clear all saved answers for this test on this device? (Does not affect Supabase.)')){
+      Course.resetLocalProgress(LESSON_ID);
+      location.reload();
+    }
+  });
+  document.getElementById('sync-status').insertAdjacentElement('afterend', resetBtn);
+}
+
+(async function initTest(){
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Syncing your progress…`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  await Course.syncFromSupabase(LESSON_ID);
+  const sectionMap = Course.getSectionMap(LESSON_ID);
+
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Synced · Group: ${Course.getGroupId()}`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  /* ---------------- VOCAB HINT BUTTONS (click-to-reveal definition) ---------------- */
+  document.querySelectorAll('.hint-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      Course.showPopup(`<div style="font-size:14px;line-height:1.6">${btn.dataset.hint}</div>`, btn);
+    });
+  });
+
+  /* ---------------- MULTIPLE CHOICE (mixed forms, L15-17) ---------------- */
+  const mcqSections = [
+    ['mcq1','mcq-1','right'], ['mcq2','mcq-2','right'], ['mcq3','mcq-3','right'], ['mcq4','mcq-4','right'], ['mcq5','mcq-5','right'],
+    ['mcq6','mcq-6','right'], ['mcq7','mcq-7','right'], ['mcq8','mcq-8','right'], ['mcq9','mcq-9','right'], ['mcq10','mcq-10','right'],
+    ['mcq11','mcq-11','right'], ['mcq12','mcq-12','right'], ['mcq13','mcq-13','right'], ['mcq14','mcq-14','right'], ['mcq15','mcq-15','right'],
+    ['vocab-q1','vocab-1','right'], ['vocab-q2','vocab-2','right'], ['vocab-q3','vocab-3','right'], ['vocab-q4','vocab-4','right'], ['vocab-q5','vocab-5','right'],
+    ['vocab-q6','vocab-6','right'], ['vocab-q7','vocab-7','right'], ['vocab-q8','vocab-8','right'], ['vocab-q9','vocab-9','right']
+  ];
+  mcqSections.forEach(([id, section, correctVal]) => {
+    Course.shuffleOptions(id);
+    Course.initMCQ(id, {
+      lessonId: LESSON_ID, sectionId: section, correctValue: correctVal, onAnswered: updateOverallProgress,
+      restoreAnswer: sectionMap[section] ? sectionMap[section].answer_given : undefined
+    });
+  });
+  if (!sectionMap['mcq-1']) Course.ensureGroupVariety(['mcq1','mcq2','mcq3','mcq4','mcq5','mcq6','mcq7','mcq8','mcq9','mcq10','mcq11','mcq12','mcq13','mcq14','mcq15']);
+
+  /* ---------------- GAP-FILL (grammar + vocab) ---------------- */
+  const gapFills = [
+    ['gap1-input','gap1-check','gap1-fb','gapfill-1', ['had been'], true],
+    ['gap2-input','gap2-check','gap2-fb','gapfill-2', Course.withContractions(['would probably have saved']), false],
+    ['gap3-input','gap3-check','gap3-fb','gapfill-3', Course.withContractions(['would have helped']), false],
+    ['gap4-input','gap4-check','gap4-fb','gapfill-4', Course.withContractions(['would have shared']), false],
+    ['gap5-input','gap5-check','gap5-fb','gapfill-5', Course.withContractions(['would live', 'would be living']), false],
+    ['gap6-input','gap6-check','gap6-fb','gapfill-6', ['were'], false],
+    ['gap7-input','gap7-check','gap7-fb','gapfill-7', Course.withContractions(['would have visited']), false],
+    ['gap8-input','gap8-check','gap8-fb','gapfill-8', Course.withContractions(['had known']), false],
+    ['gap9-input','gap9-check','gap9-fb','gapfill-9', Course.withContractions(['would stop']), false],
+    ['gap10-input','gap10-check','gap10-fb','gapfill-10', ["didn't rain", 'did not rain'], false],
+    ['vgap1-input','vgap1-check','vgap1-fb','vocab-gapfill-1', ['persist', 'persists'], false],
+    ['vgap2-input','vgap2-check','vgap2-fb','vocab-gapfill-2', ['Abandoning', 'abandoning'], false],
+    ['vgap3-input','vgap3-check','vgap3-fb','vocab-gapfill-3', ['salient'], false],
+    ['vgap4-input','vgap4-check','vgap4-fb','vocab-gapfill-4', ['elite'], false],
+    ['vgap5-input','vgap5-check','vgap5-fb','vocab-gapfill-5', ['wistful'], false],
+    ['vgap6-input','vgap6-check','vgap6-fb','vocab-gapfill-6', ['opportunity'], false]
+  ];
+  gapFills.forEach(([inputId, btnId, fbId, section, answers, showHint]) => {
+    const restored = sectionMap[section];
+    Course.initGapFill(inputId, btnId, fbId, {
+      lessonId: LESSON_ID, sectionId: section, correctAnswers: answers, showAnswerHint: showHint,
+      restore: restored ? { answerGiven: restored.answer_given, isCorrect: restored.override_correct ?? restored.is_correct } : undefined,
+      onAnswered: updateOverallProgress
+    });
+  });
+
+  /* ---------------- SENTENCE TRANSFORMATION (reuses gap-fill mechanics) ---------------- */
+  const transformItems = [
+    ['tf1-input','tf1-check','tf1-fb','transform-1', Course.withContractions(['had taken']), true],
+    ['tf2-input','tf2-check','tf2-fb','transform-2', ['wish I had'], false],
+    ['tf3-input','tf3-check','tf3-fb','transform-3', Course.withContractions(['had told']), false],
+    ['tf4-input','tf4-check','tf4-fb','transform-4', Course.withContractions(['had studied']), false]
+  ];
+  transformItems.forEach(([inputId, btnId, fbId, section, answers, showHint]) => {
+    const restored = sectionMap[section];
+    Course.initGapFill(inputId, btnId, fbId, {
+      lessonId: LESSON_ID, sectionId: section, correctAnswers: answers, showAnswerHint: showHint,
+      restore: restored ? { answerGiven: restored.answer_given, isCorrect: restored.override_correct ?? restored.is_correct } : undefined,
+      onAnswered: updateOverallProgress
+    });
+  });
+
+  /* ---------------- FIND THE ERROR ---------------- */
+  const errorSpotItems = [
+    { id:'err1', section:'error-1', words:['If','he','studied','harder,','he','would','have','passed.'], errorIndices:[2], correction:'had studied' },
+    { id:'err2', section:'error-2', words:['If','I','had','studied','medicine,','I','would','have','been','a','doctor','now.'], errorIndices:[6,7,8], correction:'would be' },
+    { id:'err3', section:'error-3', words:["If",'she',"weren't",'so','shy,','she','would','speak','up','at',"yesterday's",'meeting.'], errorIndices:[6,7], correction:'would have spoken' },
+    { id:'err4', section:'error-4', words:['I','wish','I','would','have','studied','harder.'], errorIndices:[3,4], correction:'had' }
+  ];
+  errorSpotItems.forEach(item => {
+    const restored = sectionMap[item.section];
+    Course.initErrorSpot(item.id, {
+      lessonId: LESSON_ID, sectionId: item.section, words: item.words, errorIndices: item.errorIndices, correction: item.correction,
+      onAnswered: updateOverallProgress,
+      restore: restored ? { answerGiven: restored.answer_given } : undefined
+    });
+  });
+
+  /* ---------------- MATCHING (vocab, spans L15-17) ---------------- */
+  Course.initMatching('matching', {
+    lessonId: LESSON_ID, sectionPrefix: 'match', onAnswered: updateOverallProgress, sectionMap,
+    pairs: [
+      { left: 'Worthwhile', right: 'valuable enough to justify the time or effort spent' },
+      { left: 'Stubborn', right: "refusing to change one's mind or course of action" },
+      { left: 'Rationalise', right: 'to invent a logical-sounding reason for a decision or feeling' },
+      { left: 'Comparison', right: 'an act of examining how two things are similar or different' },
+      { left: 'Ranking', right: 'a position in a list ordered by quality or achievement' },
+      { left: 'Contentment', right: 'a state of happiness and satisfaction' },
+      { left: 'Remorse', right: 'deep regret or guilt for a wrong committed' },
+      { left: 'Intensity', right: 'the strength or force of a feeling or experience' }
+    ]
+  });
+
+  /* ---------------- SENTENCE BUILDER (single-clause safe, reused from source
+     lessons — no fresh ambiguity risk). Locks immediately on Check. ---------------- */
+  const builderRounds = [
+    { words: ['if','i','had','known','i','would','have','told','you'],
+      accepted: ['if i had known i would have told you'] },
+    { words: ['if','she','had','left','earlier','she','would','have','caught','the','train'],
+      accepted: ['if she had left earlier she would have caught the train'] },
+    { words: ['if','he','had','studied','medicine','he','would','be','a','doctor','now'],
+      accepted: ['if he had studied medicine he would be a doctor now'] },
+    { words: ['i','wish','you','would','stop','interrupting','me'],
+      accepted: ['i wish you would stop interrupting me'] }
+  ];
+  const buildersEl = document.getElementById('builders');
+  builderRounds.forEach((round, ri) => {
+    const sectionId = `builder-${ri+1}`;
+    const restored = sectionMap[sectionId];
+    const bankOrder = Course.shuffleArray(round.words.map((_, i) => i));
+    let state = [];
+    let locked = false;
+
+    if (restored){
+      const used = new Set();
+      restored.answer_given.split(' ').forEach(tok => {
+        const idx = round.words.findIndex((w, i) => w === tok && !used.has(i));
+        if (idx >= 0){ used.add(idx); state.push(idx); }
+      });
+      locked = true;
+    }
+
+    const wrap = document.createElement('div');
+    wrap.style.marginBottom = '20px';
+    wrap.innerHTML = `
+      <div class="builder-bank" id="builder-bank-${ri}"></div>
+      <div class="builder-target" id="builder-target-${ri}"></div>
+      <p style="font-size:12px;color:var(--text-tertiary);margin-top:6px">Tap a word in your sentence to send it back to the pool.</p>
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+        <button class="btn btn-sm" id="builder-check-${ri}">Check order</button>
+        <button class="btn btn-sm btn-ghost" id="builder-reset-${ri}">Reset</button>
+      </div>
+      <div id="builder-fb-${ri}"></div>
+    `;
+    buildersEl.appendChild(wrap);
+
+    const bank = wrap.querySelector(`#builder-bank-${ri}`);
+    const target = wrap.querySelector(`#builder-target-${ri}`);
+    function render(){
+      bank.innerHTML = '';
+      bankOrder.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip' + (state.includes(i) ? ' used' : '');
+        chip.textContent = round.words[i];
+        if (!locked) chip.addEventListener('click', () => { if (state.includes(i)) return; state.push(i); render(); });
+        else chip.disabled = true;
+        bank.appendChild(chip);
+      });
+      target.innerHTML = '';
+      state.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip';
+        chip.textContent = round.words[i];
+        if (!locked){
+          chip.title = 'Click to remove';
+          chip.addEventListener('click', () => { state = state.filter(x => x !== i); render(); });
+        } else {
+          chip.disabled = true;
+        }
+        target.appendChild(chip);
+      });
+    }
+    render();
+
+    if (restored){
+      const isCorrect = restored.override_correct ?? restored.is_correct;
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+    }
+
+    wrap.querySelector(`#builder-reset-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      state = []; render(); wrap.querySelector(`#builder-fb-${ri}`).innerHTML = '';
+    });
+    wrap.querySelector(`#builder-check-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      const attempt = state.map(i => round.words[i]).join(' ');
+      const isCorrect = round.accepted.includes(attempt);
+      locked = true;
+      render();
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+      Course.logProgress({ lessonId: LESSON_ID, sectionId, answerGiven: attempt, isCorrect });
+      updateOverallProgress();
+    });
+  });
+
+  updateOverallProgress();
+})();
+
+/* ---------------- OVERALL PROGRESS BAR ---------------- */
+const LESSON_TOTAL_POSSIBLE = 24 + 16 + 4 + 8 + 4 + 4; // mcq(15+9vocab) + gapfill(10+6vocab) + error-spot + matching + builder + transformation
+function updateOverallProgress(){
+  const attempted = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+  const pct = Math.min(100, Math.round((attempted / LESSON_TOTAL_POSSIBLE) * 100));
+  document.getElementById('overall-progress').style.width = pct + '%';
+}
+
+/* ---------------- FINISH / SUMMARY ---------------- */
+document.getElementById('finish-btn').addEventListener('click', async () => {
+  const btn = document.getElementById('finish-btn');
+  const original = btn.textContent;
+  btn.textContent = 'Checking for teacher updates…'; btn.disabled = true;
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+  } finally {
+    btn.textContent = original; btn.disabled = false;
+  }
+  try {
+    const { correct, total } = Course.lessonScore(LESSON_ID);
+    Course.renderScoreRing('score-ring-holder', correct, total);
+    document.getElementById('summary-name').textContent = `${Course.getStudentName()} — ${correct}/${total} correct`;
+
+    const attemptedCount = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+    const completionPct = Math.min(100, Math.round((attemptedCount / LESSON_TOTAL_POSSIBLE) * 100));
+    const completionEl = document.getElementById('summary-completion');
+    if (attemptedCount < LESSON_TOTAL_POSSIBLE){
+      completionEl.style.color = 'var(--warn)';
+      completionEl.textContent = `⚠ Only ${completionPct}% of the test attempted so far (${attemptedCount} of ${LESSON_TOTAL_POSSIBLE} exercises) — the score above only reflects what's been answered.`;
+    } else {
+      completionEl.style.color = 'var(--ok)';
+      completionEl.textContent = `✓ Every exercise in this test has been attempted.`;
+    }
+
+    const weak = Course.weakSections(LESSON_ID);
+    document.getElementById('summary-weak').textContent = weak.length
+      ? `Worth revisiting: ${weak.join(', ')}`
+      : 'Strong across the board — nice work!';
+    document.getElementById('export-btn').style.display = 'inline-block';
+    updateOverallProgress();
+
+    const card = document.getElementById('summary-card');
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    card.classList.remove('summary-pulse'); void card.offsetWidth;
+    card.classList.add('summary-pulse');
+  } catch (err){
+    console.error('Finish test failed:', err);
+    let banner = document.getElementById('finish-error-banner');
+    if (!banner){
+      banner = document.createElement('div');
+      banner.id = 'finish-error-banner';
+      banner.className = 'error-banner';
+      document.getElementById('summary-card').appendChild(banner);
+    }
+    banner.textContent = `Something went wrong computing your results (${err.message}). Try reloading the page — your saved answers won't be lost.`;
+  }
+});
+document.getElementById('export-btn').addEventListener('click', async () => {
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+    Course.exportReportPDF(LESSON_ID, 'Test 5 — Review of Lessons 15–17', LESSON_TOTAL_POSSIBLE);
+  } catch (err){
+    console.error('PDF export failed:', err);
+    alert('The PDF export ran into a problem: ' + err.message);
+  }
+});
+</script>
+
+<script>
+{
+  const allLessonsLink = document.getElementById('all-lessons-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  allLessonsLink.href = groupParam ? `index-standalone.html?group=${encodeURIComponent(groupParam)}` : 'index-standalone.html';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 13 — Conditionals: Zero &amp; First | English+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+<style>
+  /* Lesson-specific only — widget, tooltip, and pill styling matching
+     Lesson 12's finalized design, reused here for consistency. */
+  .mode-toggle-outline .pill{border-radius:var(--radius-sm)}
+  .mode-toggle-outline .pill.on{background:var(--surface);color:var(--accent);border-color:var(--accent);font-weight:700}
+  .pill[disabled]{cursor:not-allowed;pointer-events:none}
+  .pill[disabled]:not(.on){opacity:.45}
+  @keyframes wheelRoll{from{transform:translateY(-6px);opacity:.25}to{transform:translateY(0);opacity:1}}
+  .wheel-value-anim{animation:wheelRoll .16s ease-out}
+  .static-cell{display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:var(--radius-md);padding:8px 6px;background:var(--surface);text-align:center;font-size:12.5px;color:var(--text-secondary);min-height:20px}
+  .static-cell.is-primary-cell{border-color:var(--accent);background:var(--surface);color:var(--accent);font-weight:650}
+  .static-cell.clickable-cell{cursor:pointer}
+  .static-cell.clickable-cell:hover{opacity:.85}
+  .switch-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--border-strong);background:var(--surface);cursor:pointer;font-size:16px;color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+  .switch-btn:hover{background:var(--accent-soft)}
+  .switch-btn:disabled{opacity:.35;cursor:default}
+  .conj-pill{padding:7px 12px;border-radius:var(--radius-sm);border:1px solid var(--accent);background:var(--surface);text-align:center;font-size:12.5px;font-weight:700;color:var(--accent);cursor:pointer;transition:background .15s}
+  .conj-pill:hover{background:var(--accent-soft)}
+  .compare-box{display:inline-block;padding:4px 10px;border-radius:6px;background:var(--surface-alt);cursor:default;transition:background .15s}
+  .compare-box:hover{background:var(--accent-soft)}
+  #compare-tooltip{
+    position:absolute;z-index:80;max-width:280px;background:var(--accent-soft);color:var(--text-secondary);
+    border:1px solid var(--accent);font-size:13px;line-height:1.5;padding:10px 12px;border-radius:8px;
+    box-shadow:0 4px 16px rgba(0,0,0,.12);pointer-events:none;
+    opacity:0;transition:opacity .1s;
+  }
+  #compare-tooltip.visible{opacity:1}
+  /* Scoped override for this lesson's "tricky part" boxes — calmer blue
+     instead of the shared .warn-box amber, matching the widgets' palette.
+     Doesn't touch the global .warn-box used elsewhere. */
+  .tricky-box{
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius-md);
+    padding:11px 15px;font-size:13.5px;color:var(--accent-dark);
+    display:flex;flex-wrap:wrap;gap:9px;align-items:flex-start;line-height:1.6;margin-top:10px;
+  }
+  .tricky-box > *{min-width:0}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="shared/supabase-config.js"></script>
+</head>
+<body class="theme-conditionals">
+
+<div class="course-attribution">English+ Grammar Course · by Kris Galezewski</div>
+<div class="shell">
+
+  <!-- ============ HEADER ============ -->
+  <header class="lesson-header">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div class="lesson-eyebrow">Lesson 13 of 22 · Conditionals</div>
+      <div style="display:flex;gap:8px">
+      <a id="all-lessons-link" href="index-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📚 All Lessons</a>
+      <a id="glossary-link" href="glossary-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📖 My Glossary</a>
+    </div>
+    </div>
+    <h1 class="lesson-title">Conditionals: Zero &amp; First</h1>
+    <p class="lesson-sub">Always-true facts, and one realistic possibility about the future.</p>
+    <div class="pb-track" style="margin-top:16px"><div class="pb-fill" id="overall-progress" style="width:0%"></div></div>
+    <div id="sync-status" style="font-size:11.5px;color:var(--text-tertiary);margin-top:8px"></div>
+  </header>
+
+  <!-- ============ 1. WARM-UP ============ -->
+  <section class="section" id="sec-warmup">
+    <div class="section-label"><span class="num">1</span> Warm-up — two different kinds of "if"</div>
+    <div class="card">
+      <p style="margin-bottom:14px;font-size:14.5px;color:var(--text-secondary)">
+        Both forms today start with "if," but they describe two genuinely different things: something that's
+        always true, and something that's realistically possible in the future.
+      </p>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. Today's forms both use "if," but describe…</p>
+        <div id="warm-q1">
+          <button class="opt" data-value="right">general, always-true facts, or one realistic future possibility</button>
+          <button class="opt" data-value="wrong">hypothetical situations that will probably never happen</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. "If water is heated to 100°C, it boils" describes…</p>
+        <div id="warm-q2">
+          <button class="opt" data-value="right">something that's always true</button>
+          <button class="opt" data-value="wrong">one specific, predicted future event</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. "If it rains tomorrow, we'll cancel the picnic" describes…</p>
+        <div id="warm-q3">
+          <button class="opt" data-value="right">one specific, realistic possibility about tomorrow</button>
+          <button class="opt" data-value="wrong">a general scientific fact</button>
+        </div>
+      </div>
+      <div class="tip-box">💡 <span style="flex:1;min-width:0">Ask: is this true every single time, or just possible this one time? That answers zero vs. first before you even think about the grammar.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 2. DIAGNOSTIC PRE-TEST ============ -->
+  <section class="section" id="sec-diagnostic">
+    <div class="section-label"><span class="num">2</span> Quick check — before we explain anything</div>
+    <div class="card">
+      <p style="margin-bottom:16px;font-size:14.5px;color:var(--text-secondary)">Four quick questions. This isn't graded harshly — it just shows us where to focus.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. If red and blue are mixed, you ___ purple.</p>
+        <div id="diag-q1">
+          <button class="opt" data-value="right">get</button>
+          <button class="opt" data-value="wrong">will get</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. If it rains this weekend, we ___ the trip.</p>
+        <div id="diag-q2">
+          <button class="opt" data-value="right">will postpone</button>
+          <button class="opt" data-value="wrong">postpone</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. Water ___ if it is cooled below 0°C.</p>
+        <div id="diag-q3">
+          <button class="opt" data-value="right">freezes</button>
+          <button class="opt" data-value="wrong">will freeze</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">4. If she doesn't hurry, she ___ the train.</p>
+        <div id="diag-q4">
+          <button class="opt" data-value="right">will miss</button>
+          <button class="opt" data-value="wrong">misses</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. CONCEPT EXPLANATION ============ -->
+  <section class="section" id="sec-concept">
+    <div class="section-label"><span class="num">3</span> The concept</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px">Two kinds of "if"</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:16px">
+        Zero conditional states something that's always true — a fact, a rule, a habit. First conditional
+        describes one specific, realistic possibility about the future. Same word "if," completely different job.
+        In both, the two clauses can swap places — try the switch button below.
+      </p>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">Zero conditional — general truth</h4>
+      <div style="margin-bottom:6px">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);font-weight:650">View</span>
+      </div>
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+        <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+          <button class="pill on" id="mode-zero-structure">Structure</button>
+          <button class="pill" id="mode-zero-examples">Examples</button>
+          <button class="pill" id="mode-zero-quiz">Quick check</button>
+        </div>
+        <span id="zero-hint" style="display:none;font-size:12.5px;color:var(--text-tertiary)">— Click either clause to see another example.</span>
+      </div>
+      <div id="zero-widget-container" style="padding:18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border);margin-bottom:14px">
+        <div style="overflow-x:auto;padding-bottom:2px">
+          <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;min-width:460px">
+            <div id="zero-left"></div>
+            <button class="switch-btn" id="zero-switch" title="Swap clause order">⇅</button>
+            <div id="zero-right"></div>
+          </div>
+        </div>
+      </div>
+      <div id="zero-quiz-container" style="padding:12px 18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border);margin-bottom:14px;display:none"></div>
+      <p style="font-size:13px;line-height:1.7;color:var(--text-secondary);margin-bottom:22px">
+        💡 Notice how the widget handles this: when the same thing is named in both clauses ("ice"/"it," "plants"/"they"),
+        the actual name always goes in whichever clause comes first, and the pronoun goes in whichever comes second —
+        no matter which clause that happens to be. "Plants die if they don't get enough light" works; "They die if
+        plants don't get enough light" doesn't, because that "they" has nothing to point back to yet.
+      </p>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">First conditional — real future possibility</h4>
+      <div style="margin-bottom:6px">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);font-weight:650">View</span>
+      </div>
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+        <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+          <button class="pill on" id="mode-first-structure">Structure</button>
+          <button class="pill" id="mode-first-examples">Examples</button>
+          <button class="pill" id="mode-first-quiz">Quick check</button>
+        </div>
+        <span id="first-hint" style="display:none;font-size:12.5px;color:var(--text-tertiary)">— Click either clause to see another example.</span>
+      </div>
+      <div id="first-widget-container" style="padding:18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border)">
+        <div style="overflow-x:auto;padding-bottom:2px">
+          <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;min-width:460px">
+            <div id="first-left"></div>
+            <button class="switch-btn" id="first-switch" title="Swap clause order">⇅</button>
+            <div id="first-right"></div>
+          </div>
+        </div>
+      </div>
+      <div id="first-quiz-container" style="padding:12px 18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border);display:none"></div>
+
+      <button class="pill" id="rules-toggle" style="margin-top:18px">📖 Show the full rules</button>
+      <div class="expand-content" id="rules-content">
+        <div style="margin-top:16px">
+          <div class="tricky-box">
+            <span>🎯</span>
+            <span style="flex:1;min-width:0">
+              <b>The tricky part:</b> the if-clause never uses "will," in either conditional.<br><br>
+              ❌ "If it will rain tomorrow, we'll stay inside." — wrong: "will" doesn't belong in the if-clause.<br>
+              ✅ "If it rains tomorrow, we'll stay inside." — present simple in the if-clause, always.<br><br>
+              And the second trap: zero and first conditional aren't about HOW LIKELY something is — they're about whether it's a general truth or one specific situation. "If a glass is dropped, it breaks" (zero — true of any glass, any time) is very different from "If you drop this glass, it'll break" (first — a prediction about one specific glass, right now).
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Common conditional conjunctions</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">"If" isn't the only option. Hover over any word for a brief explanation and example.</p>
+      <div id="conj-cells" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px"></div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Alternative modals in the result clause</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">"Will" is the default for first conditional, but the result clause can carry a different modal depending on what you actually mean — ability, possibility, advice, or obligation. Hover over any example.</p>
+      <div id="compare-modals" style="font-size:14.5px;line-height:1.8"></div>
+    </div>
+  </section>
+
+  <!-- ============ 4. READING ============ -->
+  <section class="section" id="sec-reading">
+    <div class="section-label"><span class="num">4</span> Reading — Loss Aversion and Everyday Choices</div>
+    <div class="card">
+      <button class="pill" id="gram-toggle">🔍 Show grammar in this text</button>
+      <div class="passage" id="passage" style="margin-top:14px"></div>
+      <p style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">Tap a highlighted word for pronunciation, meaning and a fresh example. Once grammar highlighting is on, tap a highlighted sentence to see why that form was used.</p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:12px">Did you follow it? Quick comprehension check</h3>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. According to the text, how does the pain of a loss compare to the pleasure of an equal gain?</p>
+        <div id="comp-q1">
+          <button class="opt" data-value="right">The pain of losing generally feels roughly twice as strong as the pleasure of gaining the same amount.</button>
+          <button class="opt" data-value="wrong">The two feelings are roughly equal in strength.</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. What is the "disposition effect" described in the text?</p>
+        <div id="comp-q2">
+          <button class="opt" data-value="right">Holding onto losing investments too long, while selling winning ones almost immediately.</button>
+          <button class="opt" data-value="wrong">Buying only the safest possible investments, regardless of potential return.</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. According to the text, what are advertisers really selling with phrases like "only two days left"?</p>
+        <div id="comp-q3">
+          <button class="opt" data-value="right">The fear of losing an opportunity, not just the product itself.</button>
+          <button class="opt" data-value="wrong">A guaranteed discount available at any time.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. VOCAB REVIEW ============ -->
+  <section class="section" id="sec-vocab">
+    <div class="section-label"><span class="num">5</span> Vocabulary check</div>
+    <div class="card">
+      <p style="font-size:14.5px;margin-bottom:16px">All nine words from the text — mixed formats.</p>
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px">Match the meaning</h4>
+
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. "Asymmetry" means…</p>
+        <div id="vocab-q1">
+          <button class="opt" data-value="right">a lack of balance or equality between two things</button>
+          <button class="opt" data-value="wrong">perfect balance between two things</button>
+          <button class="opt" data-value="wrong2">a formal agreement</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. "Perception" means…</p>
+        <div id="vocab-q2">
+          <button class="opt" data-value="right">the way something is noticed, understood, or interpreted</button>
+          <button class="opt" data-value="wrong">a proven scientific fact</button>
+          <button class="opt" data-value="wrong2">an official measurement</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. "Irrational" means…</p>
+        <div id="vocab-q3">
+          <button class="opt" data-value="right">not based on logical reasoning</button>
+          <button class="opt" data-value="wrong">carefully calculated and logical</button>
+          <button class="opt" data-value="wrong2">officially approved</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. "Reluctant" means…</p>
+        <div id="vocab-q4">
+          <button class="opt" data-value="right">unwilling or hesitant to do something</button>
+          <button class="opt" data-value="wrong">extremely eager to do something</button>
+          <button class="opt" data-value="wrong2">completely unaware of something</button>
+        </div>
+      </div>
+      <div style="margin-bottom:22px">
+        <p style="margin-bottom:8px;font-weight:550">5. "Rational" means…</p>
+        <div id="vocab-q5">
+          <button class="opt" data-value="right">based on clear thinking and logical reasons</button>
+          <button class="opt" data-value="wrong">driven entirely by emotion</button>
+          <button class="opt" data-value="wrong2">extremely rare</button>
+        </div>
+      </div>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px;padding-top:6px;border-top:1px solid var(--border)">Complete the sentence — vocabulary focus</h4>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">6. A <input type="text" id="vgap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> small reward can feel more appealing than a risky larger one.</p>
+        <button class="btn btn-sm" id="vgap1-check">Check</button>
+        <div id="vgap1-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">7. Few people fully grasp the <input type="text" id="vgap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> of their own loss aversion.</p>
+        <button class="btn btn-sm" id="vgap2-check">Check</button>
+        <div id="vgap2-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">8. People tend to <input type="text" id="vgap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:170px"> how bad a loss will actually feel once it happens.</p>
+        <button class="btn btn-sm" id="vgap3-check">Check</button>
+        <div id="vgap3-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">9. The <input type="text" id="vgap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> of control makes people feel safer than they actually are.</p>
+        <button class="btn btn-sm" id="vgap4-check">Check</button>
+        <div id="vgap4-fb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. GRAMMAR PRACTICE ============ -->
+  <section class="section" id="sec-practice">
+    <div class="section-label"><span class="num">6</span> Practice</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:2px">Gap-fill</h3>
+      <p style="font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:16px">Grammar focus — zero conditional or first conditional?</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">1. If plants aren't watered, they <input type="text" id="gap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> (die).</p>
+        <button class="btn btn-sm" id="gap1-check">Check</button>
+        <div id="gap1-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">2. If we leave now, we <input type="text" id="gap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (catch) the early train.</p>
+        <button class="btn btn-sm" id="gap2-check">Check</button>
+        <div id="gap2-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">3. Ice <input type="text" id="gap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> (melt) if the temperature rises above zero.</p>
+        <button class="btn btn-sm" id="gap3-check">Check</button>
+        <div id="gap3-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">4. If he apologises, she <input type="text" id="gap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:220px"> (probably/forgive) him.</p>
+        <button class="btn btn-sm" id="gap4-check">Check</button>
+        <div id="gap4-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">5. Metal <input type="text" id="gap5-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> (expand) when it is heated.</p>
+        <button class="btn btn-sm" id="gap5-check">Check</button>
+        <div id="gap5-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">6. Unless you back up your files, you generally <input type="text" id="gap6-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> (risk) losing everything.</p>
+        <button class="btn btn-sm" id="gap6-check">Check</button>
+        <div id="gap6-fb"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Categorise the sentence</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Each sentence is missing one word — read what's left, then tap the conditional it belongs to.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. "If metal is ___ outside for long enough, it eventually rusts."</p>
+        <div id="cat-q1">
+          <button class="opt" data-value="right">Zero conditional</button>
+          <button class="opt" data-value="wrong">First conditional</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. "If the deadline ___, we'll need to rearrange the whole schedule."</p>
+        <div id="cat-q2">
+          <button class="opt" data-value="wrong">Zero conditional</button>
+          <button class="opt" data-value="right">First conditional</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. "Plants generally grow faster if they ___ more sunlight."</p>
+        <div id="cat-q3">
+          <button class="opt" data-value="right">Zero conditional</button>
+          <button class="opt" data-value="wrong">First conditional</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">4. "If she ___ back today, I'll let you know immediately."</p>
+        <div id="cat-q4">
+          <button class="opt" data-value="wrong">Zero conditional</button>
+          <button class="opt" data-value="right">First conditional</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">5. "If these two chemicals are ___, they react instantly, every time."</p>
+        <div id="cat-q5">
+          <button class="opt" data-value="right">Zero conditional</button>
+          <button class="opt" data-value="wrong">First conditional</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">6. "If traffic ___ bad tomorrow, I might be a few minutes late."</p>
+        <div id="cat-q6">
+          <button class="opt" data-value="wrong">Zero conditional</button>
+          <button class="opt" data-value="right">First conditional</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Fix the sentence</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Each sentence has one mistake. Tap the word (or words) that are wrong.</p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary)">Sentence 1</div>
+      <p id="fix1" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 2</div>
+      <p id="fix2" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 3</div>
+      <p id="fix3" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 4</div>
+      <p id="fix4" style="font-size:15px;line-height:1.9"></p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Sentence builder</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">Tap the chips in the right order. Three rounds.</p>
+      <div id="builders"></div>
+    </div>
+  </section>
+
+  <!-- ============ 7. SPEAKING ============ -->
+  <section class="section" id="sec-speaking">
+    <div class="section-label"><span class="num">7</span> Speaking task</div>
+    <div class="mode-toggle">
+      <button class="pill on" id="mode-solo">👤 Solo</button>
+      <button class="pill" id="mode-group">👥 Group (2–4)</button>
+    </div>
+    <div class="task-card" id="speak-solo">
+      <div class="kicker">60-second facts &amp; forecasts</div>
+      <p style="font-size:14.5px;line-height:1.7">
+        Give two general truths using zero conditional (a science fact, a habit, a rule — "If you..., it/they...")
+        and two realistic predictions about your own week using first conditional ("If I..., I'll...").
+      </p>
+      <button class="btn btn-sm" id="solo-done-btn" style="margin-top:14px">✓ I've done this</button>
+    </div>
+    <div class="task-card" id="speak-group" style="display:none">
+      <div class="kicker">Discussion — pick 1–2 questions to answer out loud</div>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:12px">Tap the question(s) you'll answer. Your teacher will see your pick and mark it after you speak.</p>
+      <div id="discuss-questions" style="display:flex;flex-direction:column;gap:8px"></div>
+      <p id="discuss-limit-msg" style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">You can select up to 2 questions.</p>
+    </div>
+  </section>
+
+  <!-- ============ 8. LISTENING ============ -->
+  <section class="section" id="sec-listening">
+    <div class="section-label"><span class="num">8</span> Listening</div>
+    <div class="card">
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:12px">Anna and Tomasz are discussing an investment decision — right after reading about loss aversion.</p>
+      <audio id="dialogue-audio" preload="none" style="display:none"></audio>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary" id="play-dialogue">▶ Play dialogue</button>
+        <button class="btn btn-ghost btn-sm" id="stop-dialogue">⏹ Stop</button>
+        <button class="btn btn-ghost btn-sm" id="show-transcript">Show full transcript</button>
+      </div>
+      <div id="transcript" style="margin-top:14px"></div>
+
+      <div style="margin-top:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. What does Tomasz admit he tends to do with a losing investment?</p>
+        <div id="listen-q1">
+          <button class="opt" data-value="right">Hold onto it far longer than he should.</button>
+          <button class="opt" data-value="wrong">Sell it immediately, without thinking it through.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. What does Anna say will happen if the stock keeps dropping?</p>
+        <div id="listen-q2">
+          <button class="opt" data-value="right">She'll sell it before it drops any further.</button>
+          <button class="opt" data-value="wrong">She'll buy even more of it immediately.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. According to Anna, what generally happens if a decision is framed as avoiding a loss?</p>
+        <div id="listen-q3">
+          <button class="opt" data-value="right">People become far more willing to take a risk.</button>
+          <button class="opt" data-value="wrong">People become far more cautious than usual.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. WRAP-UP / EXIT TEST ============ -->
+  <section class="section" id="sec-wrapup">
+    <div class="section-label"><span class="num">9</span> Wrap-up — exit check</div>
+    <div class="card">
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. If this button is pressed, the alarm ___.</p>
+        <div id="exit-q1">
+          <button class="opt" data-value="right">sounds</button>
+          <button class="opt" data-value="wrong">will sound</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. If the flight's delayed, we ___ our connection.</p>
+        <div id="exit-q2">
+          <button class="opt" data-value="right">will miss</button>
+          <button class="opt" data-value="wrong">miss</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. Bread ___ mouldy if it is left too long.</p>
+        <div id="exit-q3">
+          <button class="opt" data-value="right">goes</button>
+          <button class="opt" data-value="wrong">will go</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. Unless you leave now, you ___ the bus.</p>
+        <div id="exit-q4">
+          <button class="opt" data-value="right">will miss</button>
+          <button class="opt" data-value="wrong">miss</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">5. If she ___ tomorrow, tell her I called.</p>
+        <div id="exit-q5">
+          <button class="opt" data-value="right">calls</button>
+          <button class="opt" data-value="wrong">will call</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="summary-card">
+      <h3 style="margin-bottom:14px">Your lesson summary</h3>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px" id="summary-ring-row">
+        <div id="score-ring-holder"></div>
+        <div>
+          <div style="font-weight:600" id="summary-name">—</div>
+          <div style="font-size:13px;margin-top:4px" id="summary-completion"></div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-top:4px" id="summary-weak">Finish the lesson to see your results.</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="finish-btn">Finish lesson &amp; see results</button>
+      <button class="btn" id="export-btn" style="margin-left:8px;display:none">⬇ Export PDF report</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="shared/course-engine.js"></script>
+<script>
+const LESSON_ID = 'lesson-13-conditionals-zero-first';
+
+{
+  const glossaryLink = document.getElementById('glossary-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  const currentFile = window.location.pathname.split('/').pop();
+  let glossaryHref = `glossary-standalone.html?from=${encodeURIComponent(currentFile)}`;
+  if (groupParam) glossaryHref += `&group=${encodeURIComponent(groupParam)}`;
+  glossaryLink.href = glossaryHref;
+}
+
+{
+  const resetBtn = document.createElement('button');
+  resetBtn.className = 'btn btn-sm btn-ghost';
+  resetBtn.textContent = '↺ Reset my progress for this lesson';
+  resetBtn.style.cssText = 'margin-top:8px;font-size:12px;padding:5px 12px';
+  resetBtn.addEventListener('click', () => {
+    if (confirm('Clear all saved answers for this lesson on this device? (Does not affect Supabase.)')){
+      Course.resetLocalProgress(LESSON_ID);
+      location.reload();
+    }
+  });
+  document.getElementById('sync-status').insertAdjacentElement('afterend', resetBtn);
+}
+
+(async function initLesson(){
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Syncing your progress…`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  await Course.syncFromSupabase(LESSON_ID);
+  const sectionMap = Course.getSectionMap(LESSON_ID);
+
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Synced · Group: ${Course.getGroupId()}`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  /* ---------------- VOCAB DATA ---------------- */
+  const vocabData = {
+    asymmetry: { word:'asymmetry', ipa:'/eɪˈsɪm.ɪ.tri/', meaning:'a lack of balance or equality between two things', example:"The asymmetry between how losses and gains feel is at the heart of the theory." },
+    guarantee: { word:'guarantee', ipa:'/ˌgær.ənˈtiː/', meaning:'something certain to happen, or a firm promise', example:"A guaranteed small reward can feel more appealing than a risky larger one." },
+    perception: { word:'perception', ipa:'/pəˈsep.ʃən/', meaning:'the way something is noticed, understood, or interpreted', example:"Public perception of the risk changed almost overnight." },
+    irrational: { word:'irrational', ipa:'/ɪˈræʃ.ən.əl/', meaning:'not based on logical reasoning', example:"Even trained economists admit to occasionally irrational financial decisions." },
+    reluctant: { word:'reluctant', ipa:'/rɪˈlʌk.tənt/', meaning:'unwilling or hesitant to do something', example:"Investors are often reluctant to sell a stock once it's dropped in value." },
+    magnitude: { word:'magnitude', ipa:'/ˈmæg.nɪ.tʃuːd/', meaning:'the great size or importance of something', example:"Few people fully grasp the magnitude of their own loss aversion." },
+    overestimate: { word:'overestimate', ipa:'/ˌəʊ.vərˈes.tɪ.meɪt/', meaning:'to guess that something is larger, better, or more likely than it really is', example:"People tend to overestimate how bad a loss will actually feel once it happens." },
+    rational: { word:'rational', ipa:'/ˈræʃ.ən.əl/', meaning:'based on clear thinking and logical reasons', example:"A purely rational investor would treat gains and losses exactly the same way." },
+    illusion: { word:'illusion', ipa:'/ɪˈluː.ʒən/', meaning:'a false idea or belief; something that appears different from reality', example:"The illusion of control makes people feel safer than they actually are." }
+  };
+
+  function vocabSpan(key, text){
+    return `<span class="vocab" data-word="${key}">${text}</span>`;
+  }
+  function gramSpan(key, text){
+    return `<span class="gram" data-gram="${key}">${text}</span>`;
+  }
+  const gramExplanations = {
+    g1: "Zero conditional — a general psychological pattern that holds true for people broadly, not one specific event.",
+    g2: "Zero conditional — a repeatable, general pattern observed across many people, not a one-off prediction.",
+    g3: "Zero conditional — describes a general tendency that shows up reliably, not a single specific future case.",
+    g4: "Zero conditional — a habitual pattern (investors in general), even though the sentence includes a nested \"will\" inside a separate clause (\"hoping it will recover\") that isn't part of the conditional structure itself.",
+    g5: "First conditional — a specific, personal prediction about you, the reader, going forward — not a general truth about everyone."
+  };
+
+  /* ---------------- READING PASSAGE ---------------- */
+  document.getElementById('passage').innerHTML = `
+  <p>In 1979, psychologists Daniel Kahneman and Amos Tversky published a paper that reshaped how economists think about risk. Their central finding, now known as loss aversion, describes a genuine ${vocabSpan('asymmetry','asymmetry')} in how gains and losses feel: ${gramSpan('g1',"if people lose $100, the disappointment generally feels roughly twice as strong as the pleasure of gaining the same amount")}. There's no absolute ${vocabSpan('guarantee','guarantee')} that any one person reacts this way, but the pattern holds up remarkably well across large groups. Kahneman later won a Nobel Prize for the work; Tversky, sadly, had already died by the time the prize was awarded.</p>
+
+  <p>The effect shows up in a strikingly consistent, far from ${vocabSpan('irrational','irrational')} way. ${gramSpan('g2','If you offer someone a guaranteed $50 or a coin flip for $100, most people take the guaranteed money')} — even though, mathematically, both options average out the same. A purely ${vocabSpan('rational','rational')} decision-maker would treat the two choices as identical; almost nobody actually does. Ask the same question the other way around, framed as a possible loss instead of a possible gain, and something interesting happens: ${gramSpan('g3','if the choice is framed as avoiding a loss rather than securing a gain, people typically become far more willing to take the risky option')}.</p>
+
+  <p>Investors fall into this pattern constantly. ${gramSpan('g4','If a stock price drops, most people hold onto it far longer than they should, hoping it will recover')}, simply because selling would mean accepting the loss as final — most are deeply ${vocabSpan('reluctant','reluctant')} to make that call. Meanwhile, if the same investor's winning stock rises, they often sell it almost immediately, just to lock the gain in before it disappears. Economists call this the disposition effect, and few investors fully grasp the ${vocabSpan('magnitude','magnitude')} of how much it costs them over time — most ${vocabSpan('overestimate','overestimate')} their own ability to time the market correctly.</p>
+
+  <p>Marketers understood the pattern long before psychologists gave it a name, and public ${vocabSpan('perception','perception')} of "limited-time" offers has shifted very little since. If an advert says "only two days left" or "last chance," it isn't really selling the product anymore — it's selling the fear of losing an opportunity, which motivates people more reliably than the promise of gaining something new ever will. The ${vocabSpan('illusion','illusion')} that we're making a purely logical choice is itself part of the trap. Understanding loss aversion won't stop the feeling, but ${gramSpan('g5',"if you notice the pattern in your own decisions, you'll at least catch yourself making them for the right reasons instead of the wrong ones")}.</p>
+  `;
+  document.getElementById('passage').classList.add('passage');
+
+  document.getElementById('gram-toggle').addEventListener('click', function(){
+    const passage = document.getElementById('passage');
+    const on = passage.classList.toggle('show-grammar');
+    this.classList.toggle('on', on);
+    this.textContent = on ? '🔍 Hide grammar in this text' : '🔍 Show grammar in this text';
+    if (!on) Course.hidePopup();
+  });
+  document.querySelectorAll('.gram').forEach(el => {
+    el.addEventListener('click', () => {
+      Course.showPopup(`<div style="font-size:14.5px;line-height:1.6">${gramExplanations[el.dataset.gram]}</div>`, el);
+    });
+  });
+
+  Course.initVocab(vocabData, LESSON_ID);
+
+  /* ---------------- HOVER TOOLTIP (shared across this concept section) ----------------
+     Deliberately not using Course.showPopup: that system uses a full-screen
+     backdrop, and on mouseenter the backdrop immediately covers the trigger,
+     firing mouseleave, which hides the popup, uncovering the trigger, which
+     re-fires mouseenter — an infinite show/hide loop. A tiny pointer-events:none
+     tooltip avoids this entirely, since the browser routes pointer events
+     straight through it to whatever's underneath. */
+  function ensureCompareTooltip(){
+    let el = document.getElementById('compare-tooltip');
+    if (!el){
+      el = document.createElement('div');
+      el.id = 'compare-tooltip';
+      document.body.appendChild(el);
+    }
+    return el;
+  }
+  const compareTooltipEl = ensureCompareTooltip();
+  function showCompareTooltip(html, anchorEl){
+    compareTooltipEl.innerHTML = html;
+    const rect = anchorEl.getBoundingClientRect();
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    const scrollX = window.scrollX || document.documentElement.scrollLeft;
+    compareTooltipEl.style.top = `${rect.bottom + scrollY + 8}px`;
+    compareTooltipEl.style.left = `${rect.left + scrollX}px`;
+    compareTooltipEl.classList.add('visible');
+  }
+  function hideCompareTooltip(){
+    compareTooltipEl.classList.remove('visible');
+  }
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.compare-box') && !e.target.closest('.conj-pill')) hideCompareTooltip();
+  });
+
+  function renderCompareCard(containerId, items, explanations){
+    const el = document.getElementById(containerId);
+    el.innerHTML = items.map(it => `
+      <div style="display:flex;gap:10px;align-items:baseline;margin-bottom:8px">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);flex-shrink:0;width:190px">${it.label}</span>
+        <span class="compare-box" data-key="${it.key}">"${it.text}"</span>
+      </div>
+    `).join('');
+    el.querySelectorAll('.compare-box').forEach(node => {
+      const html = `<div>${explanations[node.dataset.key]}</div>`;
+      node.addEventListener('mouseenter', () => showCompareTooltip(html, node));
+      node.addEventListener('mouseleave', hideCompareTooltip);
+      node.addEventListener('click', () => showCompareTooltip(html, node));
+    });
+  }
+
+  /* ---------------- CONDITIONAL WIDGET (Structure/Examples toggle, with a
+     switch button to swap clause order) ----------------
+     Each example is stored as { condition, result } in lowercase with no
+     leading "if" — the render function builds both valid orders from that
+     one pair, handling capitalisation and the comma correctly either way:
+     if-first needs "If <condition>, <Result>." and result-first needs
+     "<Result> if <condition>." with no comma at all. */
+  const sharedQuizModeTracker = {};
+  function buildConditionalWidget({ prefix, structureLeft, structureRight, examples, rulesToggleId = null }){
+    let mode = 'structure';
+    let idx = 0;
+    let order = 'if-first';
+    const leftEl = document.getElementById(`${prefix}-left`);
+    const rightEl = document.getElementById(`${prefix}-right`);
+    const hintEl = document.getElementById(`${prefix}-hint`);
+    const switchBtn = document.getElementById(`${prefix}-switch`);
+    const structureBtn = document.getElementById(`mode-${prefix}-structure`);
+    const examplesBtn = document.getElementById(`mode-${prefix}-examples`);
+    const quizBtn = document.getElementById(`mode-${prefix}-quiz`);
+    const widgetContainer = document.getElementById(`${prefix}-widget-container`);
+    const quizContainer = document.getElementById(`${prefix}-quiz-container`);
+
+    function capitalize(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+
+    function cellHtml(text, clickable){
+      return `<div class="static-cell is-primary-cell wheel-value-anim${clickable ? ' clickable-cell' : ''}">${text}</div>`;
+    }
+
+    function advance(){ idx = (idx + 1) % examples.length; render(); }
+
+    // For examples where the same subject/object appears in both clauses
+    // (ex.swap === true), the named noun must appear in whichever clause is
+    // presented FIRST — regardless of whether that's the if-clause or the
+    // result clause — with a pronoun standing in for it in the clause that
+    // comes second. Otherwise the second-position pronoun has no clear
+    // antecedent. Non-swap examples just use their fixed condition/result text.
+    function getClausePhrases(ex, order){
+      if (!ex.swap){
+        return { conditionPhrase: ex.condition, resultPhrase: ex.result };
+      }
+      if (order === 'if-first'){
+        return { conditionPhrase: `${ex.noun} ${ex.conditionVerb}`, resultPhrase: `${ex.pronoun} ${ex.resultVerb}` };
+      }
+      return { conditionPhrase: `${ex.pronoun} ${ex.conditionVerb}`, resultPhrase: `${ex.noun} ${ex.resultVerb}` };
+    }
+
+    function render(){
+      if (mode === 'structure'){
+        hintEl.style.display = 'none';
+        switchBtn.disabled = true;
+        if (order === 'if-first'){
+          leftEl.innerHTML = cellHtml(`If ${structureLeft},`, false);
+          rightEl.innerHTML = cellHtml(structureRight, false);
+        } else {
+          leftEl.innerHTML = cellHtml(capitalize(structureRight), false);
+          rightEl.innerHTML = cellHtml(`if ${structureLeft}.`, false);
+        }
+      } else {
+        hintEl.style.display = 'block';
+        switchBtn.disabled = false;
+        const ex = examples[idx];
+        const { conditionPhrase, resultPhrase } = getClausePhrases(ex, order);
+        if (order === 'if-first'){
+          leftEl.innerHTML = cellHtml(`If ${conditionPhrase},`, true);
+          rightEl.innerHTML = cellHtml(`${resultPhrase}.`, true);
+        } else {
+          leftEl.innerHTML = cellHtml(capitalize(resultPhrase), true);
+          rightEl.innerHTML = cellHtml(`if ${conditionPhrase}.`, true);
+        }
+        [leftEl, rightEl].forEach(el => {
+          el.querySelectorAll('.clickable-cell').forEach(c => c.addEventListener('click', advance));
+        });
+      }
+    }
+    switchBtn.addEventListener('click', () => {
+      if (switchBtn.disabled) return;
+      order = order === 'if-first' ? 'result-first' : 'if-first';
+      render();
+    });
+
+    function renderQuiz(){
+      quizContainer.innerHTML = `
+        <p style="font-size:12px;color:var(--text-tertiary);text-align:center;margin-bottom:6px">Which result correctly finishes this condition?</p>
+        <p id="${prefix}-quiz-prompt" style="font-size:15.5px;font-weight:600;text-align:center;color:var(--accent);margin-bottom:10px;line-height:1.5"></p>
+        <div style="display:flex;flex-direction:column;gap:8px;align-items:stretch;max-width:480px;margin:0 auto" id="${prefix}-quiz-options"></div>
+        <div id="${prefix}-quiz-feedback" style="text-align:center;min-height:16px;margin-top:10px;font-size:13.5px"></div>
+        <div style="text-align:center;margin-top:10px">
+          <button class="btn btn-primary" id="${prefix}-quiz-next" style="display:none">Next →</button>
+        </div>`;
+
+      const quizPool = examples.map((ex, i) => {
+        const { conditionPhrase, resultPhrase } = getClausePhrases(ex, 'if-first');
+        return { prompt: `If ${conditionPhrase},`, answer: `${capitalize(resultPhrase)}.`, i };
+      });
+
+      let order2 = Course.shuffleArray(quizPool.map((_, i) => i));
+      let pos = 0;
+      let answered = false;
+      const promptEl = document.getElementById(`${prefix}-quiz-prompt`);
+      const optionsEl = document.getElementById(`${prefix}-quiz-options`);
+      const feedbackEl = document.getElementById(`${prefix}-quiz-feedback`);
+      const nextBtn = document.getElementById(`${prefix}-quiz-next`);
+
+      function renderQ(){
+        answered = false;
+        feedbackEl.textContent = '';
+        nextBtn.style.display = 'none';
+        const correct = quizPool[order2[pos]];
+        promptEl.textContent = correct.prompt;
+        const distractorPool = quizPool.filter(q => q.i !== correct.i);
+        const distractors = Course.shuffleArray(distractorPool).slice(0, 2).map(q => q.answer);
+        const options = Course.shuffleArray([correct.answer, ...distractors]);
+        optionsEl.innerHTML = options.map(o => `<button class="opt" data-answer="${o}" style="text-align:left">${o}</button>`).join('');
+        optionsEl.querySelectorAll('button').forEach(btn => {
+          btn.addEventListener('click', () => {
+            if (answered) return;
+            answered = true;
+            const isCorrect = btn.dataset.answer === correct.answer;
+            [...optionsEl.children].forEach(b => {
+              if (b === btn) b.classList.add(isCorrect ? 'ok' : 'bad');
+              else if (b.dataset.answer === correct.answer) b.classList.add('ok');
+              else b.classList.add('dim');
+            });
+            feedbackEl.innerHTML = isCorrect
+              ? `<span style="color:var(--ok)">✓ Correct!</span>`
+              : `<span style="color:var(--bad)">Not quite — "${correct.answer}" was the match.</span>`;
+            nextBtn.style.display = 'inline-block';
+          });
+        });
+      }
+      nextBtn.addEventListener('click', () => {
+        pos += 1;
+        if (pos >= order2.length){ order2 = Course.shuffleArray(quizPool.map((_, i) => i)); pos = 0; }
+        renderQ();
+      });
+      renderQ();
+    }
+
+    function updateRulesToggleState(){
+      if (!rulesToggleId) return;
+      sharedQuizModeTracker[prefix] = mode === 'quiz';
+      const anyQuizActive = Object.values(sharedQuizModeTracker).some(Boolean);
+      const btn = document.getElementById(rulesToggleId);
+      const content = document.getElementById('rules-content');
+      if (anyQuizActive){
+        btn.disabled = true;
+        btn.textContent = '📖 Disabled during Quick check';
+        content.classList.remove('open');
+      } else {
+        btn.disabled = false;
+        const isOpen = content.classList.contains('open');
+        btn.textContent = isOpen ? '📖 Hide the full rules' : '📖 Show the full rules';
+      }
+    }
+    function switchMode(newMode){
+      mode = newMode;
+      structureBtn.classList.toggle('on', newMode === 'structure');
+      examplesBtn.classList.toggle('on', newMode === 'examples');
+      quizBtn.classList.toggle('on', newMode === 'quiz');
+      widgetContainer.style.display = newMode === 'quiz' ? 'none' : 'block';
+      quizContainer.style.display = newMode === 'quiz' ? 'block' : 'none';
+      if (newMode === 'quiz') renderQuiz();
+      else render();
+      updateRulesToggleState();
+    }
+    structureBtn.addEventListener('click', () => switchMode('structure'));
+    examplesBtn.addEventListener('click', () => switchMode('examples'));
+    quizBtn.addEventListener('click', () => switchMode('quiz'));
+    render();
+  }
+
+  buildConditionalWidget({
+    prefix: 'zero',
+    structureLeft: 'present simple',
+    structureRight: 'present simple',
+    rulesToggleId: 'rules-toggle',
+    examples: [
+      { swap: true, noun: 'ice', pronoun: 'it', conditionVerb: 'is heated', resultVerb: 'melts' },
+      { swap: true, noun: 'metal', pronoun: 'it', conditionVerb: 'is heated', resultVerb: 'expands' },
+      { swap: true, noun: 'plants', pronoun: 'they', conditionVerb: "don't get enough light", resultVerb: 'die' },
+      { swap: false, condition: 'prices rise', result: 'demand falls' },
+      { swap: true, noun: 'red and blue paint', pronoun: 'they', conditionVerb: 'are combined', resultVerb: 'turn purple' }
+    ]
+  });
+
+  buildConditionalWidget({
+    prefix: 'first',
+    structureLeft: 'present simple',
+    structureRight: 'will + base verb',
+    rulesToggleId: 'rules-toggle',
+    examples: [
+      { condition: 'it rains tomorrow', result: 'we will cancel the picnic' },
+      { condition: 'you finish the report today', result: 'you can leave early' },
+      { condition: 'the flight is delayed today', result: 'we might miss the connection' },
+      { condition: 'she calls before 5', result: 'you should let her know' },
+      { condition: 'traffic is bad tomorrow', result: 'I may be a few minutes late' }
+    ]
+  });
+
+  /* ---------------- COMMON CONDITIONAL CONJUNCTIONS (hover, ungraded) ---------------- */
+  const conjunctions = [
+    { word:'unless', explanation:'"If...not" — the opposite condition.', example:"Unless you leave now, you'll miss the train." },
+    { word:'when', explanation:'A stronger, more certain version of "if" — used for things that regularly happen.', example:'When water boils, it turns to steam.' },
+    { word:'as long as', explanation:'"Provided this stays true" — a requirement that must be maintained.', example:"You can stay out as long as you're back by ten." },
+    { word:'provided that', explanation:'A formal way of saying "if," often for strict requirements.', example:'You may proceed, provided that you have a valid ticket.' },
+    { word:'even if', explanation:'"Regardless of whether this happens" — the result stays the same either way.', example:'Even if it rains, the match will go ahead.' },
+    { word:'only if', explanation:'A strict condition — nothing else will satisfy it.', example:"I'll come only if you come too." },
+    { word:'in case', explanation:'"To prepare for a possibility" — not quite the same meaning as "if."', example:'Take an umbrella in case it rains.' },
+    { word:'whether or not', explanation:'"Regardless of which option turns out to be true."', example:"We're leaving tomorrow, whether or not you're ready." }
+  ];
+  const conjEl = document.getElementById('conj-cells');
+  conjunctions.forEach(c => {
+    const cell = document.createElement('div');
+    cell.className = 'conj-pill';
+    cell.textContent = c.word;
+    const html = `<div><b>${c.word}</b> — ${c.explanation}<br><span style="opacity:.85">"${c.example}"</span></div>`;
+    cell.addEventListener('mouseenter', () => showCompareTooltip(html, cell));
+    cell.addEventListener('mouseleave', hideCompareTooltip);
+    cell.addEventListener('click', () => showCompareTooltip(html, cell));
+    conjEl.appendChild(cell);
+  });
+
+  /* ---------------- ALTERNATIVE MODALS IN THE RESULT CLAUSE ---------------- */
+  renderCompareCard('compare-modals', [
+    { key:'m1', label:'will (default)', text:'If it rains, we will stay inside.' },
+    { key:'m2', label:'can (ability/permission)', text:'If you finish early, you can leave.' },
+    { key:'m3', label:'may/might (possibility)', text:'If traffic is bad, we might be late.' },
+    { key:'m4', label:'should (expectation/advice)', text:'If you study hard, you should pass.' },
+    { key:'m5', label:'must (obligation)', text:'If you enter the lab, you must wear a mask.' }
+  ], {
+    m1: '"Will" is the neutral, default choice — a plain prediction with no extra shade of meaning.',
+    m2: '"Can" adds ability or permission to the result, not just a prediction.',
+    m3: '"May" and "might" soften the result into a possibility rather than a certainty.',
+    m4: '"Should" frames the result as expected or advisable, not guaranteed.',
+    m5: '"Must" makes the result an obligation or requirement, not just a prediction.'
+  });
+
+  /* ---------------- EXPANDABLE RULES ---------------- */
+  document.getElementById('rules-toggle').addEventListener('click', function(){
+    const content = document.getElementById('rules-content');
+    const open = content.classList.toggle('open');
+    this.textContent = open ? '📖 Hide the full rules' : '📖 Show the full rules';
+  });
+
+  /* ---------------- MCQ SECTIONS (via shared engine) ---------------- */
+  const mcqSections = [
+    ['warm-q1','warmup-1','right'], ['warm-q2','warmup-2','right'], ['warm-q3','warmup-3','right'],
+    ['diag-q1','diagnostic-1','right'], ['diag-q2','diagnostic-2','right'], ['diag-q3','diagnostic-3','right'], ['diag-q4','diagnostic-4','right'],
+    ['comp-q1','reading-comprehension-1','right'], ['comp-q2','reading-comprehension-2','right'], ['comp-q3','reading-comprehension-3','right'],
+    ['vocab-q1','vocab-1','right'], ['vocab-q2','vocab-2','right'], ['vocab-q3','vocab-3','right'], ['vocab-q4','vocab-4','right'], ['vocab-q5','vocab-5','right'],
+    ['cat-q1','practice-categorise-1','right'], ['cat-q2','practice-categorise-2','right'], ['cat-q3','practice-categorise-3','right'],
+    ['cat-q4','practice-categorise-4','right'], ['cat-q5','practice-categorise-5','right'], ['cat-q6','practice-categorise-6','right'],
+    ['listen-q1','listening-1','right'], ['listen-q2','listening-2','right'], ['listen-q3','listening-3','right'],
+    ['exit-q1','exit-1','right'], ['exit-q2','exit-2','right'], ['exit-q3','exit-3','right'], ['exit-q4','exit-4','right'], ['exit-q5','exit-5','right']
+  ];
+  mcqSections.forEach(([id, section, correctVal]) => {
+    Course.shuffleOptions(id);
+    Course.initMCQ(id, {
+      lessonId: LESSON_ID, sectionId: section, correctValue: correctVal, onAnswered: updateOverallProgress,
+      restoreAnswer: sectionMap[section] ? sectionMap[section].answer_given : undefined
+    });
+  });
+  if (!sectionMap['listening-1']) Course.ensureGroupVariety(['listen-q1','listen-q2','listen-q3']);
+  if (!sectionMap['reading-comprehension-1']) Course.ensureGroupVariety(['comp-q1','comp-q2','comp-q3']);
+  if (!sectionMap['practice-categorise-1']) Course.ensureGroupVariety(['cat-q1','cat-q2','cat-q3','cat-q4','cat-q5','cat-q6']);
+
+  /* ---------------- GAP FILL (restorable) ----------------
+     Answers following a subject pronoun are wrapped in Course.withContractions;
+     "Ice," "Metal," and other non-pronoun subjects are left as full forms. */
+  const gapFills = [
+    ['gap1-input','gap1-check','gap1-fb','practice-gapfill-1', ['die'], true],
+    ['gap2-input','gap2-check','gap2-fb','practice-gapfill-2', Course.withContractions(['will catch', 'can catch', 'should catch', 'might catch', 'may catch']), false],
+    ['gap3-input','gap3-check','gap3-fb','practice-gapfill-3', ['melts'], false],
+    ['gap4-input','gap4-check','gap4-fb','practice-gapfill-4', Course.withContractions(['will probably forgive', 'might forgive', 'may forgive', 'should forgive']), false],
+    ['gap5-input','gap5-check','gap5-fb','practice-gapfill-5', ['expands'], false],
+    ['gap6-input','gap6-check','gap6-fb','practice-gapfill-6', ['risk'], false],
+    ['vgap1-input','vgap1-check','vgap1-fb','vocab-gapfill-1', ['guaranteed'], true],
+    ['vgap2-input','vgap2-check','vgap2-fb','vocab-gapfill-2', ['magnitude'], false],
+    ['vgap3-input','vgap3-check','vgap3-fb','vocab-gapfill-3', ['overestimate'], false],
+    ['vgap4-input','vgap4-check','vgap4-fb','vocab-gapfill-4', ['illusion'], false]
+  ];
+  gapFills.forEach(([inputId, btnId, fbId, section, answers, showHint]) => {
+    const restored = sectionMap[section];
+    Course.initGapFill(inputId, btnId, fbId, {
+      lessonId: LESSON_ID, sectionId: section, correctAnswers: answers, showAnswerHint: showHint,
+      restore: restored ? { answerGiven: restored.answer_given, isCorrect: restored.override_correct ?? restored.is_correct } : undefined,
+      onAnswered: updateOverallProgress
+    });
+  });
+
+  /* ---------------- FIX THE SENTENCE (error-spot) ---------------- */
+  const fixItems = [
+    { id:'fix1', section:'practice-fix-1', words:['If','it','will','rain','tomorrow,',"we'll",'stay','inside.'], errorIndices:[2,3], correction:'rains' },
+    { id:'fix2', section:'practice-fix-2', words:['Water','boil','if','you','heat','it','to','100','degrees.'], errorIndices:[1], correction:'boils' },
+    { id:'fix3', section:'practice-fix-3', words:['If','you','study','harder','for',"tomorrow's",'exam,','you','pass','it.'], errorIndices:[8], correction:'will pass' },
+    { id:'fix4', section:'practice-fix-4', words:['If','you',"won't",'hurry,',"you'll",'be','late.'], errorIndices:[2], correction:"don't" }
+  ];
+  fixItems.forEach(item => {
+    const restored = sectionMap[item.section];
+    Course.initErrorSpot(item.id, {
+      lessonId: LESSON_ID, sectionId: item.section, words: item.words, errorIndices: item.errorIndices, correction: item.correction,
+      onAnswered: updateOverallProgress,
+      restore: restored ? { answerGiven: restored.answer_given } : undefined
+    });
+  });
+
+  /* ---------------- SENTENCE BUILDER (single-clause safe. Locks immediately
+     on Check, not just on reload.) ---------------- */
+  const builderRounds = [
+    { words: ['if','ice','is','heated','it','melts'],
+      accepted: ['if ice is heated it melts'] },
+    { words: ['if','it','rains','tomorrow','we','will','cancel','the','picnic'],
+      accepted: ['if it rains tomorrow we will cancel the picnic'] },
+    { words: ['unless','you','leave','now','you','will','miss','the','train'],
+      accepted: ['unless you leave now you will miss the train'] }
+  ];
+  const buildersEl = document.getElementById('builders');
+  builderRounds.forEach((round, ri) => {
+    const sectionId = `practice-builder-${ri+1}`;
+    const restored = sectionMap[sectionId];
+    const bankOrder = Course.shuffleArray(round.words.map((_, i) => i));
+    let state = [];
+    let locked = false;
+
+    if (restored){
+      const used = new Set();
+      restored.answer_given.split(' ').forEach(tok => {
+        const idx = round.words.findIndex((w, i) => w === tok && !used.has(i));
+        if (idx >= 0){ used.add(idx); state.push(idx); }
+      });
+      locked = true;
+    }
+
+    const wrap = document.createElement('div');
+    wrap.style.marginBottom = '20px';
+    wrap.innerHTML = `
+      <div class="builder-bank" id="builder-bank-${ri}"></div>
+      <div class="builder-target" id="builder-target-${ri}"></div>
+      <p style="font-size:12px;color:var(--text-tertiary);margin-top:6px">Tap a word in your sentence to send it back to the pool.</p>
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+        <button class="btn btn-sm" id="builder-check-${ri}">Check order</button>
+        <button class="btn btn-sm btn-ghost" id="builder-reset-${ri}">Reset</button>
+      </div>
+      <div id="builder-fb-${ri}"></div>
+    `;
+    buildersEl.appendChild(wrap);
+
+    const bank = wrap.querySelector(`#builder-bank-${ri}`);
+    const target = wrap.querySelector(`#builder-target-${ri}`);
+    function render(){
+      bank.innerHTML = '';
+      bankOrder.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip' + (state.includes(i) ? ' used' : '');
+        chip.textContent = round.words[i];
+        if (!locked) chip.addEventListener('click', () => { if (state.includes(i)) return; state.push(i); render(); });
+        else chip.disabled = true;
+        bank.appendChild(chip);
+      });
+      target.innerHTML = '';
+      state.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip';
+        chip.textContent = round.words[i];
+        if (!locked){
+          chip.title = 'Click to remove';
+          chip.addEventListener('click', () => { state = state.filter(x => x !== i); render(); });
+        } else {
+          chip.disabled = true;
+        }
+        target.appendChild(chip);
+      });
+    }
+    render();
+
+    if (restored){
+      const isCorrect = restored.override_correct ?? restored.is_correct;
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+    }
+
+    wrap.querySelector(`#builder-reset-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      state = []; render(); wrap.querySelector(`#builder-fb-${ri}`).innerHTML = '';
+    });
+    wrap.querySelector(`#builder-check-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      const attempt = state.map(i => round.words[i]).join(' ');
+      const isCorrect = round.accepted.includes(attempt);
+      locked = true;
+      render();
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+      Course.logProgress({ lessonId: LESSON_ID, sectionId, answerGiven: attempt, isCorrect });
+      updateOverallProgress();
+    });
+  });
+
+  /* ---------------- SPEAKING MODE TOGGLE ---------------- */
+  document.getElementById('mode-solo').addEventListener('click', () => {
+    document.getElementById('mode-solo').classList.add('on');
+    document.getElementById('mode-group').classList.remove('on');
+    document.getElementById('speak-solo').style.display = 'block';
+    document.getElementById('speak-group').style.display = 'none';
+  });
+  document.getElementById('mode-group').addEventListener('click', () => {
+    document.getElementById('mode-group').classList.add('on');
+    document.getElementById('mode-solo').classList.remove('on');
+    document.getElementById('speak-group').style.display = 'block';
+    document.getElementById('speak-solo').style.display = 'none';
+  });
+
+  /* ---------------- SOLO SPEAKING TASK — MARK AS DONE (restorable) ---------------- */
+  const SOLO_TASK_LABEL = "Solo speaking task: two zero-conditional facts and two first-conditional predictions about your week.";
+  const soloDoneBtn = document.getElementById('solo-done-btn');
+  let soloDone = !!(sectionMap['speaking-solo'] && sectionMap['speaking-solo'].status === 'completed');
+  function renderSoloBtn(){
+    soloDoneBtn.textContent = soloDone ? "✓ Marked as done" : "✓ I've done this";
+    soloDoneBtn.classList.toggle('btn-primary', soloDone);
+  }
+  renderSoloBtn();
+  soloDoneBtn.addEventListener('click', () => {
+    soloDone = !soloDone;
+    renderSoloBtn();
+    Course.logProgress({
+      lessonId: LESSON_ID, sectionId: 'speaking-solo', exerciseType: 'oral',
+      status: soloDone ? 'completed' : 'not_attempted', answerGiven: SOLO_TASK_LABEL
+    });
+  });
+
+  /* ---------------- DISCUSSION QUESTION PICKER (restorable) ---------------- */
+  const discussQuestions = [
+    "Can you think of a time loss aversion affected a decision you made — holding onto something too long, for example?",
+    "Describe a general truth about your job or field of study, using zero conditional.",
+    "If your plans for next weekend fall through, what will you do instead?",
+    "Do you think advertisers using loss-based framing ('last chance,' 'don't miss out') is manipulative, or just smart marketing?"
+  ];
+  const discussEl = document.getElementById('discuss-questions');
+  let pickedQuestions = [];
+  discussQuestions.forEach((q, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'discuss-q';
+    btn.dataset.idx = i;
+    btn.innerHTML = `<span class="chk"></span><span>${q}</span>`;
+    const restored = sectionMap[`speaking-q${i+1}`];
+    if (restored && restored.status === 'completed'){
+      pickedQuestions.push(i);
+      btn.classList.add('picked');
+    }
+    btn.addEventListener('click', () => {
+      const isPicked = pickedQuestions.includes(i);
+      if (isPicked){
+        pickedQuestions = pickedQuestions.filter(x => x !== i);
+        btn.classList.remove('picked');
+      } else {
+        if (pickedQuestions.length >= 2){
+          document.getElementById('discuss-limit-msg').style.color = 'var(--bad)';
+          document.getElementById('discuss-limit-msg').textContent = 'You can only pick up to 2 — deselect one first.';
+          return;
+        }
+        pickedQuestions.push(i);
+        btn.classList.add('picked');
+      }
+      document.getElementById('discuss-limit-msg').style.color = '';
+      document.getElementById('discuss-limit-msg').textContent = 'You can select up to 2 questions.';
+      Course.logProgress({
+        lessonId: LESSON_ID, sectionId: `speaking-q${i+1}`, exerciseType: 'oral',
+        status: isPicked ? 'not_attempted' : 'completed', answerGiven: q
+      });
+    });
+    discussEl.appendChild(btn);
+  });
+
+  /* ---------------- LISTENING DIALOGUE ---------------- */
+  const AUDIO_SRC = 'audio/lesson-13-listening.mp3';
+  const dialogue = [
+    { speaker:'Anna', pitch:1.12, line:"Honestly, that loss aversion reading hit a little close to home." },
+    { speaker:'Tomasz', pitch:0.88, line:"Same. I always hold onto a losing stock way longer than I should, hoping it'll recover." },
+    { speaker:'Anna', pitch:1.12, line:"Exactly the disposition effect they described. Meanwhile you'd sell a winner instantly." },
+    { speaker:'Tomasz', pitch:0.88, line:"Guilty. What about you — got anything you're watching right now?" },
+    { speaker:'Anna', pitch:1.12, line:"Actually yes. If it drops another five percent, I'll sell it before it gets any worse." },
+    { speaker:'Tomasz', pitch:0.88, line:"See, that's the rational move. I just never manage to actually do it." },
+    { speaker:'Anna', pitch:1.12, line:"It's funny — if you frame it as avoiding a loss instead of missing a gain, people take way more risks." },
+    { speaker:'Tomasz', pitch:0.88, line:"Which explains basically every 'last chance' advert I've ever fallen for." }
+  ];
+
+  let audioAvailable = false;
+  const audioEl = document.getElementById('dialogue-audio');
+  fetch(AUDIO_SRC, { method:'HEAD' }).then(r => { if (r.ok){ audioAvailable = true; audioEl.src = AUDIO_SRC; } }).catch(() => {});
+
+  const transcriptEl = document.getElementById('transcript');
+  dialogue.forEach((d, i) => {
+    const line = document.createElement('div');
+    line.className = 'transcript-line';
+    line.id = `t-line-${i}`;
+    line.innerHTML = `<b>${d.speaker}:</b> ${d.line}`;
+    transcriptEl.appendChild(line);
+  });
+
+  const playBtn = document.getElementById('play-dialogue');
+  let isPlaying = false;
+  let currentIdx = 0;
+
+  function updatePlayButton(){
+    if (isPlaying){ playBtn.textContent = '⏸ Pause'; return; }
+    if (window.speechSynthesis.paused){ playBtn.textContent = '▶ Resume'; return; }
+    playBtn.textContent = '▶ Play dialogue';
+  }
+
+  function speakLineAt(idx){
+    if (idx >= dialogue.length){ isPlaying = false; currentIdx = 0; updatePlayButton(); return; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    document.getElementById(`t-line-${idx}`).classList.add('shown', 'active');
+    const u = new SpeechSynthesisUtterance(dialogue[idx].line);
+    u.rate = 0.95; u.pitch = dialogue[idx].pitch;
+    u.onend = () => { if (isPlaying){ currentIdx = idx + 1; speakLineAt(currentIdx); } };
+    window.speechSynthesis.speak(u);
+  }
+
+  playBtn.addEventListener('click', () => {
+    if (audioAvailable){
+      if (audioEl.paused){ audioEl.play(); isPlaying = true; }
+      else { audioEl.pause(); isPlaying = false; }
+      updatePlayButton();
+      return;
+    }
+    if (!isPlaying){
+      isPlaying = true;
+      if (window.speechSynthesis.paused){ window.speechSynthesis.resume(); }
+      else {
+        // Defensive reset, fresh-start only (never on resume/pause): speechSynthesis
+        // has a well-documented browser bug where it can silently stop accepting
+        // new speech after earlier calls elsewhere on the page (e.g. the vocab-word
+        // audio buttons), leaving Play looking broken with no error anywhere.
+        // Clearing the queue right before a genuinely fresh play avoids that class
+        // of bug without disturbing an actual pause/resume in progress.
+        window.speechSynthesis.cancel();
+        speakLineAt(currentIdx);
+      }
+    } else {
+      isPlaying = false;
+      window.speechSynthesis.pause();
+    }
+    updatePlayButton();
+  });
+
+  document.getElementById('stop-dialogue').addEventListener('click', () => {
+    isPlaying = false;
+    currentIdx = 0;
+    window.speechSynthesis.cancel();
+    if (audioAvailable){ audioEl.pause(); audioEl.currentTime = 0; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    updatePlayButton();
+  });
+
+  audioEl.addEventListener('ended', () => { isPlaying = false; updatePlayButton(); });
+
+  document.getElementById('show-transcript').addEventListener('click', function(){
+    const shown = transcriptEl.classList.toggle('all-shown');
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.toggle('shown', shown));
+    this.textContent = shown ? 'Hide transcript' : 'Show full transcript';
+  });
+
+  updateOverallProgress();
+})();
+
+/* ---------------- OVERALL PROGRESS BAR ---------------- */
+const LESSON_TOTAL_POSSIBLE = 29 + 10 + 4 + 3; // mcqSections(incl. 6 categorise) + gapFills + fixItems + builderRounds
+function updateOverallProgress(){
+  const attempted = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+  const pct = Math.min(100, Math.round((attempted / LESSON_TOTAL_POSSIBLE) * 100));
+  document.getElementById('overall-progress').style.width = pct + '%';
+}
+
+/* ---------------- FINISH / SUMMARY ---------------- */
+document.getElementById('finish-btn').addEventListener('click', async () => {
+  const btn = document.getElementById('finish-btn');
+  const original = btn.textContent;
+  btn.textContent = 'Checking for teacher updates…'; btn.disabled = true;
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+  } finally {
+    btn.textContent = original; btn.disabled = false;
+  }
+  try {
+    const { correct, total } = Course.lessonScore(LESSON_ID);
+    Course.renderScoreRing('score-ring-holder', correct, total);
+    document.getElementById('summary-name').textContent = `${Course.getStudentName()} — ${correct}/${total} correct`;
+
+    const attemptedCount = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+    const completionPct = Math.min(100, Math.round((attemptedCount / LESSON_TOTAL_POSSIBLE) * 100));
+    const completionEl = document.getElementById('summary-completion');
+    if (attemptedCount < LESSON_TOTAL_POSSIBLE){
+      completionEl.style.color = 'var(--warn)';
+      completionEl.textContent = `⚠ Only ${completionPct}% of the lesson attempted so far (${attemptedCount} of ${LESSON_TOTAL_POSSIBLE} exercises) — the score above only reflects what's been answered.`;
+    } else {
+      completionEl.style.color = 'var(--ok)';
+      completionEl.textContent = `✓ Every exercise in this lesson has been attempted.`;
+    }
+
+    const weak = Course.weakSections(LESSON_ID);
+    document.getElementById('summary-weak').textContent = weak.length
+      ? `Worth revisiting: ${weak.join(', ')}`
+      : 'Strong across the board — nice work!';
+    document.getElementById('export-btn').style.display = 'inline-block';
+    updateOverallProgress();
+
+    const card = document.getElementById('summary-card');
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    card.classList.remove('summary-pulse'); void card.offsetWidth;
+    card.classList.add('summary-pulse');
+  } catch (err){
+    console.error('Finish lesson failed:', err);
+    let banner = document.getElementById('finish-error-banner');
+    if (!banner){
+      banner = document.createElement('div');
+      banner.id = 'finish-error-banner';
+      banner.className = 'error-banner';
+      document.getElementById('summary-card').appendChild(banner);
+    }
+    banner.textContent = `Something went wrong computing your results (${err.message}). Try reloading the page — your saved answers won't be lost.`;
+  }
+});
+document.getElementById('export-btn').addEventListener('click', async () => {
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+    Course.exportReportPDF(LESSON_ID, 'Conditionals: Zero & First', LESSON_TOTAL_POSSIBLE);
+  } catch (err){
+    console.error('PDF export failed:', err);
+    alert('The PDF export ran into a problem: ' + err.message);
+  }
+});
+</script>
+
+<script>
+{
+  const allLessonsLink = document.getElementById('all-lessons-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  allLessonsLink.href = groupParam ? `index-standalone.html?group=${encodeURIComponent(groupParam)}` : 'index-standalone.html';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 12 — Passive Extensions: Reporting Structures &amp; Causative | English+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+<style>
+  /* Lesson-specific only — the clickable compare-example styling used in the
+     concept section, the structure-widget styling reused from Lesson 11
+     (outlined toggle, roll animation, multi-cell rows), and the toggleable
+     reporting-verb pills. */
+  .compare-ex{cursor:pointer;border-bottom:1px dashed var(--c-modal);padding:0 1px;transition:background .15s}
+  .compare-ex:hover{background:var(--warn-bg)}
+  .compare-box{display:inline-block;padding:4px 10px;border-radius:6px;background:var(--surface-alt);cursor:default;transition:background .15s}
+  .compare-box:hover{background:var(--accent-soft)}
+  #compare-tooltip{
+    position:absolute;z-index:80;max-width:280px;background:var(--accent-soft);color:var(--text-secondary);
+    border:1px solid var(--accent);font-size:13px;line-height:1.5;padding:10px 12px;border-radius:8px;
+    box-shadow:0 4px 16px rgba(0,0,0,.12);pointer-events:none;
+    opacity:0;transition:opacity .1s;
+  }
+  #compare-tooltip.visible{opacity:1}
+  /* Scoped override for this lesson's "tricky part" boxes only — same
+     layout as the shared .warn-box, but a calmer blue instead of amber,
+     to fit this lesson's blue-accented widgets. Doesn't touch the global
+     .warn-box used elsewhere. */
+  .tricky-box{
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius-md);
+    padding:11px 15px;font-size:13.5px;color:var(--accent-dark);
+    display:flex;flex-wrap:wrap;gap:9px;align-items:flex-start;line-height:1.6;margin-top:10px;
+  }
+  .tricky-box > *{min-width:0}
+  .mode-toggle-outline .pill{border-radius:var(--radius-sm)}
+  .mode-toggle-outline .pill.on{background:var(--surface);color:var(--accent);border-color:var(--accent);font-weight:700}
+  .pill[disabled]{cursor:not-allowed;pointer-events:none}
+  .pill[disabled]:not(.on){opacity:.45}
+  @keyframes wheelRoll{from{transform:translateY(-6px);opacity:.25}to{transform:translateY(0);opacity:1}}
+  .wheel-value-anim{animation:wheelRoll .16s ease-out}
+  .wheel-btn-line{background:none;border:none;cursor:pointer;color:var(--text-tertiary);font-size:13px;padding:4px 0;line-height:1;width:100%;text-align:center}
+  .wheel-btn-line:hover{color:var(--accent)}
+  .static-cell{display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:var(--radius-md);padding:8px 6px;background:var(--surface);text-align:center;font-size:12.5px;color:var(--text-secondary);min-height:20px}
+  .static-cell.is-primary-cell{border-color:var(--accent);background:var(--surface);color:var(--accent);font-weight:650}
+  .static-cell.clickable-cell{cursor:pointer}
+  .static-cell.clickable-cell:hover{opacity:.85}
+  .reportverb-pill{flex-shrink:0;padding:7px 12px;border-radius:var(--radius-sm);border:1px solid var(--accent);background:var(--surface);cursor:pointer;font-size:12.5px;font-weight:700;color:var(--accent);transition:all .15s}
+  .reportverb-pill:hover{background:var(--accent-soft)}
+  .reportverb-pill.showing-participle.irregular{background:var(--warn-bg);border-color:var(--warn-border);color:var(--warn)}
+  .reportverb-pill.showing-participle.regular{background:var(--accent-soft);border-color:var(--accent-soft-border);color:var(--accent-dark)}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="shared/supabase-config.js"></script>
+</head>
+<body class="theme-modals">
+
+<div class="course-attribution">English+ Grammar Course · by Kris Galezewski</div>
+<div class="shell">
+
+  <!-- ============ HEADER ============ -->
+  <header class="lesson-header">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div class="lesson-eyebrow">Lesson 12 of 22 · Voice</div>
+      <div style="display:flex;gap:8px">
+      <a id="all-lessons-link" href="index-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📚 All Lessons</a>
+      <a id="glossary-link" href="glossary-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📖 My Glossary</a>
+    </div>
+    </div>
+    <h1 class="lesson-title">Passive Extensions: Reporting Structures &amp; Causative</h1>
+    <p class="lesson-sub">Reporting what's widely believed, and getting things done for you.</p>
+    <div class="pb-track" style="margin-top:16px"><div class="pb-fill" id="overall-progress" style="width:0%"></div></div>
+    <div id="sync-status" style="font-size:11.5px;color:var(--text-tertiary);margin-top:8px"></div>
+  </header>
+
+  <!-- ============ 1. WARM-UP ============ -->
+  <section class="section" id="sec-warmup">
+    <div class="section-label"><span class="num">1</span> Warm-up — two new passive jobs</div>
+    <div class="card">
+      <p style="margin-bottom:14px;font-size:14.5px;color:var(--text-secondary)">
+        Lesson 11 covered passive across every tense. Today adds two specific jobs that passive does especially
+        well: reporting a widely-held belief without naming who holds it, and describing something you arranged
+        for someone else to do.
+      </p>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. Today's forms are both about…</p>
+        <div id="warm-q1">
+          <button class="opt" data-value="right">describing something without naming exactly who said it, or something arranged for you by someone else</button>
+          <button class="opt" data-value="wrong">guessing what happened in the past</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. "It is said that the building is haunted" mainly means…</p>
+        <div id="warm-q2">
+          <button class="opt" data-value="right">many people believe this, though we don't know exactly who started saying it</button>
+          <button class="opt" data-value="wrong">one specific named person said this</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. "I had my car repaired" means…</p>
+        <div id="warm-q3">
+          <button class="opt" data-value="right">someone else repaired it, because I arranged for it</button>
+          <button class="opt" data-value="wrong">I repaired it myself</button>
+        </div>
+      </div>
+      <div class="tip-box">💡 <span style="flex:1;min-width:0">Both structures still use "be/have/get + past participle" — the same passive skeleton from Lesson 11, just aimed at a new job.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 2. DIAGNOSTIC PRE-TEST ============ -->
+  <section class="section" id="sec-diagnostic">
+    <div class="section-label"><span class="num">2</span> Quick check — before we explain anything</div>
+    <div class="card">
+      <p style="margin-bottom:16px;font-size:14.5px;color:var(--text-secondary)">Four quick questions. This isn't graded harshly — it just shows us where to focus.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. ___ that the company will announce layoffs next week.</p>
+        <div id="diag-q1">
+          <button class="opt" data-value="right">It is rumoured</button>
+          <button class="opt" data-value="wrong">It rumours</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. She ___ have worked for years in intelligence before becoming a teacher.</p>
+        <div id="diag-q2">
+          <button class="opt" data-value="right">is said to</button>
+          <button class="opt" data-value="wrong">says to</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. We ___ our kitchen renovated last month.</p>
+        <div id="diag-q3">
+          <button class="opt" data-value="right">had</button>
+          <button class="opt" data-value="wrong">did</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">4. He ___ his suit dry-cleaned before the interview.</p>
+        <div id="diag-q4">
+          <button class="opt" data-value="right">got</button>
+          <button class="opt" data-value="wrong">made</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. CONCEPT EXPLANATION ============ -->
+  <section class="section" id="sec-concept">
+    <div class="section-label"><span class="num">3</span> The concept</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px">Reporting what's widely believed</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">
+        Reporting structures let you state a widely-held belief or claim without saying exactly who holds it —
+        ideal for news, research, and formal writing where the source is vague, plural, or simply beside the
+        point. Two patterns do the same job, one starting with "It," one starting with the actual subject.
+        Switch to "Examples" below and scroll through — only the reporting verb ever changes.
+      </p>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">Two patterns, one job</h4>
+
+      <div style="margin-bottom:6px">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);font-weight:650">Pattern</span>
+      </div>
+      <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+        <button class="pill on" id="mode-reporting-itthat">It...that</button>
+        <button class="pill" id="mode-reporting-subjto">Subject...to</button>
+      </div>
+
+      <div style="margin:18px 0 6px;padding-top:16px;border-top:1px solid var(--border)">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);font-weight:650">View</span>
+      </div>
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+        <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+          <button class="pill on" id="mode-reporting-structure">Structure</button>
+          <button class="pill" id="mode-reporting-examples">Examples</button>
+          <button class="pill" id="mode-reporting-quiz">Quick check</button>
+        </div>
+        <span id="reporting-hint" style="display:none;font-size:12.5px;color:var(--text-tertiary)">— Click the reporting verb to see the next example.</span>
+      </div>
+      <div id="reporting-widget-container" style="padding:18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border);margin-bottom:22px">
+        <div style="overflow-x:auto;padding-bottom:2px">
+          <div id="reporting-row" style="display:grid;gap:8px;min-width:540px"></div>
+        </div>
+        <div id="reporting-active-line" style="display:none;margin-top:12px;font-size:13.5px;color:var(--text-secondary);text-align:center"></div>
+      </div>
+      <div id="reporting-quiz-container" style="padding:12px 18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border);margin-bottom:22px;display:none"></div>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:8px">Common reporting verbs</h4>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:10px">Tap any verb to see its past participle — every one of these fits both patterns above. <span style="color:var(--warn);font-weight:650">Amber</span> means irregular, <span style="color:var(--accent);font-weight:650">blue</span> means a simple "-ed."</p>
+      <div id="reportverb-pills" style="display:flex;flex-wrap:nowrap;overflow-x:auto;gap:8px;padding-bottom:6px"></div>
+
+      <button class="pill" id="rules-toggle" style="margin-top:18px">📖 Show the full rules</button>
+      <div class="expand-content" id="rules-content">
+        <div style="margin-top:16px">
+          <div class="tricky-box">
+            <span>🎯</span>
+            <span style="flex:1;min-width:0">
+              <b>The tricky part:</b> both patterns report the SAME claim — pick whichever fits the sentence you're building.<br><br>
+              ✅ "It is thought that she wrote the letter herself." — starts with "it," full clause after "that."<br>
+              ✅ "She is thought to have written the letter herself." — starts with the real subject, "to have + past participle" for the past.<br><br>
+              The most common mistake is mixing the two: <br>
+              ❌ "She is thought that she wrote the letter." — wrong: once the subject starts the sentence, drop "that" and switch to the infinitive.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Shifting the belief, and shifting the event</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:16px">
+        Two separate things can move into the past here, independently: <b>when the belief was held</b>
+        ("is" → "was") and <b>when the described event happened</b>, relative to that belief (a simple form →
+        a perfect one). Tap any sentence below to see exactly what's shifted.
+      </p>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:8px">With the "to-infinitive" structure</h4>
+      <div id="compare-perfect-infinitive" style="font-size:14.5px;line-height:1.8;margin-bottom:20px"></div>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:8px">With the "It...that" structure</h4>
+      <div id="compare-it-that-tense" style="font-size:14.5px;line-height:1.8"></div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px">Getting things done for you</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">
+        Causative "have/get something done" describes an action you arranged for someone else to do — not
+        something you did yourself. Same passive skeleton (past participle), new auxiliary.
+      </p>
+
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+        <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+          <button class="pill on" id="mode-causative-structure">Structure</button>
+          <button class="pill" id="mode-causative-examples">Examples</button>
+          <button class="pill" id="mode-causative-quiz">Quick check</button>
+        </div>
+        <span id="causative-hint" style="display:none;font-size:12.5px;color:var(--text-tertiary)">— Click any part of the sentence to see another example.</span>
+      </div>
+      <div id="causative-widget-container" style="padding:18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border);margin-bottom:20px">
+        <div style="overflow-x:auto;padding-bottom:2px">
+          <div id="causative-row" style="display:grid;gap:8px;min-width:420px"></div>
+        </div>
+        <div id="causative-active-line" style="display:none;margin-top:12px;font-size:13.5px;color:var(--text-secondary);text-align:center"></div>
+      </div>
+      <div id="causative-quiz-container" style="padding:12px 18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border);margin-bottom:20px;display:none"></div>
+
+      <div style="padding:16px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--surface);margin-bottom:16px">
+        <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:8px">"Get" — the informal alternative</h4>
+        <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:10px">Tap either sentence to compare.</p>
+        <div id="compare-get-have" style="font-size:14.5px;line-height:1.8"></div>
+      </div>
+
+      <div class="tricky-box">
+        <span>🎯</span>
+        <span style="flex:1;min-width:0">
+          <b>The tricky part:</b> plain passive and causative can look almost identical — the difference is entirely about arrangement.<br><br>
+          ✅ "My window was broken." — plain passive. It just happened; I didn't arrange it (probably an accident or vandalism).<br>
+          ✅ "I had my window fixed." — causative. I deliberately organised for someone to fix it.<br><br>
+          If nobody arranged for it to happen, it's plain passive. If someone (usually the subject) organised it, it's causative.
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. READING ============ -->
+  <section class="section" id="sec-reading">
+    <div class="section-label"><span class="num">4</span> Reading — The Milgram Obedience Experiment and Its Ethics Debate</div>
+    <div class="card">
+      <button class="pill" id="gram-toggle">🔍 Show grammar in this text</button>
+      <div class="passage" id="passage" style="margin-top:14px"></div>
+      <p style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">Tap a highlighted word for pronunciation, meaning and a fresh example. Once grammar highlighting is on, tap a highlighted sentence to see why that form was used.</p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:12px">Did you follow it? Quick comprehension check</h3>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. What did Milgram's newspaper advert claim the study was actually about?</p>
+        <div id="comp-q1">
+          <button class="opt" data-value="right">A study on memory and learning, not obedience.</button>
+          <button class="opt" data-value="wrong">A study specifically about testing obedience to authority.</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. What percentage of participants delivered the maximum shock?</p>
+        <div id="comp-q2">
+          <button class="opt" data-value="right">Sixty-five percent.</button>
+          <button class="opt" data-value="wrong">Around fifteen percent.</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. According to the text, what's one criticism of Milgram's follow-up survey finding that most participants were glad they took part?</p>
+        <div id="comp-q3">
+          <button class="opt" data-value="right">It may say more about how people rationalise past choices than whether the study was ethical.</button>
+          <button class="opt" data-value="wrong">It proves conclusively that the study caused no lasting harm.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. VOCAB REVIEW ============ -->
+  <section class="section" id="sec-vocab">
+    <div class="section-label"><span class="num">5</span> Vocabulary check</div>
+    <div class="card">
+      <p style="font-size:14.5px;margin-bottom:16px">All nine words from the text — mixed formats.</p>
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px">Match the meaning</h4>
+
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. "Comply" means…</p>
+        <div id="vocab-q1">
+          <button class="opt" data-value="right">to act according to a rule, order, or request</button>
+          <button class="opt" data-value="wrong">to openly refuse an order</button>
+          <button class="opt" data-value="wrong2">to complain formally</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. "Legitimate" means…</p>
+        <div id="vocab-q2">
+          <button class="opt" data-value="right">genuine, real, or officially accepted</button>
+          <button class="opt" data-value="wrong">fake or fraudulent</button>
+          <button class="opt" data-value="wrong2">extremely rare</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. "Distress" means…</p>
+        <div id="vocab-q3">
+          <button class="opt" data-value="right">extreme anxiety, sorrow, or pain</button>
+          <button class="opt" data-value="wrong">calm satisfaction</button>
+          <button class="opt" data-value="wrong2">mild curiosity</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. "Withdraw" means…</p>
+        <div id="vocab-q4">
+          <button class="opt" data-value="right">to remove oneself from a situation or activity</button>
+          <button class="opt" data-value="wrong">to commit more fully to something</button>
+          <button class="opt" data-value="wrong2">to publicly announce something</button>
+        </div>
+      </div>
+      <div style="margin-bottom:22px">
+        <p style="margin-bottom:8px;font-weight:550">5. "Outrage" means…</p>
+        <div id="vocab-q5">
+          <button class="opt" data-value="right">extreme anger and shock</button>
+          <button class="opt" data-value="wrong">quiet indifference</button>
+          <button class="opt" data-value="wrong2">gentle amusement</button>
+        </div>
+      </div>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px;padding-top:6px;border-top:1px solid var(--border)">Complete the sentence — vocabulary focus</h4>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">6. The inspector had the <input type="text" id="vgap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> to shut down the site immediately.</p>
+        <button class="btn btn-sm" id="vgap1-check">Check</button>
+        <div id="vgap1-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">7. The whole scheme relied on careful, sustained <input type="text" id="vgap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px">.</p>
+        <button class="btn btn-sm" id="vgap2-check">Check</button>
+        <div id="vgap2-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">8. Every participant was <input type="text" id="vgap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> at the end of the session and told the truth about the study.</p>
+        <button class="btn btn-sm" id="vgap3-check">Check</button>
+        <div id="vgap3-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">9. No one was physically forced, but the pressure to continue felt genuinely <input type="text" id="vgap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px">.</p>
+        <button class="btn btn-sm" id="vgap4-check">Check</button>
+        <div id="vgap4-fb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. GRAMMAR PRACTICE ============ -->
+  <section class="section" id="sec-practice">
+    <div class="section-label"><span class="num">6</span> Practice</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:2px">Gap-fill</h3>
+      <p style="font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:16px">Grammar focus — reporting structure or causative?</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">1. It <input type="text" id="gap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> (say) that the recipe is over a hundred years old.</p>
+        <button class="btn btn-sm" id="gap1-check">Check</button>
+        <div id="gap1-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">2. The company <input type="text" id="gap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (believe) to be losing money fast.</p>
+        <button class="btn btn-sm" id="gap2-check">Check</button>
+        <div id="gap2-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">3. He <input type="text" id="gap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:220px"> (report) to have fled the country years ago.</p>
+        <button class="btn btn-sm" id="gap3-check">Check</button>
+        <div id="gap3-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">4. I <input type="text" id="gap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:220px"> last spring. (have/paint — my flat)</p>
+        <button class="btn btn-sm" id="gap4-check">Check</button>
+        <div id="gap4-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">5. We're <input type="text" id="gap5-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:220px"> this weekend. (get/deliver — a new sofa)</p>
+        <button class="btn btn-sm" id="gap5-check">Check</button>
+        <div id="gap5-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">6. She always <input type="text" id="gap6-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:220px"> before a big event. (have/do — her nails)</p>
+        <button class="btn btn-sm" id="gap6-check">Check</button>
+        <div id="gap6-fb"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Categorise the sentence</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Each sentence is missing one word — read what's left, then tap the function it belongs to.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. "The company ___ to be planning layoffs, though nothing has been confirmed."</p>
+        <div id="cat-q1">
+          <button class="opt" data-value="right">Reporting structure</button>
+          <button class="opt" data-value="wrong">Causative</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. "We had the whole house ___ before we moved in."</p>
+        <div id="cat-q2">
+          <button class="opt" data-value="wrong">Reporting structure</button>
+          <button class="opt" data-value="right">Causative</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. "It is widely ___ that the painting is a forgery."</p>
+        <div id="cat-q3">
+          <button class="opt" data-value="right">Reporting structure</button>
+          <button class="opt" data-value="wrong">Causative</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">4. "I'm getting my eyes ___ next Tuesday."</p>
+        <div id="cat-q4">
+          <button class="opt" data-value="wrong">Reporting structure</button>
+          <button class="opt" data-value="right">Causative</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">5. "He ___ to have known about the fraud for months."</p>
+        <div id="cat-q5">
+          <button class="opt" data-value="right">Reporting structure</button>
+          <button class="opt" data-value="wrong">Causative</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">6. "They had the contract ___ by a lawyer before signing."</p>
+        <div id="cat-q6">
+          <button class="opt" data-value="wrong">Reporting structure</button>
+          <button class="opt" data-value="right">Causative</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Fix the sentence</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Each sentence has one mistake. Tap the word (or words) that are wrong.</p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary)">Sentence 1</div>
+      <p id="fix1" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 2</div>
+      <p id="fix2" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 3</div>
+      <p id="fix3" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 4</div>
+      <p id="fix4" style="font-size:15px;line-height:1.9"></p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Sentence builder</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">Tap the chips in the right order. Three rounds.</p>
+      <div id="builders"></div>
+    </div>
+  </section>
+
+  <!-- ============ 7. SPEAKING ============ -->
+  <section class="section" id="sec-speaking">
+    <div class="section-label"><span class="num">7</span> Speaking task</div>
+    <div class="mode-toggle">
+      <button class="pill on" id="mode-solo">👤 Solo</button>
+      <button class="pill" id="mode-group">👥 Group (2–4)</button>
+    </div>
+    <div class="task-card" id="speak-solo">
+      <div class="kicker">60-second rumour &amp; arrangement report</div>
+      <p style="font-size:14.5px;line-height:1.7">
+        Describe a rumour or widely-held belief about something (a person, a place, an urban legend), using
+        reporting structures ("it is said that...", "X is believed to..."). Then describe something you've
+        recently arranged for someone else to do for you, using causative ("I had/got ... done").
+      </p>
+      <button class="btn btn-sm" id="solo-done-btn" style="margin-top:14px">✓ I've done this</button>
+    </div>
+    <div class="task-card" id="speak-group" style="display:none">
+      <div class="kicker">Discussion — pick 1–2 questions to answer out loud</div>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:12px">Tap the question(s) you'll answer. Your teacher will see your pick and mark it after you speak.</p>
+      <div id="discuss-questions" style="display:flex;flex-direction:column;gap:8px"></div>
+      <p id="discuss-limit-msg" style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">You can select up to 2 questions.</p>
+    </div>
+  </section>
+
+  <!-- ============ 8. LISTENING ============ -->
+  <section class="section" id="sec-listening">
+    <div class="section-label"><span class="num">8</span> Listening</div>
+    <div class="card">
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:12px">Anna and Tomasz are talking about obedience and getting things fixed — right after reading about Milgram's experiment.</p>
+      <audio id="dialogue-audio" preload="none" style="display:none"></audio>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary" id="play-dialogue">▶ Play dialogue</button>
+        <button class="btn btn-ghost btn-sm" id="stop-dialogue">⏹ Stop</button>
+        <button class="btn btn-ghost btn-sm" id="show-transcript">Show full transcript</button>
+      </div>
+      <div id="transcript" style="margin-top:14px"></div>
+
+      <div style="margin-top:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. According to Tomasz, what's widely believed about the real purpose of Milgram's study?</p>
+        <div id="listen-q1">
+          <button class="opt" data-value="right">It's believed to have actually tested obedience, not memory.</button>
+          <button class="opt" data-value="wrong">It's believed to have tested reaction time under pressure.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. What does Anna say she's arranging to have done this weekend?</p>
+        <div id="listen-q2">
+          <button class="opt" data-value="right">Getting her boiler serviced.</button>
+          <button class="opt" data-value="wrong">Getting her whole kitchen redesigned.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. What does Tomasz say he'd never do, based on the reading?</p>
+        <div id="listen-q3">
+          <button class="opt" data-value="right">Blindly follow an authority figure's instructions without questioning them.</button>
+          <button class="opt" data-value="wrong">Take part in any kind of psychology study.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. WRAP-UP / EXIT TEST ============ -->
+  <section class="section" id="sec-wrapup">
+    <div class="section-label"><span class="num">9</span> Wrap-up — exit check</div>
+    <div class="card">
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. ___ that the museum will close for renovations next year.</p>
+        <div id="exit-q1">
+          <button class="opt" data-value="right">It is reported</button>
+          <button class="opt" data-value="wrong">It reports</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. She ___ have written the whole report herself, with no help at all.</p>
+        <div id="exit-q2">
+          <button class="opt" data-value="right">is known to</button>
+          <button class="opt" data-value="wrong">knows to</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. We ___ the locks changed after we lost our keys.</p>
+        <div id="exit-q3">
+          <button class="opt" data-value="right">had</button>
+          <button class="opt" data-value="wrong">made</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. My phone screen ___ last week, so I had it fixed.</p>
+        <div id="exit-q4">
+          <button class="opt" data-value="right">cracked</button>
+          <button class="opt" data-value="wrong">was had cracked</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">5. He's ___ his suit altered before the wedding.</p>
+        <div id="exit-q5">
+          <button class="opt" data-value="right">getting</button>
+          <button class="opt" data-value="wrong">doing</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="summary-card">
+      <h3 style="margin-bottom:14px">Your lesson summary</h3>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px" id="summary-ring-row">
+        <div id="score-ring-holder"></div>
+        <div>
+          <div style="font-weight:600" id="summary-name">—</div>
+          <div style="font-size:13px;margin-top:4px" id="summary-completion"></div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-top:4px" id="summary-weak">Finish the lesson to see your results.</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="finish-btn">Finish lesson &amp; see results</button>
+      <button class="btn" id="export-btn" style="margin-left:8px;display:none">⬇ Export PDF report</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="shared/course-engine.js"></script>
+<script>
+const LESSON_ID = 'lesson-12-passive-extensions';
+
+{
+  const glossaryLink = document.getElementById('glossary-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  const currentFile = window.location.pathname.split('/').pop();
+  let glossaryHref = `glossary-standalone.html?from=${encodeURIComponent(currentFile)}`;
+  if (groupParam) glossaryHref += `&group=${encodeURIComponent(groupParam)}`;
+  glossaryLink.href = glossaryHref;
+}
+
+{
+  const resetBtn = document.createElement('button');
+  resetBtn.className = 'btn btn-sm btn-ghost';
+  resetBtn.textContent = '↺ Reset my progress for this lesson';
+  resetBtn.style.cssText = 'margin-top:8px;font-size:12px;padding:5px 12px';
+  resetBtn.addEventListener('click', () => {
+    if (confirm('Clear all saved answers for this lesson on this device? (Does not affect Supabase.)')){
+      Course.resetLocalProgress(LESSON_ID);
+      location.reload();
+    }
+  });
+  document.getElementById('sync-status').insertAdjacentElement('afterend', resetBtn);
+}
+
+(async function initLesson(){
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Syncing your progress…`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  await Course.syncFromSupabase(LESSON_ID);
+  const sectionMap = Course.getSectionMap(LESSON_ID);
+
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Synced · Group: ${Course.getGroupId()}`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  /* ---------------- VOCAB DATA ---------------- */
+  const vocabData = {
+    comply: { word:'comply', ipa:'/kəmˈplaɪ/', meaning:'to act according to a rule, order, or request', example:"Most staff complied with the new safety guidelines without complaint." },
+    authority: { word:'authority', ipa:'/ɔːˈθɒr.ə.ti/', meaning:'the power or right to give orders and enforce obedience', example:"The inspector had the authority to shut down the site immediately." },
+    deception: { word:'deception', ipa:'/dɪˈsep.ʃən/', meaning:'the act of deliberately making someone believe something untrue', example:"The whole scheme relied on careful, sustained deception." },
+    legitimate: { word:'legitimate', ipa:'/lɪˈdʒɪt.ɪ.mət/', meaning:'genuine, real, or officially accepted', example:"She questioned whether the company's claims were even legitimate." },
+    distress: { word:'distress', ipa:'/dɪˈstres/', meaning:'extreme anxiety, sorrow, or pain', example:"The delay caused real distress to families waiting for news." },
+    withdraw: { word:'withdraw', ipa:'/wɪðˈdrɔː/', meaning:'to remove oneself from a situation or activity', example:"Participants were told they could withdraw from the study at any point." },
+    outrage: { word:'outrage', ipa:'/ˈaʊt.reɪdʒ/', meaning:'extreme anger and shock', example:"The decision provoked public outrage almost immediately." },
+    debrief: { word:'debrief', ipa:'/diːˈbriːf/', meaning:'to question someone about a completed task, or to give someone information after an event', example:"Every participant was debriefed at the end of the session." },
+    coerce: { word:'coerce', ipa:'/kəʊˈɜːs/', meaning:'to force or pressure someone into doing something they might not otherwise choose to do', example:"No one was physically coerced, but the pressure to continue was intense." }
+  };
+
+  function vocabSpan(key, text){
+    return `<span class="vocab" data-word="${key}">${text}</span>`;
+  }
+  function gramSpan(key, text){
+    return `<span class="gram" data-gram="${key}">${text}</span>`;
+  }
+  const gramExplanations = {
+    g1: "Reporting structure (past reference) — \"is believed to have designed\" uses a perfect infinitive because the belief refers to something in the past, not now.",
+    g2: "Past perfect passive (Lesson 11 review) — the instruction happened before the main story's past timeframe.",
+    g3: "Causative — Milgram didn't build the generator himself; he arranged for someone else to build it for him.",
+    g4: "Present simple passive (Lesson 11 review) — a general, ongoing fact about how the findings are used today.",
+    g5: "Reporting structure (past reference) — \"is reported to have caused\" states a widely-held claim about a past effect, without naming exactly who's making the claim."
+  };
+
+  /* ---------------- READING PASSAGE ---------------- */
+  document.getElementById('passage').innerHTML = `
+  <p>In 1961, a young psychologist named Stanley Milgram began recruiting ordinary residents of New Haven, Connecticut, for what a newspaper advert described only as a study on "memory and learning." Milgram ${gramSpan('g1','is widely believed to have designed')} it as something else entirely: a test of how far ordinary people would go to ${vocabSpan('comply','comply')} with an ${vocabSpan('authority','authority')} figure's instructions, even when doing so seemed to cause real harm to someone else.</p>
+
+  <p>The setup involved two roles: the "teacher," played by the genuine volunteer, and the "learner," an actor who ${gramSpan('g2','had been told')} in advance to answer questions incorrectly on purpose. Whenever the learner got an answer wrong, the teacher was instructed to deliver an electric shock — fake, though the teacher had no way of knowing that — with the voltage rising a little further each time. The ${vocabSpan('deception','deception')} extended to the equipment itself: Milgram ${gramSpan('g3','had the shock generator specially built')} to look convincingly real, dials and all.</p>
+
+  <p>The experimenter, wearing a lab coat to signal scientific ${vocabSpan('legitimate','legitimacy')}, calmly urged hesitant teachers to keep going whenever they protested. Sixty-five percent of participants continued all the way to the maximum shock, despite visible ${vocabSpan('distress','distress')}. The right to ${vocabSpan('withdraw','withdraw')} technically existed on paper, but in practice, very few felt able to use it once the experimenter simply told them to continue — critics have long argued the setup itself was subtly ${vocabSpan('coerce','coercive')}, even without any explicit force.</p>
+
+  <p>The findings ${gramSpan('g4','are still cited')} today in discussions of institutional obedience, but the study ${gramSpan('g5','is also reported to have caused')} genuine lasting distress for some participants, despite Milgram's insistence that any ${vocabSpan('outrage','outrage')} was short-lived. Participants were ${vocabSpan('debrief','debriefed')} afterward and told the shocks weren't real, and a follow-up survey found most said they were glad they'd taken part — though critics argue that finding says more about how people rationalise past choices than whether the original experiment was ethical. More than sixty years later, the debate over whether the scientific value justified what participants were put through still hasn't been settled.</p>
+  `;
+  document.getElementById('passage').classList.add('passage');
+
+  document.getElementById('gram-toggle').addEventListener('click', function(){
+    const passage = document.getElementById('passage');
+    const on = passage.classList.toggle('show-grammar');
+    this.classList.toggle('on', on);
+    this.textContent = on ? '🔍 Hide grammar in this text' : '🔍 Show grammar in this text';
+    if (!on) Course.hidePopup();
+  });
+  document.querySelectorAll('.gram').forEach(el => {
+    el.addEventListener('click', () => {
+      Course.showPopup(`<div style="font-size:14.5px;line-height:1.6">${gramExplanations[el.dataset.gram]}</div>`, el);
+    });
+  });
+
+  Course.initVocab(vocabData, LESSON_ID);
+
+  /* ---------------- REUSABLE STRUCTURE WIDGET (Structure/Examples toggle,
+     multi-cell row like Lesson 11) — used for both reporting structures and
+     for the causative structure below. Structure mode shows each part of
+     the pattern as its own cell, with no hint text or active-voice line
+     taking up space; Examples mode makes the highlighted ("primary") cells
+     clickable — clicking any of them advances to the next example, rather
+     than using separate arrow buttons, and reveals the hint + active-voice
+     line underneath. */
+  function buildStructureWidget({ prefix, columns, cells, examples, activeLabel = 'Active', quiz = null }){
+    let mode = 'structure';
+    let idx = 0;
+    const rowEl = document.getElementById(`${prefix}-row`);
+    const hintEl = document.getElementById(`${prefix}-hint`);
+    const activeLineEl = document.getElementById(`${prefix}-active-line`);
+    const structureBtn = document.getElementById(`mode-${prefix}-structure`);
+    const examplesBtn = document.getElementById(`mode-${prefix}-examples`);
+    const quizBtn = quiz ? document.getElementById(`mode-${prefix}-quiz`) : null;
+    const widgetContainer = quiz ? document.getElementById(`${prefix}-widget-container`) : null;
+    const quizContainer = quiz ? document.getElementById(`${prefix}-quiz-container`) : null;
+
+    rowEl.style.gridTemplateColumns = columns;
+
+    function advance(){
+      idx = (idx + 1) % examples.length;
+      render();
+    }
+
+    function cellHtml(text, isPrimary){
+      const clickable = mode === 'examples' && isPrimary;
+      return `<div class="static-cell${isPrimary ? ' is-primary-cell' : ''} wheel-value-anim${clickable ? ' clickable-cell' : ''}">${text}</div>`;
+    }
+
+    function render(){
+      if (mode === 'structure'){
+        hintEl.style.display = 'none';
+        activeLineEl.style.display = 'none';
+        rowEl.innerHTML = cells.map(c => cellHtml(c.structureLabel, false)).join('');
+      } else {
+        hintEl.style.display = 'block';
+        activeLineEl.style.display = 'block';
+        const ex = examples[idx];
+        rowEl.innerHTML = cells.map((c, i) => cellHtml(ex.cellValues[i], !!c.isPrimary)).join('');
+        activeLineEl.innerHTML = `<b>${activeLabel}:</b> "${ex.active}"`;
+        rowEl.querySelectorAll('.clickable-cell').forEach(cellEl => {
+          cellEl.addEventListener('click', advance);
+        });
+      }
+    }
+
+    function renderQuiz(){
+      quizContainer.innerHTML = `
+        <p id="${prefix}-quiz-prompt" style="font-size:15.5px;font-weight:600;text-align:center;color:var(--accent);margin-bottom:10px;line-height:1.5"></p>
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap" id="${prefix}-quiz-options">
+          ${quiz.options.map(o => `<button class="opt" data-answer="${o.value}" style="flex:0 1 auto">${o.label}</button>`).join('')}
+        </div>
+        <div id="${prefix}-quiz-feedback" style="text-align:center;min-height:16px;margin-top:8px;font-size:13.5px"></div>
+        <div style="text-align:center;margin-top:10px">
+          <button class="btn btn-primary" id="${prefix}-quiz-next" style="display:none">Next →</button>
+        </div>`;
+
+      let order = Course.shuffleArray(quiz.pool.map((_, i) => i));
+      let pos = 0;
+      let answered = false;
+      const promptEl = document.getElementById(`${prefix}-quiz-prompt`);
+      const optionsEl = document.getElementById(`${prefix}-quiz-options`);
+      const feedbackEl = document.getElementById(`${prefix}-quiz-feedback`);
+      const nextBtn = document.getElementById(`${prefix}-quiz-next`);
+
+      function renderQ(){
+        answered = false;
+        feedbackEl.textContent = '';
+        nextBtn.style.display = 'none';
+        promptEl.textContent = quiz.pool[order[pos]].prompt;
+        [...optionsEl.children].forEach(btn => { btn.className = 'opt'; });
+      }
+      optionsEl.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (answered) return;
+          answered = true;
+          const item = quiz.pool[order[pos]];
+          const correct = btn.dataset.answer === item.answer;
+          [...optionsEl.children].forEach(b => {
+            if (b === btn) b.classList.add(correct ? 'ok' : 'bad');
+            else if (b.dataset.answer === item.answer) b.classList.add('ok');
+            else b.classList.add('dim');
+          });
+          feedbackEl.innerHTML = correct
+            ? `<span style="color:var(--ok)">✓ ${quiz.correctText(item)}</span>`
+            : `<span style="color:var(--bad)">${quiz.incorrectText(item)}</span>`;
+          nextBtn.style.display = 'inline-block';
+        });
+      });
+      nextBtn.addEventListener('click', () => {
+        pos += 1;
+        if (pos >= order.length){ order = Course.shuffleArray(quiz.pool.map((_, i) => i)); pos = 0; }
+        renderQ();
+      });
+      renderQ();
+    }
+
+    function switchMode(newMode){
+      mode = newMode;
+      structureBtn.classList.toggle('on', newMode === 'structure');
+      examplesBtn.classList.toggle('on', newMode === 'examples');
+      if (quizBtn) quizBtn.classList.toggle('on', newMode === 'quiz');
+      if (quiz){
+        widgetContainer.style.display = newMode === 'quiz' ? 'none' : 'block';
+        quizContainer.style.display = newMode === 'quiz' ? 'block' : 'none';
+      }
+      if (newMode === 'quiz') renderQuiz();
+      else render();
+    }
+    structureBtn.addEventListener('click', () => switchMode('structure'));
+    examplesBtn.addEventListener('click', () => switchMode('examples'));
+    if (quizBtn) quizBtn.addEventListener('click', () => switchMode('quiz'));
+    render();
+  }
+
+  const REPORTING_CLAUSE = 'the company is planning layoffs';
+  const reportingVerbList = [
+    { base:'say', participle:'said', regular:false },
+    { base:'believe', participle:'believed', regular:true },
+    { base:'think', participle:'thought', regular:false },
+    { base:'know', participle:'known', regular:false },
+    { base:'understand', participle:'understood', regular:false },
+    { base:'report', participle:'reported', regular:true },
+    { base:'claim', participle:'claimed', regular:true },
+    { base:'allege', participle:'alleged', regular:true }
+  ];
+
+  /* ---------------- COMBINED REPORTING WIDGET: pattern x view ----------------
+     "It...that" and "subject...to" report the exact same underlying claim,
+     just built two different ways — so rather than two separate widgets,
+     one Pattern toggle switches between them while the View toggle (also
+     shared) controls Structure/Examples/Quick check, same as everywhere
+     else. Quick check deliberately mixes prompts from both patterns into
+     one pool, since recognising either pattern is the same skill. */
+  const reportingPatterns = {
+    itthat: {
+      columns: '0.7fr 0.8fr 1.2fr 0.7fr 2.6fr',
+      cells: [
+        { structureLabel: 'It' },
+        { structureLabel: 'is/was' },
+        { structureLabel: 'reporting verb', isPrimary: true },
+        { structureLabel: 'that' },
+        { structureLabel: 'clause' }
+      ],
+      examples: [
+        { cellValues: ['It', 'is', 'said', 'that', 'the old bridge is haunted.'], active: 'People say the old bridge is haunted.' },
+        { cellValues: ['It', 'is', 'believed', 'that', 'she wrote the letter herself.'], active: 'People believe she wrote the letter herself.' },
+        { cellValues: ['It', 'is', 'thought', 'that', 'the rumours are exaggerated.'], active: 'People think the rumours are exaggerated.' },
+        { cellValues: ['It', 'is', 'known', 'that', 'the company underpaid its staff.'], active: 'People know the company underpaid its staff.' },
+        { cellValues: ['It', 'is', 'understood', 'that', 'the negotiations have broken down.'], active: 'People understand the negotiations have broken down.' },
+        { cellValues: ['It', 'is', 'reported', 'that', 'the CEO is planning to resign.'], active: 'Sources report that the CEO is planning to resign.' },
+        { cellValues: ['It', 'is', 'claimed', 'that', 'the results were manipulated.'], active: 'People claim the results were manipulated.' },
+        { cellValues: ['It', 'is', 'alleged', 'that', 'he broke the terms of the deal.'], active: 'People allege he broke the terms of the deal.' }
+      ]
+    },
+    subjto: {
+      columns: '1.4fr 0.7fr 1.2fr 2fr',
+      cells: [
+        { structureLabel: 'Subject' },
+        { structureLabel: 'is/was' },
+        { structureLabel: 'reporting verb', isPrimary: true },
+        { structureLabel: 'to-infinitive' }
+      ],
+      examples: [
+        { cellValues: ['The bridge', 'is', 'said', 'to be haunted by a former resident.'], active: 'People say the bridge is haunted by a former resident.' },
+        { cellValues: ['She', 'is', 'believed', 'to have written the letter herself.'], active: 'People believe she wrote the letter herself.' },
+        { cellValues: ['The plan', 'is', 'thought', 'to be far too risky to attempt.'], active: 'People think the plan is far too risky to attempt.' },
+        { cellValues: ['The company', 'is', 'known', 'to have underpaid its staff.'], active: 'People know the company underpaid its staff.' },
+        { cellValues: ['The deal', 'is', 'understood', 'to have fallen through completely.'], active: 'People understand the deal fell through completely.' },
+        { cellValues: ['The CEO', 'is', 'reported', 'to be planning to resign soon.'], active: 'Sources report that the CEO is planning to resign soon.' },
+        { cellValues: ['The data', 'is', 'claimed', 'to have been manipulated.'], active: 'People claim the data was manipulated.' },
+        { cellValues: ['He', 'is', 'alleged', 'to have broken the terms of the deal.'], active: 'People allege he broke the terms of the deal.' }
+      ]
+    }
+  };
+
+  (function buildReportingWidget(){
+    let pattern = 'itthat';
+    let view = 'structure';
+    const idx = { itthat: 0, subjto: 0 };
+    const rowEl = document.getElementById('reporting-row');
+    const hintEl = document.getElementById('reporting-hint');
+    const activeLineEl = document.getElementById('reporting-active-line');
+    const widgetContainer = document.getElementById('reporting-widget-container');
+    const quizContainer = document.getElementById('reporting-quiz-container');
+    const patternLabels = { itthat: 'It...that', subjto: 'Subject...to' };
+
+    function cellHtml(text, isPrimary){
+      const clickable = view === 'examples' && isPrimary;
+      return `<div class="static-cell${isPrimary ? ' is-primary-cell' : ''} wheel-value-anim${clickable ? ' clickable-cell' : ''}">${text}</div>`;
+    }
+
+    function renderBrowse(){
+      const data = reportingPatterns[pattern];
+      rowEl.style.gridTemplateColumns = data.columns;
+      if (view === 'structure'){
+        hintEl.style.display = 'none';
+        activeLineEl.style.display = 'none';
+        rowEl.innerHTML = data.cells.map(c => cellHtml(c.structureLabel, false)).join('');
+      } else {
+        hintEl.style.display = 'block';
+        activeLineEl.style.display = 'block';
+        const ex = data.examples[idx[pattern]];
+        rowEl.innerHTML = data.cells.map((c, i) => cellHtml(ex.cellValues[i], !!c.isPrimary)).join('');
+        activeLineEl.innerHTML = `<b>Active:</b> "${ex.active}"`;
+        rowEl.querySelectorAll('.clickable-cell').forEach(cellEl => {
+          cellEl.addEventListener('click', () => {
+            idx[pattern] = (idx[pattern] + 1) % data.examples.length;
+            renderBrowse();
+          });
+        });
+      }
+    }
+
+    function renderQuiz(){
+      const quizPool = [
+        ...reportingPatterns.itthat.examples.map(ex => ({
+          prompt: ex.cellValues.join(' ').replace(/ \./g, '.'),
+          answer: 'itthat'
+        })),
+        ...reportingPatterns.subjto.examples.map(ex => ({
+          prompt: ex.cellValues.join(' '),
+          answer: 'subjto'
+        }))
+      ];
+      quizContainer.innerHTML = `
+        <p id="reporting-quiz-prompt" style="font-size:15px;font-weight:600;text-align:center;color:var(--accent);margin-bottom:10px;line-height:1.5"></p>
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap" id="reporting-quiz-options">
+          <button class="opt" data-answer="itthat" style="flex:0 1 auto">It...that</button>
+          <button class="opt" data-answer="subjto" style="flex:0 1 auto">Subject...to</button>
+        </div>
+        <div id="reporting-quiz-feedback" style="text-align:center;min-height:16px;margin-top:8px;font-size:13.5px"></div>
+        <div style="text-align:center;margin-top:10px">
+          <button class="btn btn-primary" id="reporting-quiz-next" style="display:none">Next →</button>
+        </div>`;
+
+      let order = Course.shuffleArray(quizPool.map((_, i) => i));
+      let pos = 0;
+      let answered = false;
+      const promptEl = document.getElementById('reporting-quiz-prompt');
+      const optionsEl = document.getElementById('reporting-quiz-options');
+      const feedbackEl = document.getElementById('reporting-quiz-feedback');
+      const nextBtn = document.getElementById('reporting-quiz-next');
+
+      function renderQ(){
+        answered = false;
+        feedbackEl.textContent = '';
+        nextBtn.style.display = 'none';
+        promptEl.textContent = quizPool[order[pos]].prompt;
+        [...optionsEl.children].forEach(btn => { btn.className = 'opt'; });
+      }
+      optionsEl.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (answered) return;
+          answered = true;
+          const item = quizPool[order[pos]];
+          const correct = btn.dataset.answer === item.answer;
+          [...optionsEl.children].forEach(b => {
+            if (b === btn) b.classList.add(correct ? 'ok' : 'bad');
+            else if (b.dataset.answer === item.answer) b.classList.add('ok');
+            else b.classList.add('dim');
+          });
+          feedbackEl.innerHTML = correct
+            ? `<span style="color:var(--ok)">✓ Correct! This is the "${patternLabels[item.answer]}" pattern.</span>`
+            : `<span style="color:var(--bad)">Not quite — this is the "${patternLabels[item.answer]}" pattern.</span>`;
+          nextBtn.style.display = 'inline-block';
+        });
+      });
+      nextBtn.addEventListener('click', () => {
+        pos += 1;
+        if (pos >= order.length){ order = Course.shuffleArray(quizPool.map((_, i) => i)); pos = 0; }
+        renderQ();
+      });
+      renderQ();
+    }
+
+    function updateRulesToggleState(){
+      const btn = document.getElementById('rules-toggle');
+      const content = document.getElementById('rules-content');
+      if (view === 'quiz'){
+        btn.disabled = true;
+        btn.textContent = '📖 Disabled during Quick check';
+        content.classList.remove('open');
+      } else {
+        btn.disabled = false;
+        const isOpen = content.classList.contains('open');
+        btn.textContent = isOpen ? '📖 Hide the full rules' : '📖 Show the full rules';
+      }
+    }
+    function switchPattern(newPattern){
+      pattern = newPattern;
+      document.getElementById('mode-reporting-itthat').classList.toggle('on', newPattern === 'itthat');
+      document.getElementById('mode-reporting-subjto').classList.toggle('on', newPattern === 'subjto');
+      if (view !== 'quiz') renderBrowse();
+    }
+    function switchView(newView){
+      view = newView;
+      document.getElementById('mode-reporting-structure').classList.toggle('on', newView === 'structure');
+      document.getElementById('mode-reporting-examples').classList.toggle('on', newView === 'examples');
+      document.getElementById('mode-reporting-quiz').classList.toggle('on', newView === 'quiz');
+      widgetContainer.style.display = newView === 'quiz' ? 'none' : 'block';
+      quizContainer.style.display = newView === 'quiz' ? 'block' : 'none';
+      if (newView === 'quiz') renderQuiz();
+      else renderBrowse();
+      updateRulesToggleState();
+    }
+    document.getElementById('mode-reporting-itthat').addEventListener('click', () => switchPattern('itthat'));
+    document.getElementById('mode-reporting-subjto').addEventListener('click', () => switchPattern('subjto'));
+    document.getElementById('mode-reporting-structure').addEventListener('click', () => switchView('structure'));
+    document.getElementById('mode-reporting-examples').addEventListener('click', () => switchView('examples'));
+    document.getElementById('mode-reporting-quiz').addEventListener('click', () => switchView('quiz'));
+    renderBrowse();
+  })();
+
+  buildStructureWidget({
+    prefix: 'causative',
+    columns: '0.9fr 1.1fr 1.3fr 1.3fr',
+    cells: [
+      { structureLabel: 'Subject', isPrimary: true },
+      { structureLabel: 'have', isPrimary: true },
+      { structureLabel: 'object', isPrimary: true },
+      { structureLabel: 'past participle', isPrimary: true }
+    ],
+    examples: [
+      { cellValues: ['I', 'had', 'my hair', 'cut'], active: 'A stylist cut my hair.' },
+      { cellValues: ['She', 'is having', 'her car', 'fixed'], active: 'A mechanic is fixing her car.' },
+      { cellValues: ['We', 'have', 'the office', 'cleaned'], active: 'A cleaning company cleans the office.' },
+      { cellValues: ['They', 'will have', 'the documents', 'translated'], active: 'A translator will translate the documents.' }
+    ],
+    quiz: {
+      options: [
+        { value: 'causative', label: 'Causative (arranged)' },
+        { value: 'passive', label: 'Plain passive (just happened)' }
+      ],
+      pool: [
+        { prompt: 'I had my hair cut.', answer: 'causative' },
+        { prompt: 'She is having her car fixed.', answer: 'causative' },
+        { prompt: 'We have the office cleaned every week.', answer: 'causative' },
+        { prompt: 'They will have the documents translated by Friday.', answer: 'causative' },
+        { prompt: 'My window was broken.', answer: 'passive' },
+        { prompt: 'The car was stolen last night.', answer: 'passive' },
+        { prompt: 'The report was finished yesterday.', answer: 'passive' },
+        { prompt: 'The building was damaged in the storm.', answer: 'passive' }
+      ],
+      correctText: (item) => item.answer === 'causative'
+        ? 'Correct! Someone arranged for this to be done.'
+        : 'Correct! This just happened, with nobody arranging it.',
+      incorrectText: (item) => item.answer === 'causative'
+        ? 'Not quite — this describes something arranged, not something that just happened.'
+        : 'Not quite — nobody arranged this; it simply happened.'
+    }
+  });
+
+  /* ---------------- REPORTING VERBS — PAST PARTICIPLE TOGGLE (ungraded) ----------------
+     Unlike a flashcard that adds a second line, each pill replaces its own
+     word entirely when tapped, so there's always exactly one word showing —
+     matching how the word would actually appear inside a real sentence.
+     Reuses reportingVerbList directly (defined above, alongside the widget
+     data) so there's a single source of truth for every verb's participle. */
+  const reportverbPillsEl = document.getElementById('reportverb-pills');
+  reportingVerbList.forEach(v => {
+    const btn = document.createElement('button');
+    btn.className = 'reportverb-pill';
+    btn.type = 'button';
+    btn.textContent = v.base;
+    let showingParticiple = false;
+    btn.addEventListener('click', () => {
+      showingParticiple = !showingParticiple;
+      btn.textContent = showingParticiple ? v.participle : v.base;
+      btn.classList.toggle('showing-participle', showingParticiple);
+      btn.classList.toggle('irregular', showingParticiple && !v.regular);
+      btn.classList.toggle('regular', showingParticiple && v.regular);
+    });
+    reportverbPillsEl.appendChild(btn);
+  });
+
+  /* ---------------- CLICKABLE/HOVERABLE COMPARE CARDS ----------------
+     Deliberately NOT using Course.showPopup here: that system shows a
+     full-screen backdrop, and on mouseenter the backdrop immediately
+     covers the trigger element, firing mouseleave, which hides the
+     popup, uncovering the trigger, re-firing mouseenter — an infinite
+     show/hide loop (visible as constant flashing). A tiny, self-contained,
+     pointer-events:none tooltip avoids that entirely: it can never steal
+     hover state from its anchor because the browser routes pointer
+     events straight through it to whatever's underneath. */
+  function ensureCompareTooltip(){
+    let el = document.getElementById('compare-tooltip');
+    if (!el){
+      el = document.createElement('div');
+      el.id = 'compare-tooltip';
+      document.body.appendChild(el);
+    }
+    return el;
+  }
+  const compareTooltipEl = ensureCompareTooltip();
+  function showCompareTooltip(html, anchorEl){
+    compareTooltipEl.innerHTML = html;
+    const rect = anchorEl.getBoundingClientRect();
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    const scrollX = window.scrollX || document.documentElement.scrollLeft;
+    compareTooltipEl.style.top = `${rect.bottom + scrollY + 8}px`;
+    compareTooltipEl.style.left = `${rect.left + scrollX}px`;
+    compareTooltipEl.classList.add('visible');
+  }
+  function hideCompareTooltip(){
+    compareTooltipEl.classList.remove('visible');
+  }
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.compare-box')) hideCompareTooltip();
+  });
+
+  function renderCompareCard(containerId, items, explanations){
+    const el = document.getElementById(containerId);
+    el.innerHTML = items.map(it => `
+      <div style="display:flex;gap:10px;align-items:baseline;margin-bottom:8px">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);flex-shrink:0;width:190px">${it.label}</span>
+        <span class="compare-box" data-key="${it.key}">"${it.text}"</span>
+      </div>
+    `).join('');
+    el.querySelectorAll('.compare-box').forEach(node => {
+      const html = `<div>${explanations[node.dataset.key]}</div>`;
+      node.addEventListener('mouseenter', () => showCompareTooltip(html, node));
+      node.addEventListener('mouseleave', hideCompareTooltip);
+      // Click fallback so the same information stays reachable on touch
+      // devices, where hover either doesn't fire or doesn't persist.
+      node.addEventListener('click', () => showCompareTooltip(html, node));
+    });
+  }
+
+  renderCompareCard('compare-perfect-infinitive', [
+    { key:'pi1', label:'Present belief → present event', text:'He is believed to be rich.' },
+    { key:'pi2', label:'Present belief → past event', text:'He is believed to have been rich.' },
+    { key:'pi3', label:'Past belief → same-time event', text:'He was believed to be rich.' },
+    { key:'pi4', label:'Past belief → even earlier event', text:'He was believed to have been rich.' }
+  ], {
+    pi1: "Current belief, about his CURRENT state — the belief and the state are both happening now.",
+    pi2: "Current belief, but about a PAST state — the perfect infinitive (\"to have been\") shifts only the described event into the past, not the belief itself.",
+    pi3: "A belief held in the PAST, about his state AT THAT SAME TIME — \"was\" shifts the belief, but the simple infinitive keeps the state matched to it.",
+    pi4: "A belief held in the past, about an EVEN EARLIER state — both the belief and the event have shifted, and the event shifted further back than the belief."
+  });
+
+  renderCompareCard('compare-it-that-tense', [
+    { key:'it1', label:'Present belief → present event', text:'It is known that they are rich.' },
+    { key:'it2', label:'Present belief → past event', text:'It is known that they were rich.' },
+    { key:'it3', label:'Past belief → same-time event', text:'It was known that they were rich.' },
+    { key:'it4', label:'Past belief → even earlier event', text:'It was known that they had been rich.' }
+  ], {
+    it1: "Current belief, about their CURRENT state — the belief and the state are both happening now.",
+    it2: "Current belief, but about a PAST state — the belief is held now, even though the wealth being described is in the past.",
+    it3: "A belief held in the PAST, about their state AT THAT SAME TIME — both the belief and the state are placed in the past together.",
+    it4: "A belief held in the past, about an EVEN EARLIER state — the past perfect in the clause shifts the wealth even further back than the belief itself."
+  });
+
+  renderCompareCard('compare-get-have', [
+    { key:'gh1', label:'Standard', text:'I had my window fixed.' },
+    { key:'gh2', label:'Informal', text:'I got my window fixed.' }
+  ], {
+    gh1: "\"Have\" — the standard, neutral causative form, equally natural in speech or writing.",
+    gh2: "\"Get\" — the exact same meaning, just more casual and spoken; very common in everyday conversation."
+  });
+
+  /* ---------------- EXPANDABLE RULES ---------------- */
+  document.getElementById('rules-toggle').addEventListener('click', function(){
+    const content = document.getElementById('rules-content');
+    const open = content.classList.toggle('open');
+    this.textContent = open ? '📖 Hide the full rules' : '📖 Show the full rules';
+  });
+
+  /* ---------------- MCQ SECTIONS (via shared engine) ---------------- */
+  const mcqSections = [
+    ['warm-q1','warmup-1','right'], ['warm-q2','warmup-2','right'], ['warm-q3','warmup-3','right'],
+    ['diag-q1','diagnostic-1','right'], ['diag-q2','diagnostic-2','right'], ['diag-q3','diagnostic-3','right'], ['diag-q4','diagnostic-4','right'],
+    ['comp-q1','reading-comprehension-1','right'], ['comp-q2','reading-comprehension-2','right'], ['comp-q3','reading-comprehension-3','right'],
+    ['vocab-q1','vocab-1','right'], ['vocab-q2','vocab-2','right'], ['vocab-q3','vocab-3','right'], ['vocab-q4','vocab-4','right'], ['vocab-q5','vocab-5','right'],
+    ['cat-q1','practice-categorise-1','right'], ['cat-q2','practice-categorise-2','right'], ['cat-q3','practice-categorise-3','right'],
+    ['cat-q4','practice-categorise-4','right'], ['cat-q5','practice-categorise-5','right'], ['cat-q6','practice-categorise-6','right'],
+    ['listen-q1','listening-1','right'], ['listen-q2','listening-2','right'], ['listen-q3','listening-3','right'],
+    ['exit-q1','exit-1','right'], ['exit-q2','exit-2','right'], ['exit-q3','exit-3','right'], ['exit-q4','exit-4','right'], ['exit-q5','exit-5','right']
+  ];
+  mcqSections.forEach(([id, section, correctVal]) => {
+    Course.shuffleOptions(id);
+    Course.initMCQ(id, {
+      lessonId: LESSON_ID, sectionId: section, correctValue: correctVal, onAnswered: updateOverallProgress,
+      restoreAnswer: sectionMap[section] ? sectionMap[section].answer_given : undefined
+    });
+  });
+  if (!sectionMap['listening-1']) Course.ensureGroupVariety(['listen-q1','listen-q2','listen-q3']);
+  if (!sectionMap['reading-comprehension-1']) Course.ensureGroupVariety(['comp-q1','comp-q2','comp-q3']);
+  if (!sectionMap['practice-categorise-1']) Course.ensureGroupVariety(['cat-q1','cat-q2','cat-q3','cat-q4','cat-q5','cat-q6']);
+
+  /* ---------------- GAP FILL (restorable) ----------------
+     None of these answers start with a word in Course.withContractions'
+     map in a way that needs contracting, so plain arrays are used throughout. */
+  const gapFills = [
+    ['gap1-input','gap1-check','gap1-fb','practice-gapfill-1', ['is said', 'was said'], true],
+    ['gap2-input','gap2-check','gap2-fb','practice-gapfill-2', ['is believed', 'was believed'], false],
+    ['gap3-input','gap3-check','gap3-fb','practice-gapfill-3', ['is reported', 'was reported'], false],
+    ['gap4-input','gap4-check','gap4-fb','practice-gapfill-4', ['had my flat painted'], false],
+    ['gap5-input','gap5-check','gap5-fb','practice-gapfill-5', ['getting a new sofa delivered'], false],
+    ['gap6-input','gap6-check','gap6-fb','practice-gapfill-6', ['has her nails done'], false],
+    ['vgap1-input','vgap1-check','vgap1-fb','vocab-gapfill-1', ['authority'], true],
+    ['vgap2-input','vgap2-check','vgap2-fb','vocab-gapfill-2', ['deception'], false],
+    ['vgap3-input','vgap3-check','vgap3-fb','vocab-gapfill-3', ['debriefed'], false],
+    ['vgap4-input','vgap4-check','vgap4-fb','vocab-gapfill-4', ['coercive'], false]
+  ];
+  gapFills.forEach(([inputId, btnId, fbId, section, answers, showHint]) => {
+    const restored = sectionMap[section];
+    Course.initGapFill(inputId, btnId, fbId, {
+      lessonId: LESSON_ID, sectionId: section, correctAnswers: answers, showAnswerHint: showHint,
+      restore: restored ? { answerGiven: restored.answer_given, isCorrect: restored.override_correct ?? restored.is_correct } : undefined,
+      onAnswered: updateOverallProgress
+    });
+  });
+
+  /* ---------------- FIX THE SENTENCE (error-spot) ---------------- */
+  const fixItems = [
+    { id:'fix1', section:'practice-fix-1', words:['It','is','said','that','the','museum','is','close','for','renovation.'], errorIndices:[7], correction:'closing / closed' },
+    { id:'fix2', section:'practice-fix-2', words:['She','is','thought','to','had','stolen','the','documents.'], errorIndices:[4], correction:'have' },
+    { id:'fix3', section:'practice-fix-3', words:['We','had','our','roof','repair','last','month.'], errorIndices:[4], correction:'repaired' },
+    { id:'fix4', section:'practice-fix-4', words:['He','is','believe','to','have','fled','the','country.'], errorIndices:[2], correction:'believed' }
+  ];
+  fixItems.forEach(item => {
+    const restored = sectionMap[item.section];
+    Course.initErrorSpot(item.id, {
+      lessonId: LESSON_ID, sectionId: item.section, words: item.words, errorIndices: item.errorIndices, correction: item.correction,
+      onAnswered: updateOverallProgress,
+      restore: restored ? { answerGiven: restored.answer_given } : undefined
+    });
+  });
+
+  /* ---------------- SENTENCE BUILDER (single-clause. Locks immediately on
+     Check, not just on reload.) ---------------- */
+  const builderRounds = [
+    { words: ['it','is','believed','that','she','wrote','the','letter'],
+      accepted: ['it is believed that she wrote the letter'] },
+    { words: ['he','is','said','to','have','left','already'],
+      accepted: ['he is said to have left already', 'he is said to have already left'] },
+    { words: ['they','had','the','kitchen','renovated','last','year'],
+      accepted: ['they had the kitchen renovated last year'] }
+  ];
+  const buildersEl = document.getElementById('builders');
+  builderRounds.forEach((round, ri) => {
+    const sectionId = `practice-builder-${ri+1}`;
+    const restored = sectionMap[sectionId];
+    const bankOrder = Course.shuffleArray(round.words.map((_, i) => i));
+    let state = [];
+    let locked = false;
+
+    if (restored){
+      const used = new Set();
+      restored.answer_given.split(' ').forEach(tok => {
+        const idx = round.words.findIndex((w, i) => w === tok && !used.has(i));
+        if (idx >= 0){ used.add(idx); state.push(idx); }
+      });
+      locked = true;
+    }
+
+    const wrap = document.createElement('div');
+    wrap.style.marginBottom = '20px';
+    wrap.innerHTML = `
+      <div class="builder-bank" id="builder-bank-${ri}"></div>
+      <div class="builder-target" id="builder-target-${ri}"></div>
+      <p style="font-size:12px;color:var(--text-tertiary);margin-top:6px">Tap a word in your sentence to send it back to the pool.</p>
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+        <button class="btn btn-sm" id="builder-check-${ri}">Check order</button>
+        <button class="btn btn-sm btn-ghost" id="builder-reset-${ri}">Reset</button>
+      </div>
+      <div id="builder-fb-${ri}"></div>
+    `;
+    buildersEl.appendChild(wrap);
+
+    const bank = wrap.querySelector(`#builder-bank-${ri}`);
+    const target = wrap.querySelector(`#builder-target-${ri}`);
+    function render(){
+      bank.innerHTML = '';
+      bankOrder.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip' + (state.includes(i) ? ' used' : '');
+        chip.textContent = round.words[i];
+        if (!locked) chip.addEventListener('click', () => { if (state.includes(i)) return; state.push(i); render(); });
+        else chip.disabled = true;
+        bank.appendChild(chip);
+      });
+      target.innerHTML = '';
+      state.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip';
+        chip.textContent = round.words[i];
+        if (!locked){
+          chip.title = 'Click to remove';
+          chip.addEventListener('click', () => { state = state.filter(x => x !== i); render(); });
+        } else {
+          chip.disabled = true;
+        }
+        target.appendChild(chip);
+      });
+    }
+    render();
+
+    if (restored){
+      const isCorrect = restored.override_correct ?? restored.is_correct;
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+    }
+
+    wrap.querySelector(`#builder-reset-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      state = []; render(); wrap.querySelector(`#builder-fb-${ri}`).innerHTML = '';
+    });
+    wrap.querySelector(`#builder-check-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      const attempt = state.map(i => round.words[i]).join(' ');
+      const isCorrect = round.accepted.includes(attempt);
+      locked = true;
+      render();
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+      Course.logProgress({ lessonId: LESSON_ID, sectionId, answerGiven: attempt, isCorrect });
+      updateOverallProgress();
+    });
+  });
+
+  /* ---------------- SPEAKING MODE TOGGLE ---------------- */
+  document.getElementById('mode-solo').addEventListener('click', () => {
+    document.getElementById('mode-solo').classList.add('on');
+    document.getElementById('mode-group').classList.remove('on');
+    document.getElementById('speak-solo').style.display = 'block';
+    document.getElementById('speak-group').style.display = 'none';
+  });
+  document.getElementById('mode-group').addEventListener('click', () => {
+    document.getElementById('mode-group').classList.add('on');
+    document.getElementById('mode-solo').classList.remove('on');
+    document.getElementById('speak-group').style.display = 'block';
+    document.getElementById('speak-solo').style.display = 'none';
+  });
+
+  /* ---------------- SOLO SPEAKING TASK — MARK AS DONE (restorable) ---------------- */
+  const SOLO_TASK_LABEL = "Solo speaking task: describe a rumour using reporting structures, then an arrangement using causative.";
+  const soloDoneBtn = document.getElementById('solo-done-btn');
+  let soloDone = !!(sectionMap['speaking-solo'] && sectionMap['speaking-solo'].status === 'completed');
+  function renderSoloBtn(){
+    soloDoneBtn.textContent = soloDone ? "✓ Marked as done" : "✓ I've done this";
+    soloDoneBtn.classList.toggle('btn-primary', soloDone);
+  }
+  renderSoloBtn();
+  soloDoneBtn.addEventListener('click', () => {
+    soloDone = !soloDone;
+    renderSoloBtn();
+    Course.logProgress({
+      lessonId: LESSON_ID, sectionId: 'speaking-solo', exerciseType: 'oral',
+      status: soloDone ? 'completed' : 'not_attempted', answerGiven: SOLO_TASK_LABEL
+    });
+  });
+
+  /* ---------------- DISCUSSION QUESTION PICKER (restorable) ---------------- */
+  const discussQuestions = [
+    "Do you think the Milgram experiment's findings justify the psychological harm it may have caused participants?",
+    "What's something you've had done recently that you couldn't (or didn't want to) do yourself?",
+    "Is there a widely-believed rumour or urban legend from your city or country worth reporting on?",
+    "Have you ever felt pressured to comply with an instruction you privately disagreed with? What happened?"
+  ];
+  const discussEl = document.getElementById('discuss-questions');
+  let pickedQuestions = [];
+  discussQuestions.forEach((q, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'discuss-q';
+    btn.dataset.idx = i;
+    btn.innerHTML = `<span class="chk"></span><span>${q}</span>`;
+    const restored = sectionMap[`speaking-q${i+1}`];
+    if (restored && restored.status === 'completed'){
+      pickedQuestions.push(i);
+      btn.classList.add('picked');
+    }
+    btn.addEventListener('click', () => {
+      const isPicked = pickedQuestions.includes(i);
+      if (isPicked){
+        pickedQuestions = pickedQuestions.filter(x => x !== i);
+        btn.classList.remove('picked');
+      } else {
+        if (pickedQuestions.length >= 2){
+          document.getElementById('discuss-limit-msg').style.color = 'var(--bad)';
+          document.getElementById('discuss-limit-msg').textContent = 'You can only pick up to 2 — deselect one first.';
+          return;
+        }
+        pickedQuestions.push(i);
+        btn.classList.add('picked');
+      }
+      document.getElementById('discuss-limit-msg').style.color = '';
+      document.getElementById('discuss-limit-msg').textContent = 'You can select up to 2 questions.';
+      Course.logProgress({
+        lessonId: LESSON_ID, sectionId: `speaking-q${i+1}`, exerciseType: 'oral',
+        status: isPicked ? 'not_attempted' : 'completed', answerGiven: q
+      });
+    });
+    discussEl.appendChild(btn);
+  });
+
+  /* ---------------- LISTENING DIALOGUE ---------------- */
+  const AUDIO_SRC = 'audio/lesson-12-listening.mp3';
+  const dialogue = [
+    { speaker:'Anna', pitch:1.12, line:"That Milgram study is genuinely unsettling. It's believed to have actually tested obedience, not memory at all." },
+    { speaker:'Tomasz', pitch:0.88, line:"Right — the whole 'memory and learning' cover story was just deception from the start." },
+    { speaker:'Anna', pitch:1.12, line:"I keep thinking about how few people actually walked away, even when they were clearly distressed." },
+    { speaker:'Tomasz', pitch:0.88, line:"Honestly, I'd like to think I'd have refused, but who really knows." },
+    { speaker:'Anna', pitch:1.12, line:"Anyway — completely different topic, I'm getting my boiler serviced this weekend." },
+    { speaker:'Tomasz', pitch:0.88, line:"Good idea before winter properly hits. Did you have someone recommended?" },
+    { speaker:'Anna', pitch:1.12, line:"Yeah, a neighbour had hers fixed last month and said the engineer was great." },
+    { speaker:'Tomasz', pitch:0.88, line:"One thing's for sure — I'd never just blindly follow instructions like that, no matter who was giving them." }
+  ];
+
+  let audioAvailable = false;
+  const audioEl = document.getElementById('dialogue-audio');
+  fetch(AUDIO_SRC, { method:'HEAD' }).then(r => { if (r.ok){ audioAvailable = true; audioEl.src = AUDIO_SRC; } }).catch(() => {});
+
+  const transcriptEl = document.getElementById('transcript');
+  dialogue.forEach((d, i) => {
+    const line = document.createElement('div');
+    line.className = 'transcript-line';
+    line.id = `t-line-${i}`;
+    line.innerHTML = `<b>${d.speaker}:</b> ${d.line}`;
+    transcriptEl.appendChild(line);
+  });
+
+  const playBtn = document.getElementById('play-dialogue');
+  let isPlaying = false;
+  let currentIdx = 0;
+
+  function updatePlayButton(){
+    if (isPlaying){ playBtn.textContent = '⏸ Pause'; return; }
+    if (window.speechSynthesis.paused){ playBtn.textContent = '▶ Resume'; return; }
+    playBtn.textContent = '▶ Play dialogue';
+  }
+
+  function speakLineAt(idx){
+    if (idx >= dialogue.length){ isPlaying = false; currentIdx = 0; updatePlayButton(); return; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    document.getElementById(`t-line-${idx}`).classList.add('shown', 'active');
+    const u = new SpeechSynthesisUtterance(dialogue[idx].line);
+    u.rate = 0.95; u.pitch = dialogue[idx].pitch;
+    u.onend = () => { if (isPlaying){ currentIdx = idx + 1; speakLineAt(currentIdx); } };
+    window.speechSynthesis.speak(u);
+  }
+
+  playBtn.addEventListener('click', () => {
+    if (audioAvailable){
+      if (audioEl.paused){ audioEl.play(); isPlaying = true; }
+      else { audioEl.pause(); isPlaying = false; }
+      updatePlayButton();
+      return;
+    }
+    if (!isPlaying){
+      isPlaying = true;
+      if (window.speechSynthesis.paused){ window.speechSynthesis.resume(); }
+      else {
+        // Defensive reset, fresh-start only (never on resume/pause): speechSynthesis
+        // has a well-documented browser bug where it can silently stop accepting
+        // new speech after earlier calls elsewhere on the page (e.g. the vocab-word
+        // audio buttons), leaving Play looking broken with no error anywhere.
+        // Clearing the queue right before a genuinely fresh play avoids that class
+        // of bug without disturbing an actual pause/resume in progress.
+        window.speechSynthesis.cancel();
+        speakLineAt(currentIdx);
+      }
+    } else {
+      isPlaying = false;
+      window.speechSynthesis.pause();
+    }
+    updatePlayButton();
+  });
+
+  document.getElementById('stop-dialogue').addEventListener('click', () => {
+    isPlaying = false;
+    currentIdx = 0;
+    window.speechSynthesis.cancel();
+    if (audioAvailable){ audioEl.pause(); audioEl.currentTime = 0; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    updatePlayButton();
+  });
+
+  audioEl.addEventListener('ended', () => { isPlaying = false; updatePlayButton(); });
+
+  document.getElementById('show-transcript').addEventListener('click', function(){
+    const shown = transcriptEl.classList.toggle('all-shown');
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.toggle('shown', shown));
+    this.textContent = shown ? 'Hide transcript' : 'Show full transcript';
+  });
+
+  updateOverallProgress();
+})();
+
+/* ---------------- OVERALL PROGRESS BAR ---------------- */
+const LESSON_TOTAL_POSSIBLE = 29 + 10 + 4 + 3; // mcqSections(incl. 6 categorise) + gapFills + fixItems + builderRounds
+function updateOverallProgress(){
+  const attempted = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+  const pct = Math.min(100, Math.round((attempted / LESSON_TOTAL_POSSIBLE) * 100));
+  document.getElementById('overall-progress').style.width = pct + '%';
+}
+
+/* ---------------- FINISH / SUMMARY ---------------- */
+document.getElementById('finish-btn').addEventListener('click', async () => {
+  const btn = document.getElementById('finish-btn');
+  const original = btn.textContent;
+  btn.textContent = 'Checking for teacher updates…'; btn.disabled = true;
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+  } finally {
+    btn.textContent = original; btn.disabled = false;
+  }
+  try {
+    const { correct, total } = Course.lessonScore(LESSON_ID);
+    Course.renderScoreRing('score-ring-holder', correct, total);
+    document.getElementById('summary-name').textContent = `${Course.getStudentName()} — ${correct}/${total} correct`;
+
+    const attemptedCount = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+    const completionPct = Math.min(100, Math.round((attemptedCount / LESSON_TOTAL_POSSIBLE) * 100));
+    const completionEl = document.getElementById('summary-completion');
+    if (attemptedCount < LESSON_TOTAL_POSSIBLE){
+      completionEl.style.color = 'var(--warn)';
+      completionEl.textContent = `⚠ Only ${completionPct}% of the lesson attempted so far (${attemptedCount} of ${LESSON_TOTAL_POSSIBLE} exercises) — the score above only reflects what's been answered.`;
+    } else {
+      completionEl.style.color = 'var(--ok)';
+      completionEl.textContent = `✓ Every exercise in this lesson has been attempted.`;
+    }
+
+    const weak = Course.weakSections(LESSON_ID);
+    document.getElementById('summary-weak').textContent = weak.length
+      ? `Worth revisiting: ${weak.join(', ')}`
+      : 'Strong across the board — nice work!';
+    document.getElementById('export-btn').style.display = 'inline-block';
+    updateOverallProgress();
+
+    const card = document.getElementById('summary-card');
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    card.classList.remove('summary-pulse'); void card.offsetWidth;
+    card.classList.add('summary-pulse');
+  } catch (err){
+    console.error('Finish lesson failed:', err);
+    let banner = document.getElementById('finish-error-banner');
+    if (!banner){
+      banner = document.createElement('div');
+      banner.id = 'finish-error-banner';
+      banner.className = 'error-banner';
+      document.getElementById('summary-card').appendChild(banner);
+    }
+    banner.textContent = `Something went wrong computing your results (${err.message}). Try reloading the page — your saved answers won't be lost.`;
+  }
+});
+document.getElementById('export-btn').addEventListener('click', async () => {
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+    Course.exportReportPDF(LESSON_ID, 'Passive Extensions: Reporting Structures & Causative', LESSON_TOTAL_POSSIBLE);
+  } catch (err){
+    console.error('PDF export failed:', err);
+    alert('The PDF export ran into a problem: ' + err.message);
+  }
+});
+</script>
+
+<script>
+{
+  const allLessonsLink = document.getElementById('all-lessons-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  allLessonsLink.href = groupParam ? `index-standalone.html?group=${encodeURIComponent(groupParam)}` : 'index-standalone.html';
+}
+</script>
+</body>
+</html>

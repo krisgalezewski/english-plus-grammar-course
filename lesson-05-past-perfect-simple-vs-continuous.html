@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 5 — Past Perfect Simple vs. Past Perfect Continuous | English+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+<style>
+  /* Lesson-specific only — clickable simple-vs-continuous compare examples in §3 */
+  .compare-box{display:inline-block;padding:4px 10px;border-radius:6px;background:var(--surface-alt);cursor:default;transition:background .15s}
+  .compare-box:hover{background:var(--accent-soft)}
+  .compare-ex{cursor:pointer;border-bottom:1px dashed var(--c-modal);padding:0 1px;transition:background .15s}
+  .compare-ex:hover{background:var(--warn-bg)}
+  .trait-pill{padding:7px 12px;border-radius:var(--radius-sm);border:1px solid var(--accent);background:var(--surface);color:var(--accent);font-size:12.5px;font-weight:700;cursor:pointer;transition:background .15s}
+  .trait-pill:hover{background:var(--accent-soft)}
+  #compare-tooltip{
+    position:absolute;z-index:80;max-width:280px;background:var(--accent-soft);color:var(--text-secondary);
+    border:1px solid var(--accent);font-size:13px;line-height:1.5;padding:10px 12px;border-radius:8px;
+    box-shadow:0 4px 16px rgba(0,0,0,.12);pointer-events:none;
+    opacity:0;transition:opacity .1s;
+  }
+  #compare-tooltip.visible{opacity:1}
+  .static-cell{display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:var(--radius-md);padding:8px 6px;background:var(--surface);text-align:center;font-size:12.5px;color:var(--text-secondary);min-height:20px}
+  .static-cell.is-primary-cell{border-color:var(--accent);background:var(--surface);color:var(--accent);font-weight:650;flex:1}
+  .static-cell.clickable-cell{cursor:pointer}
+  .static-cell.clickable-cell:hover{opacity:.85}
+  .mode-toggle-outline .pill{border-radius:var(--radius-sm)}
+  .mode-toggle-outline .pill.on{background:var(--surface);color:var(--accent);border-color:var(--accent);font-weight:700}
+  .pill[disabled]{cursor:not-allowed;pointer-events:none}
+  .pill[disabled]:not(.on){opacity:.45}
+  .signal-pill{border-color:var(--accent);color:var(--accent);border-radius:var(--radius-sm)}
+  .signal-pill:hover:not(:disabled){background:var(--accent-soft)}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="shared/supabase-config.js"></script>
+</head>
+<body class="theme-tenses">
+
+<div class="course-attribution">English+ Grammar Course · by Kris Galezewski</div>
+<div class="shell">
+
+  <!-- ============ HEADER ============ -->
+  <header class="lesson-header">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div class="lesson-eyebrow">Lesson 5 of 22 · Tenses &amp; Aspect</div>
+      <div style="display:flex;gap:8px">
+      <a id="all-lessons-link" href="index-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📚 All Lessons</a>
+      <a id="glossary-link" href="glossary-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📖 My Glossary</a>
+    </div>
+    </div>
+    <h1 class="lesson-title">Past Perfect Simple vs. Past Perfect Continuous</h1>
+    <p class="lesson-sub">The past before the past — a third time reference joins the map.</p>
+    <div class="pb-track" style="margin-top:16px"><div class="pb-fill" id="overall-progress" style="width:0%"></div></div>
+    <div id="sync-status" style="font-size:11.5px;color:var(--text-tertiary);margin-top:8px"></div>
+  </header>
+
+  <!-- ============ 1. WARM-UP ============ -->
+  <section class="section" id="sec-warmup">
+    <div class="section-label"><span class="num">1</span> Warm-up — a third time reference</div>
+    <div class="card">
+      <p style="margin-bottom:14px;font-size:14.5px;color:var(--text-secondary)">
+        Lesson 3 and 4 both used present perfect to connect a past action to <b>now</b>. Today's tense does the same
+        job, but the "now" it connects to is itself a moment in the past.
+      </p>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. "She has worked here since 2019" (present perfect) connects a past action to…</p>
+        <div id="warm-q1">
+          <button class="opt" data-value="right">now — the present moment</button>
+          <button class="opt" data-value="wrong">another point in the past</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. "By the time I joined, she had already worked here for five years" connects a past action to…</p>
+        <div id="warm-q2">
+          <button class="opt" data-value="right">another, later point in the past</button>
+          <button class="opt" data-value="wrong">right now, today</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. So today's tense (past perfect) is like present perfect, but anchored to…</p>
+        <div id="warm-q3">
+          <button class="opt" data-value="right">a point in the past, not now</button>
+          <button class="opt" data-value="wrong">the present moment, same as always</button>
+        </div>
+      </div>
+      <div class="tip-box">💡 <span style="flex:1;min-width:0">Same underlying logic as present perfect — just slide the "now" back into the past. That's the whole trick of past perfect.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 2. DIAGNOSTIC PRE-TEST ============ -->
+  <section class="section" id="sec-diagnostic">
+    <div class="section-label"><span class="num">2</span> Quick check — before we explain anything</div>
+    <div class="card">
+      <p style="margin-bottom:16px;font-size:14.5px;color:var(--text-secondary)">Four quick questions. This isn't graded harshly — it just shows us where to focus.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. By 8pm, she ___ all her work.</p>
+        <div id="diag-q1">
+          <button class="opt" data-value="right">had finished</button>
+          <button class="opt" data-value="wrong">finished</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. He was nervous because he ___ a speech before.</p>
+        <div id="diag-q2">
+          <button class="opt" data-value="right">had never given</button>
+          <button class="opt" data-value="wrong">never gave</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. They ___ for two hours when the bus finally came.</p>
+        <div id="diag-q3">
+          <button class="opt" data-value="right">had been waiting</button>
+          <button class="opt" data-value="wrong">waited</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">4. When I arrived, the film ___.</p>
+        <div id="diag-q4">
+          <button class="opt" data-value="right">had already started</button>
+          <button class="opt" data-value="wrong">already started</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. CONCEPT EXPLANATION ============ -->
+  <section class="section" id="sec-concept">
+    <div class="section-label"><span class="num">3</span> The concept</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px">Which past event came first?</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">
+        When a story mentions two past events, <b>past simple</b> is enough if you tell them in the order they
+        happened. The moment you need to jump backwards in time, past perfect takes over — <b>Past Perfect
+        Simple</b> signals that an earlier action was already finished by that later point, while <b>Past Perfect
+        Continuous</b> signals that an earlier action was still going on, in progress, right up to that later point.
+        Browse each below, or test yourself with Quick check.
+      </p>
+
+      <div style="margin-bottom:6px">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);font-weight:650">View</span>
+      </div>
+      <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+        <button class="pill on" id="mode-tense-structure" style="font-size:14px;padding:8px 18px">Structure</button>
+        <button class="pill" id="mode-tense-examples" style="font-size:14px;padding:8px 18px">Examples</button>
+      </div>
+
+      <div style="margin:18px 0 6px;padding-top:16px;border-top:1px solid var(--border)">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);font-weight:650">Form</span>
+      </div>
+      <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+        <button class="pill on" id="mode-tense-simple">Past Perfect Simple</button>
+        <button class="pill" id="mode-tense-continuous">Past Perfect Continuous</button>
+        <button class="pill" id="mode-tense-quiz">Quick check</button>
+      </div>
+
+      <div id="tense-widget-area" style="margin-top:14px;padding:18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border)"></div>
+      <p id="tense-widget-hint" style="font-size:12.5px;color:var(--text-tertiary);margin-top:8px">— Click the pills to see another example.</p>
+
+      <button class="pill" id="rules-toggle" style="margin-top:16px">📖 Show the full rules</button>
+      <div class="expand-content" id="rules-content">
+        <div style="margin-top:16px">
+          <div class="formula" style="border-left-color:var(--c-present)">✅ Past Perfect Simple: <b>subject + had + past participle</b> — e.g. "By the time the students got their results, they had already forgotten the material."</div>
+          <div class="formula" style="border-left-color:var(--c-continuous);margin-bottom:20px">✅ Past Perfect Continuous: <b>subject + had + been + verb-ing</b> — e.g. "They had been studying for hours before the test even started."</div>
+
+          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">Past Perfect Simple</h4>
+          <div id="pp-simple-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-bottom:20px"></div>
+
+          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">Past Perfect Continuous</h4>
+          <div id="pp-continuous-pills" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-bottom:20px"></div>
+
+          <div class="warn-box">
+            <span>🎯</span>
+            <span style="flex:1;min-width:0">
+              <b>The tricky part:</b> the same two events can be told with or without past perfect, and the meaning genuinely changes.<br><br>
+              ✅ "When I arrived, she <b>left</b>." — she left right after I arrived. <b>Sequence, past simple.</b><br>
+              ✅ "When I arrived, she <b>had left</b>." — she was already gone by the time I got there. <b>Out of order, past perfect.</b><br><br>
+              Past perfect is your signal that you're jumping backwards in the timeline, not narrating events in the order they happened. Watch for this exact contrast in the practice section below.
+            </span>
+          </div>
+          <div class="warn-box" style="margin-top:12px">
+            <span>🎯</span>
+            <span style="flex:1;min-width:0">
+              <b>And specifically simple vs. continuous:</b> once you know you need past perfect, the same choice from Lesson 4 comes back — are you counting a finished result, or picturing the ongoing activity itself?<br><br>
+              ✅ "By 6pm, she <b>had written</b> three reports." — a completed, countable result. <b>Simple.</b><br>
+              ✅ "By 6pm, she <b>had been writing</b> reports for three hours." — the activity itself, no count. <b>Continuous.</b><br><br>
+              Just like present perfect continuous, past perfect continuous is also the natural choice when the activity <i>explains</i> a past state: "He was out of breath because he <b>had been running</b>." Watch for this exact contrast in the practice section below.
+            </span>
+          </div>
+
+          <h4 style="font-size:15px;font-weight:650;margin:20px 0 10px;padding-top:16px;border-top:1px solid var(--border)">Compare: same past moment, different focus</h4>
+          <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">Tap any sentence below to see exactly why that form was chosen.</p>
+          <div id="compare-examples" style="font-size:14.5px;line-height:2"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:12px">Try it: which signal goes with which form?</h3>
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:14px">Each signal below only ever points one way — click its matching form. Instant feedback.</p>
+      <div id="signal-sort" style="display:grid;grid-template-columns:1fr auto auto;gap:10px 14px;align-items:center;font-size:14.5px"></div>
+    </div>
+  </section>
+
+  <!-- ============ 4. READING ============ -->
+  <section class="section" id="sec-reading">
+    <div class="section-label"><span class="num">4</span> Reading — The Discovery of the Dunning-Kruger Effect</div>
+    <div class="card">
+      <button class="pill" id="gram-toggle">🔍 Show grammar in this text</button>
+      <div class="passage" id="passage" style="margin-top:14px"></div>
+      <p style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">Tap a highlighted word for pronunciation, meaning and a fresh example. Once grammar highlighting is on, tap a highlighted sentence to see why that form was used.</p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:12px">Did you follow it? Quick comprehension check</h3>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. Why did McArthur Wheeler put lemon juice on his face before robbing banks?</p>
+        <div id="comp-q1">
+          <button class="opt" data-value="right">He believed it would make him invisible to security cameras, like invisible ink.</button>
+          <button class="opt" data-value="wrong">He was trying to disguise the smell of his clothes.</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. What pattern had Dunning and Kruger already noticed before designing their study?</p>
+        <div id="comp-q2">
+          <button class="opt" data-value="right">People who performed worst on a test often rated their own ability the most confidently.</button>
+          <button class="opt" data-value="wrong">People who performed best always underestimated everyone else.</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. According to the text, why do highly skilled people sometimes underrate themselves?</p>
+        <div id="comp-q3">
+          <button class="opt" data-value="right">The same skills needed to be competent are the skills needed to judge competence at all.</button>
+          <button class="opt" data-value="wrong">They deliberately downplay their abilities to seem modest.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. VOCAB REVIEW ============ -->
+  <section class="section" id="sec-vocab">
+    <div class="section-label"><span class="num">5</span> Vocabulary check</div>
+    <div class="card">
+      <p style="font-size:14.5px;margin-bottom:16px">All nine words from the text — mixed formats.</p>
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px">Match the meaning</h4>
+
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. "Reasoned" means…</p>
+        <div id="vocab-q1">
+          <button class="opt" data-value="right">thought through to a conclusion in a logical way</button>
+          <button class="opt" data-value="wrong">shouted something in anger</button>
+          <button class="opt" data-value="wrong2">forgot something completely</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. "Baffled" means…</p>
+        <div id="vocab-q2">
+          <button class="opt" data-value="right">completely confused</button>
+          <button class="opt" data-value="wrong">extremely proud</button>
+          <button class="opt" data-value="wrong2">slightly bored</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. "Inflated" (self-assessment) means…</p>
+        <div id="vocab-q3">
+          <button class="opt" data-value="right">exaggerated, higher than is actually justified</button>
+          <button class="opt" data-value="wrong">accurate and well-calibrated</button>
+          <button class="opt" data-value="wrong2">kept deliberately hidden</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. "Paradox" means…</p>
+        <div id="vocab-q4">
+          <button class="opt" data-value="right">a situation that seems contradictory but may still be true</button>
+          <button class="opt" data-value="wrong">a simple, obvious fact</button>
+          <button class="opt" data-value="wrong2">a type of scientific experiment</button>
+        </div>
+      </div>
+      <div style="margin-bottom:22px">
+        <p style="margin-bottom:8px;font-weight:550">5. "Peers" means…</p>
+        <div id="vocab-q5">
+          <button class="opt" data-value="right">people at the same level or rank as you</button>
+          <button class="opt" data-value="wrong">people in charge of you</button>
+          <button class="opt" data-value="wrong2">complete strangers</button>
+        </div>
+      </div>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px;padding-top:6px;border-top:1px solid var(--border)">Complete the sentence — vocabulary focus</h4>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">6. Ironically, the truly <input type="text" id="vgap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> rarely realise how much they don't know.</p>
+        <button class="btn btn-sm" id="vgap1-check">Check</button>
+        <div id="vgap1-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">7. Their 1999 paper is now considered a <input type="text" id="vgap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:170px"> piece of research in psychology.</p>
+        <button class="btn btn-sm" id="vgap2-check">Check</button>
+        <div id="vgap2-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">8. He wasn't lying — he seems to have been genuinely <input type="text" id="vgap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> about how the trick worked.</p>
+        <button class="btn btn-sm" id="vgap3-check">Check</button>
+        <div id="vgap3-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">9. Ignoring the security camera completely was a fairly <input type="text" id="vgap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> mistake.</p>
+        <button class="btn btn-sm" id="vgap4-check">Check</button>
+        <div id="vgap4-fb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. GRAMMAR PRACTICE ============ -->
+  <section class="section" id="sec-practice">
+    <div class="section-label"><span class="num">6</span> Practice</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:2px">Gap-fill</h3>
+      <p style="font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:16px">Grammar focus — past perfect simple or continuous?</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">1. By the time the police arrived, Wheeler <input type="text" id="gap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (already/leave) the scene.</p>
+        <button class="btn btn-sm" id="gap1-check">Check</button>
+        <div id="gap1-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">2. She <input type="text" id="gap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (study) psychology for six years before she got her first research job.</p>
+        <button class="btn btn-sm" id="gap2-check">Check</button>
+        <div id="gap2-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">3. When I called, they <input type="text" id="gap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (already/finish) dinner.</p>
+        <button class="btn btn-sm" id="gap3-check">Check</button>
+        <div id="gap3-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">4. He was exhausted because he <input type="text" id="gap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:170px"> (run) all morning.</p>
+        <button class="btn btn-sm" id="gap4-check">Check</button>
+        <div id="gap4-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">5. By 1999, the researchers <input type="text" id="gap5-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:170px"> (publish) three related papers.</p>
+        <button class="btn btn-sm" id="gap5-check">Check</button>
+        <div id="gap5-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">6. I <input type="text" id="gap6-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (never/see) snow before I moved to Poland.</p>
+        <button class="btn btn-sm" id="gap6-check">Check</button>
+        <div id="gap6-fb"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Event sequencer</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Tap the events in the order they actually happened — earliest first.</p>
+      <div id="sequencer"></div>
+
+      <div id="sequencer-connectors" style="display:none;margin-top:22px;padding-top:18px;border-top:1px solid var(--border)">
+        <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px">Now describe what happened — using past perfect</h4>
+        <div style="margin-bottom:16px">
+          <p style="margin-bottom:8px">1. By the time police arrived at his door, Wheeler <input type="text" id="seqgap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:170px"> (already/rob) two banks.</p>
+          <button class="btn btn-sm" id="seqgap1-check">Check</button>
+          <div id="seqgap1-fb"></div>
+        </div>
+        <div style="margin-bottom:16px">
+          <p style="margin-bottom:8px">2. Dunning and Kruger <input type="text" id="seqgap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> (never/meet) before they started working on the study together.</p>
+          <button class="btn btn-sm" id="seqgap2-check">Check</button>
+          <div id="seqgap2-fb"></div>
+        </div>
+        <div>
+          <p style="margin-bottom:8px">3. By the time their paper came out in 1999, Dunning and Kruger <input type="text" id="seqgap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:170px"> (test) the idea for months.</p>
+          <button class="btn btn-sm" id="seqgap3-check">Check</button>
+          <div id="seqgap3-fb"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Sentence builder</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">Tap the chips in the right order. Three rounds.</p>
+      <div id="builders"></div>
+    </div>
+  </section>
+
+  <!-- ============ 7. SPEAKING ============ -->
+  <section class="section" id="sec-speaking">
+    <div class="section-label"><span class="num">7</span> Speaking task</div>
+    <div class="mode-toggle">
+      <button class="pill on" id="mode-solo">👤 Solo</button>
+      <button class="pill" id="mode-group">👥 Group (2–4)</button>
+    </div>
+    <div class="task-card" id="speak-solo">
+      <div class="kicker">60-second story</div>
+      <p style="font-size:14.5px;line-height:1.7">
+        Describe a moment when you arrived somewhere and realised something had already happened without you —
+        a meeting that had already started, a friend who had already left, a decision that had already been made.
+        Use past perfect for the earlier event and past simple for the moment you arrived and found out.
+      </p>
+      <button class="btn btn-sm" id="solo-done-btn" style="margin-top:14px">✓ I've done this</button>
+    </div>
+    <div class="task-card" id="speak-group" style="display:none">
+      <div class="kicker">Discussion — pick 1–2 questions to answer out loud</div>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:12px">Tap the question(s) you'll answer. Your teacher will see your pick and mark it after you speak.</p>
+      <div id="discuss-questions" style="display:flex;flex-direction:column;gap:8px"></div>
+      <p id="discuss-limit-msg" style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">You can select up to 2 questions.</p>
+    </div>
+  </section>
+
+  <!-- ============ 8. LISTENING ============ -->
+  <section class="section" id="sec-listening">
+    <div class="section-label"><span class="num">8</span> Listening</div>
+    <div class="card">
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:12px">Anna and Tomasz are talking about the lemon juice robbery — right after reading about it.</p>
+      <audio id="dialogue-audio" preload="none" style="display:none"></audio>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary" id="play-dialogue">▶ Play dialogue</button>
+        <button class="btn btn-ghost btn-sm" id="stop-dialogue">⏹ Stop</button>
+        <button class="btn btn-ghost btn-sm" id="show-transcript">Show full transcript</button>
+      </div>
+      <div id="transcript" style="margin-top:14px"></div>
+
+      <div style="margin-top:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. What had the bank robber believed about lemon juice?</p>
+        <div id="listen-q1">
+          <button class="opt" data-value="right">That it would make his face invisible to security cameras.</button>
+          <button class="opt" data-value="wrong">That it would remove his fingerprints.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. What had the psychologists already noticed before the robbery story came out?</p>
+        <div id="listen-q2">
+          <button class="opt" data-value="right">The same overconfidence pattern in test results, on a smaller scale.</button>
+          <button class="opt" data-value="wrong">That most people underestimate their own abilities.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. According to Tomasz, what does the effect suggest about people who worry they're bad at something?</p>
+        <div id="listen-q3">
+          <button class="opt" data-value="right">They probably aren't as bad as they think.</button>
+          <button class="opt" data-value="wrong">They are usually right to worry.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. WRAP-UP / EXIT TEST ============ -->
+  <section class="section" id="sec-wrapup">
+    <div class="section-label"><span class="num">9</span> Wrap-up — exit check</div>
+    <div class="card">
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. By the time we arrived, the meeting ___.</p>
+        <div id="exit-q1">
+          <button class="opt" data-value="right">had already started</button>
+          <button class="opt" data-value="wrong">already started</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. She was tired because she ___ all night.</p>
+        <div id="exit-q2">
+          <button class="opt" data-value="right">had been working</button>
+          <button class="opt" data-value="wrong">has been working</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. He ___ three novels before he turned twenty.</p>
+        <div id="exit-q3">
+          <button class="opt" data-value="right">had written</button>
+          <button class="opt" data-value="wrong">has written</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. When I called, they ___ dinner already.</p>
+        <div id="exit-q4">
+          <button class="opt" data-value="right">had finished</button>
+          <button class="opt" data-value="wrong">finished</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">5. They ___ for hours before the rain finally stopped.</p>
+        <div id="exit-q5">
+          <button class="opt" data-value="right">had been walking</button>
+          <button class="opt" data-value="wrong">were walking</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="summary-card">
+      <h3 style="margin-bottom:14px">Your lesson summary</h3>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px" id="summary-ring-row">
+        <div id="score-ring-holder"></div>
+        <div>
+          <div style="font-weight:600" id="summary-name">—</div>
+          <div style="font-size:13px;margin-top:4px" id="summary-completion"></div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-top:4px" id="summary-weak">Finish the lesson to see your results.</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="finish-btn">Finish lesson &amp; see results</button>
+      <button class="btn" id="export-btn" style="margin-left:8px;display:none">⬇ Export PDF report</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="shared/course-engine.js"></script>
+<script>
+const LESSON_ID = 'lesson-05-past-perfect-simple-vs-continuous';
+
+/* ---------------- HOVER-TOOLTIP PILLS (usage-category pills) ---------------- */
+function ensureCompareTooltip(){
+  let el = document.getElementById('compare-tooltip');
+  if (!el){
+    el = document.createElement('div');
+    el.id = 'compare-tooltip';
+    document.body.appendChild(el);
+  }
+  return el;
+}
+const compareTooltipEl = ensureCompareTooltip();
+function showCompareTooltip(html, anchorEl){
+  compareTooltipEl.innerHTML = html;
+  const rect = anchorEl.getBoundingClientRect();
+  const scrollY = window.scrollY || document.documentElement.scrollTop;
+  const scrollX = window.scrollX || document.documentElement.scrollLeft;
+  compareTooltipEl.style.top = `${rect.bottom + scrollY + 8}px`;
+  compareTooltipEl.style.left = `${rect.left + scrollX}px`;
+  compareTooltipEl.classList.add('visible');
+}
+function hideCompareTooltip(){
+  compareTooltipEl.classList.remove('visible');
+}
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.trait-pill') && !e.target.closest('.compare-box')) hideCompareTooltip();
+});
+function renderCompareCard(containerId, items, explanations){
+  const el = document.getElementById(containerId);
+  el.innerHTML = items.map(it => `
+    <div style="display:flex;gap:10px;align-items:baseline;margin-bottom:${it.groupEnd ? 20 : 8}px">
+      <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);flex-shrink:0;width:110px">${it.label}</span>
+      <span class="compare-box" data-key="${it.key}">"${it.text}"</span>
+    </div>
+  `).join('');
+  el.querySelectorAll('.compare-box').forEach(node => {
+    const html = `<div>${explanations[node.dataset.key]}</div>`;
+    node.addEventListener('mouseenter', () => showCompareTooltip(html, node));
+    node.addEventListener('mouseleave', hideCompareTooltip);
+    node.addEventListener('click', () => showCompareTooltip(html, node));
+  });
+}
+function renderPills(containerId, pairs){
+  const el = document.getElementById(containerId);
+  pairs.forEach(p => {
+    const pill = document.createElement('button');
+    pill.type = 'button';
+    pill.className = 'trait-pill';
+    pill.textContent = p.word;
+    const html = `<div>${p.example}</div>`;
+    pill.addEventListener('mouseenter', () => showCompareTooltip(html, pill));
+    pill.addEventListener('mouseleave', hideCompareTooltip);
+    pill.addEventListener('click', (e) => { e.stopPropagation(); showCompareTooltip(html, pill); });
+    el.appendChild(pill);
+  });
+}
+const ppSimpleUses = [
+  { word: 'completed before another action', example: 'By 6pm, she had finished the report.' },
+  { word: 'earlier of two past events', example: 'By the time you called, I had already left. (especially with "by the time," "before," "after," "when," "already," "just")' },
+  { word: 'specific number reached', example: 'He had read three papers before the meeting.' }
+];
+const ppContinuousUses = [
+  { word: 'duration up to a point', example: 'They had been arguing for an hour before the manager stepped in.' },
+  { word: 'explaining a past result', example: 'She was tired because she had been running.' },
+  { word: 'interrupted ongoing action', example: 'The focus is the process, not a finished count.' }
+];
+renderPills('pp-simple-pills', ppSimpleUses);
+renderPills('pp-continuous-pills', ppContinuousUses);
+
+/* ---------------- TENSE WIDGET: browse 2 forms, or Quick check ---------------- */
+(function buildTenseWidget(){
+  const categories = { simple: ppSimpleUses, continuous: ppContinuousUses };
+  const structureData = {
+    simple: [{ word: 'Past Perfect Simple', example: 'subject + had + past participle' }],
+    continuous: [{ word: 'Past Perfect Continuous', example: 'subject + had + been + verb-ing' }]
+  };
+  const quizPool = [
+    ...ppSimpleUses.map(v => ({ word: v.word, answer: 'simple' })),
+    ...ppContinuousUses.map(v => ({ word: v.word, answer: 'continuous' }))
+  ];
+  const quizLabels = { simple: 'Past Perfect Simple', continuous: 'Past Perfect Continuous' };
+  let mode = 'simple';
+  let view = 'structure';
+  const idx = { structure: { simple: 0, continuous: 0 }, examples: { simple: 0, continuous: 0 } };
+  const displayEl = document.getElementById('tense-widget-area');
+  const hintEl = document.getElementById('tense-widget-hint');
+
+  function renderBrowse(){
+    displayEl.style.padding = '18px';
+    const data = view === 'structure' ? structureData[mode] : categories[mode];
+    const canCycle = data.length > 1;
+    hintEl.style.display = canCycle ? 'block' : 'none';
+    hintEl.textContent = '— Click the pills to see another example.';
+    const item = data[idx[view][mode]];
+    displayEl.innerHTML = `
+      <div style="overflow-x:auto;padding-bottom:2px">
+        <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:10px;align-items:center;min-width:420px">
+          <div class="static-cell is-primary-cell${canCycle ? ' clickable-cell' : ''}">${item.word}</div>
+          <div class="static-cell is-primary-cell${canCycle ? ' clickable-cell' : ''}">${item.example}</div>
+        </div>
+      </div>`;
+    if (canCycle){
+      displayEl.querySelectorAll('.clickable-cell').forEach(c => {
+        c.addEventListener('click', () => {
+          idx[view][mode] = (idx[view][mode] + 1) % data.length;
+          renderBrowse();
+        });
+      });
+    }
+  }
+
+  function renderQuiz(){
+    hintEl.style.display = 'none';
+    displayEl.style.padding = '12px 18px';
+    displayEl.innerHTML = `
+      <p id="tense-quiz-word" style="font-size:18px;font-weight:650;text-align:center;color:var(--accent);margin-bottom:10px"></p>
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap" id="tense-quiz-options">
+        <button class="opt" data-answer="simple" style="flex:0 1 auto">Perfect Simple</button>
+        <button class="opt" data-answer="continuous" style="flex:0 1 auto">Perfect Continuous</button>
+      </div>
+      <div id="tense-quiz-feedback" style="text-align:center;min-height:16px;margin-top:8px;font-size:13.5px"></div>
+      <div style="text-align:center;margin-top:10px">
+        <button class="btn btn-primary" id="tense-quiz-next" style="display:none">Next →</button>
+      </div>`;
+
+    let order = Course.shuffleArray(quizPool.map((_, i) => i));
+    let pos = 0;
+    let answered = false;
+    const wordEl = document.getElementById('tense-quiz-word');
+    const optionsEl = document.getElementById('tense-quiz-options');
+    const feedbackEl = document.getElementById('tense-quiz-feedback');
+    const nextBtn = document.getElementById('tense-quiz-next');
+
+    function renderQ(){
+      answered = false;
+      feedbackEl.textContent = '';
+      nextBtn.style.display = 'none';
+      wordEl.textContent = quizPool[order[pos]].word;
+      [...optionsEl.children].forEach(btn => { btn.className = 'opt'; });
+    }
+    optionsEl.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (answered) return;
+        answered = true;
+        const item = quizPool[order[pos]];
+        const correct = btn.dataset.answer === item.answer;
+        [...optionsEl.children].forEach(b => {
+          if (b === btn) b.classList.add(correct ? 'ok' : 'bad');
+          else if (b.dataset.answer === item.answer) b.classList.add('ok');
+          else b.classList.add('dim');
+        });
+        feedbackEl.innerHTML = correct
+          ? `<span style="color:var(--ok)">✓ Correct! This is ${quizLabels[item.answer]}.</span>`
+          : `<span style="color:var(--bad)">Not quite — this is ${quizLabels[item.answer]}.</span>`;
+        nextBtn.style.display = 'inline-block';
+      });
+    });
+    nextBtn.addEventListener('click', () => {
+      pos += 1;
+      if (pos >= order.length){ order = Course.shuffleArray(quizPool.map((_, i) => i)); pos = 0; }
+      renderQ();
+    });
+    renderQ();
+  }
+
+  function updateRulesToggleState(){
+    const btn = document.getElementById('rules-toggle');
+    const content = document.getElementById('rules-content');
+    if (mode === 'quiz'){
+      btn.disabled = true;
+      btn.textContent = '📖 Disabled during Quick check';
+      content.classList.remove('open');
+    } else {
+      btn.disabled = false;
+      const isOpen = content.classList.contains('open');
+      btn.textContent = isOpen ? '📖 Hide the full rules' : '📖 Show the full rules';
+    }
+  }
+  function switchMode(newMode){
+    mode = newMode;
+    ['simple', 'continuous', 'quiz'].forEach(m => {
+      document.getElementById(`mode-tense-${m}`).classList.toggle('on', m === newMode);
+    });
+    if (newMode === 'quiz') renderQuiz();
+    else renderBrowse();
+    updateRulesToggleState();
+  }
+  function switchView(newView){
+    view = newView;
+    document.getElementById('mode-tense-structure').classList.toggle('on', newView === 'structure');
+    document.getElementById('mode-tense-examples').classList.toggle('on', newView === 'examples');
+    if (mode !== 'quiz') renderBrowse();
+  }
+  document.getElementById('mode-tense-structure').addEventListener('click', () => switchView('structure'));
+  document.getElementById('mode-tense-examples').addEventListener('click', () => switchView('examples'));
+  document.getElementById('mode-tense-simple').addEventListener('click', () => switchMode('simple'));
+  document.getElementById('mode-tense-continuous').addEventListener('click', () => switchMode('continuous'));
+  document.getElementById('mode-tense-quiz').addEventListener('click', () => switchMode('quiz'));
+  switchMode('simple');
+})();
+
+{
+  const glossaryLink = document.getElementById('glossary-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  const currentFile = window.location.pathname.split('/').pop();
+  let glossaryHref = `glossary-standalone.html?from=${encodeURIComponent(currentFile)}`;
+  if (groupParam) glossaryHref += `&group=${encodeURIComponent(groupParam)}`;
+  glossaryLink.href = glossaryHref;
+}
+
+{
+  const resetBtn = document.createElement('button');
+  resetBtn.className = 'btn btn-sm btn-ghost';
+  resetBtn.textContent = '↺ Reset my progress for this lesson';
+  resetBtn.style.cssText = 'margin-top:8px;font-size:12px;padding:5px 12px';
+  resetBtn.addEventListener('click', () => {
+    if (confirm('Clear all saved answers for this lesson on this device? (Does not affect Supabase.)')){
+      Course.resetLocalProgress(LESSON_ID);
+      location.reload();
+    }
+  });
+  document.getElementById('sync-status').insertAdjacentElement('afterend', resetBtn);
+}
+
+(async function initLesson(){
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Syncing your progress…`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  await Course.syncFromSupabase(LESSON_ID);
+  const sectionMap = Course.getSectionMap(LESSON_ID);
+
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Synced · Group: ${Course.getGroupId()}`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  /* ---------------- VOCAB DATA ---------------- */
+  const vocabData = {
+    reasoned: { word:'reasoned', ipa:'/ˈriː.zənd/', meaning:'thought through to a conclusion in a logical way (even if the conclusion turns out wrong)', example:"She reasoned that leaving early would help her beat the traffic." },
+    baffled: { word:'baffled', ipa:'/ˈbæf.əld/', meaning:'completely confused', example:"The engineers were baffled by the sudden drop in performance." },
+    blatant: { word:'blatant', ipa:'/ˈbleɪ.tənt/', meaning:"very obvious, in a way that's hard to miss or excuse", example:"Ignoring the safety warning was a fairly blatant mistake." },
+    deluded: { word:'deluded', ipa:'/dɪˈluː.dɪd/', meaning:'believing something false, especially about oneself', example:"He seemed genuinely deluded about how well the presentation had gone." },
+    groundbreaking: { word:'groundbreaking', ipa:'/ˈɡraʊnd.breɪ.kɪŋ/', meaning:'completely new and original, changing how people think about something', example:"Their groundbreaking research changed how doctors treat the condition." },
+    inflated: { word:'inflated', ipa:'/ɪnˈfleɪ.tɪd/', meaning:'exaggerated, higher than is actually justified', example:"His inflated opinion of his own skills surprised his new colleagues." },
+    paradox: { word:'paradox', ipa:'/ˈpær.ə.dɒks/', meaning:'a situation that seems contradictory but may still be true', example:"It's a strange paradox that the more you learn, the more you realise you don't know." },
+    incompetent: { word:'incompetent', ipa:'/ɪnˈkɒm.pɪ.tənt/', meaning:'lacking the skill or ability to do something well', example:"The report criticised the incompetent handling of the project's early stages." },
+    peers: { word:'peers', ipa:'/pɪəz/', meaning:'people at the same level, rank, or age as you', example:"She often asked her peers for feedback before presenting to management." }
+  };
+
+  function vocabSpan(key, text){
+    return `<span class="vocab" data-word="${key}">${text}</span>`;
+  }
+  function gramSpan(key, text){
+    return `<span class="gram" data-gram="${key}">${text}</span>`;
+  }
+  const gramExplanations = {
+    g1: "Past perfect simple — this had already happened before the main sit-down-to-design-a-study moment; the earlier of two past events.",
+    g2: "Past perfect continuous — emphasises an ongoing pattern playing out over time before Wheeler's arrest, not one finished event.",
+    g3: "Past perfect simple — a completed, countable set of follow-up studies, finished before the paper's publication.",
+    g4: "Past perfect continuous — emphasises the ongoing, repeated activity of running variations over years, not a single finished result.",
+    g5: "Past perfect simple (negative) — by the time people used the term, whether they'd read the original paper was already a settled, finished fact, not an ongoing process."
+  };
+
+  /* ---------------- READING PASSAGE ---------------- */
+  document.getElementById('passage').innerHTML = `
+  <p>In 1995, a man named McArthur Wheeler robbed two banks in Pittsburgh in broad daylight, his face smeared in lemon juice and no other disguise at all. He had read that lemon juice works as invisible ink, and he had ${vocabSpan('reasoned','reasoned')} — quite sincerely, and even after testing it with a Polaroid photo beforehand — that rubbing it on his skin would hide his face from security cameras too. He was arrested that same night, and when detectives showed him the footage, he seemed genuinely ${vocabSpan('baffled','baffled')} that the cameras had filmed him clearly the whole time, in ${vocabSpan('blatant','blatant')} contradiction of his own theory. He wasn't lying to police afterward, either — by all accounts he had been genuinely ${vocabSpan('deluded','deluded')} about how the juice worked, right up to his arrest.</p>
+
+  <p>A magazine's year-end list of the dumbest crimes of 1995 later picked up the story, and a Cornell psychologist named David Dunning came across it and got curious. ${gramSpan('g1','He and his student Justin Kruger had already noticed')} a quieter version of the same pattern elsewhere: people who performed worst on a test often rated their own ability the most confidently. Something odd ${gramSpan('g2','had been happening')} in classrooms and workplaces long before Wheeler ever picked up a lemon.</p>
+
+  <p>In 1999, the pair published a now-${vocabSpan('groundbreaking','groundbreaking')} paper at Cornell University describing what's now called the Dunning-Kruger effect: the less someone actually knows, the harder it becomes for them to recognise their own gaps, so their self-assessment stays ${vocabSpan('inflated','inflated')}. By the time the paper came out, ${gramSpan('g3','they had already run')} several follow-up studies, testing the same effect in grammar, logic, and even humour.</p>
+
+  <p>The core ${vocabSpan('paradox','paradox')} baffled many people at first: the same skills that make someone competent at a task are often exactly the skills needed to judge competence at all — which is why the genuinely ${vocabSpan('incompetent','incompetent')} rarely realise it, while their more skilled ${vocabSpan('peers','peers')} tend to underrate themselves instead. ${gramSpan('g4','Researchers had been running')} variations of the study for years before the term finally escaped academic circles altogether, and by then, most people repeating it ${gramSpan('g5','had never actually read')} the original 1999 paper at all.</p>
+  `;
+  document.getElementById('passage').classList.add('passage');
+
+  document.getElementById('gram-toggle').addEventListener('click', function(){
+    const passage = document.getElementById('passage');
+    const on = passage.classList.toggle('show-grammar');
+    this.classList.toggle('on', on);
+    this.textContent = on ? '🔍 Hide grammar in this text' : '🔍 Show grammar in this text';
+    if (!on) Course.hidePopup();
+  });
+  document.querySelectorAll('.gram').forEach(el => {
+    el.addEventListener('click', () => {
+      Course.showPopup(`<div style="font-size:14.5px;line-height:1.6">${gramExplanations[el.dataset.gram]}</div>`, el);
+    });
+  });
+
+  Course.initVocab(vocabData, LESSON_ID);
+
+  /* ---------------- COMPARE EXAMPLES (simple vs. continuous, clickable) ----------------
+     Full sentences, not bare cue phrases — the whole point is that each one carries
+     enough context on its own to disambiguate, unlike an isolated signal word. */
+  const compareExamples = [
+    { key:'c1s', label:'Simple', text:'By the time the meeting started, she had already sent the report.' },
+    { key:'c1c', label:'Continuous', text:'She had been preparing for the meeting since 6am, and she looked exhausted.', groupEnd: true },
+    { key:'c2s', label:'Simple', text:'He had read the whole book twice before the film came out.' },
+    { key:'c2c', label:'Continuous', text:'He had been reading for three hours straight when his eyes started to hurt.', groupEnd: true },
+    { key:'c3s', label:'Simple', text:'They had finished the project by Friday.' },
+    { key:'c3c', label:'Continuous', text:'They had been working on the project for six months when it finally got cancelled.' }
+  ];
+  const compareExplanations = {
+    c1s: 'Past perfect simple — "already" plus one completed action (sending a single report) points at the finished result, not the process.',
+    c1c: 'Past perfect continuous — the duration ("since 6am") explains her visible state (exhausted) at that past moment, which is a classic job of the continuous form.',
+    c2s: 'Past perfect simple — "twice" is an exact count, and continuous can never combine with an exact number of completed repetitions.',
+    c2c: 'Past perfect continuous — "for three hours straight" emphasises the ongoing activity itself, which is what caused the result (sore eyes).',
+    c3s: 'Past perfect simple — a finished project by a stated deadline is a completed result, not an ongoing process.',
+    c3c: 'Past perfect continuous — a long stretch of ongoing effort ("for six months"), cut short by another past event (the cancellation).'
+  };
+  renderCompareCard('compare-examples', compareExamples, compareExplanations);
+
+  /* ---------------- EXPANDABLE RULES ---------------- */
+  document.getElementById('rules-toggle').addEventListener('click', function(){
+    const content = document.getElementById('rules-content');
+    const open = content.classList.toggle('open');
+    this.textContent = open ? '📖 Hide the full rules' : '📖 Show the full rules';
+  });
+
+  /* ---------------- SIGNAL WORD SORT (restorable) ---------------- */
+  // Every phrase here points ONE way regardless of the rest of the sentence —
+  // unlike bare duration phrases ("already," "by the time X," "for two hours"),
+  // which can genuinely go either way depending on context and were dropped
+  // after review, since this topic is hard enough for B1+/B2 without ambiguous
+  // cues. An exact count and a stative verb can only ever be simple; "non-stop,"
+  // "constantly," and "continuously" describe an ongoing process by definition.
+  const signals = [
+    {w:"an exact number of times (e.g. \"three times\")", correct:'simple'},
+    {w:'non-stop', correct:'continuous'},
+    {w:'a stative verb (know, believe, want)', correct:'simple'},
+    {w:'constantly', correct:'continuous'},
+    {w:'just (one, recently finished action)', correct:'simple'},
+    {w:'continuously', correct:'continuous'}
+  ];
+  const signalGrid = document.getElementById('signal-sort');
+  signals.forEach((s, i) => {
+    const row = document.createElement('div');
+    row.style.display = 'contents';
+    row.innerHTML = `
+      <div>${s.w}</div>
+      <button class="pill signal-pill" data-answer="simple" data-idx="${i}">Perfect simple</button>
+      <button class="pill signal-pill" data-answer="continuous" data-idx="${i}">Perfect continuous</button>
+    `;
+    signalGrid.appendChild(row);
+  });
+  function applySignalResult(idx, correct, chosen){
+    signalGrid.querySelectorAll(`button[data-idx="${idx}"]`).forEach(b => {
+      b.disabled = true;
+      if (b.dataset.answer === correct){
+        b.classList.add('on', b.dataset.answer === 'simple' ? 'c-present' : 'c-continuous');
+      } else if (b.dataset.answer === chosen){
+        b.style.background = 'var(--bad-bg)';
+        b.style.borderColor = 'var(--bad-border)';
+        b.style.color = 'var(--bad)';
+      } else {
+        b.style.opacity = '.4';
+      }
+    });
+  }
+  signals.forEach((s, i) => {
+    const restored = sectionMap[`concept-signal-${i}`];
+    if (restored) applySignalResult(i, s.correct, restored.answer_given);
+  });
+  signalGrid.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = btn.dataset.idx;
+      if (sectionMap[`concept-signal-${idx}`]) return;
+      const correct = signals[idx].correct;
+      const chosen = btn.dataset.answer;
+      const isCorrect = chosen === correct;
+      applySignalResult(idx, correct, chosen);
+      Course.logProgress({ lessonId: LESSON_ID, sectionId: `concept-signal-${idx}`, answerGiven: chosen, isCorrect });
+      updateOverallProgress();
+    });
+  });
+
+  /* ---------------- MCQ SECTIONS (via shared engine) ---------------- */
+  const mcqSections = [
+    ['warm-q1','warmup-1','right'], ['warm-q2','warmup-2','right'], ['warm-q3','warmup-3','right'],
+    ['diag-q1','diagnostic-1','right'], ['diag-q2','diagnostic-2','right'], ['diag-q3','diagnostic-3','right'], ['diag-q4','diagnostic-4','right'],
+    ['comp-q1','reading-comprehension-1','right'], ['comp-q2','reading-comprehension-2','right'], ['comp-q3','reading-comprehension-3','right'],
+    ['vocab-q1','vocab-1','right'], ['vocab-q2','vocab-2','right'], ['vocab-q3','vocab-3','right'], ['vocab-q4','vocab-4','right'], ['vocab-q5','vocab-5','right'],
+    ['listen-q1','listening-1','right'], ['listen-q2','listening-2','right'], ['listen-q3','listening-3','right'],
+    ['exit-q1','exit-1','right'], ['exit-q2','exit-2','right'], ['exit-q3','exit-3','right'], ['exit-q4','exit-4','right'], ['exit-q5','exit-5','right']
+  ];
+  mcqSections.forEach(([id, section, correctVal]) => {
+    Course.shuffleOptions(id);
+    Course.initMCQ(id, {
+      lessonId: LESSON_ID, sectionId: section, correctValue: correctVal, onAnswered: updateOverallProgress,
+      restoreAnswer: sectionMap[section] ? sectionMap[section].answer_given : undefined
+    });
+  });
+  if (!sectionMap['listening-1']) Course.ensureGroupVariety(['listen-q1','listen-q2','listen-q3']);
+  if (!sectionMap['reading-comprehension-1']) Course.ensureGroupVariety(['comp-q1','comp-q2','comp-q3']);
+
+  /* ---------------- GAP FILL (restorable) ----------------
+     Present-perfect-family answers following a subject pronoun are wrapped
+     in Course.withContractions per the design lessons learned; "Wheeler"
+     and "the researchers" are not pronouns, so items 1 and 5 are left as
+     full forms only. */
+  const gapFills = [
+    ['gap1-input','gap1-check','gap1-fb','practice-gapfill-1', ['had already left'], true],
+    ['gap2-input','gap2-check','gap2-fb','practice-gapfill-2', Course.withContractions(['had been studying']), false],
+    ['gap3-input','gap3-check','gap3-fb','practice-gapfill-3', Course.withContractions(['had already finished']), false],
+    ['gap4-input','gap4-check','gap4-fb','practice-gapfill-4', Course.withContractions(['had been running']), false],
+    ['gap5-input','gap5-check','gap5-fb','practice-gapfill-5', ['had published'], false],
+    ['gap6-input','gap6-check','gap6-fb','practice-gapfill-6', Course.withContractions(['had never seen']), false],
+    ['vgap1-input','vgap1-check','vgap1-fb','vocab-gapfill-1', ['incompetent'], true],
+    ['vgap2-input','vgap2-check','vgap2-fb','vocab-gapfill-2', ['groundbreaking'], false],
+    ['vgap3-input','vgap3-check','vgap3-fb','vocab-gapfill-3', ['deluded'], false],
+    ['vgap4-input','vgap4-check','vgap4-fb','vocab-gapfill-4', ['blatant'], false]
+  ];
+  gapFills.forEach(([inputId, btnId, fbId, section, answers, showHint]) => {
+    const restored = sectionMap[section];
+    Course.initGapFill(inputId, btnId, fbId, {
+      lessonId: LESSON_ID, sectionId: section, correctAnswers: answers, showAnswerHint: showHint,
+      restore: restored ? { answerGiven: restored.answer_given, isCorrect: restored.override_correct ?? restored.is_correct } : undefined,
+      onAnswered: updateOverallProgress
+    });
+  });
+
+  /* ---------------- EVENT SEQUENCER (new format for this lesson) ----------------
+     A single restorable exercise: chips are five short events from the reading,
+     shuffled; the student taps them into chronological order. Reuses the same
+     tested chip-tap-to-reorder mechanic as the sentence builder below, just at
+     the event level instead of the word level — a genuinely different practice
+     format from anything used in Lessons 1-4, and a natural fit for a lesson
+     about which past event came first. */
+  (function initSequencer(){
+    const sectionId = 'practice-sequence-1';
+    const events = [
+      'Wheeler robs two banks with lemon juice on his face',
+      'Police arrest Wheeler the same night',
+      'Dunning reads about the case and gets curious',
+      'Dunning and Kruger design their study',
+      'The pair publish their findings at Cornell'
+    ];
+    const correctOrder = events.map((_, i) => i); // events array is already chronological
+    const restored = sectionMap[sectionId];
+    const bankOrder = Course.shuffleArray(events.map((_, i) => i));
+    let state = [];
+    let locked = false;
+
+    if (restored){
+      const used = new Set();
+      restored.answer_given.split(' | ').forEach(text => {
+        const idx = events.findIndex((e, i) => e === text && !used.has(i));
+        if (idx >= 0){ used.add(idx); state.push(idx); }
+      });
+      locked = true;
+    }
+
+    const wrap = document.getElementById('sequencer');
+    wrap.innerHTML = `
+      <div class="builder-bank" id="seq-bank"></div>
+      <div class="builder-target" id="seq-target" style="flex-direction:column;align-items:stretch"></div>
+      <p style="font-size:12px;color:var(--text-tertiary);margin-top:6px">Tap an event in your sequence to send it back to the pool.</p>
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+        <button class="btn btn-sm" id="seq-check">Check order</button>
+        <button class="btn btn-sm btn-ghost" id="seq-reset">Reset</button>
+      </div>
+      <div id="seq-fb"></div>
+    `;
+    const bank = wrap.querySelector('#seq-bank');
+    const target = wrap.querySelector('#seq-target');
+
+    function render(){
+      bank.innerHTML = '';
+      bankOrder.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip' + (state.includes(i) ? ' used' : '');
+        chip.textContent = events[i];
+        if (!locked) chip.addEventListener('click', () => { if (state.includes(i)) return; state.push(i); render(); });
+        else chip.disabled = true;
+        bank.appendChild(chip);
+      });
+      target.innerHTML = '';
+      state.forEach((i, pos) => {
+        const chip = document.createElement('button');
+        chip.className = 'chip';
+        chip.textContent = `${pos + 1}. ${events[i]}`;
+        if (!locked){
+          chip.title = 'Click to remove';
+          chip.addEventListener('click', () => { state = state.filter(x => x !== i); render(); });
+        } else {
+          chip.disabled = true;
+        }
+        target.appendChild(chip);
+      });
+    }
+    render();
+
+    const connectorsPanel = document.getElementById('sequencer-connectors');
+
+    if (restored){
+      const isCorrect = restored.override_correct ?? restored.is_correct;
+      wrap.querySelector('#seq-fb').innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct order!</div>`
+        : `<div class="fb-no">Not quite — the correct order was: ${correctOrder.map(i => events[i]).join(' → ')}</div>`;
+      wrap.querySelector('#seq-check').disabled = true;
+      wrap.querySelector('#seq-reset').disabled = true;
+      connectorsPanel.style.display = 'block'; // already checked in a prior session — show the follow-up straight away
+      return;
+    }
+
+    wrap.querySelector('#seq-reset').addEventListener('click', () => {
+      if (locked) return; // Check already fires immediately below, so this only ever matters pre-check
+      state = []; render(); wrap.querySelector('#seq-fb').innerHTML = '';
+    });
+    wrap.querySelector('#seq-check').addEventListener('click', () => {
+      if (locked || state.length !== events.length) return;
+      const isCorrect = state.every((v, i) => v === correctOrder[i]);
+      // Lock immediately — previously the chips stayed tappable after Check and
+      // only actually locked on a page reload once a restored answer existed.
+      // Locking here, right when the student clicks Check, matches every other
+      // exercise type in the course (gap-fill, MCQ, sentence builder).
+      locked = true;
+      render();
+      wrap.querySelector('#seq-fb').innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct order!</div>`
+        : `<div class="fb-no">Not quite — the correct order was: ${correctOrder.map(i => events[i]).join(' → ')}</div>`;
+      wrap.querySelector('#seq-check').disabled = true;
+      wrap.querySelector('#seq-reset').disabled = true;
+      const answerGiven = state.map(i => events[i]).join(' | ');
+      Course.logProgress({ lessonId: LESSON_ID, sectionId, answerGiven, isCorrect });
+      updateOverallProgress();
+      connectorsPanel.style.display = 'block'; // reveal the past-perfect connector sentences either way — the
+                                                // correct order is shown above regardless of the student's attempt
+    });
+  })();
+
+  /* ---------------- EVENT SEQUENCER — CONNECTOR SENTENCES ----------------
+     Three past-perfect gap-fills that describe the relationship between the
+     events above (two simple, one continuous) — revealed once the sequencing
+     step is checked (see initSequencer). Uses the same restorable gap-fill
+     helper as every other gap-fill in the lesson. */
+  const sequencerGapFills = [
+    ['seqgap1-input','seqgap1-check','seqgap1-fb','practice-sequence-connect-1', ['had already robbed'], true],
+    ['seqgap2-input','seqgap2-check','seqgap2-fb','practice-sequence-connect-2', ['had never met'], false],
+    ['seqgap3-input','seqgap3-check','seqgap3-fb','practice-sequence-connect-3', ['had been testing'], false]
+  ];
+  sequencerGapFills.forEach(([inputId, btnId, fbId, section, answers, showHint]) => {
+    const restored = sectionMap[section];
+    Course.initGapFill(inputId, btnId, fbId, {
+      lessonId: LESSON_ID, sectionId: section, correctAnswers: answers, showAnswerHint: showHint,
+      restore: restored ? { answerGiven: restored.answer_given, isCorrect: restored.override_correct ?? restored.is_correct } : undefined,
+      onAnswered: updateOverallProgress
+    });
+  });
+
+  /* ---------------- SENTENCE BUILDER (single-clause, frontable time phrases only —
+     deliberately avoiding the two-clause swappable-subject ambiguity from Lesson 2) ---------------- */
+  const builderRounds = [
+    { words: ['she','had','already','left','by','six'],
+      accepted: ['she had already left by six', 'by six she had already left'] },
+    { words: ['they','had','been','arguing','for','an','hour'],
+      accepted: ['they had been arguing for an hour'] },
+    { words: ['he','had','never','seen','snow','before'],
+      accepted: ['he had never seen snow before'] }
+  ];
+  const buildersEl = document.getElementById('builders');
+  builderRounds.forEach((round, ri) => {
+    const sectionId = `practice-builder-${ri+1}`;
+    const restored = sectionMap[sectionId];
+    const bankOrder = Course.shuffleArray(round.words.map((_, i) => i));
+    let state = [];
+    let locked = false;
+
+    if (restored){
+      const used = new Set();
+      restored.answer_given.split(' ').forEach(tok => {
+        const idx = round.words.findIndex((w, i) => w === tok && !used.has(i));
+        if (idx >= 0){ used.add(idx); state.push(idx); }
+      });
+      locked = true;
+    }
+
+    const wrap = document.createElement('div');
+    wrap.style.marginBottom = '20px';
+    wrap.innerHTML = `
+      <div class="builder-bank" id="builder-bank-${ri}"></div>
+      <div class="builder-target" id="builder-target-${ri}"></div>
+      <p style="font-size:12px;color:var(--text-tertiary);margin-top:6px">Tap a word in your sentence to send it back to the pool.</p>
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+        <button class="btn btn-sm" id="builder-check-${ri}">Check order</button>
+        <button class="btn btn-sm btn-ghost" id="builder-reset-${ri}">Reset</button>
+      </div>
+      <div id="builder-fb-${ri}"></div>
+    `;
+    buildersEl.appendChild(wrap);
+
+    const bank = wrap.querySelector(`#builder-bank-${ri}`);
+    const target = wrap.querySelector(`#builder-target-${ri}`);
+    function render(){
+      bank.innerHTML = '';
+      bankOrder.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip' + (state.includes(i) ? ' used' : '');
+        chip.textContent = round.words[i];
+        if (!locked) chip.addEventListener('click', () => { if (state.includes(i)) return; state.push(i); render(); });
+        else chip.disabled = true;
+        bank.appendChild(chip);
+      });
+      target.innerHTML = '';
+      state.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip';
+        chip.textContent = round.words[i];
+        if (!locked){
+          chip.title = 'Click to remove';
+          chip.addEventListener('click', () => { state = state.filter(x => x !== i); render(); });
+        } else {
+          chip.disabled = true;
+        }
+        target.appendChild(chip);
+      });
+    }
+    render();
+
+    if (restored){
+      const isCorrect = restored.override_correct ?? restored.is_correct;
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+    }
+
+    wrap.querySelector(`#builder-reset-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      state = []; render(); wrap.querySelector(`#builder-fb-${ri}`).innerHTML = '';
+    });
+    wrap.querySelector(`#builder-check-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      const attempt = state.map(i => round.words[i]).join(' ');
+      const isCorrect = round.accepted.includes(attempt);
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      Course.logProgress({ lessonId: LESSON_ID, sectionId, answerGiven: attempt, isCorrect });
+      updateOverallProgress();
+    });
+  });
+
+  /* ---------------- SPEAKING MODE TOGGLE ---------------- */
+  document.getElementById('mode-solo').addEventListener('click', () => {
+    document.getElementById('mode-solo').classList.add('on');
+    document.getElementById('mode-group').classList.remove('on');
+    document.getElementById('speak-solo').style.display = 'block';
+    document.getElementById('speak-group').style.display = 'none';
+  });
+  document.getElementById('mode-group').addEventListener('click', () => {
+    document.getElementById('mode-group').classList.add('on');
+    document.getElementById('mode-solo').classList.remove('on');
+    document.getElementById('speak-group').style.display = 'block';
+    document.getElementById('speak-solo').style.display = 'none';
+  });
+
+  /* ---------------- DISCUSSION QUESTION PICKER (restorable) ---------------- */
+  const discussQuestions = [
+    "Tell us about a time you found out something had already happened without you — what was it?",
+    "Have you ever been completely wrong about something, but felt totally confident at the time? What happened?",
+    "What's something you'd already learned or practised a lot before you actually needed it?",
+    "Do you think it's more common to overestimate or underestimate your own abilities? Why?"
+  ];
+  const discussEl = document.getElementById('discuss-questions');
+  let pickedQuestions = [];
+  discussQuestions.forEach((q, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'discuss-q';
+    btn.dataset.idx = i;
+    btn.innerHTML = `<span class="chk"></span><span>${q}</span>`;
+    const restored = sectionMap[`speaking-q${i+1}`];
+    if (restored && restored.status === 'completed'){
+      pickedQuestions.push(i);
+      btn.classList.add('picked');
+    }
+    btn.addEventListener('click', () => {
+      const isPicked = pickedQuestions.includes(i);
+      if (isPicked){
+        pickedQuestions = pickedQuestions.filter(x => x !== i);
+        btn.classList.remove('picked');
+      } else {
+        if (pickedQuestions.length >= 2){
+          document.getElementById('discuss-limit-msg').style.color = 'var(--bad)';
+          document.getElementById('discuss-limit-msg').textContent = 'You can only pick up to 2 — deselect one first.';
+          return;
+        }
+        pickedQuestions.push(i);
+        btn.classList.add('picked');
+      }
+      document.getElementById('discuss-limit-msg').style.color = '';
+      document.getElementById('discuss-limit-msg').textContent = 'You can select up to 2 questions.';
+      Course.logProgress({
+        lessonId: LESSON_ID, sectionId: `speaking-q${i+1}`, exerciseType: 'oral',
+        status: isPicked ? 'not_attempted' : 'completed', answerGiven: q
+      });
+    });
+    discussEl.appendChild(btn);
+  });
+
+  /* ---------------- SOLO SPEAKING TASK — MARK AS DONE (restorable) ----------------
+     Previously only group-mode discussion picks were logged as oral progress,
+     so a student working solo never showed up on the teacher dashboard's
+     speaking panel at all. This gives solo students an equivalent way to
+     register that they did the task — the dashboard's oral-picks renderer
+     already groups by section_id and shows answer_given as the card title,
+     so no dashboard changes are needed, just this matching log call. */
+  const SOLO_TASK_LABEL = "Solo speaking task: describe arriving somewhere to find something had already happened (past perfect vs. past simple).";
+  const soloDoneBtn = document.getElementById('solo-done-btn');
+  let soloDone = !!(sectionMap['speaking-solo'] && sectionMap['speaking-solo'].status === 'completed');
+  function renderSoloBtn(){
+    soloDoneBtn.textContent = soloDone ? "✓ Marked as done" : "✓ I've done this";
+    soloDoneBtn.classList.toggle('btn-primary', soloDone);
+  }
+  renderSoloBtn();
+  soloDoneBtn.addEventListener('click', () => {
+    soloDone = !soloDone;
+    renderSoloBtn();
+    Course.logProgress({
+      lessonId: LESSON_ID, sectionId: 'speaking-solo', exerciseType: 'oral',
+      status: soloDone ? 'completed' : 'not_attempted', answerGiven: SOLO_TASK_LABEL
+    });
+  });
+
+  /* ---------------- LISTENING DIALOGUE ---------------- */
+  const AUDIO_SRC = 'audio/lesson-05-listening.mp3';
+  const dialogue = [
+    { speaker:'Anna', pitch:1.12, line:"Did you know that guy who robbed banks with lemon juice on his face actually believed it made him invisible?" },
+    { speaker:'Tomasz', pitch:0.88, line:"Ha, yes — I read about that. Apparently he'd seen something about lemon juice being used as invisible ink." },
+    { speaker:'Anna', pitch:1.12, line:"Right, and he'd reasoned that it would work on cameras too, which obviously it didn't." },
+    { speaker:'Tomasz', pitch:0.88, line:"That's basically how the Dunning-Kruger effect got its name, isn't it?" },
+    { speaker:'Anna', pitch:1.12, line:"Yeah — the psychologists had already noticed the same pattern in much smaller ways before that story even came out." },
+    { speaker:'Tomasz', pitch:0.88, line:"Like people who do worst on a test rating themselves the most confident?" },
+    { speaker:'Anna', pitch:1.12, line:"Exactly. They'd been seeing that in their own classroom data for a while." },
+    { speaker:'Tomasz', pitch:0.88, line:"Kind of comforting, actually — means the people who worry they're bad at something probably aren't." }
+  ];
+
+  let audioAvailable = false;
+  const audioEl = document.getElementById('dialogue-audio');
+  fetch(AUDIO_SRC, { method:'HEAD' }).then(r => { if (r.ok){ audioAvailable = true; audioEl.src = AUDIO_SRC; } }).catch(() => {});
+
+  const transcriptEl = document.getElementById('transcript');
+  dialogue.forEach((d, i) => {
+    const line = document.createElement('div');
+    line.className = 'transcript-line';
+    line.id = `t-line-${i}`;
+    line.innerHTML = `<b>${d.speaker}:</b> ${d.line}`;
+    transcriptEl.appendChild(line);
+  });
+
+  const playBtn = document.getElementById('play-dialogue');
+  let isPlaying = false;
+  let currentIdx = 0;
+
+  function updatePlayButton(){
+    if (isPlaying){ playBtn.textContent = '⏸ Pause'; return; }
+    if (window.speechSynthesis.paused){ playBtn.textContent = '▶ Resume'; return; }
+    playBtn.textContent = '▶ Play dialogue';
+  }
+
+  function speakLineAt(idx){
+    if (idx >= dialogue.length){ isPlaying = false; currentIdx = 0; updatePlayButton(); return; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    document.getElementById(`t-line-${idx}`).classList.add('shown', 'active');
+    const u = new SpeechSynthesisUtterance(dialogue[idx].line);
+    u.rate = 0.95; u.pitch = dialogue[idx].pitch;
+    u.onend = () => { if (isPlaying){ currentIdx = idx + 1; speakLineAt(currentIdx); } };
+    window.speechSynthesis.speak(u);
+  }
+
+  playBtn.addEventListener('click', () => {
+    if (audioAvailable){
+      if (audioEl.paused){ audioEl.play(); isPlaying = true; }
+      else { audioEl.pause(); isPlaying = false; }
+      updatePlayButton();
+      return;
+    }
+    if (!isPlaying){
+      isPlaying = true;
+      if (window.speechSynthesis.paused){ window.speechSynthesis.resume(); }
+      else {
+        // Defensive reset, fresh-start only (never on resume/pause): speechSynthesis
+        // has a well-documented browser bug where it can silently stop accepting
+        // new speech after earlier calls elsewhere on the page (e.g. the vocab-word
+        // audio buttons), leaving Play looking broken with no error anywhere.
+        // Clearing the queue right before a genuinely fresh play avoids that class
+        // of bug without disturbing an actual pause/resume in progress.
+        window.speechSynthesis.cancel();
+        speakLineAt(currentIdx);
+      }
+    } else {
+      isPlaying = false;
+      window.speechSynthesis.pause();
+    }
+    updatePlayButton();
+  });
+
+  document.getElementById('stop-dialogue').addEventListener('click', () => {
+    isPlaying = false;
+    currentIdx = 0;
+    window.speechSynthesis.cancel();
+    if (audioAvailable){ audioEl.pause(); audioEl.currentTime = 0; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    updatePlayButton();
+  });
+
+  audioEl.addEventListener('ended', () => { isPlaying = false; updatePlayButton(); });
+
+  document.getElementById('show-transcript').addEventListener('click', function(){
+    const shown = transcriptEl.classList.toggle('all-shown');
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.toggle('shown', shown));
+    this.textContent = shown ? 'Hide transcript' : 'Show full transcript';
+  });
+
+  updateOverallProgress();
+})();
+
+/* ---------------- OVERALL PROGRESS BAR ---------------- */
+// Declared once here (not just locally inside updateOverallProgress) so the
+// Finish-lesson summary below can reference the exact same total — see the
+// completion-status fix in the finish-btn handler.
+const LESSON_TOTAL_POSSIBLE = 23 + 10 + 4 + 3 + 6; // mcqSections + gapFills + sequencer(order+3 connectors) + builderRounds + signal-sort
+function updateOverallProgress(){
+    const attempted = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+  const pct = Math.min(100, Math.round((attempted / LESSON_TOTAL_POSSIBLE) * 100));
+  document.getElementById('overall-progress').style.width = pct + '%';
+}
+
+/* ---------------- FINISH / SUMMARY ---------------- */
+document.getElementById('finish-btn').addEventListener('click', async () => {
+  const btn = document.getElementById('finish-btn');
+  const original = btn.textContent;
+  btn.textContent = 'Checking for teacher updates…'; btn.disabled = true;
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+  } finally {
+    btn.textContent = original; btn.disabled = false;
+  }
+  try {
+    const { correct, total } = Course.lessonScore(LESSON_ID);
+    Course.renderScoreRing('score-ring-holder', correct, total);
+    document.getElementById('summary-name').textContent = `${Course.getStudentName()} — ${correct}/${total} correct`;
+
+    // The score above is only ever "correct out of attempted" — it says nothing
+    // about how much of the lesson was actually done. A student (or a teacher
+    // reviewing after a wipe) could otherwise see "100%" and reasonably assume
+    // the whole lesson is finished, when only a handful of exercises were
+    // answered. This line makes that distinction explicit.
+    const attemptedCount = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+    const completionPct = Math.min(100, Math.round((attemptedCount / LESSON_TOTAL_POSSIBLE) * 100));
+    const completionEl = document.getElementById('summary-completion');
+    if (attemptedCount < LESSON_TOTAL_POSSIBLE){
+      completionEl.style.color = 'var(--warn)';
+      completionEl.textContent = `⚠ Only ${completionPct}% of the lesson attempted so far (${attemptedCount} of ${LESSON_TOTAL_POSSIBLE} exercises) — the score above only reflects what's been answered.`;
+    } else {
+      completionEl.style.color = 'var(--ok)';
+      completionEl.textContent = `✓ Every exercise in this lesson has been attempted.`;
+    }
+
+    const weak = Course.weakSections(LESSON_ID);
+    document.getElementById('summary-weak').textContent = weak.length
+      ? `Worth revisiting: ${weak.join(', ')}`
+      : 'Strong across the board — nice work!';
+    document.getElementById('export-btn').style.display = 'inline-block';
+    updateOverallProgress();
+
+    const card = document.getElementById('summary-card');
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    card.classList.remove('summary-pulse'); void card.offsetWidth;
+    card.classList.add('summary-pulse');
+  } catch (err){
+    console.error('Finish lesson failed:', err);
+    let banner = document.getElementById('finish-error-banner');
+    if (!banner){
+      banner = document.createElement('div');
+      banner.id = 'finish-error-banner';
+      banner.className = 'error-banner';
+      document.getElementById('summary-card').appendChild(banner);
+    }
+    banner.textContent = `Something went wrong computing your results (${err.message}). Try reloading the page — your saved answers won't be lost.`;
+  }
+});
+document.getElementById('export-btn').addEventListener('click', async () => {
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+    Course.exportReportPDF(LESSON_ID, 'Past Perfect Simple vs. Past Perfect Continuous', LESSON_TOTAL_POSSIBLE);
+  } catch (err){
+    console.error('PDF export failed:', err);
+    alert('The PDF export ran into a problem: ' + err.message);
+  }
+});
+</script>
+
+<script>
+{
+  const allLessonsLink = document.getElementById('all-lessons-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  allLessonsLink.href = groupParam ? `index-standalone.html?group=${encodeURIComponent(groupParam)}` : 'index-standalone.html';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 16 — Mixed Conditionals | English+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+<style>
+  /* Lesson-specific only — widget, tooltip, and pill styling matching
+     Lessons 12–15's finalized design, reused here for consistency. */
+  .mode-toggle-outline .pill{border-radius:var(--radius-sm)}
+  .mode-toggle-outline .pill.on{background:var(--surface);color:var(--accent);border-color:var(--accent);font-weight:700}
+  .pill[disabled]{cursor:not-allowed;pointer-events:none}
+  .pill[disabled]:not(.on){opacity:.45}
+  @keyframes wheelRoll{from{transform:translateY(-6px);opacity:.25}to{transform:translateY(0);opacity:1}}
+  .wheel-value-anim{animation:wheelRoll .16s ease-out}
+  .static-cell{display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:var(--radius-md);padding:8px 6px;background:var(--surface);text-align:center;font-size:12.5px;color:var(--text-secondary);min-height:20px}
+  .static-cell.is-primary-cell{border-color:var(--accent);background:var(--surface);color:var(--accent);font-weight:650}
+  .static-cell.clickable-cell{cursor:pointer}
+  .static-cell.clickable-cell:hover{opacity:.85}
+  .switch-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--border-strong);background:var(--surface);cursor:pointer;font-size:16px;color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+  .switch-btn:hover{background:var(--accent-soft)}
+  .switch-btn:disabled{opacity:.35;cursor:default}
+  .compare-box{display:inline-block;padding:4px 10px;border-radius:6px;background:var(--surface-alt);cursor:default;transition:background .15s}
+  .compare-box:hover{background:var(--accent-soft)}
+  #compare-tooltip{
+    position:absolute;z-index:80;max-width:280px;background:var(--accent-soft);color:var(--text-secondary);
+    border:1px solid var(--accent);font-size:13px;line-height:1.5;padding:10px 12px;border-radius:8px;
+    box-shadow:0 4px 16px rgba(0,0,0,.12);pointer-events:none;
+    opacity:0;transition:opacity .1s;
+  }
+  #compare-tooltip.visible{opacity:1}
+  /* Scoped override for this lesson's "tricky part" boxes — calmer blue
+     instead of the shared .warn-box amber. Doesn't touch the global
+     .warn-box used elsewhere. */
+  .tricky-box{
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius-md);
+    padding:11px 15px;font-size:13.5px;color:var(--accent-dark);
+    display:flex;flex-wrap:wrap;gap:9px;align-items:flex-start;line-height:1.6;margin-top:10px;
+  }
+  .tricky-box > *{min-width:0}
+  .timeline-zone-label{font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);text-align:center;font-weight:650;padding-bottom:4px}
+  .timeline-stripe{border-radius:8px;padding:7px 8px;font-size:12px;font-weight:700;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;text-align:center;transition:opacity .15s;min-height:14px;opacity:.6}
+  .timeline-stripe:hover{opacity:.8}
+  .trait-pill{padding:7px 12px;border-radius:var(--radius-sm);border:1px solid var(--accent);background:var(--surface);color:var(--accent);font-size:12.5px;font-weight:700;cursor:pointer;transition:background .15s}
+  .trait-pill:hover{background:var(--accent-soft)}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="shared/supabase-config.js"></script>
+</head>
+<body class="theme-conditionals">
+
+<div class="course-attribution">English+ Grammar Course · by Kris Galezewski</div>
+<div class="shell">
+
+  <!-- ============ HEADER ============ -->
+  <header class="lesson-header">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div class="lesson-eyebrow">Lesson 16 of 22 · Conditionals</div>
+      <div style="display:flex;gap:8px">
+      <a id="all-lessons-link" href="index-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📚 All Lessons</a>
+      <a id="glossary-link" href="glossary-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📖 My Glossary</a>
+    </div>
+    </div>
+    <h1 class="lesson-title">Mixed Conditionals</h1>
+    <p class="lesson-sub">When the if-clause and the result clause point to two different times.</p>
+    <div class="pb-track" style="margin-top:16px"><div class="pb-fill" id="overall-progress" style="width:0%"></div></div>
+    <div id="sync-status" style="font-size:11.5px;color:var(--text-tertiary);margin-top:8px"></div>
+  </header>
+
+  <!-- ============ 1. WARM-UP ============ -->
+  <section class="section" id="sec-warmup">
+    <div class="section-label"><span class="num">1</span> Warm-up — two conditionals, one sentence</div>
+    <div class="card">
+      <p style="margin-bottom:14px;font-size:14.5px;color:var(--text-secondary)">
+        So far, every conditional sentence has kept the same time frame in both clauses. Mixed conditionals
+        break that rule on purpose — a past condition can have a present result, or a present condition can
+        have a past result.
+      </p>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. Mixed conditionals combine…</p>
+        <div id="warm-q1">
+          <button class="opt" data-value="right">different time references in the if-clause and the result clause</button>
+          <button class="opt" data-value="wrong">two completely unrelated ideas in one sentence</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. "If I had learned to swim as a child, I wouldn't be afraid of water now" mixes…</p>
+        <div id="warm-q2">
+          <button class="opt" data-value="right">a past unreal condition with a present unreal result</button>
+          <button class="opt" data-value="wrong">a present unreal condition with a past unreal result</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. "If she weren't so shy, she would have spoken up yesterday" mixes…</p>
+        <div id="warm-q3">
+          <button class="opt" data-value="right">a present unreal trait with a past unreal result</button>
+          <button class="opt" data-value="wrong">a past unreal condition with a present unreal result</button>
+        </div>
+      </div>
+      <div class="tip-box">💡 <span style="flex:1;min-width:0">Ask two questions: when is the CONDITION true (past, or an ongoing trait/state)? And when does the RESULT apply (past, or now)? The answers decide which mix you need.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 2. DIAGNOSTIC PRE-TEST ============ -->
+  <section class="section" id="sec-diagnostic">
+    <div class="section-label"><span class="num">2</span> Quick check — before we explain anything</div>
+    <div class="card">
+      <p style="margin-bottom:16px;font-size:14.5px;color:var(--text-secondary)">Four quick questions. This isn't graded harshly — it just shows us where to focus.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. If I ___ harder at school, I would have a better job now.</p>
+        <div id="diag-q1">
+          <button class="opt" data-value="right">had studied</button>
+          <button class="opt" data-value="wrong">studied</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. If she were more confident, she ___ for the promotion last year.</p>
+        <div id="diag-q2">
+          <button class="opt" data-value="right">would have applied</button>
+          <button class="opt" data-value="wrong">would apply</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. If he had taken the earlier flight, he ___ here by now.</p>
+        <div id="diag-q3">
+          <button class="opt" data-value="right">would be</button>
+          <button class="opt" data-value="wrong">would have been</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">4. If they weren't so private, they ___ shared the news already.</p>
+        <div id="diag-q4">
+          <button class="opt" data-value="right">would have</button>
+          <button class="opt" data-value="wrong">would</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. CONCEPT EXPLANATION ============ -->
+  <section class="section" id="sec-concept">
+    <div class="section-label"><span class="num">3</span> The concept</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px">Two ways to mix</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:16px">
+        There are exactly two useful combinations, each named after which conditional supplies each clause.
+        Both still allow the clauses to swap order — try the switch button on each widget below.
+      </p>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">3 &amp; 2 — a past condition, a present result</h4>
+      <div style="margin-bottom:6px">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);font-weight:650">View</span>
+      </div>
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+        <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+          <button class="pill on" id="mode-mix32-structure">Structure</button>
+          <button class="pill" id="mode-mix32-examples">Examples</button>
+          <button class="pill" id="mode-mix32-quiz">Quick check</button>
+        </div>
+        <span id="mix32-hint" style="display:none;font-size:12.5px;color:var(--text-tertiary)">— Click either clause to see another example.</span>
+      </div>
+      <div id="mix32-widget-container" style="padding:18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border);margin-bottom:22px">
+        <div style="overflow-x:auto;padding-bottom:2px">
+          <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;min-width:460px">
+            <div id="mix32-left"></div>
+            <button class="switch-btn" id="mix32-switch" title="Swap clause order">⇅</button>
+            <div id="mix32-right"></div>
+          </div>
+        </div>
+      </div>
+      <div id="mix32-quiz-container" style="padding:12px 18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border);margin-bottom:22px;display:none"></div>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">2 &amp; 3 — an ongoing condition, a past result</h4>
+      <div style="margin-bottom:6px">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);font-weight:650">View</span>
+      </div>
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+        <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+          <button class="pill on" id="mode-mix23-structure">Structure</button>
+          <button class="pill" id="mode-mix23-examples">Examples</button>
+          <button class="pill" id="mode-mix23-quiz">Quick check</button>
+        </div>
+        <span id="mix23-hint" style="display:none;font-size:12.5px;color:var(--text-tertiary)">— Click either clause to see another example.</span>
+      </div>
+      <div id="mix23-widget-container" style="padding:18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border);margin-bottom:16px">
+        <div style="overflow-x:auto;padding-bottom:2px">
+          <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;min-width:460px">
+            <div id="mix23-left"></div>
+            <button class="switch-btn" id="mix23-switch" title="Swap clause order">⇅</button>
+            <div id="mix23-right"></div>
+          </div>
+        </div>
+      </div>
+      <div id="mix23-quiz-container" style="padding:12px 18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border);margin-bottom:16px;display:none"></div>
+      <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);margin-bottom:16px">
+        It helps to think of this if-clause as <b>ongoing</b>, not just "present" — a condition that connects the
+        past to right now, rather than something that only started existing today. Take "If I were more
+        hardworking, I would have gotten that job last year": the reality is that I'm <i>not</i> hardworking —
+        not now, and not back then either. That trait was untrue in the past and is still untrue in the present,
+        which is exactly why something ongoing about me can explain something specific that happened last year.
+        A one-off present state wouldn't be able to reach back and affect the past; an ongoing one can.
+      </p>
+
+      <div style="padding:16px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--surface);margin-bottom:16px">
+        <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:8px">Common ongoing conditions in the 2&amp;3 if-clause</h4>
+        <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">Five broad categories cover almost everything that shows up here — hover over any pill for a sample sentence.</p>
+        <div id="trait-categories"></div>
+      </div>
+
+      <p style="font-size:13px;line-height:1.7;color:var(--text-secondary);margin-bottom:16px">
+        💡 "Could have" and "might have" work as alternatives to "would have" here too, exactly as in plain
+        third conditional — and contractions apply throughout: "If I'd learned to swim," "she wouldn't be,"
+        "he'd have remembered."
+      </p>
+
+      <button class="pill" id="rules-toggle">📖 Show the full rules</button>
+      <div class="expand-content" id="rules-content">
+        <div style="margin-top:16px">
+          <div class="tricky-box">
+            <span>🎯</span>
+            <span style="flex:1;min-width:0">
+              <b>The tricky part:</b> matching a time-marker to the wrong clause type is the most common mistake.<br><br>
+              ❌ "If I had studied medicine, I would have been a doctor now." — wrong: "now" needs a present-form result ("would be"), not "would have been."<br>
+              ✅ "If I had studied medicine, I would be a doctor now." — past condition (3), present result (2).<br><br>
+              ❌ "If she weren't so shy, she would speak up at yesterday's meeting." — wrong: "yesterday" needs a past-form result ("would have spoken").<br>
+              ✅ "If she weren't so shy, she would have spoken up at yesterday's meeting." — present trait (2), past result (3).<br><br>
+              A quick check: look for a time word in the result clause. "Now"/"today" → present-form result. A specific past moment → "would have + past participle."
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Compare: 3&amp;2 vs. 2&amp;3</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">Hover over any sentence below to see which clause carries which time — and what actually happened in reality.</p>
+      <div id="compare-mixed" style="font-size:14.5px;line-height:1.8"></div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Same condition, different result: third vs. 3&amp;2</h3>
+      <p style="font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.03em;margin-bottom:8px">💡 Extra tip!</p>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">
+        Plain third conditional and 3&amp;2 mixed conditional can share an <i>identical</i> if-clause — the only
+        difference is whether the result also stayed in the past, or moved into the present. Hover over either
+        sentence.
+      </p>
+      <div id="compare-third-vs-32" style="font-size:14.5px;line-height:1.8"></div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">The conditional timeline</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Every conditional type covers a different stretch of time. Click any coloured stripe for its rule and an example — all six use the same underlying scenario.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px">
+        <div class="timeline-zone-label">Past</div>
+        <div class="timeline-zone-label">Present</div>
+        <div class="timeline-zone-label">Future</div>
+      </div>
+      <div id="timeline-rows"></div>
+    </div>
+  </section>
+
+  <!-- ============ 4. READING ============ -->
+  <section class="section" id="sec-reading">
+    <div class="section-label"><span class="num">4</span> Reading — Counterfactual Thinking: Why Bronze Medallists Are Happier Than Silver Medallists</div>
+    <div class="card">
+      <button class="pill" id="gram-toggle">🔍 Show grammar in this text</button>
+      <div class="passage" id="passage" style="margin-top:14px"></div>
+      <p style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">Tap a highlighted word for pronunciation, meaning and a fresh example. Once grammar highlighting is on, tap a highlighted sentence to see why that form was used.</p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:12px">Did you follow it? Quick comprehension check</h3>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. What did Medvec, Madey, and Gilovich find about bronze and silver medallists' facial expressions?</p>
+        <div id="comp-q1">
+          <button class="opt" data-value="right">Bronze medallists consistently looked happier, even though silver is objectively better.</button>
+          <button class="opt" data-value="wrong">Both groups looked equally happy regardless of medal colour.</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. According to the text, what is the most salient counterfactual for a silver medallist?</p>
+        <div id="comp-q2">
+          <button class="opt" data-value="right">The gold medal they narrowly missed.</button>
+          <button class="opt" data-value="wrong">The bronze medal they could have won instead.</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. According to the text, what determines how satisfying a result feels?</p>
+        <div id="comp-q3">
+          <button class="opt" data-value="right">Which imagined alternative feels most immediate, not the objective result itself.</button>
+          <button class="opt" data-value="wrong">Only the actual numerical ranking achieved.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. VOCAB REVIEW ============ -->
+  <section class="section" id="sec-vocab">
+    <div class="section-label"><span class="num">5</span> Vocabulary check</div>
+    <div class="card">
+      <p style="font-size:14.5px;margin-bottom:16px">All nine words from the text — mixed formats.</p>
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px">Match the meaning</h4>
+
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. "Counterfactual" means…</p>
+        <div id="vocab-q1">
+          <button class="opt" data-value="right">relating to what did not actually happen, but could have</button>
+          <button class="opt" data-value="wrong">relating to a proven scientific fact</button>
+          <button class="opt" data-value="wrong2">relating to an official ranking</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. "Salient" means…</p>
+        <div id="vocab-q2">
+          <button class="opt" data-value="right">most noticeable or important</button>
+          <button class="opt" data-value="wrong">completely irrelevant</button>
+          <button class="opt" data-value="wrong2">officially confirmed</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. "Objectively" means…</p>
+        <div id="vocab-q3">
+          <button class="opt" data-value="right">based on facts rather than feelings or opinions</button>
+          <button class="opt" data-value="wrong">based entirely on personal feelings</button>
+          <button class="opt" data-value="wrong2">in a biased, one-sided way</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. "Elite" means…</p>
+        <div id="vocab-q4">
+          <button class="opt" data-value="right">the best or most skilled group in a particular field</button>
+          <button class="opt" data-value="wrong">an average, typical group</button>
+          <button class="opt" data-value="wrong2">a group that has retired from competition</button>
+        </div>
+      </div>
+      <div style="margin-bottom:22px">
+        <p style="margin-bottom:8px;font-weight:550">5. "Distinction" means…</p>
+        <div id="vocab-q5">
+          <button class="opt" data-value="right">a difference or contrast between similar things</button>
+          <button class="opt" data-value="wrong">an exact similarity between things</button>
+          <button class="opt" data-value="wrong2">an official medal or award</button>
+        </div>
+      </div>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px;padding-top:6px;border-top:1px solid var(--border)">Complete the sentence — vocabulary focus</h4>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">6. She <input type="text" id="vgap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> missed out on first place.</p>
+        <button class="btn btn-sm" id="vgap1-check">Check</button>
+        <div id="vgap1-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">7. Every <input type="text" id="vgap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> she made was with the gold medallist, not the other bronze finishers.</p>
+        <button class="btn btn-sm" id="vgap2-check">Check</button>
+        <div id="vgap2-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">8. Her final <input type="text" id="vgap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> didn't reflect how she actually felt about the result.</p>
+        <button class="btn btn-sm" id="vgap3-check">Check</button>
+        <div id="vgap3-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">9. Bronze medallists often report more <input type="text" id="vgap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> than silver medallists, despite the lower ranking.</p>
+        <button class="btn btn-sm" id="vgap4-check">Check</button>
+        <div id="vgap4-fb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. GRAMMAR PRACTICE ============ -->
+  <section class="section" id="sec-practice">
+    <div class="section-label"><span class="num">6</span> Practice</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:2px">Gap-fill</h3>
+      <p style="font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:16px">Grammar focus — 3&amp;2 or 2&amp;3? Check the time marker.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">1. If I <input type="text" id="gap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> (study) harder at school, I would have a much easier time at university now.</p>
+        <button class="btn btn-sm" id="gap1-check">Check</button>
+        <div id="gap1-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">2. If she weren't so private about her life, she <input type="text" id="gap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:220px"> (share) the news already.</p>
+        <button class="btn btn-sm" id="gap2-check">Check</button>
+        <div id="gap2-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">3. If he had taken that job, he <input type="text" id="gap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (live) in Berlin right now.</p>
+        <button class="btn btn-sm" id="gap3-check">Check</button>
+        <div id="gap3-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">4. If they <input type="text" id="gap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> (be) more careful with money, they wouldn't have gotten into debt.</p>
+        <button class="btn btn-sm" id="gap4-check">Check</button>
+        <div id="gap4-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">5. If we had left on time, we <input type="text" id="gap5-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> (be) home by now.</p>
+        <button class="btn btn-sm" id="gap5-check">Check</button>
+        <div id="gap5-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">6. If I weren't so afraid of flying, I <input type="text" id="gap6-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:220px"> (visit) you last year.</p>
+        <button class="btn btn-sm" id="gap6-check">Check</button>
+        <div id="gap6-fb"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Categorise the sentence</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Each sentence is missing one word — read what's left, then tap the form it belongs to.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. "If she ___ trained harder, she would be competing at the highest level now."</p>
+        <div id="cat-q1">
+          <button class="opt" data-value="right">3&amp;2</button><button class="opt" data-value="wrong">2&amp;3</button><button class="opt" data-value="wrong2">Second only</button><button class="opt" data-value="wrong3">Third only</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. "If he weren't so stubborn, he would ___ accepted the help."</p>
+        <div id="cat-q2">
+          <button class="opt" data-value="wrong">3&amp;2</button><button class="opt" data-value="right">2&amp;3</button><button class="opt" data-value="wrong2">Second only</button><button class="opt" data-value="wrong3">Third only</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. "If I ___ taller, I would join the team."</p>
+        <div id="cat-q3">
+          <button class="opt" data-value="wrong">3&amp;2</button><button class="opt" data-value="wrong2">2&amp;3</button><button class="opt" data-value="right">Second only</button><button class="opt" data-value="wrong3">Third only</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">4. "If they had left earlier, they ___ have caught the train."</p>
+        <div id="cat-q4">
+          <button class="opt" data-value="wrong">3&amp;2</button><button class="opt" data-value="wrong2">2&amp;3</button><button class="opt" data-value="wrong3">Second only</button><button class="opt" data-value="right">Third only</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">5. "If she ___ so busy, she would have gone to the wedding."</p>
+        <div id="cat-q5">
+          <button class="opt" data-value="wrong">3&amp;2</button><button class="opt" data-value="right">2&amp;3</button><button class="opt" data-value="wrong2">Second only</button><button class="opt" data-value="wrong3">Third only</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">6. "If we had saved more back then, we ___ be less stressed now."</p>
+        <div id="cat-q6">
+          <button class="opt" data-value="right">3&amp;2</button><button class="opt" data-value="wrong">2&amp;3</button><button class="opt" data-value="wrong2">Second only</button><button class="opt" data-value="wrong3">Third only</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">7. "If they ___ more organised, they would remember appointments better."</p>
+        <div id="cat-q7">
+          <button class="opt" data-value="wrong">3&amp;2</button><button class="opt" data-value="wrong2">2&amp;3</button><button class="opt" data-value="right">Second only</button><button class="opt" data-value="wrong3">Third only</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">8. "If he ___ known the risk, he would have acted differently."</p>
+        <div id="cat-q8">
+          <button class="opt" data-value="wrong">3&amp;2</button><button class="opt" data-value="wrong2">2&amp;3</button><button class="opt" data-value="wrong3">Second only</button><button class="opt" data-value="right">Third only</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Fix the sentence</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Each sentence has one mistake. Tap the word (or words) that are wrong.</p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary)">Sentence 1</div>
+      <p id="fix1" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 2</div>
+      <p id="fix2" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 3</div>
+      <p id="fix3" style="font-size:15px;line-height:1.9;margin-bottom:20px"></p>
+
+      <div style="margin-bottom:8px;font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);padding-top:16px;border-top:1px solid var(--border)">Sentence 4</div>
+      <p id="fix4" style="font-size:15px;line-height:1.9"></p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Sentence builder</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">Tap the chips in the right order. Three rounds.</p>
+      <div id="builders"></div>
+    </div>
+  </section>
+
+  <!-- ============ 7. SPEAKING ============ -->
+  <section class="section" id="sec-speaking">
+    <div class="section-label"><span class="num">7</span> Speaking task</div>
+    <div class="mode-toggle">
+      <button class="pill on" id="mode-solo">👤 Solo</button>
+      <button class="pill" id="mode-group">👥 Group (2–4)</button>
+    </div>
+    <div class="task-card" id="speak-solo">
+      <div class="kicker">60-second mixed reflection</div>
+      <p style="font-size:14.5px;line-height:1.7">
+        Describe one real situation using 3&amp;2 mixed conditional (a past decision affecting your life now),
+        and one using 2&amp;3 (a personal trait that affected a specific past event).
+      </p>
+      <button class="btn btn-sm" id="solo-done-btn" style="margin-top:14px">✓ I've done this</button>
+    </div>
+    <div class="task-card" id="speak-group" style="display:none">
+      <div class="kicker">Discussion — pick 1–2 questions to answer out loud</div>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:12px">Tap the question(s) you'll answer. Your teacher will see your pick and mark it after you speak.</p>
+      <div id="discuss-questions" style="display:flex;flex-direction:column;gap:8px"></div>
+      <p id="discuss-limit-msg" style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">You can select up to 2 questions.</p>
+    </div>
+  </section>
+
+  <!-- ============ 8. LISTENING ============ -->
+  <section class="section" id="sec-listening">
+    <div class="section-label"><span class="num">8</span> Listening</div>
+    <div class="card">
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:12px">Anna and Tomasz are discussing a near-miss — right after reading about counterfactual thinking.</p>
+      <audio id="dialogue-audio" preload="none" style="display:none"></audio>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary" id="play-dialogue">▶ Play dialogue</button>
+        <button class="btn btn-ghost btn-sm" id="stop-dialogue">⏹ Stop</button>
+        <button class="btn btn-ghost btn-sm" id="show-transcript">Show full transcript</button>
+      </div>
+      <div id="transcript" style="margin-top:14px"></div>
+
+      <div style="margin-top:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. What does Anna say would be true now if she'd taken the job in Berlin?</p>
+        <div id="listen-q1">
+          <button class="opt" data-value="right">She would be living abroad right now.</button>
+          <button class="opt" data-value="wrong">She would have moved back within a year.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. According to Tomasz, what would have happened if he weren't so indecisive?</p>
+        <div id="listen-q2">
+          <button class="opt" data-value="right">He would have applied for the course years ago.</button>
+          <button class="opt" data-value="wrong">He would apply for the course next year instead.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. What does Anna compare their situation to, from the reading?</p>
+        <div id="listen-q3">
+          <button class="opt" data-value="right">The silver medallist focusing on the gold they narrowly missed.</button>
+          <button class="opt" data-value="wrong">The gold medallist who felt no pressure at all.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. WRAP-UP / EXIT TEST ============ -->
+  <section class="section" id="sec-wrapup">
+    <div class="section-label"><span class="num">9</span> Wrap-up — exit check</div>
+    <div class="card">
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. If I ___ harder, I would have a better job now.</p>
+        <div id="exit-q1">
+          <button class="opt" data-value="right">had studied</button>
+          <button class="opt" data-value="wrong">studied</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. If she were more confident, she ___ for the job last year.</p>
+        <div id="exit-q2">
+          <button class="opt" data-value="right">would have applied</button>
+          <button class="opt" data-value="wrong">would apply</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. If he had left earlier, he ___ here by now.</p>
+        <div id="exit-q3">
+          <button class="opt" data-value="right">would be</button>
+          <button class="opt" data-value="wrong">would have been</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. If they weren't so private, they ___ the news already.</p>
+        <div id="exit-q4">
+          <button class="opt" data-value="right">would have shared</button>
+          <button class="opt" data-value="wrong">would share</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">5. If we had saved more, we ___ less stressed now.</p>
+        <div id="exit-q5">
+          <button class="opt" data-value="right">would be</button>
+          <button class="opt" data-value="wrong">would have been</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="summary-card">
+      <h3 style="margin-bottom:14px">Your lesson summary</h3>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px" id="summary-ring-row">
+        <div id="score-ring-holder"></div>
+        <div>
+          <div style="font-weight:600" id="summary-name">—</div>
+          <div style="font-size:13px;margin-top:4px" id="summary-completion"></div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-top:4px" id="summary-weak">Finish the lesson to see your results.</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="finish-btn">Finish lesson &amp; see results</button>
+      <button class="btn" id="export-btn" style="margin-left:8px;display:none">⬇ Export PDF report</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="shared/course-engine.js"></script>
+<script>
+const LESSON_ID = 'lesson-16-mixed-conditionals';
+
+{
+  const glossaryLink = document.getElementById('glossary-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  const currentFile = window.location.pathname.split('/').pop();
+  let glossaryHref = `glossary-standalone.html?from=${encodeURIComponent(currentFile)}`;
+  if (groupParam) glossaryHref += `&group=${encodeURIComponent(groupParam)}`;
+  glossaryLink.href = glossaryHref;
+}
+
+{
+  const resetBtn = document.createElement('button');
+  resetBtn.className = 'btn btn-sm btn-ghost';
+  resetBtn.textContent = '↺ Reset my progress for this lesson';
+  resetBtn.style.cssText = 'margin-top:8px;font-size:12px;padding:5px 12px';
+  resetBtn.addEventListener('click', () => {
+    if (confirm('Clear all saved answers for this lesson on this device? (Does not affect Supabase.)')){
+      Course.resetLocalProgress(LESSON_ID);
+      location.reload();
+    }
+  });
+  document.getElementById('sync-status').insertAdjacentElement('afterend', resetBtn);
+}
+
+(async function initLesson(){
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Syncing your progress…`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  await Course.syncFromSupabase(LESSON_ID);
+  const sectionMap = Course.getSectionMap(LESSON_ID);
+
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Synced · Group: ${Course.getGroupId()}`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  /* ---------------- VOCAB DATA ---------------- */
+  const vocabData = {
+    counterfactual: { word:'counterfactual', ipa:'/ˌkaʊn.təˈfæk.tʃu.əl/', meaning:'relating to what did not actually happen, but could have', example:"Counterfactual thinking involves imagining how things could have turned out differently." },
+    narrowly: { word:'narrowly', ipa:'/ˈnær.əʊ.li/', meaning:'by a very small margin', example:"She narrowly missed out on first place." },
+    salient: { word:'salient', ipa:'/ˈseɪ.li.ənt/', meaning:'most noticeable or important', example:"The most salient thought for a silver medallist is usually the gold they missed." },
+    objectively: { word:'objectively', ipa:'/əbˈdʒek.tɪv.li/', meaning:'based on facts rather than feelings or opinions', example:"Objectively, silver is a better result than bronze." },
+    elite: { word:'elite', ipa:'/ɪˈliːt/', meaning:'the best or most skilled group in a particular field', example:"Only elite athletes reach an Olympic final at all." },
+    distinction: { word:'distinction', ipa:'/dɪˈstɪŋk.ʃən/', meaning:'a difference or contrast between similar things', example:"The distinction between silver and bronze can feel much larger than the ranking suggests." },
+    comparison: { word:'comparison', ipa:'/kəmˈpær.ɪ.sən/', meaning:'an act of examining how two things are similar or different', example:"Every comparison she made was with the gold medallist, not the other bronze finishers." },
+    ranking: { word:'ranking', ipa:'/ˈræŋ.kɪŋ/', meaning:'a position in a list ordered by quality or achievement', example:"Her final ranking didn't reflect how she actually felt about the result." },
+    contentment: { word:'contentment', ipa:'/kənˈtent.mənt/', meaning:'a state of happiness and satisfaction', example:"Bronze medallists often report more contentment than silver medallists, despite the lower ranking." }
+  };
+
+  function vocabSpan(key, text){
+    return `<span class="vocab" data-word="${key}">${text}</span>`;
+  }
+  function gramSpan(key, text){
+    return `<span class="gram" data-gram="${key}">${text}</span>`;
+  }
+  const gramExplanations = {
+    g1: "Mixed conditional (3&amp;2) — past perfect if-clause describes a PAST unreal action, but \"would be standing\" describes an ongoing PRESENT unreal state, not a one-off past event.",
+    g2: "Mixed conditional (2&amp;3) — \"weren't\" describes an ONGOING present trait, but \"wouldn't have felt\" describes a one-off PAST unreal event.",
+    g3: "Mixed conditional (3&amp;2) — the same pattern again: a past unreal action with a present unreal consequence.",
+    g4: "Mixed conditional (2&amp;3) — an ongoing present habit paired with a one-off past unreal consequence."
+  };
+
+  /* ---------------- READING PASSAGE ---------------- */
+  document.getElementById('passage').innerHTML = `
+  <p>In 1995, psychologists Victoria Medvec, Scott Madey, and Thomas Gilovich studied the facial expressions of ${vocabSpan('elite','elite')} athletes at the 1992 Summer Olympics, at the exact moment each learned their result. What they found seemed backwards: bronze medallists, ${vocabSpan('objectively','objectively')} the lesser achievement, consistently looked happier than silver medallists.</p>
+
+  <p>The explanation came down to which ${vocabSpan('counterfactual','counterfactual')} — which imagined alternative — felt most immediate to each athlete. For a silver medallist, the most ${vocabSpan('salient','salient')} thought was almost always the gold they'd ${vocabSpan('narrowly','narrowly')} missed. ${gramSpan('g1','If she had run just half a second faster, she would be standing on the top step right now')} — a single, painfully close ${vocabSpan('comparison','comparison')} that made second place feel like a loss rather than a win. ${gramSpan('g2',"If she weren't the kind of athlete who replays every race in her head, she probably wouldn't have felt that loss so sharply")}.</p>
+
+  <p>Bronze medallists ran the comparison the other way. Their most natural counterfactual wasn't the silver they'd missed, but fourth place — finishing with nothing at all. ${gramSpan('g3',"If she had been just a fraction slower, she wouldn't be standing on the podium at all")}, and that near-miss in the other direction made third place feel like a genuine relief. The numerical ${vocabSpan('distinction','distinction')} between silver and bronze is tiny; the emotional one, built entirely from these two very different imagined pasts, is enormous.</p>
+
+  <p>The pattern isn't really about medals — it shows up anywhere a ${vocabSpan('ranking','ranking')} exists. ${gramSpan('g4',"If someone didn't constantly compare their result to a higher target, they wouldn't have felt nearly as dissatisfied with what they actually achieved")}. Counterfactual thinking doesn't change the outcome — it just decides which imagined alternative gets to set the emotional baseline, and how much ${vocabSpan('contentment','contentment')} the real result is allowed to bring.</p>
+  `;
+  document.getElementById('passage').classList.add('passage');
+
+  document.getElementById('gram-toggle').addEventListener('click', function(){
+    const passage = document.getElementById('passage');
+    const on = passage.classList.toggle('show-grammar');
+    this.classList.toggle('on', on);
+    this.textContent = on ? '🔍 Hide grammar in this text' : '🔍 Show grammar in this text';
+  });
+  document.querySelectorAll('.gram').forEach(el => {
+    el.addEventListener('click', () => {
+      Course.showPopup(`<div style="font-size:14.5px;line-height:1.6">${gramExplanations[el.dataset.gram]}</div>`, el);
+    });
+  });
+
+  Course.initVocab(vocabData, LESSON_ID);
+
+  /* ---------------- HOVER TOOLTIP (shared across this concept section) ----------------
+     Deliberately not using Course.showPopup for hover: that system uses a
+     full-screen backdrop, and on mouseenter the backdrop immediately covers
+     the trigger, firing mouseleave, which hides the popup, uncovering the
+     trigger, which re-fires mouseenter — an infinite show/hide loop. A tiny
+     pointer-events:none tooltip avoids this entirely. */
+  function ensureCompareTooltip(){
+    let el = document.getElementById('compare-tooltip');
+    if (!el){
+      el = document.createElement('div');
+      el.id = 'compare-tooltip';
+      document.body.appendChild(el);
+    }
+    return el;
+  }
+  const compareTooltipEl = ensureCompareTooltip();
+  function showCompareTooltip(html, anchorEl){
+    compareTooltipEl.innerHTML = html;
+    const rect = anchorEl.getBoundingClientRect();
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    const scrollX = window.scrollX || document.documentElement.scrollLeft;
+    compareTooltipEl.style.top = `${rect.bottom + scrollY + 8}px`;
+    compareTooltipEl.style.left = `${rect.left + scrollX}px`;
+    compareTooltipEl.classList.add('visible');
+  }
+  function hideCompareTooltip(){
+    compareTooltipEl.classList.remove('visible');
+  }
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.compare-box') && !e.target.closest('.timeline-stripe') && !e.target.closest('.trait-pill')) hideCompareTooltip();
+  });
+
+  function renderCompareCard(containerId, items, explanations){
+    const el = document.getElementById(containerId);
+    el.innerHTML = items.map(it => `
+      <div style="display:flex;gap:10px;align-items:baseline;margin-bottom:8px">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);flex-shrink:0;width:190px">${it.label}</span>
+        <span class="compare-box" data-key="${it.key}">"${it.text}"</span>
+      </div>
+    `).join('');
+    el.querySelectorAll('.compare-box').forEach(node => {
+      const html = `<div>${explanations[node.dataset.key]}</div>`;
+      node.addEventListener('mouseenter', () => showCompareTooltip(html, node));
+      node.addEventListener('mouseleave', hideCompareTooltip);
+      node.addEventListener('click', () => showCompareTooltip(html, node));
+    });
+  }
+
+  /* ---------------- MIXED CONDITIONAL WIDGET (Structure/Examples toggle,
+     with a switch button to swap clause order) — same pattern as Lessons
+     13–15. ---------------- */
+  const sharedQuizModeTracker = {};
+  function buildConditionalWidget({ prefix, structureLeft, structureRight, examples, rulesToggleId = null }){
+    let mode = 'structure';
+    let idx = 0;
+    let order = 'if-first';
+    const leftEl = document.getElementById(`${prefix}-left`);
+    const rightEl = document.getElementById(`${prefix}-right`);
+    const hintEl = document.getElementById(`${prefix}-hint`);
+    const switchBtn = document.getElementById(`${prefix}-switch`);
+    const structureBtn = document.getElementById(`mode-${prefix}-structure`);
+    const examplesBtn = document.getElementById(`mode-${prefix}-examples`);
+    const quizBtn = document.getElementById(`mode-${prefix}-quiz`);
+    const widgetContainer = document.getElementById(`${prefix}-widget-container`);
+    const quizContainer = document.getElementById(`${prefix}-quiz-container`);
+
+    function capitalize(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+    function cellHtml(text, clickable){
+      return `<div class="static-cell is-primary-cell wheel-value-anim${clickable ? ' clickable-cell' : ''}">${text}</div>`;
+    }
+    function advance(){ idx = (idx + 1) % examples.length; render(); }
+
+    function render(){
+      if (mode === 'structure'){
+        hintEl.style.display = 'none';
+        switchBtn.disabled = true;
+        if (order === 'if-first'){
+          leftEl.innerHTML = cellHtml(`If ${structureLeft},`, false);
+          rightEl.innerHTML = cellHtml(structureRight, false);
+        } else {
+          leftEl.innerHTML = cellHtml(capitalize(structureRight), false);
+          rightEl.innerHTML = cellHtml(`if ${structureLeft}.`, false);
+        }
+      } else {
+        hintEl.style.display = 'block';
+        switchBtn.disabled = false;
+        const ex = examples[idx];
+        if (order === 'if-first'){
+          leftEl.innerHTML = cellHtml(`If ${ex.condition},`, true);
+          rightEl.innerHTML = cellHtml(`${ex.result}.`, true);
+        } else {
+          leftEl.innerHTML = cellHtml(capitalize(ex.result), true);
+          rightEl.innerHTML = cellHtml(`if ${ex.condition}.`, true);
+        }
+        [leftEl, rightEl].forEach(el => {
+          el.querySelectorAll('.clickable-cell').forEach(c => c.addEventListener('click', advance));
+        });
+      }
+    }
+    switchBtn.addEventListener('click', () => {
+      if (switchBtn.disabled) return;
+      order = order === 'if-first' ? 'result-first' : 'if-first';
+      render();
+    });
+
+    function renderQuiz(){
+      quizContainer.innerHTML = `
+        <p style="font-size:12px;color:var(--text-tertiary);text-align:center;margin-bottom:6px">Which result correctly finishes this condition?</p>
+        <p id="${prefix}-quiz-prompt" style="font-size:15.5px;font-weight:600;text-align:center;color:var(--accent);margin-bottom:10px;line-height:1.5"></p>
+        <div style="display:flex;flex-direction:column;gap:8px;align-items:stretch;max-width:480px;margin:0 auto" id="${prefix}-quiz-options"></div>
+        <div id="${prefix}-quiz-feedback" style="text-align:center;min-height:16px;margin-top:10px;font-size:13.5px"></div>
+        <div style="text-align:center;margin-top:10px">
+          <button class="btn btn-primary" id="${prefix}-quiz-next" style="display:none">Next →</button>
+        </div>`;
+
+      const quizPool = examples.map((ex, i) => ({
+        prompt: `If ${ex.condition},`,
+        answer: `${capitalize(ex.result)}.`,
+        i
+      }));
+
+      let order2 = Course.shuffleArray(quizPool.map((_, i) => i));
+      let pos = 0;
+      let answered = false;
+      const promptEl = document.getElementById(`${prefix}-quiz-prompt`);
+      const optionsEl = document.getElementById(`${prefix}-quiz-options`);
+      const feedbackEl = document.getElementById(`${prefix}-quiz-feedback`);
+      const nextBtn = document.getElementById(`${prefix}-quiz-next`);
+
+      function renderQ(){
+        answered = false;
+        feedbackEl.textContent = '';
+        nextBtn.style.display = 'none';
+        const correct = quizPool[order2[pos]];
+        promptEl.textContent = correct.prompt;
+        const distractorPool = quizPool.filter(q => q.i !== correct.i);
+        const distractors = Course.shuffleArray(distractorPool).slice(0, 2).map(q => q.answer);
+        const options = Course.shuffleArray([correct.answer, ...distractors]);
+        optionsEl.innerHTML = options.map(o => `<button class="opt" data-answer="${o}" style="text-align:left">${o}</button>`).join('');
+        optionsEl.querySelectorAll('button').forEach(btn => {
+          btn.addEventListener('click', () => {
+            if (answered) return;
+            answered = true;
+            const isCorrect = btn.dataset.answer === correct.answer;
+            [...optionsEl.children].forEach(b => {
+              if (b === btn) b.classList.add(isCorrect ? 'ok' : 'bad');
+              else if (b.dataset.answer === correct.answer) b.classList.add('ok');
+              else b.classList.add('dim');
+            });
+            feedbackEl.innerHTML = isCorrect
+              ? `<span style="color:var(--ok)">✓ Correct!</span>`
+              : `<span style="color:var(--bad)">Not quite — "${correct.answer}" was the match.</span>`;
+            nextBtn.style.display = 'inline-block';
+          });
+        });
+      }
+      nextBtn.addEventListener('click', () => {
+        pos += 1;
+        if (pos >= order2.length){ order2 = Course.shuffleArray(quizPool.map((_, i) => i)); pos = 0; }
+        renderQ();
+      });
+      renderQ();
+    }
+
+    function updateRulesToggleState(){
+      if (!rulesToggleId) return;
+      sharedQuizModeTracker[prefix] = mode === 'quiz';
+      const anyQuizActive = Object.values(sharedQuizModeTracker).some(Boolean);
+      const btn = document.getElementById(rulesToggleId);
+      const content = document.getElementById('rules-content');
+      if (anyQuizActive){
+        btn.disabled = true;
+        btn.textContent = '📖 Disabled during Quick check';
+        content.classList.remove('open');
+      } else {
+        btn.disabled = false;
+        const isOpen = content.classList.contains('open');
+        btn.textContent = isOpen ? '📖 Hide the full rules' : '📖 Show the full rules';
+      }
+    }
+    function switchMode(newMode){
+      mode = newMode;
+      structureBtn.classList.toggle('on', newMode === 'structure');
+      examplesBtn.classList.toggle('on', newMode === 'examples');
+      quizBtn.classList.toggle('on', newMode === 'quiz');
+      widgetContainer.style.display = newMode === 'quiz' ? 'none' : 'block';
+      quizContainer.style.display = newMode === 'quiz' ? 'block' : 'none';
+      if (newMode === 'quiz') renderQuiz();
+      else render();
+      updateRulesToggleState();
+    }
+    structureBtn.addEventListener('click', () => switchMode('structure'));
+    examplesBtn.addEventListener('click', () => switchMode('examples'));
+    quizBtn.addEventListener('click', () => switchMode('quiz'));
+    render();
+  }
+
+  buildConditionalWidget({
+    prefix: 'mix32',
+    structureLeft: 'past perfect',
+    structureRight: 'would + base verb',
+    rulesToggleId: 'rules-toggle',
+    examples: [
+      { condition: 'I had learned to swim as a child', result: 'I would not be afraid of water now' },
+      { condition: 'she had taken that job offer', result: 'she would be living abroad now' },
+      { condition: 'we had saved more money back then', result: 'we would be less stressed now' },
+      { condition: 'he had studied medicine', result: 'he would be a doctor today' },
+      { condition: 'they had moved earlier', result: 'they would be settled by now' }
+    ]
+  });
+
+  buildConditionalWidget({
+    prefix: 'mix23',
+    structureLeft: 'past simple',
+    structureRight: 'would have + past participle',
+    rulesToggleId: 'rules-toggle',
+    examples: [
+      { condition: 'she were not so shy', result: 'she would have spoken up at the meeting' },
+      { condition: 'he were more organised', result: 'he would have remembered the appointment' },
+      { condition: 'I were not so busy this month', result: 'I would have gone to the wedding' },
+      { condition: 'they were not so far away', result: 'they would have visited last week' },
+      { condition: 'she did not dislike flying', result: 'she would have joined the trip' }
+    ]
+  });
+
+  /* ---------------- COMPARE: 3&2 vs 2&3 ---------------- */
+  renderCompareCard('compare-mixed', [
+    { key:'m1', label:'3&2', text:'If I had taken that course, I would have a completely different career now.' },
+    { key:'m2', label:'2&3', text:"If I weren't so risk-averse, I would have taken that course years ago." },
+    { key:'m3', label:'3&2', text:'If she had married young, she would be raising teenagers by now.' },
+    { key:'m4', label:'2&3', text:"If she weren't so career-focused, she would have married young." }
+  ], {
+    m1: '3&2 — a past unreal action ("had taken") with a present unreal consequence ("would have," present tense).<br><br><b>Reality:</b> I didn\'t take that course, and I still have this same career today.',
+    m2: '2&3 — an ongoing present trait ("weren\'t") with a one-off past unreal consequence ("would have taken").<br><br><b>Reality:</b> I am risk-averse — I was back then, and I still am now — which is exactly why I never took the course.',
+    m3: '3&2 — the same pattern: past unreal action, present unreal state as the result.<br><br><b>Reality:</b> She didn\'t marry young, and she isn\'t raising teenagers now.',
+    m4: '2&3 — an ongoing present trait paired with a one-off past unreal consequence.<br><br><b>Reality:</b> She is career-focused — she was then, and still is now — which is exactly why she didn\'t marry young.'
+  });
+
+  /* ---------------- COMMON ONGOING CONDITIONS (5 categories, hover for a sample sentence) ---------------- */
+  const traitCategories = [
+    {
+      title: 'Inherent qualities & personality traits',
+      traits: [
+        { word: 'brave', sentence: "If he were braver, he would have spoken up in yesterday's meeting." },
+        { word: 'honest', sentence: 'If she were more honest, she would have admitted her mistake last week.' },
+        { word: 'patient', sentence: "If I were more patient, I wouldn't have snapped at him yesterday." },
+        { word: 'responsible', sentence: 'If he were more responsible, he would have remembered to lock the door last night.' }
+      ]
+    },
+    {
+      title: 'General knowledge & competencies',
+      traits: [
+        { word: 'knew how to code', sentence: 'If he knew how to code, he would have fixed the website himself last week.' },
+        { word: 'understood physics', sentence: "If she understood physics, she would have helped him with his homework yesterday." },
+        { word: 'knew how to swim', sentence: 'If she knew how to swim, she would have joined us at the beach yesterday.' },
+        { word: 'spoke French', sentence: 'If I spoke French, I would have translated the letter for you last month.' }
+      ]
+    },
+    {
+      title: 'Relationships & social status',
+      traits: [
+        { word: 'were still friends', sentence: 'If they were still friends, he would have invited her to his wedding last month.' },
+        { word: 'were married', sentence: 'If they were married, she would have been listed as his emergency contact last year.' },
+        { word: 'were his boss', sentence: 'If she were his boss, she would have approved his request last week.' }
+      ]
+    },
+    {
+      title: 'Long-term preferences, beliefs & habits',
+      traits: [
+        { word: 'liked horror movies', sentence: 'If I liked horror movies, I would have gone to the theatre with you on Friday.' },
+        { word: 'were vegetarian', sentence: "If she were vegetarian, she wouldn't have ordered the steak last night." },
+        { word: 'believed in ghosts', sentence: 'If he believed in ghosts, he would have been terrified by that old house last week.' },
+        { word: 'hated cold weather', sentence: "If she hated cold weather, she wouldn't have moved to Norway last year." }
+      ]
+    },
+    {
+      title: 'Continuous geographical or situational state',
+      traits: [
+        { word: 'lived closer to the city', sentence: 'If we lived closer to the city, we would have attended the concert last night.' },
+        { word: 'worked for that company', sentence: 'If he worked for that company, he would have gone to the conference last month.' },
+        { word: 'owned a car', sentence: 'If she owned a car, she would have driven us to the airport yesterday.' }
+      ]
+    }
+  ];
+  const traitCategoriesEl = document.getElementById('trait-categories');
+  traitCategories.forEach((cat, ci) => {
+    const group = document.createElement('div');
+    group.style.marginBottom = ci < traitCategories.length - 1 ? '16px' : '0';
+    const heading = document.createElement('div');
+    heading.style.cssText = 'font-size:12.5px;font-weight:650;color:var(--text-secondary);margin-bottom:8px';
+    heading.textContent = cat.title;
+    group.appendChild(heading);
+    const pillsRow = document.createElement('div');
+    pillsRow.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px';
+    cat.traits.forEach(t => {
+      const pill = document.createElement('button');
+      pill.type = 'button';
+      pill.className = 'trait-pill';
+      pill.textContent = t.word;
+      const html = `<div>"${t.sentence}"</div>`;
+      pill.addEventListener('mouseenter', () => showCompareTooltip(html, pill));
+      pill.addEventListener('mouseleave', hideCompareTooltip);
+      pill.addEventListener('click', (e) => { e.stopPropagation(); showCompareTooltip(html, pill); });
+      pillsRow.appendChild(pill);
+    });
+    group.appendChild(pillsRow);
+    traitCategoriesEl.appendChild(group);
+  });
+
+  /* ---------------- COMPARE: THIRD vs 3&2 (same if-clause, different result time) ---------------- */
+  renderCompareCard('compare-third-vs-32', [
+    { key:'tv1', label:'Third (past result)', text: "If I hadn't worked so much yesterday, I would have gone to bed a lot earlier last night." },
+    { key:'tv2', label:'3&2 (present result)', text: "If I hadn't worked so much yesterday, I wouldn't be so exhausted today." }
+  ], {
+    tv1: 'Third conditional — same if-clause, but the result also stays in the past: a different bedtime, last night specifically.',
+    tv2: '3&2 mixed — the exact same if-clause, but now the result is about right now: how tired I feel today, as a consequence of yesterday.'
+  });
+
+  /* ---------------- THE CONDITIONAL TIMELINE (interactive, click to reveal) ----------------
+     One shared scenario ("study hard") flexed across all six forms, so the
+     only thing that changes between stripes is genuinely the grammar, not
+     the content. Columns are 1=Past, 2=Present, 3=Future; a stripe's
+     spanStart/spanEnd set which grid columns it covers (spanEnd is
+     exclusive, matching CSS grid-column syntax). */
+  const conditionalTimeline = [
+    { name: 'Zero', spanStart: 1, spanEnd: 4, color: 'var(--c-present)',
+      rule: 'A general truth — always true, no exceptions.', example: 'If you study hard, you pass your exams.' },
+    { name: 'First', spanStart: 2, spanEnd: 4, color: 'var(--c-future)',
+      rule: 'A real, likely possibility about the future.', example: 'If I study hard this week, I will pass the exam.' },
+    { name: 'Second', spanStart: 2, spanEnd: 4, color: 'var(--c-continuous)',
+      rule: 'Something hypothetical — imagined, unlikely, or untrue right now.', example: 'If I studied harder, I would pass more exams.' },
+    { name: 'Third', spanStart: 1, spanEnd: 2, color: 'var(--c-modal)',
+      rule: "An imagined different past — the real event is over and can't change.", example: 'If I had studied harder, I would have passed the exam.' },
+    { name: '3&2', spanStart: 1, spanEnd: 3, color: 'var(--accent)',
+      rule: 'A past unreal condition with a present unreal result.', example: 'If I had studied harder at school, I would have a much better job now.' },
+    { name: '2&3', spanStart: 1, spanEnd: 3, color: 'var(--bad)',
+      rule: 'An ongoing unreal condition with a past unreal result.', example: 'If I were more hardworking, I would have passed that exam last year.' }
+  ];
+  const timelineRowsEl = document.getElementById('timeline-rows');
+  conditionalTimeline.forEach(t => {
+    const row = document.createElement('div');
+    row.style.cssText = 'display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px';
+    const stripe = document.createElement('button');
+    stripe.type = 'button';
+    stripe.className = 'timeline-stripe';
+    stripe.style.gridColumn = `${t.spanStart} / ${t.spanEnd}`;
+    stripe.style.background = t.color;
+    stripe.textContent = t.name;
+    const html = `<div><b>${t.name} conditional</b><br>${t.rule}<br><span style="opacity:.85">"${t.example}"</span></div>`;
+    stripe.addEventListener('click', (e) => { e.stopPropagation(); showCompareTooltip(html, stripe); });
+    row.appendChild(stripe);
+    timelineRowsEl.appendChild(row);
+  });
+
+  /* ---------------- EXPANDABLE RULES ---------------- */
+  document.getElementById('rules-toggle').addEventListener('click', function(){
+    const content = document.getElementById('rules-content');
+    const open = content.classList.toggle('open');
+    this.textContent = open ? '📖 Hide the full rules' : '📖 Show the full rules';
+  });
+
+  /* ---------------- MCQ SECTIONS (via shared engine) ---------------- */
+  const mcqSections = [
+    ['warm-q1','warmup-1','right'], ['warm-q2','warmup-2','right'], ['warm-q3','warmup-3','right'],
+    ['diag-q1','diagnostic-1','right'], ['diag-q2','diagnostic-2','right'], ['diag-q3','diagnostic-3','right'], ['diag-q4','diagnostic-4','right'],
+    ['comp-q1','reading-comprehension-1','right'], ['comp-q2','reading-comprehension-2','right'], ['comp-q3','reading-comprehension-3','right'],
+    ['vocab-q1','vocab-1','right'], ['vocab-q2','vocab-2','right'], ['vocab-q3','vocab-3','right'], ['vocab-q4','vocab-4','right'], ['vocab-q5','vocab-5','right'],
+    ['cat-q1','practice-categorise-1','right'], ['cat-q2','practice-categorise-2','right'], ['cat-q3','practice-categorise-3','right'], ['cat-q4','practice-categorise-4','right'],
+    ['cat-q5','practice-categorise-5','right'], ['cat-q6','practice-categorise-6','right'], ['cat-q7','practice-categorise-7','right'], ['cat-q8','practice-categorise-8','right'],
+    ['listen-q1','listening-1','right'], ['listen-q2','listening-2','right'], ['listen-q3','listening-3','right'],
+    ['exit-q1','exit-1','right'], ['exit-q2','exit-2','right'], ['exit-q3','exit-3','right'], ['exit-q4','exit-4','right'], ['exit-q5','exit-5','right']
+  ];
+  mcqSections.forEach(([id, section, correctVal]) => {
+    Course.shuffleOptions(id);
+    Course.initMCQ(id, {
+      lessonId: LESSON_ID, sectionId: section, correctValue: correctVal, onAnswered: updateOverallProgress,
+      restoreAnswer: sectionMap[section] ? sectionMap[section].answer_given : undefined
+    });
+  });
+  if (!sectionMap['listening-1']) Course.ensureGroupVariety(['listen-q1','listen-q2','listen-q3']);
+  if (!sectionMap['reading-comprehension-1']) Course.ensureGroupVariety(['comp-q1','comp-q2','comp-q3']);
+  if (!sectionMap['practice-categorise-1']) Course.ensureGroupVariety(['cat-q1','cat-q2','cat-q3','cat-q4','cat-q5','cat-q6','cat-q7','cat-q8']);
+
+  /* ---------------- GAP FILL (restorable) ----------------
+     Items with a pronoun subject already printed in the sentence get
+     Course.withContractions for the natural spoken form ("I'd studied,"
+     "she'd have shared," etc). */
+  const gapFills = [
+    ['gap1-input','gap1-check','gap1-fb','practice-gapfill-1', Course.withContractions(['had studied']), true],
+    ['gap2-input','gap2-check','gap2-fb','practice-gapfill-2', Course.withContractions(['would have shared']), false],
+    ['gap3-input','gap3-check','gap3-fb','practice-gapfill-3', Course.withContractions(['would live', 'would be living']), false],
+    ['gap4-input','gap4-check','gap4-fb','practice-gapfill-4', ['were'], false],
+    ['gap5-input','gap5-check','gap5-fb','practice-gapfill-5', Course.withContractions(['would be']), false],
+    ['gap6-input','gap6-check','gap6-fb','practice-gapfill-6', Course.withContractions(['would have visited']), false],
+    ['vgap1-input','vgap1-check','vgap1-fb','vocab-gapfill-1', ['narrowly'], true],
+    ['vgap2-input','vgap2-check','vgap2-fb','vocab-gapfill-2', ['comparison'], false],
+    ['vgap3-input','vgap3-check','vgap3-fb','vocab-gapfill-3', ['ranking'], false],
+    ['vgap4-input','vgap4-check','vgap4-fb','vocab-gapfill-4', ['contentment'], false]
+  ];
+  gapFills.forEach(([inputId, btnId, fbId, section, answers, showHint]) => {
+    const restored = sectionMap[section];
+    Course.initGapFill(inputId, btnId, fbId, {
+      lessonId: LESSON_ID, sectionId: section, correctAnswers: answers, showAnswerHint: showHint,
+      restore: restored ? { answerGiven: restored.answer_given, isCorrect: restored.override_correct ?? restored.is_correct } : undefined,
+      onAnswered: updateOverallProgress
+    });
+  });
+
+  /* ---------------- FIX THE SENTENCE (error-spot) ---------------- */
+  const fixItems = [
+    { id:'fix1', section:'practice-fix-1', words:['If','I','had','studied','medicine,','I','would','have','been','a','doctor','now.'], errorIndices:[6,7,8], correction:'would be' },
+    { id:'fix2', section:'practice-fix-2', words:["If","she","weren't","so","shy,","she","would","speak","up","at","yesterday's","meeting."], errorIndices:[6,7], correction:'would have spoken' },
+    { id:'fix3', section:'practice-fix-3', words:['If','he','had','studied','harder','at','school,','he','would','earning','more','money','now.'], errorIndices:[9], correction:'be earning' },
+    { id:'fix4', section:'practice-fix-4', words:["If","I","weren't","so","afraid","of","flying,","I","would","have","went","with","you","last","year."], errorIndices:[10], correction:'gone' }
+  ];
+  fixItems.forEach(item => {
+    const restored = sectionMap[item.section];
+    Course.initErrorSpot(item.id, {
+      lessonId: LESSON_ID, sectionId: item.section, words: item.words, errorIndices: item.errorIndices, correction: item.correction,
+      onAnswered: updateOverallProgress,
+      restore: restored ? { answerGiven: restored.answer_given } : undefined
+    });
+  });
+
+  /* ---------------- SENTENCE BUILDER (single-clause safe. Locks immediately
+     on Check, not just on reload.) ---------------- */
+  const builderRounds = [
+    { words: ['if','i','had','learned','to','swim','i','would','not','be','afraid','of','water','now'],
+      accepted: ['if i had learned to swim i would not be afraid of water now'] },
+    { words: ['if','she','were','not','so','shy','she','would','have','spoken','up'],
+      accepted: ['if she were not so shy she would have spoken up'] },
+    { words: ['if','he','had','studied','medicine','he','would','be','a','doctor','now'],
+      accepted: ['if he had studied medicine he would be a doctor now'] }
+  ];
+  const buildersEl = document.getElementById('builders');
+  builderRounds.forEach((round, ri) => {
+    const sectionId = `practice-builder-${ri+1}`;
+    const restored = sectionMap[sectionId];
+    const bankOrder = Course.shuffleArray(round.words.map((_, i) => i));
+    let state = [];
+    let locked = false;
+
+    if (restored){
+      const used = new Set();
+      restored.answer_given.split(' ').forEach(tok => {
+        const idx = round.words.findIndex((w, i) => w === tok && !used.has(i));
+        if (idx >= 0){ used.add(idx); state.push(idx); }
+      });
+      locked = true;
+    }
+
+    const wrap = document.createElement('div');
+    wrap.style.marginBottom = '20px';
+    wrap.innerHTML = `
+      <div class="builder-bank" id="builder-bank-${ri}"></div>
+      <div class="builder-target" id="builder-target-${ri}"></div>
+      <p style="font-size:12px;color:var(--text-tertiary);margin-top:6px">Tap a word in your sentence to send it back to the pool.</p>
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+        <button class="btn btn-sm" id="builder-check-${ri}">Check order</button>
+        <button class="btn btn-sm btn-ghost" id="builder-reset-${ri}">Reset</button>
+      </div>
+      <div id="builder-fb-${ri}"></div>
+    `;
+    buildersEl.appendChild(wrap);
+
+    const bank = wrap.querySelector(`#builder-bank-${ri}`);
+    const target = wrap.querySelector(`#builder-target-${ri}`);
+    function render(){
+      bank.innerHTML = '';
+      bankOrder.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip' + (state.includes(i) ? ' used' : '');
+        chip.textContent = round.words[i];
+        if (!locked) chip.addEventListener('click', () => { if (state.includes(i)) return; state.push(i); render(); });
+        else chip.disabled = true;
+        bank.appendChild(chip);
+      });
+      target.innerHTML = '';
+      state.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip';
+        chip.textContent = round.words[i];
+        if (!locked){
+          chip.title = 'Click to remove';
+          chip.addEventListener('click', () => { state = state.filter(x => x !== i); render(); });
+        } else {
+          chip.disabled = true;
+        }
+        target.appendChild(chip);
+      });
+    }
+    render();
+
+    if (restored){
+      const isCorrect = restored.override_correct ?? restored.is_correct;
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+    }
+
+    wrap.querySelector(`#builder-reset-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      state = []; render(); wrap.querySelector(`#builder-fb-${ri}`).innerHTML = '';
+    });
+    wrap.querySelector(`#builder-check-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      const attempt = state.map(i => round.words[i]).join(' ');
+      const isCorrect = round.accepted.includes(attempt);
+      locked = true;
+      render();
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+      Course.logProgress({ lessonId: LESSON_ID, sectionId, answerGiven: attempt, isCorrect });
+      updateOverallProgress();
+    });
+  });
+
+  /* ---------------- SPEAKING MODE TOGGLE ---------------- */
+  document.getElementById('mode-solo').addEventListener('click', () => {
+    document.getElementById('mode-solo').classList.add('on');
+    document.getElementById('mode-group').classList.remove('on');
+    document.getElementById('speak-solo').style.display = 'block';
+    document.getElementById('speak-group').style.display = 'none';
+  });
+  document.getElementById('mode-group').addEventListener('click', () => {
+    document.getElementById('mode-group').classList.add('on');
+    document.getElementById('mode-solo').classList.remove('on');
+    document.getElementById('speak-group').style.display = 'block';
+    document.getElementById('speak-solo').style.display = 'none';
+  });
+
+  /* ---------------- SOLO SPEAKING TASK — MARK AS DONE (restorable) ---------------- */
+  const SOLO_TASK_LABEL = "Solo speaking task: one 3&2 and one 2&3 mixed conditional about real situations.";
+  const soloDoneBtn = document.getElementById('solo-done-btn');
+  let soloDone = !!(sectionMap['speaking-solo'] && sectionMap['speaking-solo'].status === 'completed');
+  function renderSoloBtn(){
+    soloDoneBtn.textContent = soloDone ? "✓ Marked as done" : "✓ I've done this";
+    soloDoneBtn.classList.toggle('btn-primary', soloDone);
+  }
+  renderSoloBtn();
+  soloDoneBtn.addEventListener('click', () => {
+    soloDone = !soloDone;
+    renderSoloBtn();
+    Course.logProgress({
+      lessonId: LESSON_ID, sectionId: 'speaking-solo', exerciseType: 'oral',
+      status: soloDone ? 'completed' : 'not_attempted', answerGiven: SOLO_TASK_LABEL
+    });
+  });
+
+  /* ---------------- DISCUSSION QUESTION PICKER (restorable) ---------------- */
+  const discussQuestions = [
+    "Can you think of a past decision that still affects who you are today? Describe it with 3&2 mixed conditional.",
+    "Is there a personality trait of yours that changed the outcome of one specific past event? Describe it with 2&3.",
+    "Do you think focusing on 'what could have been' is ever helpful, or is it always a source of unnecessary regret?",
+    "Have you ever felt disappointed with a genuinely good result, the way silver medallists do? What happened?"
+  ];
+  const discussEl = document.getElementById('discuss-questions');
+  let pickedQuestions = [];
+  discussQuestions.forEach((q, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'discuss-q';
+    btn.dataset.idx = i;
+    btn.innerHTML = `<span class="chk"></span><span>${q}</span>`;
+    const restored = sectionMap[`speaking-q${i+1}`];
+    if (restored && restored.status === 'completed'){
+      pickedQuestions.push(i);
+      btn.classList.add('picked');
+    }
+    btn.addEventListener('click', () => {
+      const isPicked = pickedQuestions.includes(i);
+      if (isPicked){
+        pickedQuestions = pickedQuestions.filter(x => x !== i);
+        btn.classList.remove('picked');
+      } else {
+        if (pickedQuestions.length >= 2){
+          document.getElementById('discuss-limit-msg').style.color = 'var(--bad)';
+          document.getElementById('discuss-limit-msg').textContent = 'You can only pick up to 2 — deselect one first.';
+          return;
+        }
+        pickedQuestions.push(i);
+        btn.classList.add('picked');
+      }
+      document.getElementById('discuss-limit-msg').style.color = '';
+      document.getElementById('discuss-limit-msg').textContent = 'You can select up to 2 questions.';
+      Course.logProgress({
+        lessonId: LESSON_ID, sectionId: `speaking-q${i+1}`, exerciseType: 'oral',
+        status: isPicked ? 'not_attempted' : 'completed', answerGiven: q
+      });
+    });
+    discussEl.appendChild(btn);
+  });
+
+  /* ---------------- LISTENING DIALOGUE ---------------- */
+  const AUDIO_SRC = 'audio/lesson-16-listening.mp3';
+  const dialogue = [
+    { speaker:'Anna', pitch:1.12, line:"Honestly, I still think about that Berlin job sometimes." },
+    { speaker:'Tomasz', pitch:0.88, line:"The one you turned down? If you'd taken it, you'd be living abroad right now." },
+    { speaker:'Anna', pitch:1.12, line:"Exactly. Completely different life, probably." },
+    { speaker:'Tomasz', pitch:0.88, line:"I get it. If I weren't so indecisive, I'd have applied for that course years ago." },
+    { speaker:'Anna', pitch:1.12, line:"You still could, though — that one's not exactly closed forever." },
+    { speaker:'Tomasz', pitch:0.88, line:"True. It's a bit like that reading, isn't it — focusing on the near miss instead of what's actually in front of you." },
+    { speaker:'Anna', pitch:1.12, line:"The silver medallist thing? Yeah, exactly. Always comparing to the gold they narrowly missed." },
+    { speaker:'Tomasz', pitch:0.88, line:"Maybe I should start comparing to fourth place instead." }
+  ];
+
+  let audioAvailable = false;
+  const audioEl = document.getElementById('dialogue-audio');
+  fetch(AUDIO_SRC, { method:'HEAD' }).then(r => { if (r.ok){ audioAvailable = true; audioEl.src = AUDIO_SRC; } }).catch(() => {});
+
+  const transcriptEl = document.getElementById('transcript');
+  dialogue.forEach((d, i) => {
+    const line = document.createElement('div');
+    line.className = 'transcript-line';
+    line.id = `t-line-${i}`;
+    line.innerHTML = `<b>${d.speaker}:</b> ${d.line}`;
+    transcriptEl.appendChild(line);
+  });
+
+  const playBtn = document.getElementById('play-dialogue');
+  let isPlaying = false;
+  let currentIdx = 0;
+
+  function updatePlayButton(){
+    if (isPlaying){ playBtn.textContent = '⏸ Pause'; return; }
+    if (window.speechSynthesis.paused){ playBtn.textContent = '▶ Resume'; return; }
+    playBtn.textContent = '▶ Play dialogue';
+  }
+
+  function speakLineAt(idx){
+    if (idx >= dialogue.length){ isPlaying = false; currentIdx = 0; updatePlayButton(); return; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    document.getElementById(`t-line-${idx}`).classList.add('shown', 'active');
+    const u = new SpeechSynthesisUtterance(dialogue[idx].line);
+    u.rate = 0.95; u.pitch = dialogue[idx].pitch;
+    u.onend = () => { if (isPlaying){ currentIdx = idx + 1; speakLineAt(currentIdx); } };
+    window.speechSynthesis.speak(u);
+  }
+
+  playBtn.addEventListener('click', () => {
+    if (audioAvailable){
+      if (audioEl.paused){ audioEl.play(); isPlaying = true; }
+      else { audioEl.pause(); isPlaying = false; }
+      updatePlayButton();
+      return;
+    }
+    if (!isPlaying){
+      isPlaying = true;
+      if (window.speechSynthesis.paused){ window.speechSynthesis.resume(); }
+      else {
+        // Defensive reset, fresh-start only (never on resume/pause): speechSynthesis
+        // has a well-documented browser bug where it can silently stop accepting
+        // new speech after earlier calls elsewhere on the page (e.g. the vocab-word
+        // audio buttons), leaving Play looking broken with no error anywhere.
+        // Clearing the queue right before a genuinely fresh play avoids that class
+        // of bug without disturbing an actual pause/resume in progress.
+        window.speechSynthesis.cancel();
+        speakLineAt(currentIdx);
+      }
+    } else {
+      isPlaying = false;
+      window.speechSynthesis.pause();
+    }
+    updatePlayButton();
+  });
+
+  document.getElementById('stop-dialogue').addEventListener('click', () => {
+    isPlaying = false;
+    currentIdx = 0;
+    window.speechSynthesis.cancel();
+    if (audioAvailable){ audioEl.pause(); audioEl.currentTime = 0; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    updatePlayButton();
+  });
+
+  audioEl.addEventListener('ended', () => { isPlaying = false; updatePlayButton(); });
+
+  document.getElementById('show-transcript').addEventListener('click', function(){
+    const shown = transcriptEl.classList.toggle('all-shown');
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.toggle('shown', shown));
+    this.textContent = shown ? 'Hide transcript' : 'Show full transcript';
+  });
+
+  updateOverallProgress();
+})();
+
+/* ---------------- OVERALL PROGRESS BAR ---------------- */
+const LESSON_TOTAL_POSSIBLE = 31 + 10 + 4 + 3; // mcqSections(incl. 8 categorise) + gapFills + fixItems + builderRounds
+function updateOverallProgress(){
+  const attempted = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+  const pct = Math.min(100, Math.round((attempted / LESSON_TOTAL_POSSIBLE) * 100));
+  document.getElementById('overall-progress').style.width = pct + '%';
+}
+
+/* ---------------- FINISH / SUMMARY ---------------- */
+document.getElementById('finish-btn').addEventListener('click', async () => {
+  const btn = document.getElementById('finish-btn');
+  const original = btn.textContent;
+  btn.textContent = 'Checking for teacher updates…'; btn.disabled = true;
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+  } finally {
+    btn.textContent = original; btn.disabled = false;
+  }
+  try {
+    const { correct, total } = Course.lessonScore(LESSON_ID);
+    Course.renderScoreRing('score-ring-holder', correct, total);
+    document.getElementById('summary-name').textContent = `${Course.getStudentName()} — ${correct}/${total} correct`;
+
+    const attemptedCount = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+    const completionPct = Math.min(100, Math.round((attemptedCount / LESSON_TOTAL_POSSIBLE) * 100));
+    const completionEl = document.getElementById('summary-completion');
+    if (attemptedCount < LESSON_TOTAL_POSSIBLE){
+      completionEl.style.color = 'var(--warn)';
+      completionEl.textContent = `⚠ Only ${completionPct}% of the lesson attempted so far (${attemptedCount} of ${LESSON_TOTAL_POSSIBLE} exercises) — the score above only reflects what's been answered.`;
+    } else {
+      completionEl.style.color = 'var(--ok)';
+      completionEl.textContent = `✓ Every exercise in this lesson has been attempted.`;
+    }
+
+    const weak = Course.weakSections(LESSON_ID);
+    document.getElementById('summary-weak').textContent = weak.length
+      ? `Worth revisiting: ${weak.join(', ')}`
+      : 'Strong across the board — nice work!';
+    document.getElementById('export-btn').style.display = 'inline-block';
+    updateOverallProgress();
+
+    const card = document.getElementById('summary-card');
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    card.classList.remove('summary-pulse'); void card.offsetWidth;
+    card.classList.add('summary-pulse');
+  } catch (err){
+    console.error('Finish lesson failed:', err);
+    let banner = document.getElementById('finish-error-banner');
+    if (!banner){
+      banner = document.createElement('div');
+      banner.id = 'finish-error-banner';
+      banner.className = 'error-banner';
+      document.getElementById('summary-card').appendChild(banner);
+    }
+    banner.textContent = `Something went wrong computing your results (${err.message}). Try reloading the page — your saved answers won't be lost.`;
+  }
+});
+document.getElementById('export-btn').addEventListener('click', async () => {
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+    Course.exportReportPDF(LESSON_ID, 'Mixed Conditionals', LESSON_TOTAL_POSSIBLE);
+  } catch (err){
+    console.error('PDF export failed:', err);
+    alert('The PDF export ran into a problem: ' + err.message);
+  }
+});
+</script>
+
+<script>
+{
+  const allLessonsLink = document.getElementById('all-lessons-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  allLessonsLink.href = groupParam ? `index-standalone.html?group=${encodeURIComponent(groupParam)}` : 'index-standalone.html';
+}
+</script>
+</body>
+</html>

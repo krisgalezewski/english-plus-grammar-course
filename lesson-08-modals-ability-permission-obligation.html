@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 8 — Modals of Ability, Permission, Obligation, and Prohibition | English+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+<style>
+  /* Lesson-specific only — a fourth highlight colour for the four-way signal-sort
+     (theme.css only wires up .c-present/.c-continuous), plus the clickable
+     compare-example styling used in the concept section. */
+  .pill.on.c-future{background:var(--c-future)}
+  .pill.on.c-bad{background:var(--bad)}
+  .compare-box{display:inline-block;padding:4px 10px;border-radius:6px;background:var(--surface-alt);cursor:default;transition:background .15s}
+  .compare-box:hover{background:var(--accent-soft)}
+  .compare-ex{cursor:pointer;border-bottom:1px dashed var(--c-modal);padding:0 1px;transition:background .15s}
+  .compare-ex:hover{background:var(--warn-bg)}
+  .trait-pill{padding:7px 12px;border-radius:var(--radius-sm);border:1px solid var(--accent);background:var(--surface);color:var(--accent);font-size:12.5px;font-weight:700;cursor:pointer;transition:background .15s}
+  .trait-pill:hover{background:var(--accent-soft)}
+  #compare-tooltip{
+    position:absolute;z-index:80;max-width:280px;background:var(--accent-soft);color:var(--text-secondary);
+    border:1px solid var(--accent);font-size:13px;line-height:1.5;padding:10px 12px;border-radius:8px;
+    box-shadow:0 4px 16px rgba(0,0,0,.12);pointer-events:none;
+    opacity:0;transition:opacity .1s;
+  }
+  #compare-tooltip.visible{opacity:1}
+  .static-cell{display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:var(--radius-md);padding:8px 6px;background:var(--surface);text-align:center;font-size:12.5px;color:var(--text-secondary);min-height:20px}
+  .static-cell.is-primary-cell{border-color:var(--accent);background:var(--surface);color:var(--accent);font-weight:650;flex:1}
+  .static-cell.clickable-cell{cursor:pointer}
+  .static-cell.clickable-cell:hover{opacity:.85}
+  .mode-toggle-outline .pill{border-radius:var(--radius-sm)}
+  .mode-toggle-outline .pill.on{background:var(--surface);color:var(--accent);border-color:var(--accent);font-weight:700}
+  .pill[disabled]{cursor:not-allowed;pointer-events:none}
+  .pill[disabled]:not(.on){opacity:.45}
+  .signal-pill{border-color:var(--accent);color:var(--accent);border-radius:var(--radius-sm)}
+  .signal-pill:hover:not(:disabled){background:var(--accent-soft)}
+  /* Signal-sort columns are auto-width, sized to each column's widest
+     occupant across all rows — with varied modal-length buttons shuffled
+     into different columns per row, shorter pills would otherwise sit
+     flush left in a wider cell. Centering keeps every row looking tidy
+     regardless of which modal lands in which column. */
+  #signal-sort .pill{justify-self:center}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="shared/supabase-config.js"></script>
+</head>
+<body class="theme-modals">
+
+<div class="course-attribution">English+ Grammar Course · by Kris Galezewski</div>
+<div class="shell">
+
+  <!-- ============ HEADER ============ -->
+  <header class="lesson-header">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div class="lesson-eyebrow">Lesson 8 of 22 · Modality</div>
+      <div style="display:flex;gap:8px">
+      <a id="all-lessons-link" href="index-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📚 All Lessons</a>
+      <a id="glossary-link" href="glossary-standalone.html" class="pill" style="text-decoration:none;font-size:12.5px;border-radius:var(--radius-sm)">📖 My Glossary</a>
+    </div>
+    </div>
+    <h1 class="lesson-title">Modals of Ability, Permission, Obligation, and Prohibition</h1>
+    <p class="lesson-sub">Can, could, must, have to, should, mustn't — four different jobs, easy to mix up.</p>
+    <div class="pb-track" style="margin-top:16px"><div class="pb-fill" id="overall-progress" style="width:0%"></div></div>
+    <div id="sync-status" style="font-size:11.5px;color:var(--text-tertiary);margin-top:8px"></div>
+  </header>
+
+  <!-- ============ 1. WARM-UP ============ -->
+  <section class="section" id="sec-warmup">
+    <div class="section-label"><span class="num">1</span> Warm-up — a new kind of grammar</div>
+    <div class="card">
+      <p style="margin-bottom:14px;font-size:14.5px;color:var(--text-secondary)">
+        Every lesson so far has been about time — present, past, future. Today is different: modals aren't
+        about when something happens, but about ability, permission, obligation, and prohibition.
+      </p>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. Today's topic is about what someone…</p>
+        <div id="warm-q1">
+          <button class="opt" data-value="right">is able to do, is allowed to do, is required to do, or forbidden from doing</button>
+          <button class="opt" data-value="wrong">did once, a long time ago</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. "You must wear a helmet" and "you don't have to wear a helmet" are…</p>
+        <div id="warm-q2">
+          <button class="opt" data-value="right">almost opposite in meaning</button>
+          <button class="opt" data-value="wrong">basically the same thing</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. "She can speak three languages" is about…</p>
+        <div id="warm-q3">
+          <button class="opt" data-value="right">a skill she has</button>
+          <button class="opt" data-value="wrong">something she's required to do</button>
+        </div>
+      </div>
+      <div class="tip-box">💡 <span style="flex:1;min-width:0">Same word, "can," covers ability AND permission depending on context. Today's whole lesson is about telling these jobs apart.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 2. DIAGNOSTIC PRE-TEST ============ -->
+  <section class="section" id="sec-diagnostic">
+    <div class="section-label"><span class="num">2</span> Quick check — before we explain anything</div>
+    <div class="card">
+      <p style="margin-bottom:16px;font-size:14.5px;color:var(--text-secondary)">Four quick questions. This isn't graded harshly — it just shows us where to focus.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. I ___ swim, but I'm not very fast.</p>
+        <div id="diag-q1">
+          <button class="opt" data-value="right">can</button>
+          <button class="opt" data-value="wrong">must</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. After months of trying, she finally ___ pass the exam.</p>
+        <div id="diag-q2">
+          <button class="opt" data-value="right">managed to</button>
+          <button class="opt" data-value="wrong">could</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. You ___ finish it today — next week is fine too.</p>
+        <div id="diag-q3">
+          <button class="opt" data-value="right">don't have to</button>
+          <button class="opt" data-value="wrong">mustn't</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">4. Visitors ___ park in the staff-only spaces.</p>
+        <div id="diag-q4">
+          <button class="opt" data-value="right">mustn't</button>
+          <button class="opt" data-value="wrong">don't have to</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. CONCEPT EXPLANATION ============ -->
+  <section class="section" id="sec-concept">
+    <div class="section-label"><span class="num">3</span> The concept</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:10px">Four different jobs</h3>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:10px">
+        <b>Ability</b> is about what someone is capable of. <b>Permission</b> is about what's allowed.
+        <b>Obligation</b> is about what's required — or specifically not required. <b>Prohibition</b> is about
+        what's actively forbidden, which is a very different thing from simply not required. Browse each below,
+        switch between present and past, or test yourself with Quick check.
+      </p>
+
+      <div style="margin-bottom:6px">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);font-weight:650">View</span>
+      </div>
+      <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+        <button class="pill on" id="mode-modal-structure" style="font-size:14px;padding:8px 18px">Structure</button>
+        <button class="pill" id="mode-modal-examples" style="font-size:14px;padding:8px 18px">Examples</button>
+      </div>
+
+      <div style="margin:18px 0 6px;padding-top:16px;border-top:1px solid var(--border)">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);font-weight:650">Time</span>
+      </div>
+      <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+        <button class="pill on" id="mode-modal-present" style="font-size:14px;padding:8px 18px">Present</button>
+        <button class="pill" id="mode-modal-past" style="font-size:14px;padding:8px 18px">Past</button>
+      </div>
+
+      <div style="margin:18px 0 6px;padding-top:16px;border-top:1px solid var(--border)">
+        <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);font-weight:650">Function</span>
+      </div>
+      <div class="mode-toggle mode-toggle-outline" style="flex-wrap:wrap;gap:8px">
+        <button class="pill on" id="mode-modal-ability">Ability</button>
+        <button class="pill" id="mode-modal-permission">Permission</button>
+        <button class="pill" id="mode-modal-obligation">Obligation</button>
+        <button class="pill" id="mode-modal-prohibition">Prohibition</button>
+        <button class="pill" id="mode-modal-quiz">Quick check</button>
+      </div>
+
+      <div id="modal-widget-area" style="margin-top:14px;padding:18px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border)"></div>
+      <p id="modal-widget-hint" style="font-size:12.5px;color:var(--text-tertiary);margin-top:8px">— Click the pills to see another example.</p>
+
+      <button class="pill" id="rules-toggle" style="margin-top:16px">📖 Show the full rules</button>
+      <div class="expand-content" id="rules-content">
+        <div style="margin-top:16px">
+          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px">Present modals</h4>
+          <div class="formula" style="border-left-color:var(--c-future)">✅ Ability: <b>can / could / be able to / managed to + base verb</b> — e.g. "She can speak three languages."</div>
+          <div class="formula" style="border-left-color:var(--c-continuous)">✅ Permission: <b>can / could / may + base verb</b> — e.g. "Visitors may take photos in the lobby."</div>
+          <div class="formula" style="border-left-color:var(--c-present)">✅ Obligation: <b>must / have to / need to / should + base verb</b> — e.g. "All staff must complete the training."</div>
+          <div class="formula" style="border-left-color:var(--bad);margin-bottom:20px">✅ Prohibition: <b>mustn't / can't + base verb</b> — e.g. "Visitors mustn't smoke inside the building."</div>
+
+          <div class="warn-box">
+            <span>🎯</span>
+            <span style="flex:1;min-width:0">
+              <b>The tricky part:</b> "don't have to" (no obligation) and "mustn't" (prohibition) are not opposite ends of the same scale — they answer completely different questions.<br><br>
+              ✅ "You <b>don't have to</b> wear a suit." — it's simply not required. Wear one if you want to. <b>No obligation.</b><br>
+              ✅ "You <b>mustn't</b> wear jeans to the ceremony." — jeans are actively forbidden. <b>Prohibition.</b><br><br>
+              "Don't have to" removes the requirement; "mustn't" adds a ban. Mixing these up is the single most common mistake at this level.
+            </span>
+          </div>
+
+          <h4 style="font-size:15px;font-weight:650;margin:20px 0 10px;padding-top:16px;border-top:1px solid var(--border)">Past modals</h4>
+          <p style="font-size:14.5px;line-height:1.7;margin-bottom:14px">
+            Most modals don't inflect for the past the normal way — some borrow a completely different word instead,
+            and two of them have no past form of their own at all.
+          </p>
+          <div class="formula" style="border-left-color:var(--c-future)">✅ Ability (past): <b>could</b> (a general ability) / <b>was-were able to, managed to</b> (one specific achievement) — e.g. "She could read by age four." / "I was able to fix it just in time."</div>
+          <div class="formula" style="border-left-color:var(--c-continuous)">✅ Permission (past): <b>could / was-were allowed to</b> — e.g. "We were allowed to leave early that day."</div>
+          <div class="formula" style="border-left-color:var(--c-present)">✅ Obligation (past): <b>had to</b> — "must" has no past form of its own — e.g. "All staff had to complete the training before the launch."</div>
+          <div class="formula" style="border-left-color:var(--bad);margin-bottom:20px">✅ Prohibition (past): <b>wasn't/weren't allowed to</b> — "mustn't" has no past form of its own — e.g. "Visitors weren't allowed to bring bags inside."</div>
+
+          <div class="warn-box">
+            <span>🎯</span>
+            <span style="flex:1;min-width:0">
+              <b>The tricky part:</b> "must" and "mustn't" simply don't have a past-tense version of themselves.<br><br>
+              ✅ Obligation: <b>had to</b> fills the gap, not "musted" — "All staff had to sign a new contract."<br>
+              ✅ Prohibition: <b>wasn't/weren't allowed to</b> fills the gap, not a past form of "mustn't" — "We weren't allowed to use our phones during the exam."<br><br>
+              And remember: for a <b>one-time past achievement</b> (not a general ability), "could" alone doesn't work — you need "was/were able to" or "managed to." This tip may come in handy when you get to the gap-fill below.
+            </span>
+          </div>
+          <p style="font-size:13px;color:var(--text-tertiary);margin-top:14px;margin-bottom:0">📌 A later lesson covers <i>modal perfect</i> ("should have," "must have," "could have") — a different structure used for judging or guessing about the past, not simply describing it. That's coming soon.</p>
+
+          <h4 style="font-size:15px;font-weight:650;margin:20px 0 10px;padding-top:16px;border-top:1px solid var(--border)">Compare: same sentence, different modal</h4>
+          <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">Swap out just the modal verb, and the entire meaning of the sentence changes. Tap any sentence below to see exactly how.</p>
+          <div id="compare-examples" style="font-size:14.5px;line-height:2"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">The freedom scale</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:18px">Permission, obligation, and prohibition all sit on one scale — how much choice you actually have. (Ability is a different kind of thing entirely — a skill, not a question of freedom — so it sits outside this particular scale.) Drag the slider and watch the same kind of situation shift as the modal changes.</p>
+      <input type="range" id="timeline-slider" min="0" max="3" step="1" value="0" style="width:100%">
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-tertiary);margin-top:6px;padding:0 2px">
+        <span style="text-align:left">Forbidden</span>
+        <span style="text-align:center">Required</span>
+        <span style="text-align:center">Not required</span>
+        <span style="text-align:right">Permitted</span>
+      </div>
+      <div id="timeline-display" style="margin-top:20px;padding:16px;border-radius:var(--radius-md);background:var(--surface-alt);border:1px solid var(--border)"></div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:12px">Try it: which modal verb fits which situation?</h3>
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:14px">Each situation below only ever needs one specific modal — click the correct one. Instant feedback.</p>
+      <div id="signal-sort" style="display:grid;grid-template-columns:1fr auto auto auto auto;gap:8px 8px;align-items:center;font-size:13.5px"></div>
+    </div>
+  </section>
+
+  <!-- ============ 4. READING ============ -->
+  <section class="section" id="sec-reading">
+    <div class="section-label"><span class="num">4</span> Reading — Workplace Norms Across Cultures</div>
+    <div class="card">
+      <button class="pill" id="gram-toggle">🔍 Show grammar in this text</button>
+      <div class="passage" id="passage" style="margin-top:14px"></div>
+      <p style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">Tap a highlighted word for pronunciation, meaning and a fresh example. Once grammar highlighting is on, tap a highlighted sentence to see why that form was used.</p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:12px">Did you follow it? Quick comprehension check</h3>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. What did Hofstede notice when he surveyed IBM employees across countries?</p>
+        <div id="comp-q1">
+          <button class="opt" data-value="right">Workplace behaviour and norms, especially around hierarchy, vary enormously by culture.</button>
+          <button class="opt" data-value="wrong">Employees everywhere behaved almost identically regardless of country.</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. In high power-distance cultures, what would openly disagreeing with a manager in a meeting typically be seen as?</p>
+        <div id="comp-q2">
+          <button class="opt" data-value="right">A serious breach of deference.</button>
+          <button class="opt" data-value="wrong">A normal and encouraged part of any meeting.</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">3. According to the text, what's a useful rule for working across cultures?</p>
+        <div id="comp-q3">
+          <button class="opt" data-value="right">Ask directly what's expected rather than assuming.</button>
+          <button class="opt" data-value="wrong">Always follow your own culture's norms, since they're objectively correct.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. VOCAB REVIEW ============ -->
+  <section class="section" id="sec-vocab">
+    <div class="section-label"><span class="num">5</span> Vocabulary check</div>
+    <div class="card">
+      <p style="font-size:14.5px;margin-bottom:16px">All nine words from the text — mixed formats.</p>
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px">Match the meaning</h4>
+
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. "Hierarchy" means…</p>
+        <div id="vocab-q1">
+          <button class="opt" data-value="right">a system in which people are ranked by status or authority</button>
+          <button class="opt" data-value="wrong">a group of equally ranked colleagues</button>
+          <button class="opt" data-value="wrong2">a type of formal contract</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. "Deference" means…</p>
+        <div id="vocab-q2">
+          <button class="opt" data-value="right">respectful submission to someone's authority or wishes</button>
+          <button class="opt" data-value="wrong">open disagreement or rebellion</button>
+          <button class="opt" data-value="wrong2">complete indifference</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. "Egalitarian" means…</p>
+        <div id="vocab-q3">
+          <button class="opt" data-value="right">believing everyone should have equal rights and opportunities</button>
+          <button class="opt" data-value="wrong">believing in strict rank and hierarchy</button>
+          <button class="opt" data-value="wrong2">believing rules should never change</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. "Autonomy" means…</p>
+        <div id="vocab-q4">
+          <button class="opt" data-value="right">the freedom to make your own decisions without needing approval</button>
+          <button class="opt" data-value="wrong">strict supervision over every decision</button>
+          <button class="opt" data-value="wrong2">a formal job title</button>
+        </div>
+      </div>
+      <div style="margin-bottom:22px">
+        <p style="margin-bottom:8px;font-weight:550">5. "Ambiguous" means…</p>
+        <div id="vocab-q5">
+          <button class="opt" data-value="right">having more than one possible meaning, unclear</button>
+          <button class="opt" data-value="wrong">completely clear and precise</button>
+          <button class="opt" data-value="wrong2">officially confirmed in writing</button>
+        </div>
+      </div>
+
+      <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:12px;padding-top:6px;border-top:1px solid var(--border)">Complete the sentence — vocabulary focus</h4>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">6. A <input type="text" id="vgap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:170px"> is expected to follow instructions from their direct manager.</p>
+        <button class="btn btn-sm" id="vgap1-check">Check</button>
+        <div id="vgap1-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">7. Staff are given real <input type="text" id="vgap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> over how they handle small customer issues.</p>
+        <button class="btn btn-sm" id="vgap2-check">Check</button>
+        <div id="vgap2-fb"></div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px">8. It took the whole team a while to reach <input type="text" id="vgap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> on the new schedule.</p>
+        <button class="btn btn-sm" id="vgap3-check">Check</button>
+        <div id="vgap3-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">9. Some of the best feedback happens in <input type="text" id="vgap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> conversations, not official reviews.</p>
+        <button class="btn btn-sm" id="vgap4-check">Check</button>
+        <div id="vgap4-fb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. GRAMMAR PRACTICE ============ -->
+  <section class="section" id="sec-practice">
+    <div class="section-label"><span class="num">6</span> Practice</div>
+
+    <div class="card">
+      <h3 style="margin-bottom:2px">Gap-fill</h3>
+      <p style="font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:16px">Grammar focus — ability, permission, obligation, or prohibition?</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">1. She <input type="text" id="gap1-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:170px"> (speak) three languages fluently.</p>
+        <button class="btn btn-sm" id="gap1-check">Check</button>
+        <div id="gap1-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">2. I <input type="text" id="gap2-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (finish) the marathon, even though I'd never run one before.</p>
+        <button class="btn btn-sm" id="gap2-check">Check</button>
+        <div id="gap2-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">3. You <input type="text" id="gap3-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:190px"> (take) your shoes off — it's a casual visit, so it's completely up to you.</p>
+        <button class="btn btn-sm" id="gap3-check">Check</button>
+        <div id="gap3-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">4. Visitors <input type="text" id="gap4-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:170px"> (park) in the reserved spaces — it's strictly enforced.</p>
+        <button class="btn btn-sm" id="gap4-check">Check</button>
+        <div id="gap4-fb"></div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px">5. Employees <input type="text" id="gap5-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:150px"> (take) a 15-minute break every two hours if they choose to.</p>
+        <button class="btn btn-sm" id="gap5-check">Check</button>
+        <div id="gap5-fb"></div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px">6. You really <input type="text" id="gap6-input" placeholder="type here" style="border:1px solid var(--border-strong);border-radius:8px;padding:6px 10px;font-family:inherit;width:170px"> (apologise) to her — it was a genuine mistake.</p>
+        <button class="btn btn-sm" id="gap6-check">Check</button>
+        <div id="gap6-fb"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Categorise the sentence</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:16px">Read the context, then tap the function it belongs to — the modal itself is missing, so you have to reason it out.</p>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. "She ___ speak fluent Mandarin, after five years living in Beijing."</p>
+        <div id="cat-q1">
+          <button class="opt" data-value="right">Ability</button>
+          <button class="opt" data-value="wrong">Permission</button>
+          <button class="opt" data-value="wrong2">Obligation</button>
+          <button class="opt" data-value="wrong3">Prohibition</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">2. "By the time he was ten, he ___ already solve a Rubik's cube in under a minute."</p>
+        <div id="cat-q2">
+          <button class="opt" data-value="right">Ability</button>
+          <button class="opt" data-value="wrong">Permission</button>
+          <button class="opt" data-value="wrong2">Obligation</button>
+          <button class="opt" data-value="wrong3">Prohibition</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">3. "Visitors ___ take photos in the lobby, but not in the private offices."</p>
+        <div id="cat-q3">
+          <button class="opt" data-value="wrong">Ability</button>
+          <button class="opt" data-value="right">Permission</button>
+          <button class="opt" data-value="wrong2">Obligation</button>
+          <button class="opt" data-value="wrong3">Prohibition</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">4. "Employees ___ leave their desks without asking, as long as they're back within the hour."</p>
+        <div id="cat-q4">
+          <button class="opt" data-value="wrong">Ability</button>
+          <button class="opt" data-value="right">Permission</button>
+          <button class="opt" data-value="wrong2">Obligation</button>
+          <button class="opt" data-value="wrong3">Prohibition</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">5. "All staff ___ complete the safety training before their first shift — it's a legal requirement."</p>
+        <div id="cat-q5">
+          <button class="opt" data-value="wrong">Ability</button>
+          <button class="opt" data-value="wrong2">Permission</button>
+          <button class="opt" data-value="right">Obligation</button>
+          <button class="opt" data-value="wrong3">Prohibition</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">6. "You ___ arrive exactly at 9am — 9:15 is completely fine."</p>
+        <div id="cat-q6">
+          <button class="opt" data-value="wrong">Ability</button>
+          <button class="opt" data-value="wrong2">Permission</button>
+          <button class="opt" data-value="right">Obligation</button>
+          <button class="opt" data-value="wrong3">Prohibition</button>
+        </div>
+      </div>
+      <div style="margin-bottom:18px">
+        <p style="margin-bottom:8px;font-weight:550">7. "Guests ___ smoke anywhere inside the building — it's a strict, no-exceptions policy."</p>
+        <div id="cat-q7">
+          <button class="opt" data-value="wrong">Ability</button>
+          <button class="opt" data-value="wrong2">Permission</button>
+          <button class="opt" data-value="wrong3">Obligation</button>
+          <button class="opt" data-value="right">Prohibition</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">8. "Staff ___ share client passwords with anyone, under any circumstances."</p>
+        <div id="cat-q8">
+          <button class="opt" data-value="wrong">Ability</button>
+          <button class="opt" data-value="wrong2">Permission</button>
+          <button class="opt" data-value="wrong3">Obligation</button>
+          <button class="opt" data-value="right">Prohibition</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:6px">Sentence builder</h3>
+      <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px">Tap the chips in the right order. Three rounds.</p>
+      <div id="builders"></div>
+    </div>
+  </section>
+
+  <!-- ============ 7. SPEAKING ============ -->
+  <section class="section" id="sec-speaking">
+    <div class="section-label"><span class="num">7</span> Speaking task</div>
+    <div class="mode-toggle">
+      <button class="pill on" id="mode-solo">👤 Solo</button>
+      <button class="pill" id="mode-group">👥 Group (2–4)</button>
+    </div>
+    <div class="task-card" id="speak-solo">
+      <div class="kicker">60-second rundown</div>
+      <p style="font-size:14.5px;line-height:1.7">
+        Talk about the rules and norms at your workplace or school — what you have to do, what you don't have
+        to do, and what you're allowed vs. not allowed to do. Throw in at least one thing you're able to do
+        that most people can't.
+      </p>
+      <button class="btn btn-sm" id="solo-done-btn" style="margin-top:14px">✓ I've done this</button>
+    </div>
+    <div class="task-card" id="speak-group" style="display:none">
+      <div class="kicker">Discussion — pick 1–2 questions to answer out loud</div>
+      <p style="font-size:14.5px;line-height:1.7;margin-bottom:12px">Tap the question(s) you'll answer. Your teacher will see your pick and mark it after you speak.</p>
+      <div id="discuss-questions" style="display:flex;flex-direction:column;gap:8px"></div>
+      <p id="discuss-limit-msg" style="font-size:12.5px;color:var(--text-tertiary);margin-top:10px">You can select up to 2 questions.</p>
+    </div>
+  </section>
+
+  <!-- ============ 8. LISTENING ============ -->
+  <section class="section" id="sec-listening">
+    <div class="section-label"><span class="num">8</span> Listening</div>
+    <div class="card">
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:12px">Anna and Tomasz are talking about a work trip abroad — right after reading about workplace culture.</p>
+      <audio id="dialogue-audio" preload="none" style="display:none"></audio>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary" id="play-dialogue">▶ Play dialogue</button>
+        <button class="btn btn-ghost btn-sm" id="stop-dialogue">⏹ Stop</button>
+        <button class="btn btn-ghost btn-sm" id="show-transcript">Show full transcript</button>
+      </div>
+      <div id="transcript" style="margin-top:14px"></div>
+
+      <div style="margin-top:18px">
+        <p style="margin-bottom:8px;font-weight:550">1. According to Tomasz, what do people in the Tokyo office have to do for almost everything?</p>
+        <div id="listen-q1">
+          <button class="opt" data-value="right">Ask permission, even for small things.</button>
+          <button class="opt" data-value="wrong">Submit a written report every day.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. What couldn't Tomasz do without looping in his manager first?</p>
+        <div id="listen-q2">
+          <button class="opt" data-value="right">Email a client directly.</button>
+          <button class="opt" data-value="wrong">Take a lunch break.</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. What does Tomasz say he prefers?</p>
+        <div id="listen-q3">
+          <button class="opt" data-value="right">Having more autonomy.</button>
+          <button class="opt" data-value="wrong">Having stricter rules and more oversight.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9. WRAP-UP / EXIT TEST ============ -->
+  <section class="section" id="sec-wrapup">
+    <div class="section-label"><span class="num">9</span> Wrap-up — exit check</div>
+    <div class="card">
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">1. She ___ ski really well — she's been doing it since she was five.</p>
+        <div id="exit-q1">
+          <button class="opt" data-value="right">can</button>
+          <button class="opt" data-value="wrong">must</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">2. After years of training, she finally ___ complete the exam.</p>
+        <div id="exit-q2">
+          <button class="opt" data-value="right">was able to</button>
+          <button class="opt" data-value="wrong">could</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">3. You ___ hand it in today — tomorrow morning is totally fine.</p>
+        <div id="exit-q3">
+          <button class="opt" data-value="right">don't have to</button>
+          <button class="opt" data-value="wrong">mustn't</button>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="margin-bottom:8px;font-weight:550">4. Staff ___ wear the uniform on Fridays — it's casual day.</p>
+        <div id="exit-q4">
+          <button class="opt" data-value="right">don't have to</button>
+          <button class="opt" data-value="wrong">must</button>
+        </div>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;font-weight:550">5. ___ I borrow your pen for a second?</p>
+        <div id="exit-q5">
+          <button class="opt" data-value="right">Could</button>
+          <button class="opt" data-value="wrong">Must</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="summary-card">
+      <h3 style="margin-bottom:14px">Your lesson summary</h3>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px" id="summary-ring-row">
+        <div id="score-ring-holder"></div>
+        <div>
+          <div style="font-weight:600" id="summary-name">—</div>
+          <div style="font-size:13px;margin-top:4px" id="summary-completion"></div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-top:4px" id="summary-weak">Finish the lesson to see your results.</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="finish-btn">Finish lesson &amp; see results</button>
+      <button class="btn" id="export-btn" style="margin-left:8px;display:none">⬇ Export PDF report</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="shared/course-engine.js"></script>
+<script>
+const LESSON_ID = 'lesson-08-modals-ability-permission-obligation';
+
+/* ---------------- HOVER-TOOLTIP PILLS ---------------- */
+function ensureCompareTooltip(){
+  let el = document.getElementById('compare-tooltip');
+  if (!el){
+    el = document.createElement('div');
+    el.id = 'compare-tooltip';
+    document.body.appendChild(el);
+  }
+  return el;
+}
+const compareTooltipEl = ensureCompareTooltip();
+function showCompareTooltip(html, anchorEl){
+  compareTooltipEl.innerHTML = html;
+  const rect = anchorEl.getBoundingClientRect();
+  const scrollY = window.scrollY || document.documentElement.scrollTop;
+  const scrollX = window.scrollX || document.documentElement.scrollLeft;
+  compareTooltipEl.style.top = `${rect.bottom + scrollY + 8}px`;
+  compareTooltipEl.style.left = `${rect.left + scrollX}px`;
+  compareTooltipEl.classList.add('visible');
+}
+function hideCompareTooltip(){
+  compareTooltipEl.classList.remove('visible');
+}
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.trait-pill') && !e.target.closest('.compare-box')) hideCompareTooltip();
+});
+function renderCompareCard(containerId, items, explanations){
+  const el = document.getElementById(containerId);
+  el.innerHTML = items.map(it => `
+    <div style="display:flex;gap:10px;align-items:baseline;margin-bottom:${it.groupEnd ? 20 : 8}px">
+      <span style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);flex-shrink:0;width:130px">${it.label}</span>
+      <span class="compare-box" data-key="${it.key}">"${it.text}"</span>
+    </div>
+  `).join('');
+  el.querySelectorAll('.compare-box').forEach(node => {
+    const html = `<div>${explanations[node.dataset.key]}</div>`;
+    node.addEventListener('mouseenter', () => showCompareTooltip(html, node));
+    node.addEventListener('mouseleave', hideCompareTooltip);
+    node.addEventListener('click', () => showCompareTooltip(html, node));
+  });
+}
+
+/* ---------------- MODAL WIDGET: browse 4 functions (each with several
+   verbs), or Quick check ---------------- */
+const presentVerbs = {
+  ability: [
+    { word: 'can', example: 'She can speak three languages.' }
+  ],
+  permission: [
+    { word: 'can', example: 'Can I leave early? (casual)' },
+    { word: 'may', example: 'May I ask a question? (more formal)' }
+  ],
+  obligation: [
+    { word: 'must', example: 'All staff must complete the training.' },
+    { word: 'have to', example: 'You have to sign in at reception.' },
+    { word: 'need to', example: 'We need to finish this by Friday.' },
+    { word: 'should', example: 'You should apologise. (advice, not a strict rule)' }
+  ],
+  prohibition: [
+    { word: "mustn't", example: "You mustn't smoke here." },
+    { word: "can't", example: "Staff can't share client passwords with anyone." }
+  ]
+};
+const pastVerbs = {
+  ability: [
+    { word: 'could', example: 'She could read by age four. (general ability)' },
+    { word: 'was/were able to', example: 'I was able to fix it just in time. (a specific achievement — "could" alone would be wrong here)' },
+    { word: 'managed to', example: 'I managed to fix it before the meeting.' }
+  ],
+  permission: [
+    { word: 'could', example: 'We could leave early that day.' },
+    { word: 'was/were allowed to', example: 'We were allowed to leave early that day.' }
+  ],
+  obligation: [
+    { word: 'had to', example: 'All staff had to complete the training before the launch.' }
+  ],
+  prohibition: [
+    { word: "wasn't/weren't allowed to", example: "Visitors weren't allowed to bring bags inside." }
+  ]
+};
+const structureVerbs = {
+  present: {
+    ability: [{ word: 'Ability (present)', example: 'can + base verb' }],
+    permission: [{ word: 'Permission (present)', example: 'can / may + base verb' }],
+    obligation: [{ word: 'Obligation (present)', example: 'must / have to / need to / should + base verb' }],
+    prohibition: [{ word: 'Prohibition (present)', example: "mustn't / can't + base verb" }]
+  },
+  past: {
+    ability: [{ word: 'Ability (past)', example: 'could (general) / was-were able to, managed to (specific) + base verb' }],
+    permission: [{ word: 'Permission (past)', example: 'could / was-were allowed to + base verb' }],
+    obligation: [{ word: 'Obligation (past)', example: 'had to + base verb' }],
+    prohibition: [{ word: 'Prohibition (past)', example: "wasn't/weren't allowed to + base verb" }]
+  }
+};
+
+(function buildModalWidget(){
+  const quizPool = [
+    ...Object.entries(presentVerbs).flatMap(([fn, verbs]) => verbs.map(v => ({ word: v.word, answer: fn }))),
+    ...Object.entries(pastVerbs).flatMap(([fn, verbs]) => verbs.map(v => ({ word: v.word, answer: fn })))
+  ];
+  const quizLabels = { ability: 'Ability', permission: 'Permission', obligation: 'Obligation', prohibition: 'Prohibition' };
+  let view = 'structure';
+  let time = 'present';
+  let fn = 'ability';
+  const idx = {
+    structure: { present: { ability: 0, permission: 0, obligation: 0, prohibition: 0 }, past: { ability: 0, permission: 0, obligation: 0, prohibition: 0 } },
+    examples: { present: { ability: 0, permission: 0, obligation: 0, prohibition: 0 }, past: { ability: 0, permission: 0, obligation: 0, prohibition: 0 } }
+  };
+  const displayEl = document.getElementById('modal-widget-area');
+  const hintEl = document.getElementById('modal-widget-hint');
+
+  function renderBrowse(){
+    displayEl.style.padding = '18px';
+    const data = view === 'structure' ? structureVerbs[time][fn] : (time === 'present' ? presentVerbs[fn] : pastVerbs[fn]);
+    const canCycle = data.length > 1;
+    hintEl.style.display = canCycle ? 'block' : 'none';
+    hintEl.textContent = '— Click the pills to see another example.';
+    const item = data[idx[view][time][fn]];
+    displayEl.innerHTML = `
+      <div style="overflow-x:auto;padding-bottom:2px">
+        <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:10px;align-items:center;min-width:420px">
+          <div class="static-cell is-primary-cell${canCycle ? ' clickable-cell' : ''}">${item.word}</div>
+          <div class="static-cell is-primary-cell${canCycle ? ' clickable-cell' : ''}">${item.example}</div>
+        </div>
+      </div>`;
+    if (canCycle){
+      displayEl.querySelectorAll('.clickable-cell').forEach(c => {
+        c.addEventListener('click', () => {
+          idx[view][time][fn] = (idx[view][time][fn] + 1) % data.length;
+          renderBrowse();
+        });
+      });
+    }
+  }
+
+  function renderQuiz(){
+    hintEl.style.display = 'none';
+    displayEl.style.padding = '12px 18px';
+    displayEl.innerHTML = `
+      <p id="modal-quiz-word" style="font-size:19px;font-weight:650;text-align:center;color:var(--accent);margin-bottom:10px"></p>
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap" id="modal-quiz-options">
+        <button class="opt" data-answer="ability" style="flex:0 1 auto">Ability</button>
+        <button class="opt" data-answer="permission" style="flex:0 1 auto">Permission</button>
+        <button class="opt" data-answer="obligation" style="flex:0 1 auto">Obligation</button>
+        <button class="opt" data-answer="prohibition" style="flex:0 1 auto">Prohibition</button>
+      </div>
+      <div id="modal-quiz-feedback" style="text-align:center;min-height:16px;margin-top:8px;font-size:13.5px"></div>
+      <div style="text-align:center;margin-top:10px">
+        <button class="btn btn-primary" id="modal-quiz-next" style="display:none">Next →</button>
+      </div>`;
+
+    let order = Course.shuffleArray(quizPool.map((_, i) => i));
+    let pos = 0;
+    let answered = false;
+    const wordEl = document.getElementById('modal-quiz-word');
+    const optionsEl = document.getElementById('modal-quiz-options');
+    const feedbackEl = document.getElementById('modal-quiz-feedback');
+    const nextBtn = document.getElementById('modal-quiz-next');
+
+    function renderQ(){
+      answered = false;
+      feedbackEl.textContent = '';
+      nextBtn.style.display = 'none';
+      wordEl.textContent = quizPool[order[pos]].word;
+      [...optionsEl.children].forEach(btn => { btn.className = 'opt'; });
+    }
+    optionsEl.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (answered) return;
+        answered = true;
+        const item = quizPool[order[pos]];
+        const correct = btn.dataset.answer === item.answer;
+        [...optionsEl.children].forEach(b => {
+          if (b === btn) b.classList.add(correct ? 'ok' : 'bad');
+          else if (b.dataset.answer === item.answer) b.classList.add('ok');
+          else b.classList.add('dim');
+        });
+        feedbackEl.innerHTML = correct
+          ? `<span style="color:var(--ok)">✓ Correct! "${item.word}" is ${quizLabels[item.answer]}.</span>`
+          : `<span style="color:var(--bad)">Not quite — "${item.word}" is ${quizLabels[item.answer]}.</span>`;
+        nextBtn.style.display = 'inline-block';
+      });
+    });
+    nextBtn.addEventListener('click', () => {
+      pos += 1;
+      if (pos >= order.length){ order = Course.shuffleArray(quizPool.map((_, i) => i)); pos = 0; }
+      renderQ();
+    });
+    renderQ();
+  }
+
+  function updateRulesToggleState(){
+    const btn = document.getElementById('rules-toggle');
+    const content = document.getElementById('rules-content');
+    if (fn === 'quiz'){
+      btn.disabled = true;
+      btn.textContent = '📖 Disabled during Quick check';
+      content.classList.remove('open');
+    } else {
+      btn.disabled = false;
+      const isOpen = content.classList.contains('open');
+      btn.textContent = isOpen ? '📖 Hide the full rules' : '📖 Show the full rules';
+    }
+  }
+  function renderCurrent(){
+    if (fn === 'quiz') renderQuiz();
+    else renderBrowse();
+    updateRulesToggleState();
+  }
+  function switchView(newView){
+    view = newView;
+    document.getElementById('mode-modal-structure').classList.toggle('on', newView === 'structure');
+    document.getElementById('mode-modal-examples').classList.toggle('on', newView === 'examples');
+    if (fn !== 'quiz') renderBrowse();
+  }
+  function switchTime(newTime){
+    time = newTime;
+    document.getElementById('mode-modal-present').classList.toggle('on', newTime === 'present');
+    document.getElementById('mode-modal-past').classList.toggle('on', newTime === 'past');
+    if (fn !== 'quiz') renderBrowse();
+  }
+  function switchFn(newFn){
+    fn = newFn;
+    ['ability', 'permission', 'obligation', 'prohibition', 'quiz'].forEach(m => {
+      document.getElementById(`mode-modal-${m}`).classList.toggle('on', m === newFn);
+    });
+    renderCurrent();
+  }
+  document.getElementById('mode-modal-structure').addEventListener('click', () => switchView('structure'));
+  document.getElementById('mode-modal-examples').addEventListener('click', () => switchView('examples'));
+  document.getElementById('mode-modal-present').addEventListener('click', () => switchTime('present'));
+  document.getElementById('mode-modal-past').addEventListener('click', () => switchTime('past'));
+  document.getElementById('mode-modal-ability').addEventListener('click', () => switchFn('ability'));
+  document.getElementById('mode-modal-permission').addEventListener('click', () => switchFn('permission'));
+  document.getElementById('mode-modal-obligation').addEventListener('click', () => switchFn('obligation'));
+  document.getElementById('mode-modal-prohibition').addEventListener('click', () => switchFn('prohibition'));
+  document.getElementById('mode-modal-quiz').addEventListener('click', () => switchFn('quiz'));
+  switchFn('ability');
+})();
+
+{
+  const glossaryLink = document.getElementById('glossary-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  const currentFile = window.location.pathname.split('/').pop();
+  let glossaryHref = `glossary-standalone.html?from=${encodeURIComponent(currentFile)}`;
+  if (groupParam) glossaryHref += `&group=${encodeURIComponent(groupParam)}`;
+  glossaryLink.href = glossaryHref;
+}
+
+{
+  const resetBtn = document.createElement('button');
+  resetBtn.className = 'btn btn-sm btn-ghost';
+  resetBtn.textContent = '↺ Reset my progress for this lesson';
+  resetBtn.style.cssText = 'margin-top:8px;font-size:12px;padding:5px 12px';
+  resetBtn.addEventListener('click', () => {
+    if (confirm('Clear all saved answers for this lesson on this device? (Does not affect Supabase.)')){
+      Course.resetLocalProgress(LESSON_ID);
+      location.reload();
+    }
+  });
+  document.getElementById('sync-status').insertAdjacentElement('afterend', resetBtn);
+}
+
+(async function initLesson(){
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Syncing your progress…`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  await Course.syncFromSupabase(LESSON_ID);
+  const sectionMap = Course.getSectionMap(LESSON_ID);
+
+  document.getElementById('sync-status').textContent = Course.isConnected()
+    ? `☁ Synced · Group: ${Course.getGroupId()}`
+    : `⚠ Offline mode — progress is saved on this device only`;
+
+  /* ---------------- VOCAB DATA ---------------- */
+  const vocabData = {
+    hierarchy: { word:'hierarchy', ipa:'/ˈhaɪ.ə.rɑːr.ki/', meaning:'a system in which people are ranked according to status or authority', example:"The company's hierarchy has five levels between an intern and the CEO." },
+    deference: { word:'deference', ipa:'/ˈdef.ər.əns/', meaning:"respectful submission to someone's authority or wishes", example:"Junior staff showed clear deference to the department head." },
+    subordinate: { word:'subordinate', ipa:'/səˈbɔː.dɪ.nət/', meaning:'a person who is at a lower rank than someone else', example:"A good manager listens carefully to their subordinates, not just their peers." },
+    egalitarian: { word:'egalitarian', ipa:'/ɪˌɡæl.ɪˈteə.ri.ən/', meaning:'believing that everyone should have equal rights and opportunities', example:"The startup prided itself on its egalitarian, flat structure." },
+    autonomy: { word:'autonomy', ipa:'/ɔːˈtɒn.ə.mi/', meaning:'the freedom to make your own decisions without needing approval', example:"Senior engineers here are given a lot of autonomy over technical choices." },
+    discretion: { word:'discretion', ipa:'/dɪˈskreʃ.ən/', meaning:'the freedom to decide what should be done in a particular situation', example:"Staff use their own discretion when handling minor customer complaints." },
+    ambiguous: { word:'ambiguous', ipa:'/æmˈbɪɡ.ju.əs/', meaning:'having more than one possible meaning, unclear', example:"The instructions were ambiguous about who should approve the budget." },
+    consensus: { word:'consensus', ipa:'/kənˈsen.səs/', meaning:'general agreement among a group of people', example:"It took three meetings to reach consensus on the new policy." },
+    informal: { word:'informal', ipa:'/ɪnˈfɔː.məl/', meaning:'relaxed and casual, not following strict official rules', example:"Some of the best ideas came from informal chats by the coffee machine." }
+  };
+
+  function vocabSpan(key, text){
+    return `<span class="vocab" data-word="${key}">${text}</span>`;
+  }
+  function gramSpan(key, text){
+    return `<span class="gram" data-gram="${key}">${text}</span>`;
+  }
+  const gramExplanations = {
+    g1: "Obligation (must) — an internal rule of the system itself, not just personal advice; the junior employee is required to do this.",
+    g2: "Permission (can't) — describes what's NOT allowed within the culture's norms, not a lack of physical ability.",
+    g3: "Lack of obligation (don't have to) — not required, but still allowed if they wanted to; very different from \"must not,\" which would mean forbidden.",
+    g4: "Advice (should) — a recommendation, not a strict rule; you could ignore it without breaking any actual obligation.",
+    g5: "Ability/possibility (could) — a softer, more tentative way of saying something is possible or achievable, not a flat certainty."
+  };
+
+  /* ---------------- READING PASSAGE ---------------- */
+  document.getElementById('passage').innerHTML = `
+  <p>In the 1970s, Dutch researcher Geert Hofstede surveyed IBM employees in dozens of countries and noticed something striking: what counts as normal workplace behaviour varies enormously by culture, especially around ${vocabSpan('hierarchy','hierarchy')}. One of his clearest dimensions is "power distance" — how much a culture accepts that power is distributed unequally.</p>
+
+  <p>In high power-distance cultures, a junior employee typically ${gramSpan('g1','must ask permission')} before making even a small decision, and openly disagreeing with a manager in a meeting would be seen as a serious breach of ${vocabSpan('deference','deference')}. A ${vocabSpan('subordinate','subordinate')} in these settings generally ${gramSpan('g2',"can't skip")} the formal chain of command, even when the fix seems obvious.</p>
+
+  <p>More ${vocabSpan('egalitarian','egalitarian')}, low power-distance cultures work almost the opposite way. Employees ${gramSpan('g3',"don't have to wait")} for explicit approval on routine matters, and questioning a decision openly is often seen as useful rather than rude. Managers in these cultures tend to give more ${vocabSpan('autonomy','autonomy')} and ${vocabSpan('discretion','discretion')} to junior staff, trusting them to use good judgement.</p>
+
+  <p>None of this means one style is objectively better — Hofstede was always careful to frame it as difference, not ranking, and the boundaries are often ${vocabSpan('ambiguous','ambiguous')} in practice, especially in mixed international teams. A useful rule for working across cultures: you ${gramSpan('g4','should ask directly')} what's expected rather than assuming, and when genuine ${vocabSpan('consensus','consensus')} matters, it's worth checking whether a quick, ${vocabSpan('informal','informal')} chat ${gramSpan('g5','could achieve')} more than a formal proposal ever would.</p>
+  `;
+  document.getElementById('passage').classList.add('passage');
+
+  document.getElementById('gram-toggle').addEventListener('click', function(){
+    const passage = document.getElementById('passage');
+    const on = passage.classList.toggle('show-grammar');
+    this.classList.toggle('on', on);
+    this.textContent = on ? '🔍 Hide grammar in this text' : '🔍 Show grammar in this text';
+    if (!on) Course.hidePopup();
+  });
+  document.querySelectorAll('.gram').forEach(el => {
+    el.addEventListener('click', () => {
+      Course.showPopup(`<div style="font-size:14.5px;line-height:1.6">${gramExplanations[el.dataset.gram]}</div>`, el);
+    });
+  });
+
+  Course.initVocab(vocabData, LESSON_ID);
+
+  /* ---------------- COMPARE EXAMPLES (clickable) ----------------
+     Same base sentence, only the modal changes — the whole point is to show
+     the meaning shift is caused purely by the modal, nothing else. The last
+     pair uses "can" twice, unchanged, to show the ability/permission overlap
+     is resolved entirely by context, not by a different word. */
+  const compareExamples = [
+    { key:'s1a', label:'can', text:'You can leave your desk.' },
+    { key:'s1b', label:'must', text:'You must leave your desk.' },
+    { key:'s1c', label:"mustn't", text:"You mustn't leave your desk." },
+    { key:'s1d', label:"don't have to", text:"You don't have to leave your desk." },
+    { key:'s1e', label:'should', text:'You should leave your desk.', groupEnd: true },
+    { key:'s2a', label:'can', text:'Visitors can park in this area.' },
+    { key:'s2b', label:'must', text:'Visitors must park in this area.' },
+    { key:'s2c', label:"mustn't", text:"Visitors mustn't park in this area." },
+    { key:'s2d', label:"don't have to", text:"Visitors don't have to park in this area." },
+    { key:'s2e', label:'should', text:'Visitors should park in this area.', groupEnd: true },
+    { key:'s3a', label:'can (ability)', text:"She's been swimming since she was three — she can swim length after length without stopping." },
+    { key:'s3b', label:'can (permission)', text:'The pool is open until 9pm, so you can swim as late as you like tonight.' }
+  ];
+  const compareExplanations = {
+    s1a: "Permission — you're free to leave whenever you like; nothing requires or forbids it.",
+    s1b: "Obligation — you're required to leave, no choice involved (e.g. during a fire drill).",
+    s1c: "Prohibition — you're forbidden from leaving; something requires you to stay.",
+    s1d: 'No obligation — leaving is entirely optional; staying is just as fine.',
+    s1e: "Advice — a recommendation, not a requirement; you could ignore it without breaking any rule (e.g., to stretch your legs).",
+    s2a: 'Permission — visitors are allowed to park here.',
+    s2b: "Obligation — parking here is required, e.g. because it's the only zone visitors are permitted to use.",
+    s2c: "Prohibition — visitors are forbidden from parking here, e.g. it's reserved for staff.",
+    s2d: 'No obligation — parking here is optional; other areas work too.',
+    s2e: "Advice — recommended, not required or forbidden; e.g., it's closer to the entrance.",
+    s3a: 'Ability — "can" here describes a physical skill built up through years of practice, not permission.',
+    s3b: 'Permission — the exact same word "can" now describes what the pool\'s opening hours allow, not any skill.'
+  };
+  renderCompareCard('compare-examples', compareExamples, compareExplanations);
+
+  /* ---------------- FREEDOM SCALE SLIDER ----------------
+     Purely exploratory, ungraded. Four discrete stops (a native range
+     input, step=1), covering only permission/obligation/prohibition —
+     ability is deliberately left off, since it isn't a question of
+     freedom at all. */
+  const timelineStages = [
+    { form:'PROHIBITED', color:'bad',
+      example: 'Visitors mustn\'t smoke anywhere inside the building.',
+      note: 'Actively forbidden — breaking this rule has real consequences.' },
+    { form:'REQUIRED', color:'c-present',
+      example: 'All staff must complete the safety training.',
+      note: 'No choice — this is a strict requirement.' },
+    { form:'NOT REQUIRED', color:'c-continuous',
+      example: "You don't have to wear a suit — it's entirely up to you.",
+      note: 'Optional — allowed either way, nothing forces the choice.' },
+    { form:'PERMITTED', color:'c-future',
+      example: 'Visitors may take photos in the lobby.',
+      note: 'Freely allowed — explicit permission has been given.' }
+  ];
+  const timelineSlider = document.getElementById('timeline-slider');
+  const timelineDisplay = document.getElementById('timeline-display');
+  function renderTimeline(){
+    const stage = timelineStages[timelineSlider.value];
+    timelineDisplay.innerHTML = `
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:8px">Category:</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+        <span style="width:10px;height:10px;border-radius:3px;background:var(--${stage.color});display:inline-block;flex-shrink:0"></span>
+        <span style="font-size:15px;font-weight:700;letter-spacing:.02em;color:var(--${stage.color})">${stage.form}</span>
+      </div>
+      <div style="font-size:15px;font-weight:550;margin-bottom:6px">"${stage.example}"</div>
+      <div style="font-size:13.5px;color:var(--text-secondary)">${stage.note}</div>
+    `;
+  }
+  timelineSlider.addEventListener('input', renderTimeline);
+  renderTimeline();
+
+  /* ---------------- EXPANDABLE RULES ---------------- */
+  document.getElementById('rules-toggle').addEventListener('click', function(){
+    const content = document.getElementById('rules-content');
+    const open = content.classList.toggle('open');
+    this.textContent = open ? '📖 Hide the full rules' : '📖 Show the full rules';
+  });
+
+  /* ---------------- SIGNAL SORT (restorable, four-way) ----------------
+     Situation-type cues, not literal modal words — spelling out "can" or
+     "must" in the cue itself would just give the answer away. Buttons show
+     one representative verb per category ("can" for ability, "may" for
+     permission, "must" for obligation, "mustn't" for prohibition) rather
+     than the abstract category name, so the exercise reinforces actual
+     vocabulary rather than linguistic terminology. */
+  // Row order is deliberately hand-mixed here (not shuffled at runtime) —
+  // each row's section id is `concept-signal-${i}`, tied to its position in
+  // this array, so a returning student's saved progress stays matched to
+  // the same cue on reload. Randomising the array itself would silently
+  // scramble that mapping between sessions.
+  const opt = (answer, label) => ({ answer, label });
+  const signals = [
+    { w:'a skill or capability someone has', correct:'ability',
+      options:[opt('ability','can'), opt('permission','may'), opt('obligation','must'), opt('prohibition',"mustn't")] },
+    { w:'something allowed, with official approval', correct:'permission',
+      options:[opt('permission','may'), opt('ability','can'), opt('obligation','must'), opt('prohibition',"mustn't")] },
+    { w:'a rule that must never be broken', correct:'prohibition',
+      options:[opt('prohibition',"mustn't"), opt('obligation','must'), opt('ability','can'), opt('permission','may')] },
+    { w:'something officially required, no choice involved', correct:'obligation',
+      options:[opt('obligation','must'), opt('advice','should'), opt('ability','can'), opt('prohibition',"mustn't")] },
+    { w:'something someone is generally capable of doing', correct:'ability',
+      options:[opt('ability','can'), opt('permission','may'), opt('obligation','must'), opt('prohibition',"mustn't")] },
+    { w:'advice you could still choose to ignore, not a strict rule', correct:'advice',
+      options:[opt('advice','should'), opt('obligation','must'), opt('ability','can'), opt('prohibition',"mustn't")] },
+    { w:"asking if it's okay to do something", correct:'permission',
+      options:[opt('permission','may'), opt('ability','can'), opt('obligation','must'), opt('prohibition',"mustn't")] },
+    { w:'a strict rule that has to be followed', correct:'obligation',
+      options:[opt('obligation','must'), opt('permission','may'), opt('advice','should'), opt('prohibition',"mustn't")] },
+    { w:'something actively forbidden', correct:'prohibition',
+      options:[opt('prohibition',"mustn't"), opt('ability','can'), opt('permission','may'), opt('obligation','must')] }
+  ];
+  const signalGrid = document.getElementById('signal-sort');
+  // "advice" (should) reuses obligation's colour — it's the softer end of
+  // the same formula-box group, not a separate top-level category.
+  const formColors = { ability:'c-future', permission:'c-continuous', obligation:'c-present', prohibition:'c-bad', advice:'c-present' };
+  signals.forEach((s, i) => {
+    const row = document.createElement('div');
+    row.style.display = 'contents';
+    // Each row gets its own independently shuffled button order, so the
+    // correct answer's position varies row to row and can't be memorised.
+    const rowButtons = Course.shuffleArray(s.options)
+      .map(b => `<button class="pill signal-pill" data-answer="${b.answer}" data-idx="${i}">${b.label}</button>`)
+      .join('');
+    row.innerHTML = `<div>${s.w}</div>${rowButtons}`;
+    signalGrid.appendChild(row);
+  });
+  function applySignalResult(idx, correct, chosen){
+    signalGrid.querySelectorAll(`button[data-idx="${idx}"]`).forEach(b => {
+      b.disabled = true;
+      const ans = b.dataset.answer;
+      if (ans === correct){
+        b.classList.add('on', formColors[ans]);
+      } else if (ans === chosen){
+        b.style.background = 'var(--bad-bg)';
+        b.style.borderColor = 'var(--bad-border)';
+        b.style.color = 'var(--bad)';
+      } else {
+        b.style.opacity = '.4';
+      }
+    });
+  }
+  signals.forEach((s, i) => {
+    const restored = sectionMap[`concept-signal-${i}`];
+    if (restored) applySignalResult(i, s.correct, restored.answer_given);
+  });
+  signalGrid.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = btn.dataset.idx;
+      if (sectionMap[`concept-signal-${idx}`]) return;
+      const correct = signals[idx].correct;
+      const chosen = btn.dataset.answer;
+      const isCorrect = chosen === correct;
+      applySignalResult(idx, correct, chosen);
+      Course.logProgress({ lessonId: LESSON_ID, sectionId: `concept-signal-${idx}`, answerGiven: chosen, isCorrect });
+      updateOverallProgress();
+    });
+  });
+
+  /* ---------------- MCQ SECTIONS (via shared engine) ---------------- */
+  const mcqSections = [
+    ['warm-q1','warmup-1','right'], ['warm-q2','warmup-2','right'], ['warm-q3','warmup-3','right'],
+    ['diag-q1','diagnostic-1','right'], ['diag-q2','diagnostic-2','right'], ['diag-q3','diagnostic-3','right'], ['diag-q4','diagnostic-4','right'],
+    ['comp-q1','reading-comprehension-1','right'], ['comp-q2','reading-comprehension-2','right'], ['comp-q3','reading-comprehension-3','right'],
+    ['vocab-q1','vocab-1','right'], ['vocab-q2','vocab-2','right'], ['vocab-q3','vocab-3','right'], ['vocab-q4','vocab-4','right'], ['vocab-q5','vocab-5','right'],
+    ['cat-q1','practice-categorise-1','right'], ['cat-q2','practice-categorise-2','right'], ['cat-q3','practice-categorise-3','right'],
+    ['cat-q4','practice-categorise-4','right'], ['cat-q5','practice-categorise-5','right'], ['cat-q6','practice-categorise-6','right'],
+    ['cat-q7','practice-categorise-7','right'], ['cat-q8','practice-categorise-8','right'],
+    ['listen-q1','listening-1','right'], ['listen-q2','listening-2','right'], ['listen-q3','listening-3','right'],
+    ['exit-q1','exit-1','right'], ['exit-q2','exit-2','right'], ['exit-q3','exit-3','right'], ['exit-q4','exit-4','right'], ['exit-q5','exit-5','right']
+  ];
+  mcqSections.forEach(([id, section, correctVal]) => {
+    Course.shuffleOptions(id);
+    Course.initMCQ(id, {
+      lessonId: LESSON_ID, sectionId: section, correctValue: correctVal, onAnswered: updateOverallProgress,
+      restoreAnswer: sectionMap[section] ? sectionMap[section].answer_given : undefined
+    });
+  });
+  if (!sectionMap['listening-1']) Course.ensureGroupVariety(['listen-q1','listen-q2','listen-q3']);
+  if (!sectionMap['reading-comprehension-1']) Course.ensureGroupVariety(['comp-q1','comp-q2','comp-q3']);
+  if (!sectionMap['practice-categorise-1']) Course.ensureGroupVariety(['cat-q1','cat-q2','cat-q3','cat-q4','cat-q5','cat-q6','cat-q7','cat-q8']);
+
+  /* ---------------- GAP FILL (restorable) ----------------
+     Modal answers (can, must, should, etc.) aren't in Course.withContractions'
+     map, so no contraction handling applies to any item here — every accepted
+     answer is used as a plain array. */
+  const gapFills = [
+    ['gap1-input','gap1-check','gap1-fb','practice-gapfill-1', ['can speak','is able to speak'], true],
+    ['gap2-input','gap2-check','gap2-fb','practice-gapfill-2', ['managed to finish','was able to finish'], false],
+    ['gap3-input','gap3-check','gap3-fb','practice-gapfill-3', ["don't have to take",'do not have to take',"don't need to take",'do not need to take','can take','may take'], false],
+    ['gap4-input','gap4-check','gap4-fb','practice-gapfill-4', ["mustn't park",'must not park',"can't park",'cannot park'], false],
+    ['gap5-input','gap5-check','gap5-fb','practice-gapfill-5', ['may take','can take'], false],
+    ['gap6-input','gap6-check','gap6-fb','practice-gapfill-6', ['should apologise','should apologize','need to apologise','need to apologize'], false],
+    ['vgap1-input','vgap1-check','vgap1-fb','vocab-gapfill-1', ['subordinate'], true],
+    ['vgap2-input','vgap2-check','vgap2-fb','vocab-gapfill-2', ['discretion'], false],
+    ['vgap3-input','vgap3-check','vgap3-fb','vocab-gapfill-3', ['consensus'], false],
+    ['vgap4-input','vgap4-check','vgap4-fb','vocab-gapfill-4', ['informal'], false]
+  ];
+  gapFills.forEach(([inputId, btnId, fbId, section, answers, showHint]) => {
+    const restored = sectionMap[section];
+    Course.initGapFill(inputId, btnId, fbId, {
+      lessonId: LESSON_ID, sectionId: section, correctAnswers: answers, showAnswerHint: showHint,
+      restore: restored ? { answerGiven: restored.answer_given, isCorrect: restored.override_correct ?? restored.is_correct } : undefined,
+      onAnswered: updateOverallProgress
+    });
+  });
+
+  /* ---------------- SENTENCE BUILDER (single-clause, frontable time phrases only —
+     deliberately avoiding the two-clause swappable-subject ambiguity from Lesson 2).
+     Locks immediately on Check, not just on reload. Chips avoid contracted
+     words like "don't" to sidestep any apostrophe-in-chip edge cases. ---------------- */
+  const builderRounds = [
+    { words: ['she','can','speak','three','languages','fluently'],
+      accepted: ['she can speak three languages fluently', 'she can fluently speak three languages'] },
+    { words: ['visitors','must','sign','in','at','reception'],
+      accepted: ['visitors must sign in at reception'] },
+    { words: ['you','do','not','have','to','stay','late'],
+      accepted: ['you do not have to stay late'] }
+  ];
+  const buildersEl = document.getElementById('builders');
+  builderRounds.forEach((round, ri) => {
+    const sectionId = `practice-builder-${ri+1}`;
+    const restored = sectionMap[sectionId];
+    const bankOrder = Course.shuffleArray(round.words.map((_, i) => i));
+    let state = [];
+    let locked = false;
+
+    if (restored){
+      const used = new Set();
+      restored.answer_given.split(' ').forEach(tok => {
+        const idx = round.words.findIndex((w, i) => w === tok && !used.has(i));
+        if (idx >= 0){ used.add(idx); state.push(idx); }
+      });
+      locked = true;
+    }
+
+    const wrap = document.createElement('div');
+    wrap.style.marginBottom = '20px';
+    wrap.innerHTML = `
+      <div class="builder-bank" id="builder-bank-${ri}"></div>
+      <div class="builder-target" id="builder-target-${ri}"></div>
+      <p style="font-size:12px;color:var(--text-tertiary);margin-top:6px">Tap a word in your sentence to send it back to the pool.</p>
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+        <button class="btn btn-sm" id="builder-check-${ri}">Check order</button>
+        <button class="btn btn-sm btn-ghost" id="builder-reset-${ri}">Reset</button>
+      </div>
+      <div id="builder-fb-${ri}"></div>
+    `;
+    buildersEl.appendChild(wrap);
+
+    const bank = wrap.querySelector(`#builder-bank-${ri}`);
+    const target = wrap.querySelector(`#builder-target-${ri}`);
+    function render(){
+      bank.innerHTML = '';
+      bankOrder.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip' + (state.includes(i) ? ' used' : '');
+        chip.textContent = round.words[i];
+        if (!locked) chip.addEventListener('click', () => { if (state.includes(i)) return; state.push(i); render(); });
+        else chip.disabled = true;
+        bank.appendChild(chip);
+      });
+      target.innerHTML = '';
+      state.forEach(i => {
+        const chip = document.createElement('button');
+        chip.className = 'chip';
+        chip.textContent = round.words[i];
+        if (!locked){
+          chip.title = 'Click to remove';
+          chip.addEventListener('click', () => { state = state.filter(x => x !== i); render(); });
+        } else {
+          chip.disabled = true;
+        }
+        target.appendChild(chip);
+      });
+    }
+    render();
+
+    if (restored){
+      const isCorrect = restored.override_correct ?? restored.is_correct;
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+    }
+
+    wrap.querySelector(`#builder-reset-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      state = []; render(); wrap.querySelector(`#builder-fb-${ri}`).innerHTML = '';
+    });
+    wrap.querySelector(`#builder-check-${ri}`).addEventListener('click', () => {
+      if (locked) return;
+      const attempt = state.map(i => round.words[i]).join(' ');
+      const isCorrect = round.accepted.includes(attempt);
+      locked = true;
+      render();
+      wrap.querySelector(`#builder-fb-${ri}`).innerHTML = isCorrect
+        ? `<div class="fb-ok">✓ Correct!</div>`
+        : `<div class="fb-no">Not quite — for example: "${round.accepted[0]}"</div>`;
+      wrap.querySelector(`#builder-check-${ri}`).disabled = true;
+      wrap.querySelector(`#builder-reset-${ri}`).disabled = true;
+      Course.logProgress({ lessonId: LESSON_ID, sectionId, answerGiven: attempt, isCorrect });
+      updateOverallProgress();
+    });
+  });
+
+  /* ---------------- SPEAKING MODE TOGGLE ---------------- */
+  document.getElementById('mode-solo').addEventListener('click', () => {
+    document.getElementById('mode-solo').classList.add('on');
+    document.getElementById('mode-group').classList.remove('on');
+    document.getElementById('speak-solo').style.display = 'block';
+    document.getElementById('speak-group').style.display = 'none';
+  });
+  document.getElementById('mode-group').addEventListener('click', () => {
+    document.getElementById('mode-group').classList.add('on');
+    document.getElementById('mode-solo').classList.remove('on');
+    document.getElementById('speak-group').style.display = 'block';
+    document.getElementById('speak-solo').style.display = 'none';
+  });
+
+  /* ---------------- DISCUSSION QUESTION PICKER (restorable) ---------------- */
+  const discussQuestions = [
+    "Have you ever worked or studied somewhere with very different rules about hierarchy than you were used to?",
+    "What's something you're required to do at work or school that you think shouldn't be required?",
+    "What's something you're able to do that most people around you can't?",
+    "Do you generally prefer clear rules, or more freedom to decide things yourself?"
+  ];
+  const discussEl = document.getElementById('discuss-questions');
+  let pickedQuestions = [];
+  discussQuestions.forEach((q, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'discuss-q';
+    btn.dataset.idx = i;
+    btn.innerHTML = `<span class="chk"></span><span>${q}</span>`;
+    const restored = sectionMap[`speaking-q${i+1}`];
+    if (restored && restored.status === 'completed'){
+      pickedQuestions.push(i);
+      btn.classList.add('picked');
+    }
+    btn.addEventListener('click', () => {
+      const isPicked = pickedQuestions.includes(i);
+      if (isPicked){
+        pickedQuestions = pickedQuestions.filter(x => x !== i);
+        btn.classList.remove('picked');
+      } else {
+        if (pickedQuestions.length >= 2){
+          document.getElementById('discuss-limit-msg').style.color = 'var(--bad)';
+          document.getElementById('discuss-limit-msg').textContent = 'You can only pick up to 2 — deselect one first.';
+          return;
+        }
+        pickedQuestions.push(i);
+        btn.classList.add('picked');
+      }
+      document.getElementById('discuss-limit-msg').style.color = '';
+      document.getElementById('discuss-limit-msg').textContent = 'You can select up to 2 questions.';
+      Course.logProgress({
+        lessonId: LESSON_ID, sectionId: `speaking-q${i+1}`, exerciseType: 'oral',
+        status: isPicked ? 'not_attempted' : 'completed', answerGiven: q
+      });
+    });
+    discussEl.appendChild(btn);
+  });
+
+  /* ---------------- SOLO SPEAKING TASK — MARK AS DONE (restorable) ----------------
+     Previously only group-mode discussion picks were logged as oral progress,
+     so a student working solo never showed up on the teacher dashboard's
+     speaking panel at all. This gives solo students an equivalent way to
+     register that they did the task — the dashboard's oral-picks renderer
+     already groups by section_id and shows answer_given as the card title,
+     so no dashboard changes are needed, just this matching log call. */
+  const SOLO_TASK_LABEL = "Solo speaking task: describe workplace/school rules and abilities using modals of obligation, permission, and ability.";
+  const soloDoneBtn = document.getElementById('solo-done-btn');
+  let soloDone = !!(sectionMap['speaking-solo'] && sectionMap['speaking-solo'].status === 'completed');
+  function renderSoloBtn(){
+    soloDoneBtn.textContent = soloDone ? "✓ Marked as done" : "✓ I've done this";
+    soloDoneBtn.classList.toggle('btn-primary', soloDone);
+  }
+  renderSoloBtn();
+  soloDoneBtn.addEventListener('click', () => {
+    soloDone = !soloDone;
+    renderSoloBtn();
+    Course.logProgress({
+      lessonId: LESSON_ID, sectionId: 'speaking-solo', exerciseType: 'oral',
+      status: soloDone ? 'completed' : 'not_attempted', answerGiven: SOLO_TASK_LABEL
+    });
+  });
+
+  /* ---------------- LISTENING DIALOGUE ---------------- */
+  const AUDIO_SRC = 'audio/lesson-08-listening.mp3';
+  const dialogue = [
+    { speaker:'Anna', pitch:1.12, line:"How was your trip to the Tokyo office?" },
+    { speaker:'Tomasz', pitch:0.88, line:"Really interesting, actually. You have to ask permission for almost everything there — even small things." },
+    { speaker:'Anna', pitch:1.12, line:"Really? Here you can just go ahead and decide yourself, mostly." },
+    { speaker:'Tomasz', pitch:0.88, line:"Exactly. I wasn't able to just email a client directly without looping in my manager first." },
+    { speaker:'Anna', pitch:1.12, line:"That sounds exhausting, but I guess it avoids mistakes." },
+    { speaker:'Tomasz', pitch:0.88, line:"Maybe. Though honestly, you don't have to over-explain every little decision here, and I kind of missed that." },
+    { speaker:'Anna', pitch:1.12, line:"Could you get used to working like that long-term?" },
+    { speaker:'Tomasz', pitch:0.88, line:"Probably, but I definitely prefer having more autonomy." }
+  ];
+
+  let audioAvailable = false;
+  const audioEl = document.getElementById('dialogue-audio');
+  fetch(AUDIO_SRC, { method:'HEAD' }).then(r => { if (r.ok){ audioAvailable = true; audioEl.src = AUDIO_SRC; } }).catch(() => {});
+
+  const transcriptEl = document.getElementById('transcript');
+  dialogue.forEach((d, i) => {
+    const line = document.createElement('div');
+    line.className = 'transcript-line';
+    line.id = `t-line-${i}`;
+    line.innerHTML = `<b>${d.speaker}:</b> ${d.line}`;
+    transcriptEl.appendChild(line);
+  });
+
+  const playBtn = document.getElementById('play-dialogue');
+  let isPlaying = false;
+  let currentIdx = 0;
+
+  function updatePlayButton(){
+    if (isPlaying){ playBtn.textContent = '⏸ Pause'; return; }
+    if (window.speechSynthesis.paused){ playBtn.textContent = '▶ Resume'; return; }
+    playBtn.textContent = '▶ Play dialogue';
+  }
+
+  function speakLineAt(idx){
+    if (idx >= dialogue.length){ isPlaying = false; currentIdx = 0; updatePlayButton(); return; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    document.getElementById(`t-line-${idx}`).classList.add('shown', 'active');
+    const u = new SpeechSynthesisUtterance(dialogue[idx].line);
+    u.rate = 0.95; u.pitch = dialogue[idx].pitch;
+    u.onend = () => { if (isPlaying){ currentIdx = idx + 1; speakLineAt(currentIdx); } };
+    window.speechSynthesis.speak(u);
+  }
+
+  playBtn.addEventListener('click', () => {
+    if (audioAvailable){
+      if (audioEl.paused){ audioEl.play(); isPlaying = true; }
+      else { audioEl.pause(); isPlaying = false; }
+      updatePlayButton();
+      return;
+    }
+    if (!isPlaying){
+      isPlaying = true;
+      if (window.speechSynthesis.paused){ window.speechSynthesis.resume(); }
+      else {
+        // Defensive reset, fresh-start only (never on resume/pause): speechSynthesis
+        // has a well-documented browser bug where it can silently stop accepting
+        // new speech after earlier calls elsewhere on the page (e.g. the vocab-word
+        // audio buttons), leaving Play looking broken with no error anywhere.
+        // Clearing the queue right before a genuinely fresh play avoids that class
+        // of bug without disturbing an actual pause/resume in progress.
+        window.speechSynthesis.cancel();
+        speakLineAt(currentIdx);
+      }
+    } else {
+      isPlaying = false;
+      window.speechSynthesis.pause();
+    }
+    updatePlayButton();
+  });
+
+  document.getElementById('stop-dialogue').addEventListener('click', () => {
+    isPlaying = false;
+    currentIdx = 0;
+    window.speechSynthesis.cancel();
+    if (audioAvailable){ audioEl.pause(); audioEl.currentTime = 0; }
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
+    updatePlayButton();
+  });
+
+  audioEl.addEventListener('ended', () => { isPlaying = false; updatePlayButton(); });
+
+  document.getElementById('show-transcript').addEventListener('click', function(){
+    const shown = transcriptEl.classList.toggle('all-shown');
+    document.querySelectorAll('.transcript-line').forEach(l => l.classList.toggle('shown', shown));
+    this.textContent = shown ? 'Hide transcript' : 'Show full transcript';
+  });
+
+  updateOverallProgress();
+})();
+
+/* ---------------- OVERALL PROGRESS BAR ---------------- */
+const LESSON_TOTAL_POSSIBLE = 31 + 10 + 3 + 9; // mcqSections(incl. 8 categorise) + gapFills + builderRounds + signal-sort(9, incl. "should")
+function updateOverallProgress(){
+  const attempted = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+  const pct = Math.min(100, Math.round((attempted / LESSON_TOTAL_POSSIBLE) * 100));
+  document.getElementById('overall-progress').style.width = pct + '%';
+}
+
+/* ---------------- FINISH / SUMMARY ---------------- */
+document.getElementById('finish-btn').addEventListener('click', async () => {
+  const btn = document.getElementById('finish-btn');
+  const original = btn.textContent;
+  btn.textContent = 'Checking for teacher updates…'; btn.disabled = true;
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+  } finally {
+    btn.textContent = original; btn.disabled = false;
+  }
+  try {
+    const { correct, total } = Course.lessonScore(LESSON_ID);
+    Course.renderScoreRing('score-ring-holder', correct, total);
+    document.getElementById('summary-name').textContent = `${Course.getStudentName()} — ${correct}/${total} correct`;
+
+    const attemptedCount = Course.getCurrentRows(LESSON_ID).filter(r => r.exercise_type === 'auto_graded').length;
+    const completionPct = Math.min(100, Math.round((attemptedCount / LESSON_TOTAL_POSSIBLE) * 100));
+    const completionEl = document.getElementById('summary-completion');
+    if (attemptedCount < LESSON_TOTAL_POSSIBLE){
+      completionEl.style.color = 'var(--warn)';
+      completionEl.textContent = `⚠ Only ${completionPct}% of the lesson attempted so far (${attemptedCount} of ${LESSON_TOTAL_POSSIBLE} exercises) — the score above only reflects what's been answered.`;
+    } else {
+      completionEl.style.color = 'var(--ok)';
+      completionEl.textContent = `✓ Every exercise in this lesson has been attempted.`;
+    }
+
+    const weak = Course.weakSections(LESSON_ID);
+    document.getElementById('summary-weak').textContent = weak.length
+      ? `Worth revisiting: ${weak.join(', ')}`
+      : 'Strong across the board — nice work!';
+    document.getElementById('export-btn').style.display = 'inline-block';
+    updateOverallProgress();
+
+    const card = document.getElementById('summary-card');
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    card.classList.remove('summary-pulse'); void card.offsetWidth;
+    card.classList.add('summary-pulse');
+  } catch (err){
+    console.error('Finish lesson failed:', err);
+    let banner = document.getElementById('finish-error-banner');
+    if (!banner){
+      banner = document.createElement('div');
+      banner.id = 'finish-error-banner';
+      banner.className = 'error-banner';
+      document.getElementById('summary-card').appendChild(banner);
+    }
+    banner.textContent = `Something went wrong computing your results (${err.message}). Try reloading the page — your saved answers won't be lost.`;
+  }
+});
+document.getElementById('export-btn').addEventListener('click', async () => {
+  try {
+    await Course.syncFromSupabase(LESSON_ID);
+    Course.exportReportPDF(LESSON_ID, 'Modals of Ability, Permission, Obligation, and Prohibition', LESSON_TOTAL_POSSIBLE);
+  } catch (err){
+    console.error('PDF export failed:', err);
+    alert('The PDF export ran into a problem: ' + err.message);
+  }
+});
+</script>
+
+<script>
+{
+  const allLessonsLink = document.getElementById('all-lessons-link');
+  const groupParam = new URLSearchParams(window.location.search).get('group');
+  allLessonsLink.href = groupParam ? `index-standalone.html?group=${encodeURIComponent(groupParam)}` : 'index-standalone.html';
+}
+</script>
+</body>
+</html>

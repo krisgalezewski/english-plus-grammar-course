@@ -1,0 +1,391 @@
+/* ============================================================
+   English+ Grammar Course — Shared Theme
+   Design tokens + reusable component styles for all 22 lessons.
+   Loaded by every lesson-*.html via <link rel="stylesheet">.
+   ============================================================ */
+
+:root{
+  /* Surfaces */
+  --bg:#F6F7F9;
+  --surface:#FFFFFF;
+  --surface-alt:#EEF1F5;
+  --border:#DFE3E9;
+  --border-strong:#C7CDD6;
+
+  /* Text */
+  --text:#1B2430;
+  --text-secondary:#5B6472;
+  --text-tertiary:#8A93A1;
+
+  /* Accent (matches existing English+ lesson pages) */
+  --accent:#185FA5;
+  --accent-dark:#0C4577;
+  --accent-soft:#E6F1FB;
+  --accent-soft-border:#85B7EB;
+
+  /* Feedback */
+  --ok:#27500A;
+  --ok-bg:#EAF3DE;
+  --ok-border:#C0DD97;
+  --bad:#791F1F;
+  --bad-bg:#FCEBEB;
+  --bad-border:#F7C1C1;
+  --warn:#633806;
+  --warn-bg:#FAEEDA;
+  --warn-border:#E8C080;
+
+  /* Grammar-concept colour coding — kept consistent across the whole
+     course so students learn to associate a colour with a concept
+     family (same convention as the existing Verb Tenses lesson) */
+  --c-present:#0F6E56;
+  --c-present-bg:#E4F3EE;
+  --c-continuous:#534AB7;
+  --c-continuous-bg:#ECEAFA;
+  --c-past:#185FA5;
+  --c-future:#993C1D;
+  --c-modal:#854F0B;
+
+  /* Type */
+  --font-sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --font-mono:'JetBrains Mono','SFMono-Regular',Consolas,monospace;
+
+  /* Shape */
+  --radius-lg:20px;
+  --radius-md:14px;
+  --radius-sm:10px;
+  --radius-pill:999px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:var(--font-sans);
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,h4{font-weight:650;letter-spacing:-0.01em}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px}
+
+/* ---------- Layout ---------- */
+.shell{max-width:760px;margin:0 auto;padding:28px 20px 80px}
+
+.lesson-header{margin-bottom:20px}
+.lesson-eyebrow{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:8px;
+}
+.lesson-title{font-size:26px;line-height:1.25;margin-bottom:6px;color:var(--accent-dark)}
+.lesson-sub{font-size:14.5px;color:var(--text-secondary)}
+.course-attribution{
+  text-align:center;font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;
+  color:var(--text-tertiary);padding:14px 20px 0;
+}
+
+/* ---------- Per-section colour themes ----------
+   Every widget/button/hover-state throughout the course reads colour
+   purely from --accent/--accent-dark/--accent-soft/--accent-soft-border
+   (and the page background from --bg), so overriding just these four
+   variables per section re-colours the whole page — buttons, toggles,
+   compare-card hovers, formula boxes' border-left accents that use
+   --accent directly, everything — with zero changes needed to any
+   lesson's own JS/CSS. The tense-specific concept colours (--c-present,
+   --c-continuous, etc., used to distinguish tenses *within* a lesson)
+   are deliberately left untouched — those stay consistent across every
+   section since a student learns "green = present tense" regardless of
+   which part of the course they're in. */
+body.theme-tenses{
+  --accent:#A3392A; --accent-dark:#7C2B1F; --accent-soft:#F7EBE9; --accent-soft-border:#DDA99E; --bg:#FBF7F6;
+}
+body.theme-modals{
+  --accent:#2E7A82; --accent-dark:#215A60; --accent-soft:#E9F3F4; --accent-soft-border:#A0CDD1; --bg:#F5FAFA;
+}
+body.theme-conditionals{
+  --accent:#4A7A3D; --accent-dark:#365A2C; --accent-soft:#EEF4EC; --accent-soft-border:#B3D1A8; --bg:#F7FAF6;
+}
+body.theme-reported{
+  --accent:#B8842E; --accent-dark:#8C6321; --accent-soft:#FAF3E7; --accent-soft-border:#E4C48F; --bg:#FDFAF6;
+}
+
+.section{margin-bottom:36px}
+.section-label{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;font-weight:650;letter-spacing:.03em;text-transform:uppercase;
+  color:var(--text-tertiary);margin-bottom:12px;
+}
+.section-label .num{
+  width:22px;height:22px;border-radius:50%;background:var(--surface-alt);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11.5px;color:var(--text-secondary);flex-shrink:0;
+}
+
+/* ---------- Cards ---------- */
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:1.3rem 1.5rem;
+  margin-bottom:.9rem;
+}
+.card + .card{margin-top:.9rem}
+
+.tip-box{
+  background:var(--surface-alt);border-radius:var(--radius-md);
+  padding:11px 15px;font-size:13.5px;color:var(--text-secondary);
+  display:flex;flex-wrap:wrap;gap:9px;align-items:flex-start;line-height:1.6;margin-top:10px;
+}
+.tip-box > *{min-width:0}
+.warn-box{
+  background:var(--warn-bg);border:1px solid var(--warn-border);border-radius:var(--radius-md);
+  padding:11px 15px;font-size:13.5px;color:var(--warn);
+  display:flex;flex-wrap:wrap;gap:9px;align-items:flex-start;line-height:1.6;margin-top:10px;
+}
+.warn-box > *{min-width:0}
+
+/* ---------- Buttons / pills ---------- */
+.btn{
+  font-family:inherit;font-size:14px;padding:9px 20px;border-radius:var(--radius-pill);
+  border:1px solid var(--border-strong);background:var(--surface);color:var(--text);
+  cursor:pointer;transition:all .15s;
+}
+.btn:hover{background:var(--surface-alt)}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:550}
+.btn-primary:hover{background:var(--accent-dark);border-color:var(--accent-dark)}
+.btn-primary:disabled{opacity:.45;cursor:not-allowed}
+.btn-ghost{border-color:transparent;background:transparent;color:var(--text-secondary)}
+.btn-ghost:hover{background:var(--surface-alt);color:var(--text)}
+.btn-sm{padding:6px 14px;font-size:12.5px}
+
+.pill{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 14px;border-radius:var(--radius-pill);
+  border:1px solid var(--border-strong);background:var(--surface);
+  font-size:13px;color:var(--text-secondary);cursor:pointer;transition:all .15s;white-space:nowrap;
+}
+.pill:hover{background:var(--surface-alt)}
+.pill.on{color:#fff;border-color:transparent;background:var(--accent)}
+.pill.on.c-present{background:var(--c-present)}
+.pill.on.c-continuous{background:var(--c-continuous)}
+
+/* ---------- Progress bar ---------- */
+.pb-track{background:var(--surface-alt);border-radius:var(--radius-pill);height:6px;overflow:hidden}
+.pb-fill{height:6px;border-radius:var(--radius-pill);background:var(--accent);transition:width .35s}
+
+/* ---------- Formula box ---------- */
+.formula{
+  font-family:var(--font-mono);font-size:13px;background:var(--surface-alt);
+  border-radius:var(--radius-md);padding:11px 15px;border-left:3px solid var(--accent);
+  margin-bottom:8px;line-height:1.7;color:var(--text);
+}
+
+/* ---------- Multiple choice / gap-fill options ---------- */
+.opt{
+  display:block;width:100%;padding:11px 16px;border-radius:var(--radius-md);
+  border:1px solid var(--border-strong);background:var(--surface);
+  font-size:14.5px;font-family:inherit;text-align:left;cursor:pointer;
+  transition:all .15s;color:var(--text);line-height:1.5;margin-bottom:8px;
+}
+.opt:last-child{margin-bottom:0}
+.opt:hover:not(.sel):not(.ok):not(.bad):not(.dim){background:var(--surface-alt)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-dark);font-weight:550}
+.opt.ok{border-color:var(--ok-border);background:var(--ok-bg);color:var(--ok);font-weight:550;cursor:default;pointer-events:none}
+.opt.bad{border-color:var(--bad-border);background:var(--bad-bg);color:var(--bad);cursor:default;pointer-events:none}
+.opt.dim{opacity:.5;cursor:default;pointer-events:none}
+
+.fb-ok{background:var(--ok-bg);color:var(--ok);font-size:13.5px;padding:11px 15px;border-radius:var(--radius-sm);margin-top:10px;line-height:1.6}
+.fb-no{background:var(--bad-bg);color:var(--bad);font-size:13.5px;padding:11px 15px;border-radius:var(--radius-sm);margin-top:10px;line-height:1.6}
+
+/* ---------- Reading passage + vocab ---------- */
+.passage{
+  font-family:var(--font-serif);font-size:16px;line-height:1.85;color:var(--text);
+}
+.passage p{margin-bottom:14px}
+.vocab{
+  color:var(--accent-dark);background:var(--accent-soft);
+  padding:1px 4px;border-radius:5px;cursor:pointer;font-weight:550;
+  border-bottom:1.5px dotted var(--accent-soft-border);transition:all .12s;
+}
+.vocab:hover{background:#D6E9FA}
+
+.vocab-pop{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:1.1rem 1.3rem;margin-top:10px;box-shadow:0 8px 28px rgba(20,30,50,.10);
+  display:none;font-family:var(--font-sans);
+}
+.vocab-pop.open{display:block}
+.vocab-pop-word{font-size:17px;font-weight:650;margin-bottom:2px}
+.vocab-pop-ipa{font-family:var(--font-mono);font-size:13px;color:var(--text-secondary);margin-bottom:10px}
+.audio-btn{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:var(--radius-pill);
+  border:1px solid var(--border-strong);background:var(--surface);cursor:pointer;
+  font-size:12.5px;color:var(--text-secondary);transition:all .15s;margin-bottom:10px;
+}
+.audio-btn:hover{background:var(--accent-soft);border-color:var(--accent-soft-border);color:var(--accent)}
+.audio-btn.playing{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:550}
+.vocab-pop-ex{font-size:14px;color:var(--text-secondary);font-style:italic;line-height:1.6;margin-bottom:10px}
+.glossary-btn{font-size:12px}
+
+/* ---------- Sentence builder (drag/tap-to-order) ---------- */
+.builder-bank{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;min-height:40px}
+.chip{
+  padding:8px 14px;border-radius:var(--radius-pill);border:1px solid var(--border-strong);
+  background:var(--surface);font-size:14px;cursor:pointer;transition:all .15s;
+}
+.chip:hover{background:var(--surface-alt)}
+.chip.used{opacity:.35;pointer-events:none}
+.builder-target{
+  display:flex;flex-wrap:wrap;gap:8px;min-height:46px;padding:10px;
+  border:1.5px dashed var(--border-strong);border-radius:var(--radius-md);background:var(--surface-alt);
+}
+.builder-target .chip{background:var(--accent-soft);border-color:var(--accent-soft-border);color:var(--accent-dark)}
+
+/* ---------- Speaking / listening task cards ---------- */
+.task-card{
+  border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.2rem 1.4rem;
+  background:linear-gradient(180deg,var(--surface) 0%,var(--surface-alt) 130%);
+}
+.task-card .kicker{font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.04em;color:var(--accent);margin-bottom:6px}
+.mode-toggle{display:flex;gap:8px;margin-bottom:14px}
+
+/* ---------- Grammar-in-text highlight (toggle) ---------- */
+.gram{cursor:pointer;border-bottom:2px solid transparent;transition:all .15s}
+.passage.show-grammar .gram{background:var(--warn-bg);border-bottom-color:var(--c-modal);border-radius:3px;padding:0 2px}
+.passage:not(.show-grammar) .gram{pointer-events:none}
+.gram-explain{background:var(--warn-bg);border:1px solid var(--warn-border);border-radius:var(--radius-md);padding:11px 15px;font-size:13.5px;color:var(--warn);line-height:1.6;margin-top:10px;display:none}
+.gram-explain.open{display:block}
+
+/* ---------- Listening transcript ---------- */
+.transcript-line{
+  font-size:14.5px;line-height:1.8;padding:6px 0;opacity:0;transform:translateY(4px);
+  transition:opacity .3s,transform .3s;
+}
+.transcript-line.shown{opacity:1;transform:translateY(0)}
+.transcript-line b{color:var(--accent)}
+.transcript-line.active{background:var(--accent-soft);border-radius:8px;padding:6px 10px;margin:0 -10px}
+
+/* ---------- Discussion question picker (speaking task) ---------- */
+.discuss-q{
+  display:flex;align-items:flex-start;gap:10px;width:100%;text-align:left;
+  padding:12px 15px;border-radius:var(--radius-md);border:1px solid var(--border-strong);
+  background:var(--surface);cursor:pointer;font-family:inherit;font-size:14.5px;line-height:1.6;
+  color:var(--text);transition:all .15s;
+}
+.discuss-q:hover{background:var(--surface-alt)}
+.discuss-q .chk{
+  flex-shrink:0;width:20px;height:20px;border-radius:6px;border:1.5px solid var(--border-strong);
+  display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;margin-top:1px;
+}
+.discuss-q.picked{border-color:var(--accent);background:var(--accent-soft)}
+.discuss-q.picked .chk{background:var(--accent);border-color:var(--accent)}
+.discuss-q.disabled{opacity:.45;cursor:not-allowed}
+
+/* ---------- Print-to-PDF report ---------- */
+#course-print-report{display:none}
+@media print{
+  body > *:not(#course-print-report){display:none !important}
+  #course-print-report{
+    display:block !important;
+    font-family:Arial,Helvetica,sans-serif;color:#1B2430;
+    max-width:680px;margin:0 auto;padding:20px;
+  }
+}
+
+/* ---------- Shared popup (vocab, grammar, stative verbs) ---------- */
+.course-popup-backdrop{position:fixed;inset:0;background:rgba(20,30,50,.4);display:none;z-index:9998}
+.course-popup-box{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  background:var(--surface);border-radius:var(--radius-lg);box-shadow:0 24px 64px rgba(20,30,50,.28);
+  padding:1.5rem 1.7rem;max-width:420px;width:calc(100% - 40px);max-height:80vh;overflow-y:auto;
+  display:none;z-index:9999;
+}
+#course-popup-root.open .course-popup-backdrop{display:block}
+#course-popup-root.open .course-popup-box{display:block}
+.course-popup-close{
+  position:absolute;top:8px;right:10px;background:none;border:none;font-size:22px;line-height:1;
+  cursor:pointer;color:var(--text-tertiary);padding:5px 9px;border-radius:7px;transition:all .15s;
+}
+.course-popup-close:hover{background:var(--surface-alt);color:var(--text)}
+
+/* ---------- Stative verb tricky cases (stative vs dynamic) ---------- */
+.tricky-pair{border:1px solid var(--border);border-radius:var(--radius-md);padding:12px 14px;margin-bottom:10px}
+.tricky-pair:last-child{margin-bottom:0}
+.tricky-word{font-weight:650;margin-bottom:8px;font-size:14.5px}
+.tricky-row{font-size:13.5px;line-height:1.6;margin-bottom:5px;display:flex;gap:8px;align-items:baseline}
+.tricky-row:last-child{margin-bottom:0}
+.tricky-row .audio-btn{padding:2px 8px;font-size:11px;margin-bottom:0}
+.tricky-example{cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px;text-decoration-color:var(--border-strong);transition:color .15s}
+.tricky-example:hover{color:var(--accent)}
+.tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:3px 7px;border-radius:5px;flex-shrink:0}
+.tag.stative{background:var(--c-present-bg);color:var(--c-present)}
+.tag.dynamic{background:var(--c-continuous-bg);color:var(--c-continuous)}
+
+/* ---------- Expandable "full rules" content ---------- */
+.expand-content{display:none}
+.expand-content.open{display:block}
+
+/* ---------- Stative verb groups ---------- */
+.verb-group{margin-bottom:18px}
+.verb-group:last-child{margin-bottom:0}
+.verb-group-title{font-size:12.5px;font-weight:650;text-transform:uppercase;letter-spacing:.03em;color:var(--text-tertiary);margin-bottom:10px}
+.verb-chip{
+  display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border-radius:var(--radius-pill);
+  border:1px solid var(--border-strong);background:var(--surface);font-size:14px;font-family:inherit;
+  cursor:pointer;transition:all .15s;margin:0 8px 8px 0;color:var(--text);
+}
+.verb-chip:hover{background:var(--accent-soft);border-color:var(--accent-soft-border);color:var(--accent-dark)}
+.verb-chip .star{color:var(--c-modal);font-weight:700}
+
+/* ---------- Finish/summary feedback ---------- */
+@keyframes summary-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(24,95,165,0.35); }
+  70% { box-shadow: 0 0 0 14px rgba(24,95,165,0); }
+  100% { box-shadow: 0 0 0 0 rgba(24,95,165,0); }
+}
+.summary-pulse{ animation: summary-pulse 1.1s ease-out; }
+.error-banner{
+  background:var(--bad-bg);border:1px solid var(--bad-border);color:var(--bad);
+  border-radius:var(--radius-md);padding:12px 16px;font-size:13.5px;margin-top:10px;line-height:1.6;
+}
+
+/* ---------- Find-the-error (click the wrong word) ---------- */
+.err-word{cursor:pointer;padding:1px 4px;border-radius:5px;transition:all .12s}
+.err-word:hover{background:var(--surface-alt)}
+.err-word.err-target{background:var(--ok-bg);color:var(--ok);font-weight:600}
+.err-word.err-wrong-pick{background:var(--bad-bg);color:var(--bad);text-decoration:line-through}
+
+/* ---------- Matching (click left, then right) ---------- */
+.match-item{
+  width:100%;text-align:left;padding:10px 14px;border-radius:var(--radius-md);
+  border:1px solid var(--border-strong);background:var(--surface);font-size:13.5px;
+  font-family:inherit;cursor:pointer;transition:all .12s;line-height:1.5;
+}
+.match-item:hover:not(:disabled){background:var(--surface-alt)}
+.match-item.sel{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-dark)}
+.match-item.match-correct{background:var(--ok-bg);color:var(--ok);border-color:var(--ok-border)}
+.match-item.match-wrong{background:var(--bad-bg);color:var(--bad);border-color:var(--bad-border)}
+
+/* ---------- Score summary ---------- */
+.score-ring{
+  width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-weight:650;font-size:15px;background:var(--accent-soft);color:var(--accent-dark);flex-shrink:0;
+}
+.summary-row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid var(--border)}
+.summary-row:last-child{border-bottom:none}
+
+@media (max-width:520px){
+  .shell{padding:20px 16px 64px}
+  .lesson-title{font-size:22px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
