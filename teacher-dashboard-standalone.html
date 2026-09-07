@@ -114,13 +114,13 @@ h1,h2,h3,h4{font-weight:650;letter-spacing:-0.01em}
    section since a student learns "green = present tense" regardless of
    which part of the course they're in. */
 body.theme-tenses{
-  --accent:#A3392A; --accent-dark:#7C2B1F; --accent-soft:#F7EBE9; --accent-soft-border:#DDA99E; --bg:#FBF7F6;
+  --accent:#BC3B3B; --accent-dark:#8F2B2B; --accent-soft:#FBEDED; --accent-soft-border:#E5A8A8; --bg:#FDF7F7;
 }
 body.theme-modals{
   --accent:#2E7A82; --accent-dark:#215A60; --accent-soft:#E9F3F4; --accent-soft-border:#A0CDD1; --bg:#F5FAFA;
 }
 body.theme-conditionals{
-  --accent:#4A7A3D; --accent-dark:#365A2C; --accent-soft:#EEF4EC; --accent-soft-border:#B3D1A8; --bg:#F7FAF6;
+  --accent:#3D3D8C; --accent-dark:#2C2C68; --accent-soft:#EDEDF7; --accent-soft-border:#B0B0DC; --bg:#F7F7FB;
 }
 body.theme-reported{
   --accent:#B8842E; --accent-dark:#8C6321; --accent-soft:#FAF3E7; --accent-soft-border:#E4C48F; --bg:#FDFAF6;
@@ -274,6 +274,8 @@ body.theme-reported{
 .gram-explain.open{display:block}
 
 /* ---------- Listening transcript ---------- */
+#transcript{max-height:0;overflow:hidden;transition:max-height .3s ease}
+#transcript.expanded{max-height:2000px;margin-top:14px}
 .transcript-line{
   font-size:14.5px;line-height:1.8;padding:6px 0;opacity:0;transform:translateY(4px);
   transition:opacity .3s,transform .3s;
@@ -522,7 +524,8 @@ const LESSONS = [
   { id: 'lesson-20-gerunds-vs-infinitives', title: 'Lesson 20 — Gerunds vs. Infinitives' },
   { id: 'test-06-review-lessons-18-20', title: 'Test 6 — Review of Lessons 18–20' },
   { id: 'lesson-21-articles-determiners', title: 'Lesson 21 — Articles & Determiners' },
-  { id: 'lesson-22-discourse-emphasis-capstone', title: 'Lesson 22 — Discourse & Emphasis Capstone' }
+  { id: 'lesson-22-discourse-emphasis-capstone', title: 'Lesson 22 — Discourse & Emphasis Capstone' },
+  { id: 'big-test-2-review-lessons-12-22', title: 'Big Test 2 — Review of Lessons 12–22' }
 ];
 let currentLessonId = LESSONS[0].id;
 function currentLessonTitle(){
