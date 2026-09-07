@@ -114,13 +114,13 @@ h1,h2,h3,h4{font-weight:650;letter-spacing:-0.01em}
    section since a student learns "green = present tense" regardless of
    which part of the course they're in. */
 body.theme-tenses{
-  --accent:#A3392A; --accent-dark:#7C2B1F; --accent-soft:#F7EBE9; --accent-soft-border:#DDA99E; --bg:#FBF7F6;
+  --accent:#BC3B3B; --accent-dark:#8F2B2B; --accent-soft:#FBEDED; --accent-soft-border:#E5A8A8; --bg:#FDF7F7;
 }
 body.theme-modals{
   --accent:#2E7A82; --accent-dark:#215A60; --accent-soft:#E9F3F4; --accent-soft-border:#A0CDD1; --bg:#F5FAFA;
 }
 body.theme-conditionals{
-  --accent:#4A7A3D; --accent-dark:#365A2C; --accent-soft:#EEF4EC; --accent-soft-border:#B3D1A8; --bg:#F7FAF6;
+  --accent:#3D3D8C; --accent-dark:#2C2C68; --accent-soft:#EDEDF7; --accent-soft-border:#B0B0DC; --bg:#F7F7FB;
 }
 body.theme-reported{
   --accent:#B8842E; --accent-dark:#8C6321; --accent-soft:#FAF3E7; --accent-soft-border:#E4C48F; --bg:#FDFAF6;
@@ -274,6 +274,8 @@ body.theme-reported{
 .gram-explain.open{display:block}
 
 /* ---------- Listening transcript ---------- */
+#transcript{max-height:0;overflow:hidden;transition:max-height .3s ease}
+#transcript.expanded{max-height:2000px;margin-top:14px}
 .transcript-line{
   font-size:14.5px;line-height:1.8;padding:6px 0;opacity:0;transform:translateY(4px);
   transition:opacity .3s,transform .3s;
@@ -821,7 +823,7 @@ window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXB
         <button class="btn btn-ghost btn-sm" id="stop-dialogue">⏹ Stop</button>
         <button class="btn btn-ghost btn-sm" id="show-transcript">Show full transcript</button>
       </div>
-      <div id="transcript" style="margin-top:14px"></div>
+      <div id="transcript"></div>
 
       <div style="margin-top:18px">
         <p style="margin-bottom:8px;font-weight:550">1. What had the bank robber believed about lemon juice?</p>
@@ -2503,6 +2505,10 @@ renderPills('pp-continuous-pills', ppContinuousUses);
     line.innerHTML = `<b>${d.speaker}:</b> ${d.line}`;
     transcriptEl.appendChild(line);
   });
+  function updateTranscriptExpansion(){
+    const anyShown = !!transcriptEl.querySelector('.transcript-line.shown');
+    transcriptEl.classList.toggle('expanded', anyShown);
+  }
 
   const playBtn = document.getElementById('play-dialogue');
   let isPlaying = false;
@@ -2518,6 +2524,7 @@ renderPills('pp-continuous-pills', ppContinuousUses);
     if (idx >= dialogue.length){ isPlaying = false; currentIdx = 0; updatePlayButton(); return; }
     document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
     document.getElementById(`t-line-${idx}`).classList.add('shown', 'active');
+    updateTranscriptExpansion();
     const u = new SpeechSynthesisUtterance(dialogue[idx].line);
     u.rate = 0.95; u.pitch = dialogue[idx].pitch;
     u.onend = () => { if (isPlaying){ currentIdx = idx + 1; speakLineAt(currentIdx); } };
@@ -2565,6 +2572,7 @@ renderPills('pp-continuous-pills', ppContinuousUses);
   document.getElementById('show-transcript').addEventListener('click', function(){
     const shown = transcriptEl.classList.toggle('all-shown');
     document.querySelectorAll('.transcript-line').forEach(l => l.classList.toggle('shown', shown));
+    updateTranscriptExpansion();
     this.textContent = shown ? 'Hide transcript' : 'Show full transcript';
   });
 

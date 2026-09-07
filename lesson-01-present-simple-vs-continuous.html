@@ -11,6 +11,8 @@
 <style>
   .trait-pill{padding:7px 12px;border-radius:var(--radius-sm);border:1px solid var(--accent);background:var(--surface);color:var(--accent);font-size:12.5px;font-weight:700;cursor:pointer;transition:background .15s}
   .trait-pill:hover{background:var(--accent-soft)}
+  .compare-box{display:inline-block;padding:4px 10px;border-radius:6px;background:var(--surface-alt);cursor:default;transition:background .15s}
+  .compare-box:hover{background:var(--accent-soft)}
   #compare-tooltip{
     position:absolute;z-index:80;max-width:280px;background:var(--accent-soft);color:var(--text-secondary);
     border:1px solid var(--accent);font-size:13px;line-height:1.5;padding:10px 12px;border-radius:8px;
@@ -440,7 +442,7 @@
         <button class="btn btn-ghost btn-sm" id="stop-dialogue">⏹ Stop</button>
         <button class="btn btn-ghost btn-sm" id="show-transcript">Show full transcript</button>
       </div>
-      <div id="transcript" style="margin-top:14px"></div>
+      <div id="transcript"></div>
 
       <div style="margin-top:18px">
         <p style="margin-bottom:8px;font-weight:550">1. Why is the manager giving Marek more responsibility?</p>
@@ -673,7 +675,7 @@ const LESSON_ID = 'lesson-01-present-simple-vs-continuous';
     compareTooltipEl.classList.remove('visible');
   }
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.trait-pill')) hideCompareTooltip();
+    if (!e.target.closest('.trait-pill') && !e.target.closest('.compare-box')) hideCompareTooltip();
   });
   function renderPills(containerId, pairs){
     const el = document.getElementById(containerId);
@@ -922,14 +924,14 @@ const LESSON_ID = 'lesson-01-present-simple-vs-continuous';
     div.className = 'tricky-pair';
     div.innerHTML = `
       <div class="tricky-word">${t.w} <span style="color:var(--c-modal)">*</span></div>
-      <div class="tricky-row"><span class="tag stative">Stative</span> <span class="tricky-example" data-why="${t.statWhy.replace(/"/g,'&quot;')}">"${t.stative}"</span> <button class="audio-btn" data-speak="${t.stative}" style="margin-bottom:0">🔊</button></div>
-      <div class="tricky-row"><span class="tag dynamic">Dynamic</span> <span class="tricky-example" data-why="${t.dynWhy.replace(/"/g,'&quot;')}">"${t.dynamic}"</span> <button class="audio-btn" data-speak="${t.dynamic}" style="margin-bottom:0">🔊</button></div>
+      <div class="tricky-row"><span class="tag stative">Stative</span> <span class="compare-box" data-why="${t.statWhy.replace(/"/g,'&quot;')}">"${t.stative}"</span></div>
+      <div class="tricky-row"><span class="tag dynamic">Dynamic</span> <span class="compare-box" data-why="${t.dynWhy.replace(/"/g,'&quot;')}">"${t.dynamic}"</span></div>
     `;
-    div.querySelectorAll('.audio-btn').forEach(btn => btn.addEventListener('click', () => Course.speak(btn.dataset.speak)));
-    div.querySelectorAll('.tricky-example').forEach(span => {
-      span.addEventListener('click', () => {
-        Course.showPopup(`<div style="font-size:14.5px;line-height:1.6">${span.dataset.why}</div>`, span);
-      });
+    div.querySelectorAll('.compare-box').forEach(span => {
+      const html = `<div>${span.dataset.why}</div>`;
+      span.addEventListener('mouseenter', () => showCompareTooltip(html, span));
+      span.addEventListener('mouseleave', hideCompareTooltip);
+      span.addEventListener('click', (e) => { e.stopPropagation(); showCompareTooltip(html, span); });
     });
     trickyEl.appendChild(div);
   });
@@ -1244,6 +1246,10 @@ const LESSON_ID = 'lesson-01-present-simple-vs-continuous';
     line.innerHTML = `<b>${d.speaker}:</b> ${d.line}`;
     transcriptEl.appendChild(line);
   });
+  function updateTranscriptExpansion(){
+    const anyShown = !!transcriptEl.querySelector('.transcript-line.shown');
+    transcriptEl.classList.toggle('expanded', anyShown);
+  }
 
   const playBtn = document.getElementById('play-dialogue');
   let isPlaying = false;
@@ -1259,6 +1265,7 @@ const LESSON_ID = 'lesson-01-present-simple-vs-continuous';
     if (idx >= dialogue.length){ isPlaying = false; currentIdx = 0; updatePlayButton(); return; }
     document.querySelectorAll('.transcript-line').forEach(l => l.classList.remove('active'));
     document.getElementById(`t-line-${idx}`).classList.add('shown', 'active');
+    updateTranscriptExpansion();
     const u = new SpeechSynthesisUtterance(dialogue[idx].line);
     u.rate = 0.95; u.pitch = dialogue[idx].pitch;
     u.onend = () => { if (isPlaying){ currentIdx = idx + 1; speakLineAt(currentIdx); } };
@@ -1306,6 +1313,7 @@ const LESSON_ID = 'lesson-01-present-simple-vs-continuous';
   document.getElementById('show-transcript').addEventListener('click', function(){
     const shown = transcriptEl.classList.toggle('all-shown');
     document.querySelectorAll('.transcript-line').forEach(l => l.classList.toggle('shown', shown));
+    updateTranscriptExpansion();
     this.textContent = shown ? 'Hide transcript' : 'Show full transcript';
   });
 
