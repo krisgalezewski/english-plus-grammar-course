@@ -848,19 +848,6 @@ const structureVerbs = {
   glossaryLink.href = glossaryHref;
 }
 
-{
-  const resetBtn = document.createElement('button');
-  resetBtn.className = 'btn btn-sm btn-ghost';
-  resetBtn.textContent = '↺ Reset my progress for this lesson';
-  resetBtn.style.cssText = 'margin-top:8px;font-size:12px;padding:5px 12px';
-  resetBtn.addEventListener('click', () => {
-    if (confirm('Clear all saved answers for this lesson on this device? (Does not affect Supabase.)')){
-      Course.resetLocalProgress(LESSON_ID);
-      location.reload();
-    }
-  });
-  document.getElementById('sync-status').insertAdjacentElement('afterend', resetBtn);
-}
 
 (async function initLesson(){
   document.getElementById('sync-status').textContent = Course.isConnected()
@@ -1153,6 +1140,7 @@ const structureVerbs = {
     const bankOrder = Course.shuffleArray(round.words.map((_, i) => i));
     let state = [];
     let locked = false;
+    let dragFromPos = null;
 
     if (restored){
       const used = new Set();
@@ -1190,13 +1178,39 @@ const structureVerbs = {
         bank.appendChild(chip);
       });
       target.innerHTML = '';
-      state.forEach(i => {
+      state.forEach((i, pos) => {
         const chip = document.createElement('button');
         chip.className = 'chip';
         chip.textContent = round.words[i];
         if (!locked){
           chip.title = 'Click to remove';
           chip.addEventListener('click', () => { state = state.filter(x => x !== i); render(); });
+          chip.draggable = true;
+          chip.addEventListener('dragstart', (e) => {
+            dragFromPos = pos;
+            chip.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', String(pos));
+          });
+          chip.addEventListener('dragend', () => {
+            chip.classList.remove('dragging');
+            dragFromPos = null;
+          });
+          chip.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            chip.classList.add('drag-over');
+          });
+          chip.addEventListener('dragleave', () => chip.classList.remove('drag-over'));
+          chip.addEventListener('drop', (e) => {
+            e.preventDefault();
+            chip.classList.remove('drag-over');
+            const fromPos = dragFromPos !== null ? dragFromPos : Number(e.dataTransfer.getData('text/plain'));
+            if (Number.isNaN(fromPos) || fromPos === pos) return;
+            const [moved] = state.splice(fromPos, 1);
+            state.splice(pos, 0, moved);
+            render();
+          });
         } else {
           chip.disabled = true;
         }
