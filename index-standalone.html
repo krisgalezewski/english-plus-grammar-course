@@ -564,294 +564,6 @@ body.theme-reported{
 </div>
 
 <script>
-
-const LESSONS = [
-  { id: 'lesson-01-present-simple-vs-continuous', title: 'Lesson 1 — Present Simple vs. Present Continuous' },
-  { id: 'lesson-02-past-simple-vs-continuous', title: 'Lesson 2 — Past Simple vs. Past Continuous' },
-  { id: 'lesson-03-present-perfect-vs-past-simple', title: 'Lesson 3 — Present Perfect vs. Past Simple' },
-  { id: 'test-01-review-lessons-1-3', title: 'Test 1 — Review of Lessons 1–3', isTest: true },
-  { id: 'lesson-04-present-perfect-simple-vs-continuous', title: 'Lesson 4 — Present Perfect Simple vs. Present Perfect Continuous' },
-  { id: 'lesson-05-past-perfect-simple-vs-continuous', title: 'Lesson 5 — Past Perfect Simple vs. Past Perfect Continuous' },
-  { id: 'lesson-06-future-forms', title: 'Lesson 6 — Will vs. Going To vs. Present Continuous' },
-  { id: 'test-02-review-lessons-4-6', title: 'Test 2 — Review of Lessons 4–6', isTest: true },
-  { id: 'lesson-07-future-perfect-vs-continuous', title: 'Lesson 7 — Future Perfect vs. Future Continuous' },
-  { id: 'lesson-08-modals-ability-permission-obligation', title: 'Lesson 8 — Modals of Ability, Permission, Obligation, and Prohibition' },
-  { id: 'lesson-09-modals-deduction-speculation', title: 'Lesson 9 — Modals of Deduction and Speculation' },
-  { id: 'test-03-review-lessons-7-9', title: 'Test 3 — Review of Lessons 7–9', isTest: true },
-  { id: 'lesson-10-modal-perfect', title: 'Lesson 10 — Modal Perfect: Should Have, Could Have, Would Have' },
-  { id: 'lesson-11-passive-voice', title: 'Lesson 11 — Passive Voice: Core Forms Across Tenses' },
-  { id: 'big-test-1-review-lessons-1-11', title: 'Big Test 1 — Review of Lessons 1–11', isTest: true },
-  { id: 'lesson-12-passive-extensions', title: 'Lesson 12 — Passive Extensions: Reporting Structures & Causative' },
-  { id: 'lesson-13-conditionals-zero-first', title: 'Lesson 13 — Conditionals: Zero & First' },
-  { id: 'lesson-14-second-conditional', title: 'Lesson 14 — Second Conditional' },
-  { id: 'test-04-review-lessons-12-14', title: 'Test 4 — Review of Lessons 12–14', isTest: true },
-  { id: 'lesson-15-third-conditional', title: 'Lesson 15 — Third Conditional' },
-  { id: 'lesson-16-mixed-conditionals', title: 'Lesson 16 — Mixed Conditionals' },
-  { id: 'lesson-17-wish-if-only', title: 'Lesson 17 — Wish / If Only' },
-  { id: 'test-05-review-lessons-15-17', title: 'Test 5 — Review of Lessons 15–17', isTest: true },
-  { id: 'lesson-18-reported-speech', title: 'Lesson 18 — Reported Speech' },
-  { id: 'lesson-19-relative-clauses', title: 'Lesson 19 — Relative Clauses' },
-  { id: 'lesson-20-gerunds-vs-infinitives', title: 'Lesson 20 — Gerunds vs. Infinitives' },
-  { id: 'test-06-review-lessons-18-20', title: 'Test 6 — Review of Lessons 18–20', isTest: true },
-  { id: 'lesson-21-articles-determiners', title: 'Lesson 21 — Articles & Determiners' },
-  { id: 'lesson-22-discourse-emphasis-capstone', title: 'Lesson 22 — Discourse & Emphasis Capstone' },
-  { id: 'big-test-2-review-lessons-12-22', title: 'Big Test 2 — Review of Lessons 12–22', isTest: true }
-];
-
-const GROUP_META = [
-  {
-    title: 'Tenses & Aspect', color: '#8F2B2B', accent: '#BC3B3B',
-    desc: 'Present, past and perfect tenses across simple and continuous aspect, plus the three main ways to talk about the future — the core distinctions that decide which tense actually fits a sentence.',
-    expect: 'Each lesson opens with a warm-up and a diagnostic, then works through reading comprehension, vocabulary and categorising practice before a sentence builder and an exit check. The tests along the way mix questions from every lesson since the last one.'
-  },
-  {
-    title: 'Modals & Passive', color: '#215A60', accent: '#2E7A82',
-    desc: "Modals of ability, permission, obligation and deduction, modal perfect forms like should have and could have, and the passive voice across simple, reporting and causative structures.",
-    expect: "Expect matching and categorising tasks for modal meaning, gap-fills that force the right modal-plus-perfect combination, and passive transformation practice, building up to a mixed review test and a larger big test."
-  },
-  {
-    title: 'Conditionals & Wish', color: '#2C2C68', accent: '#3D3D8C',
-    desc: 'All four conditional types plus mixed conditionals and wish / if only — the structures for talking about hypothetical present, past and future situations.',
-    expect: "You'll rewrite real-life situations as conditionals, decide which conditional type a sentence needs, and build full conditional sentences word by word, checked against a review test partway through."
-  },
-  {
-    title: 'Reported Speech, Clauses & Beyond', color: '#8C6321', accent: '#B8842E',
-    desc: 'Reported speech, relative clauses, gerunds vs. infinitives, and articles & determiners, closing with a capstone lesson on discourse markers and emphasis.',
-    expect: "Later lessons lean more on transformation and error-spotting — turning direct speech into reported speech, choosing the right relative pronoun, deciding gerund or infinitive — and the course closes with a capstone lesson and a second big test covering Lessons 12–22."
-  }
-];
-const SECTION_SIZES = [9, 7, 7, 7];
-
-/* ------------------------------------------------------------------
-   Per-lesson/test exercise totals — the same number each lesson/test
-   file passes (as LESSON_TOTAL_POSSIBLE / totalPossible) into its own
-   overall-progress calculation. A lesson counts as 100% complete (and
-   gets its green tick) once this many auto-graded exercises have been
-   attempted. Extracted directly from each file's own constant, so it
-   stays in sync with the actual content.
-   ------------------------------------------------------------------ */
-const DEFAULT_TOTAL = 12;
-const LESSON_TOTALS = {
-  'lesson-01-present-simple-vs-continuous': 46, 'lesson-02-past-simple-vs-continuous': 46,
-  'lesson-03-present-perfect-vs-past-simple': 48, 'lesson-04-present-perfect-simple-vs-continuous': 46,
-  'lesson-05-past-perfect-simple-vs-continuous': 46, 'lesson-06-future-forms': 48,
-  'lesson-07-future-perfect-vs-continuous': 51, 'lesson-08-modals-ability-permission-obligation': 53,
-  'lesson-09-modals-deduction-speculation': 43, 'lesson-10-modal-perfect': 45,
-  'lesson-11-passive-voice': 52, 'lesson-12-passive-extensions': 46,
-  'lesson-13-conditionals-zero-first': 46, 'lesson-14-second-conditional': 49,
-  'lesson-15-third-conditional': 48, 'lesson-16-mixed-conditionals': 48,
-  'lesson-17-wish-if-only': 48, 'lesson-18-reported-speech': 49,
-  'lesson-19-relative-clauses': 48, 'lesson-20-gerunds-vs-infinitives': 48,
-  'lesson-21-articles-determiners': 48, 'lesson-22-discourse-emphasis-capstone': 48,
-  'test-01-review-lessons-1-3': 44, 'test-02-review-lessons-4-6': 44,
-  'test-03-review-lessons-7-9': 44, 'test-04-review-lessons-12-14': 49,
-  'test-05-review-lessons-15-17': 60, 'test-06-review-lessons-18-20': 61,
-  'big-test-1-review-lessons-1-11': 68, 'big-test-2-review-lessons-12-22': 68
-};
-function totalFor(id){ return LESSON_TOTALS[id] || DEFAULT_TOTAL; }
-
-// Build the [start, end) ranges from SECTION_SIZES so this never has to
-// be hand-kept in sync with LESSONS.length.
-const GROUPS = (() => {
-  let start = 0;
-  return GROUP_META.map((g, i) => {
-    const end = start + SECTION_SIZES[i];
-    const range = [start, end];
-    start = end;
-    return { ...g, range };
-  });
-})();
-
-const STUDENT_NAME_KEY = 'englishplus_student_name';
-const OPEN_KEY = 'englishplus_index_open';
-
-const groupParam = new URLSearchParams(window.location.search).get('group');
-function withGroup(href){
-  return groupParam ? `${href}?group=${encodeURIComponent(groupParam)}` : href;
-}
-function standaloneFilename(id){
-  // Standalone files are named with just the short prefix (lesson-01,
-  // test-01, big-test-1), never the full descriptive id — e.g. the real
-  // file is "lesson-01-preview-standalone.html", not
-  // "lesson-01-present-simple-vs-continuous-preview-standalone.html".
-  const match = id.match(/^(big-test-\d+|lesson-\d+|test-\d+)/);
-  const prefix = match ? match[1] : id;
-  return `${prefix}-preview-standalone.html`;
-}
-
-/* ---------- Progress ---------- */
-function lessonProgress(id){
-  let attempted = 0;
-  try {
-    attempted = Course.getCurrentRows(id).filter(r => r.exercise_type === 'auto_graded').length;
-  } catch (e){ attempted = 0; }
-  const total = totalFor(id);
-  const pct = total ? Math.min(100, Math.round((attempted / total) * 100)) : 0;
-  return { attempted, total, pct, done: pct >= 100 };
-}
-
-function readOpen(){
-  try { return new Set(JSON.parse(localStorage.getItem(OPEN_KEY)) || []); }
-  catch (e){ return new Set(); }
-}
-function writeOpen(set){
-  localStorage.setItem(OPEN_KEY, JSON.stringify([...set]));
-}
-
-function shortTitle(l){
-  // "Lesson 4 — Modals of Deduction..." → "Modals of Deduction..." (the
-  // number already lives in the numbered badge beside it). Tests keep
-  // their full label.
-  return l.isTest ? l.title : l.title.replace(/^Lesson\s+\d+\s+[—-]\s*/, '');
-}
-
-function renderLessonIndex(){
-  const root = document.getElementById('lesson-index');
-  const open = readOpen();
-  root.innerHTML = '';
-
-  GROUPS.forEach((g, gi) => {
-    const items = LESSONS.slice(g.range[0], g.range[1]);
-    const progress = items.map(l => lessonProgress(l.id));
-    const doneCount = progress.filter(p => p.done).length;
-    const pct = Math.round(progress.reduce((s, p) => s + p.pct, 0) / items.length);
-    const lessonCount = items.filter(l => !l.isTest).length;
-    const testCount = items.length - lessonCount;
-    const isOpen = open.has(gi);
-
-    const rows = items.map((l, i) => {
-      const p = progress[i];
-      const testNo = LESSONS.slice(0, g.range[0] + i + 1).filter(x => x.isTest).length;
-      const num = l.isTest ? 'T' + testNo : (g.range[0] + i + 1 - LESSONS.slice(0, g.range[0] + i).filter(x => x.isTest).length);
-      const state = p.done
-        ? '<span class="lx-tick" title="Completed">✓</span>'
-        : `<span class="lx-state">${p.attempted ? p.pct + '%' : ''}</span>`;
-      return `
-        <a class="lx" href="${withGroup(standaloneFilename(l.id))}"
-           style="border-color:${g.color}26;background:${l.isTest ? g.color + '0F' : 'var(--surface)'}"
-           onmouseover="this.style.background='${g.color}1A'"
-           onmouseout="this.style.background='${l.isTest ? g.color + '0F' : '#fff'}'">
-          <span class="lx-num" style="${l.isTest ? 'background:' + g.color + ';color:#fff' : 'background:' + g.color + '1F;color:' + g.color}">${num}</span>
-          <span class="lx-title" style="color:${g.color}">${shortTitle(l)}</span>
-          ${state}
-        </a>`;
-    }).join('');
-
-    const box = document.createElement('div');
-    box.className = 'sec-box' + (isOpen ? ' open' : '');
-    box.style.background = g.color + '0A';
-    box.style.borderColor = g.color + '33';
-    box.innerHTML = `
-      <button class="sec-head" aria-expanded="${isOpen}">
-        <div class="sec-top">
-          <span class="sec-idx" style="color:${g.color}">0${gi + 1}</span>
-          <span class="sec-title" style="color:${g.color}">${g.title}</span>
-          <span class="sec-chev" style="color:${g.color}">&#9662;</span>
-        </div>
-        <div class="sec-desc">${g.desc}</div>
-        <div class="sec-expect">${g.expect}</div>
-        <div class="sec-foot" style="color:${g.color}">
-          <span>${lessonCount} lessons · ${testCount} test${testCount === 1 ? '' : 's'}</span>
-          <span class="sec-bar"><i style="width:${pct}%;background:${g.accent}"></i></span>
-          <span class="sec-toggle" style="border-color:${g.color}40;color:${g.color}">${isOpen ? 'Hide lessons' : 'Show lessons'}</span>
-          ${doneCount === items.length
-            ? '<span class="sec-done">✓ Section complete</span>'
-            : `<span>${doneCount}/${items.length} done</span>`}
-        </div>
-      </button>
-      <div class="sec-body">${rows}</div>`;
-
-    box.querySelector('.sec-head').addEventListener('click', () => {
-      const set = readOpen();
-      if (set.has(gi)) set.delete(gi); else set.add(gi);
-      writeOpen(set);
-      const nowOpen = set.has(gi);
-      box.classList.toggle('open', nowOpen);
-      box.querySelector('.sec-head').setAttribute('aria-expanded', String(nowOpen));
-      box.querySelector('.sec-toggle').textContent = nowOpen ? 'Hide lessons' : 'Show lessons';
-    });
-
-    root.appendChild(box);
-  });
-
-  renderOverall();
-}
-
-function renderOverall(){
-  const all = LESSONS.map(l => lessonProgress(l.id));
-  const pct = Math.round(all.reduce((s, p) => s + p.pct, 0) / all.length);
-  const done = all.filter(p => p.done).length;
-  const ring = document.getElementById('overall-ring');
-  ring.style.setProperty('--pct', pct + '%');
-  document.getElementById('overall-pct').textContent = pct + '%';
-  document.getElementById('overall-title').textContent = done
-    ? `${done} of ${all.length} finished`
-    : (pct ? 'In progress' : 'Nothing attempted yet');
-  document.getElementById('overall-sub').textContent = 'Your progress across all ' + all.length + ' items.';
-
-  // Per-section mini bars, so the cell says which part of the course is
-  // moving rather than just the single overall number.
-  document.getElementById('mini-progress').innerHTML = GROUPS.map((g, gi) => {
-    const items = LESSONS.slice(g.range[0], g.range[1]).map(l => lessonProgress(l.id));
-    const p = Math.round(items.reduce((s, x) => s + x.pct, 0) / items.length);
-    return `<div class="mini">
-      <span class="mini-idx" style="color:${g.color}">0${gi + 1}</span>
-      <span class="mini-name" style="color:${g.color}">${g.title}</span>
-      <span class="mini-bar"><i style="width:${p}%;background:${g.accent}"></i></span>
-      <span class="mini-pct">${p}%</span>
-    </div>`;
-  }).join('');
-
-  // Up next: first item that isn't finished.
-  const nextIdx = all.findIndex(p => !p.done);
-  const next = LESSONS[nextIdx === -1 ? LESSONS.length - 1 : nextIdx];
-  const nextEl = document.getElementById('next-up');
-  nextEl.href = withGroup(standaloneFilename(next.id));
-  document.getElementById('next-title').textContent = next.title;
-  nextEl.querySelector('.next-go').textContent = nextIdx === -1
-    ? 'Course complete — revisit →'
-    : (all[nextIdx].attempted ? 'Continue →' : 'Open →');
-}
-
-function showWelcomeBack(name){
-  document.getElementById('welcome-heading').textContent = 'Welcome back, ' + name + '.';
-  document.getElementById('welcome-copy').innerHTML =
-    'Continuing the <b>B1+/B2 Grammar Course</b> — real practice with tenses, modals, passives, conditionals, reported speech and more, not just isolated drills.';
-  const form = document.getElementById('name-form');
-  form.outerHTML = '<button class="change-name-link" id="change-name-btn" style="align-self:flex-start;margin:0">Not you? Change name</button>';
-  document.getElementById('change-name-btn').addEventListener('click', () => {
-    localStorage.removeItem(STUDENT_NAME_KEY);
-    location.reload();
-  });
-}
-
-const existingName = localStorage.getItem(STUDENT_NAME_KEY);
-if (existingName){
-  showWelcomeBack(existingName);
-} else {
-  document.getElementById('name-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const val = document.getElementById('name-input').value.trim();
-    if (!val) return;
-    localStorage.setItem(STUDENT_NAME_KEY, val);
-    showWelcomeBack(val);
-  });
-}
-
-renderLessonIndex();
-
-// Pull this student's rows down from Supabase (if connected) so the ticks
-// and percentages reflect work done on other devices too, then re-render
-// once. Never blocks first paint; a failure just leaves local numbers.
-if (existingName && Course.isConnected()){
-  (async () => {
-    for (const l of LESSONS){ await Course.syncFromSupabase(l.id); }
-    renderLessonIndex();
-  })();
-}
-
-</script>
-<script>
 /* ============================================================
    English+ Grammar Course — Shared Engine
    Used by every lesson-*.html. Handles:
@@ -1696,6 +1408,294 @@ const Course = (() => {
            getGlossary, saveToGlossary, removeFromGlossary, syncGlossaryFromSupabase,
            getGroupId: () => GROUP_ID, isConnected: () => !!supabaseClient };
 })();
+
+</script>
+<script>
+
+const LESSONS = [
+  { id: 'lesson-01-present-simple-vs-continuous', title: 'Lesson 1 — Present Simple vs. Present Continuous' },
+  { id: 'lesson-02-past-simple-vs-continuous', title: 'Lesson 2 — Past Simple vs. Past Continuous' },
+  { id: 'lesson-03-present-perfect-vs-past-simple', title: 'Lesson 3 — Present Perfect vs. Past Simple' },
+  { id: 'test-01-review-lessons-1-3', title: 'Test 1 — Review of Lessons 1–3', isTest: true },
+  { id: 'lesson-04-present-perfect-simple-vs-continuous', title: 'Lesson 4 — Present Perfect Simple vs. Present Perfect Continuous' },
+  { id: 'lesson-05-past-perfect-simple-vs-continuous', title: 'Lesson 5 — Past Perfect Simple vs. Past Perfect Continuous' },
+  { id: 'lesson-06-future-forms', title: 'Lesson 6 — Will vs. Going To vs. Present Continuous' },
+  { id: 'test-02-review-lessons-4-6', title: 'Test 2 — Review of Lessons 4–6', isTest: true },
+  { id: 'lesson-07-future-perfect-vs-continuous', title: 'Lesson 7 — Future Perfect vs. Future Continuous' },
+  { id: 'lesson-08-modals-ability-permission-obligation', title: 'Lesson 8 — Modals of Ability, Permission, Obligation, and Prohibition' },
+  { id: 'lesson-09-modals-deduction-speculation', title: 'Lesson 9 — Modals of Deduction and Speculation' },
+  { id: 'test-03-review-lessons-7-9', title: 'Test 3 — Review of Lessons 7–9', isTest: true },
+  { id: 'lesson-10-modal-perfect', title: 'Lesson 10 — Modal Perfect: Should Have, Could Have, Would Have' },
+  { id: 'lesson-11-passive-voice', title: 'Lesson 11 — Passive Voice: Core Forms Across Tenses' },
+  { id: 'big-test-1-review-lessons-1-11', title: 'Big Test 1 — Review of Lessons 1–11', isTest: true },
+  { id: 'lesson-12-passive-extensions', title: 'Lesson 12 — Passive Extensions: Reporting Structures & Causative' },
+  { id: 'lesson-13-conditionals-zero-first', title: 'Lesson 13 — Conditionals: Zero & First' },
+  { id: 'lesson-14-second-conditional', title: 'Lesson 14 — Second Conditional' },
+  { id: 'test-04-review-lessons-12-14', title: 'Test 4 — Review of Lessons 12–14', isTest: true },
+  { id: 'lesson-15-third-conditional', title: 'Lesson 15 — Third Conditional' },
+  { id: 'lesson-16-mixed-conditionals', title: 'Lesson 16 — Mixed Conditionals' },
+  { id: 'lesson-17-wish-if-only', title: 'Lesson 17 — Wish / If Only' },
+  { id: 'test-05-review-lessons-15-17', title: 'Test 5 — Review of Lessons 15–17', isTest: true },
+  { id: 'lesson-18-reported-speech', title: 'Lesson 18 — Reported Speech' },
+  { id: 'lesson-19-relative-clauses', title: 'Lesson 19 — Relative Clauses' },
+  { id: 'lesson-20-gerunds-vs-infinitives', title: 'Lesson 20 — Gerunds vs. Infinitives' },
+  { id: 'test-06-review-lessons-18-20', title: 'Test 6 — Review of Lessons 18–20', isTest: true },
+  { id: 'lesson-21-articles-determiners', title: 'Lesson 21 — Articles & Determiners' },
+  { id: 'lesson-22-discourse-emphasis-capstone', title: 'Lesson 22 — Discourse & Emphasis Capstone' },
+  { id: 'big-test-2-review-lessons-12-22', title: 'Big Test 2 — Review of Lessons 12–22', isTest: true }
+];
+
+const GROUP_META = [
+  {
+    title: 'Tenses & Aspect', color: '#8F2B2B', accent: '#BC3B3B',
+    desc: 'Present, past and perfect tenses across simple and continuous aspect, plus the three main ways to talk about the future — the core distinctions that decide which tense actually fits a sentence.',
+    expect: 'Each lesson opens with a warm-up and a diagnostic, then works through reading comprehension, vocabulary and categorising practice before a sentence builder and an exit check. The tests along the way mix questions from every lesson since the last one.'
+  },
+  {
+    title: 'Modals & Passive', color: '#215A60', accent: '#2E7A82',
+    desc: "Modals of ability, permission, obligation and deduction, modal perfect forms like should have and could have, and the passive voice across simple, reporting and causative structures.",
+    expect: "Expect matching and categorising tasks for modal meaning, gap-fills that force the right modal-plus-perfect combination, and passive transformation practice, building up to a mixed review test and a larger big test."
+  },
+  {
+    title: 'Conditionals & Wish', color: '#2C2C68', accent: '#3D3D8C',
+    desc: 'All four conditional types plus mixed conditionals and wish / if only — the structures for talking about hypothetical present, past and future situations.',
+    expect: "You'll rewrite real-life situations as conditionals, decide which conditional type a sentence needs, and build full conditional sentences word by word, checked against a review test partway through."
+  },
+  {
+    title: 'Reported Speech, Clauses & Beyond', color: '#8C6321', accent: '#B8842E',
+    desc: 'Reported speech, relative clauses, gerunds vs. infinitives, and articles & determiners, closing with a capstone lesson on discourse markers and emphasis.',
+    expect: "Later lessons lean more on transformation and error-spotting — turning direct speech into reported speech, choosing the right relative pronoun, deciding gerund or infinitive — and the course closes with a capstone lesson and a second big test covering Lessons 12–22."
+  }
+];
+const SECTION_SIZES = [9, 7, 7, 7];
+
+/* ------------------------------------------------------------------
+   Per-lesson/test exercise totals — the same number each lesson/test
+   file passes (as LESSON_TOTAL_POSSIBLE / totalPossible) into its own
+   overall-progress calculation. A lesson counts as 100% complete (and
+   gets its green tick) once this many auto-graded exercises have been
+   attempted. Extracted directly from each file's own constant, so it
+   stays in sync with the actual content.
+   ------------------------------------------------------------------ */
+const DEFAULT_TOTAL = 12;
+const LESSON_TOTALS = {
+  'lesson-01-present-simple-vs-continuous': 46, 'lesson-02-past-simple-vs-continuous': 46,
+  'lesson-03-present-perfect-vs-past-simple': 48, 'lesson-04-present-perfect-simple-vs-continuous': 46,
+  'lesson-05-past-perfect-simple-vs-continuous': 46, 'lesson-06-future-forms': 48,
+  'lesson-07-future-perfect-vs-continuous': 51, 'lesson-08-modals-ability-permission-obligation': 53,
+  'lesson-09-modals-deduction-speculation': 43, 'lesson-10-modal-perfect': 45,
+  'lesson-11-passive-voice': 52, 'lesson-12-passive-extensions': 46,
+  'lesson-13-conditionals-zero-first': 46, 'lesson-14-second-conditional': 49,
+  'lesson-15-third-conditional': 48, 'lesson-16-mixed-conditionals': 48,
+  'lesson-17-wish-if-only': 48, 'lesson-18-reported-speech': 49,
+  'lesson-19-relative-clauses': 48, 'lesson-20-gerunds-vs-infinitives': 48,
+  'lesson-21-articles-determiners': 48, 'lesson-22-discourse-emphasis-capstone': 48,
+  'test-01-review-lessons-1-3': 44, 'test-02-review-lessons-4-6': 44,
+  'test-03-review-lessons-7-9': 44, 'test-04-review-lessons-12-14': 49,
+  'test-05-review-lessons-15-17': 60, 'test-06-review-lessons-18-20': 61,
+  'big-test-1-review-lessons-1-11': 68, 'big-test-2-review-lessons-12-22': 68
+};
+function totalFor(id){ return LESSON_TOTALS[id] || DEFAULT_TOTAL; }
+
+// Build the [start, end) ranges from SECTION_SIZES so this never has to
+// be hand-kept in sync with LESSONS.length.
+const GROUPS = (() => {
+  let start = 0;
+  return GROUP_META.map((g, i) => {
+    const end = start + SECTION_SIZES[i];
+    const range = [start, end];
+    start = end;
+    return { ...g, range };
+  });
+})();
+
+const STUDENT_NAME_KEY = 'englishplus_student_name';
+const OPEN_KEY = 'englishplus_index_open';
+
+const groupParam = new URLSearchParams(window.location.search).get('group');
+function withGroup(href){
+  return groupParam ? `${href}?group=${encodeURIComponent(groupParam)}` : href;
+}
+function standaloneFilename(id){
+  // Standalone files are named with just the short prefix (lesson-01,
+  // test-01, big-test-1), never the full descriptive id — e.g. the real
+  // file is "lesson-01-preview-standalone.html", not
+  // "lesson-01-present-simple-vs-continuous-preview-standalone.html".
+  const match = id.match(/^(big-test-\d+|lesson-\d+|test-\d+)/);
+  const prefix = match ? match[1] : id;
+  return `${prefix}-preview-standalone.html`;
+}
+
+/* ---------- Progress ---------- */
+function lessonProgress(id){
+  let attempted = 0;
+  try {
+    attempted = Course.getCurrentRows(id).filter(r => r.exercise_type === 'auto_graded').length;
+  } catch (e){ attempted = 0; }
+  const total = totalFor(id);
+  const pct = total ? Math.min(100, Math.round((attempted / total) * 100)) : 0;
+  return { attempted, total, pct, done: pct >= 100 };
+}
+
+function readOpen(){
+  try { return new Set(JSON.parse(localStorage.getItem(OPEN_KEY)) || []); }
+  catch (e){ return new Set(); }
+}
+function writeOpen(set){
+  localStorage.setItem(OPEN_KEY, JSON.stringify([...set]));
+}
+
+function shortTitle(l){
+  // "Lesson 4 — Modals of Deduction..." → "Modals of Deduction..." (the
+  // number already lives in the numbered badge beside it). Tests keep
+  // their full label.
+  return l.isTest ? l.title : l.title.replace(/^Lesson\s+\d+\s+[—-]\s*/, '');
+}
+
+function renderLessonIndex(){
+  const root = document.getElementById('lesson-index');
+  const open = readOpen();
+  root.innerHTML = '';
+
+  GROUPS.forEach((g, gi) => {
+    const items = LESSONS.slice(g.range[0], g.range[1]);
+    const progress = items.map(l => lessonProgress(l.id));
+    const doneCount = progress.filter(p => p.done).length;
+    const pct = Math.round(progress.reduce((s, p) => s + p.pct, 0) / items.length);
+    const lessonCount = items.filter(l => !l.isTest).length;
+    const testCount = items.length - lessonCount;
+    const isOpen = open.has(gi);
+
+    const rows = items.map((l, i) => {
+      const p = progress[i];
+      const testNo = LESSONS.slice(0, g.range[0] + i + 1).filter(x => x.isTest).length;
+      const num = l.isTest ? 'T' + testNo : (g.range[0] + i + 1 - LESSONS.slice(0, g.range[0] + i).filter(x => x.isTest).length);
+      const state = p.done
+        ? '<span class="lx-tick" title="Completed">✓</span>'
+        : `<span class="lx-state">${p.attempted ? p.pct + '%' : ''}</span>`;
+      return `
+        <a class="lx" href="${withGroup(standaloneFilename(l.id))}"
+           style="border-color:${g.color}26;background:${l.isTest ? g.color + '0F' : 'var(--surface)'}"
+           onmouseover="this.style.background='${g.color}1A'"
+           onmouseout="this.style.background='${l.isTest ? g.color + '0F' : '#fff'}'">
+          <span class="lx-num" style="${l.isTest ? 'background:' + g.color + ';color:#fff' : 'background:' + g.color + '1F;color:' + g.color}">${num}</span>
+          <span class="lx-title" style="color:${g.color}">${shortTitle(l)}</span>
+          ${state}
+        </a>`;
+    }).join('');
+
+    const box = document.createElement('div');
+    box.className = 'sec-box' + (isOpen ? ' open' : '');
+    box.style.background = g.color + '0A';
+    box.style.borderColor = g.color + '33';
+    box.innerHTML = `
+      <button class="sec-head" aria-expanded="${isOpen}">
+        <div class="sec-top">
+          <span class="sec-idx" style="color:${g.color}">0${gi + 1}</span>
+          <span class="sec-title" style="color:${g.color}">${g.title}</span>
+          <span class="sec-chev" style="color:${g.color}">&#9662;</span>
+        </div>
+        <div class="sec-desc">${g.desc}</div>
+        <div class="sec-expect">${g.expect}</div>
+        <div class="sec-foot" style="color:${g.color}">
+          <span>${lessonCount} lessons · ${testCount} test${testCount === 1 ? '' : 's'}</span>
+          <span class="sec-bar"><i style="width:${pct}%;background:${g.accent}"></i></span>
+          <span class="sec-toggle" style="border-color:${g.color}40;color:${g.color}">${isOpen ? 'Hide lessons' : 'Show lessons'}</span>
+          ${doneCount === items.length
+            ? '<span class="sec-done">✓ Section complete</span>'
+            : `<span>${doneCount}/${items.length} done</span>`}
+        </div>
+      </button>
+      <div class="sec-body">${rows}</div>`;
+
+    box.querySelector('.sec-head').addEventListener('click', () => {
+      const set = readOpen();
+      if (set.has(gi)) set.delete(gi); else set.add(gi);
+      writeOpen(set);
+      const nowOpen = set.has(gi);
+      box.classList.toggle('open', nowOpen);
+      box.querySelector('.sec-head').setAttribute('aria-expanded', String(nowOpen));
+      box.querySelector('.sec-toggle').textContent = nowOpen ? 'Hide lessons' : 'Show lessons';
+    });
+
+    root.appendChild(box);
+  });
+
+  renderOverall();
+}
+
+function renderOverall(){
+  const all = LESSONS.map(l => lessonProgress(l.id));
+  const pct = Math.round(all.reduce((s, p) => s + p.pct, 0) / all.length);
+  const done = all.filter(p => p.done).length;
+  const ring = document.getElementById('overall-ring');
+  ring.style.setProperty('--pct', pct + '%');
+  document.getElementById('overall-pct').textContent = pct + '%';
+  document.getElementById('overall-title').textContent = done
+    ? `${done} of ${all.length} finished`
+    : (pct ? 'In progress' : 'Nothing attempted yet');
+  document.getElementById('overall-sub').textContent = 'Your progress across all ' + all.length + ' items.';
+
+  // Per-section mini bars, so the cell says which part of the course is
+  // moving rather than just the single overall number.
+  document.getElementById('mini-progress').innerHTML = GROUPS.map((g, gi) => {
+    const items = LESSONS.slice(g.range[0], g.range[1]).map(l => lessonProgress(l.id));
+    const p = Math.round(items.reduce((s, x) => s + x.pct, 0) / items.length);
+    return `<div class="mini">
+      <span class="mini-idx" style="color:${g.color}">0${gi + 1}</span>
+      <span class="mini-name" style="color:${g.color}">${g.title}</span>
+      <span class="mini-bar"><i style="width:${p}%;background:${g.accent}"></i></span>
+      <span class="mini-pct">${p}%</span>
+    </div>`;
+  }).join('');
+
+  // Up next: first item that isn't finished.
+  const nextIdx = all.findIndex(p => !p.done);
+  const next = LESSONS[nextIdx === -1 ? LESSONS.length - 1 : nextIdx];
+  const nextEl = document.getElementById('next-up');
+  nextEl.href = withGroup(standaloneFilename(next.id));
+  document.getElementById('next-title').textContent = next.title;
+  nextEl.querySelector('.next-go').textContent = nextIdx === -1
+    ? 'Course complete — revisit →'
+    : (all[nextIdx].attempted ? 'Continue →' : 'Open →');
+}
+
+function showWelcomeBack(name){
+  document.getElementById('welcome-heading').textContent = 'Welcome back, ' + name + '.';
+  document.getElementById('welcome-copy').innerHTML =
+    'Continuing the <b>B1+/B2 Grammar Course</b> — real practice with tenses, modals, passives, conditionals, reported speech and more, not just isolated drills.';
+  const form = document.getElementById('name-form');
+  form.outerHTML = '<button class="change-name-link" id="change-name-btn" style="align-self:flex-start;margin:0">Not you? Change name</button>';
+  document.getElementById('change-name-btn').addEventListener('click', () => {
+    localStorage.removeItem(STUDENT_NAME_KEY);
+    location.reload();
+  });
+}
+
+const existingName = localStorage.getItem(STUDENT_NAME_KEY);
+if (existingName){
+  showWelcomeBack(existingName);
+} else {
+  document.getElementById('name-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = document.getElementById('name-input').value.trim();
+    if (!val) return;
+    localStorage.setItem(STUDENT_NAME_KEY, val);
+    showWelcomeBack(val);
+  });
+}
+
+renderLessonIndex();
+
+// Pull this student's rows down from Supabase (if connected) so the ticks
+// and percentages reflect work done on other devices too, then re-render
+// once. Never blocks first paint; a failure just leaves local numbers.
+if (existingName && Course.isConnected()){
+  (async () => {
+    for (const l of LESSONS){ await Course.syncFromSupabase(l.id); }
+    renderLessonIndex();
+  })();
+}
 
 </script>
 </body>
