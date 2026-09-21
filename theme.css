@@ -165,6 +165,12 @@ body.theme-reported{
 .btn-ghost:hover{background:var(--surface-alt);color:var(--text)}
 .btn-sm{padding:6px 14px;font-size:12.5px}
 
+.name-form .btn{border-radius:var(--radius-sm)}
+.name-input{
+  flex:1;min-width:180px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);
+  padding:10px 18px;font-family:inherit;font-size:14.5px;text-align:center;
+}
+
 .pill{
   display:inline-flex;align-items:center;gap:6px;
   padding:6px 14px;border-radius:var(--radius-pill);
