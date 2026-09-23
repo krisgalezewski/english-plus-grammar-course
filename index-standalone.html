@@ -578,6 +578,18 @@ body.theme-reported{
   <div id="lesson-index" class="bento-sections"></div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+/* ============================================================
+   Supabase project config for the English+ Grammar Course.
+   The anon key is safe to be public — same as your games
+   leaderboard — access is controlled by the RLS policies in
+   supabase/schema.sql, not by keeping this key secret.
+   ============================================================ */
+window.SUPABASE_URL = 'https://ovosqztjtnvasbaursnh.supabase.co';
+window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92b3NxenRqdG52YXNiYXVyc25oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc0ODcxNzcsImV4cCI6MjEwMzA2MzE3N30.I5yzw18Jd2-AgCqLxbkS3CioeUb3kFBjby8dcKUmvoM';
+
+</script>
 <script>
 /* ============================================================
    English+ Grammar Course — Shared Engine
@@ -1544,6 +1556,9 @@ function standaloneFilename(id){
 /* ---------- Progress ---------- */
 function lessonProgress(id){
   let attempted = 0;
+  // No name yet: nothing to read, and asking the engine would trigger its
+  // own name prompt on top of this page's name field.
+  if (!localStorage.getItem(STUDENT_NAME_KEY)) return { attempted: 0, total: totalFor(id), pct: 0, done: false };
   try {
     attempted = Course.getCurrentRows(id).filter(r => r.exercise_type === 'auto_graded').length;
   } catch (e){ attempted = 0; }
@@ -1699,6 +1714,8 @@ if (existingName){
     if (!val) return;
     localStorage.setItem(STUDENT_NAME_KEY, val);
     showWelcomeBack(val);
+    renderLessonIndex();
+    syncIndexFromSupabase();
   });
 }
 
@@ -1707,12 +1724,20 @@ renderLessonIndex();
 // Pull this student's rows down from Supabase (if connected) so the ticks
 // and percentages reflect work done on other devices too, then re-render
 // once. Never blocks first paint; a failure just leaves local numbers.
-if (existingName && Course.isConnected()){
+function syncIndexFromSupabase(){
+  if (!localStorage.getItem(STUDENT_NAME_KEY) || !Course.isConnected()) return;
   (async () => {
     for (const l of LESSONS){ await Course.syncFromSupabase(l.id); }
     renderLessonIndex();
   })();
 }
+syncIndexFromSupabase();
+
+// Coming back with the browser's Back button can show a cached copy of
+// this page; refresh the numbers whenever it is shown again, and when
+// another tab records progress.
+window.addEventListener('pageshow', (e) => { if (e.persisted){ renderLessonIndex(); syncIndexFromSupabase(); } });
+window.addEventListener('storage', () => renderLessonIndex());
 
 </script>
 </body>
