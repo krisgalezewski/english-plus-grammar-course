@@ -411,6 +411,7 @@ body.theme-reported{
 
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/teacher-login.js"></script>
 <script>
 /* ============================================================
    Supabase project config for the English+ Grammar Course.
@@ -574,6 +575,8 @@ let supabaseClient = null;
 try {
   if (window.supabase && window.SUPABASE_URL && window.SUPABASE_ANON_KEY){
     supabaseClient = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+    // Teacher-only page: sign in first (see /teacher-login.js)
+    if (window.EVTeacherGate) EVTeacherGate(supabaseClient);
   }
 } catch(e){ console.error(e); }
 

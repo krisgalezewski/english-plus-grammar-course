@@ -499,12 +499,10 @@ const Course = (() => {
     const cacheKey = `${groupId}::${studentName}`;
     if (knownMemberships.has(cacheKey)) return;
     try {
-      const { data } = await supabaseClient.from('groups').select('student_names').eq('group_id', groupId).maybeSingle();
-      if (!data){
-        await supabaseClient.from('groups').insert({ group_id: groupId, group_name: groupId, student_names: [studentName] });
-      } else if (!data.student_names.includes(studentName)){
-        await supabaseClient.from('groups').update({ student_names: [...data.student_names, studentName] }).eq('group_id', groupId);
-      }
+      // join_group() adds the student to the class list. It's a database
+      // function: students can't read or change the lists directly.
+      const { error } = await supabaseClient.rpc('join_group', { p_group: groupId, p_name: studentName });
+      if (error) throw error;
       knownMemberships.add(cacheKey);
     } catch (e){ console.warn('Supabase group membership check failed (will retry next answer):', e); }
   }
@@ -649,12 +647,8 @@ const Course = (() => {
   async function syncFromSupabase(lessonId){
     if (!supabaseClient) return;
     try {
-      const { data, error } = await supabaseClient
-        .from('lesson_progress')
-        .select('*')
-        .eq('group_id', GROUP_ID)
-        .eq('student_name', getStudentName())
-        .eq('lesson_id', lessonId);
+      // my_progress() returns only this student's own rows (database function)
+      const { data, error } = await supabaseClient.rpc('my_progress', { p_group: GROUP_ID, p_name: getStudentName(), p_lesson: lessonId });
       if (error || !data) { if (error) console.warn('Sync from Supabase failed:', error.message); return; }
       // Past this point the fetch has genuinely succeeded — `data` is an
       // authoritative snapshot (possibly empty) of this student's rows for
@@ -835,10 +829,10 @@ const Course = (() => {
     if (supabaseClient){
       (async () => {
         await ensureGroupMembership(GROUP_ID, getStudentName());
-        const { error } = await supabaseClient.from('glossary').upsert({
-          group_id: GROUP_ID, student_name: getStudentName(), word_key: wordKey,
-          word: data.word, ipa: data.ipa, meaning: data.meaning, example: data.example, lesson_id: lessonId || null
-        }, { onConflict: 'group_id,student_name,word_key' });
+        const { error } = await supabaseClient.rpc('save_glossary_word', {
+          p_group: GROUP_ID, p_name: getStudentName(), p_key: wordKey,
+          p_word: data.word, p_ipa: data.ipa ?? null, p_meaning: data.meaning ?? null, p_example: data.example ?? null, p_lesson: lessonId || null
+        });
         if (error) console.warn('Glossary sync failed:', error.message);
       })();
     }
@@ -849,8 +843,7 @@ const Course = (() => {
     delete glossary[wordKey];
     writeGlossaryLocal(glossary);
     if (supabaseClient){
-      const { error } = await supabaseClient.from('glossary').delete()
-        .eq('group_id', GROUP_ID).eq('student_name', getStudentName()).eq('word_key', wordKey);
+      const { error } = await supabaseClient.rpc('remove_glossary_word', { p_group: GROUP_ID, p_name: getStudentName(), p_key: wordKey });
       if (error) console.warn('Glossary remove failed:', error.message);
     }
   }
@@ -858,8 +851,7 @@ const Course = (() => {
   async function syncGlossaryFromSupabase(){
     if (!supabaseClient) return;
     try {
-      const { data, error } = await supabaseClient.from('glossary').select('*')
-        .eq('group_id', GROUP_ID).eq('student_name', getStudentName());
+      const { data, error } = await supabaseClient.rpc('my_glossary', { p_group: GROUP_ID, p_name: getStudentName() });
       if (error || !data) { if (error) console.warn('Glossary sync failed:', error.message); return; }
       const glossary = getGlossary();
       data.forEach(r => {
